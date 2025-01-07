@@ -46,7 +46,7 @@ ion-toolbar {
 }
 
 .footer-link {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--ion-text-color);
   text-decoration: none;
   font-weight: 500;
@@ -74,4 +74,9 @@ ion-title {
 .sizeGrid {
   width: 100%;
   max-width: 350px;
+}
+
+ion-title {
+  font-size: 1rem;
+  font-weight: bold;
 }
