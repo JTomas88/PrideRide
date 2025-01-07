@@ -1,0 +1,7 @@
+{
+  "name": "PrideRide_Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
