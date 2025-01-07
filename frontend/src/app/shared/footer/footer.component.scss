@@ -1,0 +1,83 @@
+:host {
+  --ion-background-color: #E0A667;
+  --ion-text-color: #000000;
+}
+
+ion-footer {
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+::ng-deep ion-footer {
+  --background: #E0A667;
+  --color: #000000;
+}
+
+::ng-deep ion-toolbar {
+  --background: inherit;
+  --color: inherit;
+}
+
+.colorbtn {
+  background-color: #A758E8 !important;
+}
+
+ion-toolbar {
+  background-color: inherit;
+  color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.footer-link {
+  font-size: 1rem;
+  color: var(--ion-text-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  border-radius: 35px;
+}
+
+ion-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.sizeGrid {
+  width: 100%;
+  max-width: 350px;
+}
