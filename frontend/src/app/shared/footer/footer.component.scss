@@ -18,10 +18,6 @@ ion-footer {
   --color: inherit;
 }
 
-.colorbtn {
-  background-color: #A758E8 !important;
-}
-
 ion-toolbar {
   background-color: inherit;
   color: inherit;
@@ -39,8 +35,6 @@ ion-toolbar {
 .footer-row {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .footer-item {
