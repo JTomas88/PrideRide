@@ -25,3 +25,22 @@
 #container a {
   text-decoration: none;
 }
+
+
+/**
+*
+*   Ajustes para el buscador
+*
+**/
+.buscador_box {
+  text-align: center;
+  margin-top: -9%;
+  position: relative;
+  z-index: 10;
+  padding: 2%;
+}
+
+.seeker {
+  width: 100%;
+  margin: 0 auto;
+}
