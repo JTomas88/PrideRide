@@ -1,8 +1,10 @@
 <app-navbar></app-navbar>
 
 <ion-content [fullscreen]="true">
+  <!-- COMPONENTE DEL JUMBOTRON -->
   <app-jumbotron></app-jumbotron>
 
+  <!-- COMPONENTE DEL BUSCADOR DE VIAJES -->
   <div class="buscador_box">
     <div class="seeker">
       <app-buscador></app-buscador>
@@ -10,14 +12,30 @@
   </div>
 
   <div class="contenido_principal">
+    <!-- COMPONENTE QUE MUESTRA INFORMACIÓN GENERAL DE LA APLICACIÓN -->
     <div id="contenedor_texto" class="p-2">
       <app-info></app-info>
     </div>
 
     <mat-divider></mat-divider>
     
+    <!-- COMPONENTE PARA PUBLICAR UN NUEVO VIAJE -->
     <div id="publicar_viaje">
       <app-nuevo-viaje-general></app-nuevo-viaje-general>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- COMPONENTE DE TRAYECTOS MAS POPULARES -->
+    <div class="d-flex justify-content-center p-2">
+      <app-trayectos-populares></app-trayectos-populares>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- COMPONENTE DE LAS DUDAS GENERALES -->
+    <div class="d-flex justify-content-center p-2">
+      <app-ventana-dudas></app-ventana-dudas>
     </div>
   </div>
   
