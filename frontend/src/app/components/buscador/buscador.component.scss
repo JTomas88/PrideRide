@@ -1,3 +1,7 @@
+:root {
+  --ion-background-color: #ffffff !important;
+}
+
 .mainbox {
   border-radius: 15px;
   border: 1px solid black;
@@ -12,5 +16,40 @@
 }
 
 .input-container mat-icon {
-  margin-right: 8px; 
+  margin-right: 8px;
+}
+
+.caja_boton {
+  margin-top: 1%;
+}
+
+.btn_config {
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
+.input-container mat-icon {
+  margin-right: 6px;
+}
+
+.selector_personas{
+    max-width: 169px;
+}
+
+.cajon_selector_personas{
+    margin-top: 2%;
+}
+
+@media (max-width: 576px) {
+  .input-container {
+    margin-bottom: 16px;
+  }
+  .input-container mat-icon {
+    margin-right: 6px;
+  }
+  .input-container ion-input {
+    margin-right: -31px;
+  }
+  .caja_boton {
+    text-align: center;
+  }
 }

@@ -16,16 +16,27 @@
       <ion-col>
         <div class="input-container">
           <mat-icon>schedule</mat-icon>
-          <ion-input label="Cuando" labelPlacement="floating" maxlength="20"></ion-input>
+          <ion-input label="Cuando" labelPlacement="floating" type="date"></ion-input>
         </div>
       </ion-col>
-      <ion-col>
-        <div class="input-container">
+      <ion-col class="selector_personas">
+        <div class="input-container cajon_selector_personas">
           <mat-icon>group</mat-icon>
-          <ion-input label="Nº Personas" labelPlacement="floating" maxlength="20"></ion-input>
+          <ion-select aria-label="n_personas" interface="popover" placeholder="Nº Personas">
+            <ion-select-option value="one">1</ion-select-option>
+            <ion-select-option value="two">2</ion-select-option>
+            <ion-select-option value="three">3</ion-select-option>
+          </ion-select>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
+<!-- BOTON PARA BUSCAR -->
+<div class="caja_boton">
+  <button mat-raised-button class="btn_config">
+    <mat-icon>search</mat-icon>
+    Buscar
+  </button>
 </div>

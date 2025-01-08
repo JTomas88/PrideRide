@@ -2,14 +2,18 @@
 
 <ion-content [fullscreen]="true">
   <app-jumbotron></app-jumbotron>
-  <div id="container">
-    <div class="buscador_box">
-      <div class="seeker">
-        <app-buscador></app-buscador>
-      </div>
-    </div>
 
-    <!-- TODO: RESTO DE COMPONENTES -->
+  <div class="buscador_box">
+    <div class="seeker">
+      <app-buscador></app-buscador>
+    </div>
   </div>
+
+  <div class="contenido_principal">
+    <div id="contenedor_texto" class="p-2">
+      <app-info></app-info>
+    </div>
+  </div>
+  
 </ion-content>
 <app-footer></app-footer>

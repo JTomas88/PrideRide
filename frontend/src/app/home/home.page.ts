@@ -4,13 +4,14 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { JumbotronComponent } from "../pages/jumbotron/jumbotron.component";
 import { BuscadorComponent } from "../components/buscador/buscador.component";
+import { InfoComponent } from "../components/info/info.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   standalone: true,
   styleUrls: ['home.page.scss'],
-  imports: [IonContent, NavbarComponent, FooterComponent, JumbotronComponent, BuscadorComponent],
+  imports: [IonContent, NavbarComponent, FooterComponent, JumbotronComponent, BuscadorComponent, InfoComponent],
 })
 export class HomePage {
   constructor() { }
