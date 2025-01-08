@@ -4,119 +4,183 @@
   </div>
 
   <!-- Formulario pantalla 1 -->
-  <div class="d-flex justify-content-center">
-    <h1>AQUÍ PUEDES COMENZAR A REGISTRARTE</h1>
-  </div>
-  <div class="container d-flex justify-content-center">
-    <form>
-      <div class="mb-3">
-        <label for="email" class="form-label">Correo electrónico</label>
-        <input
-          type="email"
-          class="form-control form-input"
-          id="email"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="fnacimiento" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="fnacimiento" />
-      </div>
-    </form>
+  <div *ngIf="pasoActual === 1">
+    <div class="d-flex justify-content-center">
+      <h1>AQUÍ PUEDES COMENZAR A REGISTRARTE</h1>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <form [formGroup]="formulario1">
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input
+            type="email"
+            class="form-control form-input"
+            id="email"
+            formControlName="email"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="fnacimiento" class="form-label"
+            >Fecha de nacimiento</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="fnacimiento"
+            formControlName="fnacimiento"
+          />
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Formulario pantalla 2 -->
-  <div class="d-flex justify-content-center">
-    <h1>¿NOS CONOCEMOS UN POCO MÁS?</h1>
+  <div *ngIf="pasoActual === 2">
+    <div class="d-flex justify-content-center">
+      <h1>¿NOS CONOCEMOS UN POCO MÁS?</h1>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <form [formGroup]="formulario2">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control form-input"
+            id="nombre"
+            formControlName="nombre"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input
+            type="text"
+            class="form-control form-input"
+            id="apellidos"
+            formControlName="apellidos"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input
+            type="text"
+            class="form-control form-input"
+            id="telefono"
+            formControlName="telefono"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="genero" class="form-label">
+            ¿Con qué genero te identificas?
+            <span
+              class="ms-2 text-primary"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Más detalles"
+            >
+              <i class="bi-question-circle"></i>
+            </span>
+          </label>
+
+          <select
+            class="form-select"
+            aria-label="Selección de género"
+            formControlName="genero"
+          >
+            >
+            <option selected>Selecciona una opción</option>
+            <option value="1">Hombre Cis</option>
+            <option value="2">Mujer Cis</option>
+            <option value="3">Tránsgenero</option>
+            <option value="4">No binario</option>
+            <option value="5">Intergénero</option>
+            <option value="6">No fluido</option>
+            <option value="7">Otro</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="orientacion" class="form-label"
+            >¿Cuál es tu orientación sexual?
+            <span
+              class="ms-2 text-primary"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Más detalles"
+            >
+              <i class="bi-question-circle"></i>
+            </span>
+          </label>
+          <select
+            class="form-select"
+            aria-label="Selección de orientación"
+            formControlName="orientacion"
+          >
+            >
+            <option selected>Selecciona una opción</option>
+            <option value="1">Gay</option>
+            <option value="2">Lesbiana</option>
+            <option value="3">Bisexual</option>
+            <option value="4">Pansexual</option>
+            <option value="5">Asexual</option>
+            <option value="6">Demisexual</option>
+            <option value="7">Queer</option>
+            <option value="8">Otro</option>
+          </select>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="container d-flex justify-content-center">
-    <form>
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control form-input" id="nombre" />
-      </div>
 
-      <div class="mb-3">
-        <label for="apellidos" class="form-label">Apellidos</label>
-        <input type="text" class="form-control form-input" id="apellidos" />
-      </div>
-
-      <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="text" class="form-control form-input" id="telefono" />
-      </div>
-
-      <div class="mb-3">
-        <label for="genero" class="form-label">
-          ¿Con qué genero te identificas?
-          <span
-            class="ms-2 text-primary"
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Más detalles"
-          >
-            <i class="bi-question-circle"></i>
-          </span>
-        </label>
-
-        <select class="form-select" aria-label="Default select example">
-          >
-          <option selected>Selecciona una opción</option>
-          <option value="1">Hombre Cis</option>
-          <option value="2">Mujer Cis</option>
-          <option value="3">Tránsgenero</option>
-          <option value="4">No binario</option>
-          <option value="5">Intergénero</option>
-          <option value="6">No fluido</option>
-          <option value="7">Otro</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="orientacion" class="form-label"
-          >¿Cuál es tu orientación sexual?
-          <span
-            class="ms-2 text-primary"
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Más detalles"
-          >
-            <i class="bi-question-circle"></i>
-          </span>
-        </label>
-        <select class="form-select" aria-label="Default select example">
-          >
-          <option selected>Selecciona una opción</option>
-          <option value="1">Gay</option>
-          <option value="2">Lesbiana</option>
-          <option value="3">Bisexual</option>
-          <option value="4">Pansexual</option>
-          <option value="5">Asexual</option>
-          <option value="6">Demisexual</option>
-          <option value="7">Queer</option>
-          <option value="8">Otro</option>
-        </select>
-      </div>
-    </form>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <h1>ALGO IMPORTANTE: TU CONTRASEÑA</h1>
-  </div>
-  <div class="container d-flex justify-content-center">
-    <form>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control form-input" id="password" />
-      </div>
-    </form>
+  <!-- Formulario pantalla 3 -->
+  <div *ngIf="pasoActual === 3">
+    <div class="d-flex justify-content-center">
+      <h1>ALGO IMPORTANTE: TU CONTRASEÑA</h1>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <form [formGroup]="formulario3">
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control form-input"
+            id="password"
+          />
+        </div>
+      </form>
+    </div>
   </div>
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <button
+          type="button"
+          class="page-link"
+          (click)="pasoAnterior()"
+          [disabled]="pasoActual === 1"
+        >
+          Atrás
+        </button>
+      </li>
+      <li class="page-item">
+        <button
+          type="button"
+          class="page-link"
+          (click)="siguientePaso()"
+          [disabled]="
+            (pasoActual === 1 && !formulario1.valid) ||
+            (pasoActual === 2 && !formulario2.valid) ||
+            (pasoActual === 3 && !formulario3.valid)
+          "
+        >
+          Siguiente
+        </button>
+      </li>
     </ul>
   </nav>
 </div>
