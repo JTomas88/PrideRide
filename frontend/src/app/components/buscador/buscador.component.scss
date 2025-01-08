@@ -77,6 +77,11 @@ ion-item[slot="header"] {
   margin-top: 2%;
 }
 
+button{
+  background-color: #a758e8 !important;
+  color: black !important;
+}
+
 /* Responsividad para móviles */
 @media (max-width: 576px) {
   .input-container {
