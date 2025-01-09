@@ -32,7 +32,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     allow: 'Aceptar',
     deny: 'Rechazar',
     link: 'Cookies.',
-    href: '#',
+    href: '/cookies',
     policy: 'Política de cookies.'
   },
   elements: {

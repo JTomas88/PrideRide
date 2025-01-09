@@ -17,5 +17,9 @@ export const routes: Routes = [
   {
     path: 'sobre-nosotros',
     loadComponent: () => import('./pages/sobre-nosotros/sobre-nosotros.page').then( m => m.SobreNosotrosPage)
+  },  {
+    path: 'cookies',
+    loadComponent: () => import('./pages/cookies/cookies.page').then( m => m.CookiesPage)
   },
+
 ];
