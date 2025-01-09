@@ -11,18 +11,17 @@
   border-radius: 15px;
   border: #e0a667 solid 1px;
   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
-  background-color: rgba(167, 88, 232, 0.28);
+  background-color: rgba(224, 166, 103, 0.28);
   padding: 1%;
 }
 
 a {
   color: #e0a667;
-  text-decoration: underline;  /* Asegura que el subrayado esté activo */
-  text-decoration-color: #e0a667; /* Color morado para el subrayado */
+  text-decoration: underline;  
+  text-decoration-color: #e0a667;
 }
 
-/* Opcional: Si quieres cambiar el color cuando el enlace se pasa el cursor */
 a:hover {
   color: #9b4dca;
-  text-decoration-color: #9b4dca; /* Un morado más oscuro al pasar el cursor */
+  text-decoration-color: #9b4dca;
 }
