@@ -12,7 +12,7 @@
         <!-- Email -->
         <div class="mb-3 row">
           <label for="emailFormControl" class="form-label">Email</label>
-          <input type="email" id="emailFormControl" class="form-control" formControlName="emailFormControl" aria-describedby="emailHelpBlock">
+          <input type="email" id="emailFormControl" class="form-control" formControlName="emailFormControl" aria-describedby="emailHelpBlock" placeholder="Escribe tu email aquí">
           <div *ngIf="isFieldInvalid('emailFormControl')" class="error-message">
             <small *ngIf="loginForm.get('emailFormControl')?.hasError('required')">El email es <strong>obligatorio</strong>.</small>
             <small *ngIf="loginForm.get('emailFormControl')?.hasError('email')">Por favor, introduce un email válido.</small>
@@ -22,7 +22,7 @@
         <!-- Password -->
         <div class="mb-3 row">
           <label for="passwordFormControl" class="form-label">Contraseña</label>
-          <input type="password" id="passwordFormControl" class="form-control" formControlName="passwordFormControl" aria-describedby="passwordHelpBlock">
+          <input type="password" id="passwordFormControl" class="form-control" formControlName="passwordFormControl" aria-describedby="passwordHelpBlock" placeholder="Escribe tu contraseña aquí">
           <div *ngIf="isFieldInvalid('passwordFormControl')" class="error-message">
             <small *ngIf="loginForm.get('passwordFormControl')?.hasError('required')">La contraseña es <strong>obligatoria</strong>.</small>
           </div>
