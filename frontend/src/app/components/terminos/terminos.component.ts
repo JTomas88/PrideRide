@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  MatDialogTitle,
   MatDialogContent,
   MatDialogRef,
 } from '@angular/material/dialog';
@@ -13,7 +12,6 @@ import { MatIcon } from '@angular/material/icon';
   selector: 'app-terminos',
   standalone: true,
   imports: [  
-    MatDialogTitle,
     MatDialogContent,
     MatDividerModule,
     MatButtonModule,

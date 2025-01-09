@@ -13,3 +13,13 @@
   border: none;
   cursor: pointer;
 }
+
+.style_h2{
+  padding: 5%; 
+}
+
+@media (max-width: 576px) {
+  .style_h2{
+    padding: 3%; 
+  }
+}
