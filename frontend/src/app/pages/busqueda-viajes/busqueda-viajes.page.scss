@@ -14,5 +14,24 @@
 }
 
 .diseno{
-  background-color: #E0A667 ;
+  background-color: #E0A667 !important ;
+  height: 130px;
 }
+/**
+*
+*   Ajustes para el buscador
+*
+**/
+.buscador_box {
+  text-align: center;
+  margin-top: -1%;
+  position: relative;
+  z-index: 10;
+  padding: 2%;
+}
+
+.seeker {
+  width: 100%;
+  margin: 0 auto;
+}
+

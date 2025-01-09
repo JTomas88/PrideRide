@@ -1,0 +1,26 @@
+.caja-resultado{
+  width: 100%;
+  background-color: #A758E8;
+  border: 1px solid black;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
+.col-viaje{
+  border-right: 1px solid black;
+}
+
+.infoPrecio{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold ;
+}
+
+.foto-usuario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

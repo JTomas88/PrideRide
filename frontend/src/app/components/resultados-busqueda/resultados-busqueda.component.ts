@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-resultados-busqueda',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, MatIcon],
   templateUrl: './resultados-busqueda.component.html',
   styleUrls: ['./resultados-busqueda.component.scss'],
 })
