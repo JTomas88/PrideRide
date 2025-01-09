@@ -159,11 +159,14 @@
     <ul class="pagination justify-content-center">
       <li class="page-item">
         <button
+          *ngIf="!paso1"
           type="button"
           class="page-link"
           (click)="pasoAnterior()"
-          [disabled]="pasoActual === 1"
         >
+          Atrás
+        </button>
+        <button *ngIf="paso1" type="button" class="page-link disabled">
           Atrás
         </button>
       </li>

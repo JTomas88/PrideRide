@@ -16,4 +16,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'busqueda-viajes',
+    loadComponent: () => import('./pages/busqueda-viajes/busqueda-viajes.page').then( m => m.BusquedaViajesPage)
+  },
 ];
