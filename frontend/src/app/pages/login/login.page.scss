@@ -1,0 +1,43 @@
+.box_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+//   height: 100vh;
+  flex-direction: column;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 35px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border: 3px solid #9b59b6;
+  outline: none;
+}
+
+.form-label {
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 17px;
+  margin-top: 5px;
+}
+
+.form-control.ng-invalid.ng-touched {
+  border-color: red;
+}

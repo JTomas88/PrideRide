@@ -35,5 +35,9 @@ export const routes: Routes = [
       import('./pages/busqueda-viajes/busqueda-viajes.page').then(
         (m) => m.BusquedaViajesPage
       ),
+  },  {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
   },
+
 ];
