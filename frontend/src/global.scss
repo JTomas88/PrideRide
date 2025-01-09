@@ -13,7 +13,17 @@ html {
     typography: Roboto,
     density: 0,
   ));
-}/*
+}
+
+@font-face {
+  font-family: "Dosis";
+  src: url('./assets/fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/*
  * App Global CSS
  * ----------------------------------------------------------------------------
  * Put style rules here that you want to apply globally. These styles are for
@@ -52,7 +62,19 @@ html {
 @import '@ionic/angular/css/palettes/dark.system.css';
 
 html, body { height: 100%;   background-color: var(--ion-background-color) ; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;   background-color: var(--ion-background-color) ; }
+body { 
+  margin: 0; 
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: var(--ion-background-color); 
+}
+
+h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input {
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+::ng-deep mat-raised-button {
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
 
 :root {
   --ion-background-color: #199eff63 !important;
