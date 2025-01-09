@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { TerminosComponent } from 'src/app/components/terminos/terminos.component';
+import { CookiesComponent } from 'src/app/components/cookies/cookies.component';
 
 
 @Component({
@@ -20,11 +21,15 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {}
 
-  openDialog() {
+  openTerms() {
     this.dialog.open(TerminosComponent, {
-      data: {
-        animal: 'panda',
-      },
+
+    });
+  }
+
+  openCookies() {
+    this.dialog.open(CookiesComponent, {
+
     });
   }
 }
