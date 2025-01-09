@@ -1,44 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <div style="display: flex; align-items: center;">
-      <ion-title [routerLink]="['/home']">
-        <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
-      </ion-title>
-    </div>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div class="box_login container">
-    <h1>INTRODUCE TU CORREO Y CONTRASEÑA</h1>
-    <form [formGroup]="loginForm" class="formulario">
-
-      <!-- Email -->
-      <div class="mb-3 row">
-        <label for="emailFormControl" class="form-label">Email</label>
-        <input type="email" id="emailFormControl" class="form-control" formControlName="emailFormControl" aria-describedby="emailHelpBlock">
-        <div *ngIf="isFieldInvalid('emailFormControl')" class="error-message">
-          <small *ngIf="loginForm.get('emailFormControl')?.hasError('required')">El email es <strong>obligatorio</strong>.</small>
-          <small *ngIf="loginForm.get('emailFormControl')?.hasError('email')">Por favor, introduce un email válido.</small>
-        </div>
-      </div>
-
-      <!-- Password -->
-      <div class="mb-3 row">
-        <label for="passwordFormControl" class="form-label">Contraseña</label>
-        <input type="password" id="passwordFormControl" class="form-control" formControlName="passwordFormControl" aria-describedby="passwordHelpBlock">
-        <div *ngIf="isFieldInvalid('passwordFormControl')" class="error-message">
-          <small *ngIf="loginForm.get('passwordFormControl')?.hasError('required')">La contraseña es <strong>obligatoria</strong>.</small>
-        </div>
-      </div>
-
-      <!-- Check para recordar datos -->
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="check">
-        <label class="form-check-label" for="check">Recuérdame</label>
-      </div>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
-    </form>
+<div class="container">
+  <div class="d-flex justify-content-center mt-4">
+    <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo_login" />
   </div>
-</ion-content>
+
+
+  <div>
+    <div class="box_login container">
+      <h1>INTRODUCE TU CORREO Y CONTRASEÑA</h1>
+      <form [formGroup]="loginForm" class="formulario">
+  
+        <!-- Email -->
+        <div class="mb-3 row">
+          <label for="emailFormControl" class="form-label">Email</label>
+          <input type="email" id="emailFormControl" class="form-control" formControlName="emailFormControl" aria-describedby="emailHelpBlock">
+          <div *ngIf="isFieldInvalid('emailFormControl')" class="error-message">
+            <small *ngIf="loginForm.get('emailFormControl')?.hasError('required')">El email es <strong>obligatorio</strong>.</small>
+            <small *ngIf="loginForm.get('emailFormControl')?.hasError('email')">Por favor, introduce un email válido.</small>
+          </div>
+        </div>
+  
+        <!-- Password -->
+        <div class="mb-3 row">
+          <label for="passwordFormControl" class="form-label">Contraseña</label>
+          <input type="password" id="passwordFormControl" class="form-control" formControlName="passwordFormControl" aria-describedby="passwordHelpBlock">
+          <div *ngIf="isFieldInvalid('passwordFormControl')" class="error-message">
+            <small *ngIf="loginForm.get('passwordFormControl')?.hasError('required')">La contraseña es <strong>obligatoria</strong>.</small>
+          </div>
+        </div>
+  
+        <!-- Check para recordar datos -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="check">
+          <label class="form-check-label" for="check">Recuérdame</label>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+      </form>
+    </div>
+  <div>
+</div>
+

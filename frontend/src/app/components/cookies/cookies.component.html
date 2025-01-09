@@ -1,7 +1,21 @@
 <div class="container">
-  <h2 mat-dialog-title>Política de cookies</h2>
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Política de cookies</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  
   <mat-divider></mat-divider>
   <mat-dialog-content>
-    <p>PrideRide utiliza cookies propias con el objetivo de optimizar su visita.</p>
+    <div id="cookie-banner" class="cookie-banner">
+      <p>
+        Este sitio utiliza cookies para mejorar tu experiencia. Consulta nuestra
+        <a routerLink="/cookies-policy">Política de Cookies</a>.
+      </p>
+      <button mat-raised-button class="me-1" (click)="acceptAllCookies()">Aceptar todas</button>
+      <button mat-raised-button class="me-1" (click)="rejectAllCookies()">Rechazar todas</button>
+      <button mat-raised-button (click)="openCookiePreferences()">Gestionar preferencias</button>
+    </div>
   </mat-dialog-content>
 </div>
