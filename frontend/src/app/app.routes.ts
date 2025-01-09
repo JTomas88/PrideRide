@@ -12,14 +12,28 @@ export const routes: Routes = [
   },
   {
     path: 'registro',
-    loadComponent: () => import('./pages/registro/registro.component').then((m) => m.RegistroComponent),
+    loadComponent: () =>
+      import('./pages/registro/registro.component').then(
+        (m) => m.RegistroComponent
+      ),
   },
   {
     path: 'sobre-nosotros',
-    loadComponent: () => import('./pages/sobre-nosotros/sobre-nosotros.page').then( m => m.SobreNosotrosPage)
-  },  {
-    path: 'cookies',
-    loadComponent: () => import('./pages/cookies/cookies.page').then( m => m.CookiesPage)
+    loadComponent: () =>
+      import('./pages/sobre-nosotros/sobre-nosotros.page').then(
+        (m) => m.SobreNosotrosPage
+      ),
   },
-
+  {
+    path: 'cookies',
+    loadComponent: () =>
+      import('./pages/cookies/cookies.page').then((m) => m.CookiesPage),
+  },
+  {
+    path: 'busqueda-viajes',
+    loadComponent: () =>
+      import('./pages/busqueda-viajes/busqueda-viajes.page').then(
+        (m) => m.BusquedaViajesPage
+      ),
+  },
 ];
