@@ -4,7 +4,33 @@
   </div>
   <ion-grid>
     <ion-row>
-      <ion-col size="3">ORDENAR RESULTADOS</ion-col>
+      <ion-col size="3" class="text-center">
+        <h2>ORDENAR POR...</h2>
+        <div class="caja-ordenar">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="horaSalida"
+              checked
+            />
+            <label class="form-check-label" for="horaSalida">
+              Hora de salida
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="precio"
+            />
+            <label class="form-check-label" for="precio"> Precio </label>
+          </div>
+        </div>
+      </ion-col>
 
       <ion-col class="text-center">
         <h2>RESULTADOS</h2>
