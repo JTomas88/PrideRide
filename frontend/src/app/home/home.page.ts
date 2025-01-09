@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { FooterComponent } from '../shared/footer/footer.component';
