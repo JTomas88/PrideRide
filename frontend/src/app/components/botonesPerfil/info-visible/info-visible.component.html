@@ -1,0 +1,110 @@
+<div class="container modal-infovisible">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Tu información visible</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <p>Esta es la información que aparecerá visible a los demás</p>
+  <mat-divider></mat-divider>
+  <mat-dialog-content>
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Pronombre</label>
+        <select class="form-select" aria-label="Selección de pronombre">
+          <option selected>Selecciona una opcion</option>
+          <option value="1">Él / He / Him</option>
+          <option value="2">Ella / She / Her</option>
+          <option value="3">Elle / They / Them</option>
+          <option value="4">Otros</option>
+          <option value="5">No uso ninguno concreto</option>
+          <option value="6">Prefiero no responder</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="password" class="form-control" id="nombre" />
+      </div>
+
+      <div class="mb-3">
+        <label for="fnacimiento" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="fnacimiento" />
+      </div>
+
+      <div class="mb-3">
+        <label for="edad" class="form-label">Edad: </label>
+      </div>
+
+      <div class="mb-4">
+        <label for="vehiculos" class="form-label">Mis vehículos</label>
+        <input type="date" class="form-control" id="fnacimiento" />
+      </div>
+
+      <div class="mb-4">
+        <label for="preferencias" class="form-label"
+          >Cuando viajo prefiero...</label
+        >
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Hablar
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Escuchar música
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Dormir
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Ir en silencio
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="bio" class="form-label">Sobre ti</label>
+        <textarea
+          class="form-control"
+          id="bio"
+          rows="5"
+          placeholder="Siéntete libre de contar a los demás lo que quieras que sepan sobre ti"
+        ></textarea>
+      </div>
+
+      <div class="btn d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Guardar datos</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

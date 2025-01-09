@@ -21,11 +21,13 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <mat-icon class="caja-icono tamano-icono"> person_off </mat-icon>
+          <mat-icon class="caja-icono tamano-icono"> person</mat-icon>
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
-          <li><a class="dropdown-item" href="#">Registrarse</a></li>
+          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="#">Mis viajes</a></li>
+          <li><a class="dropdown-item" href="#">Pagos</a></li>
+          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </form>
     </div>
@@ -33,13 +35,5 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="mt-3">
-    <!-- COMPONENTE DEL BUSCADOR DE VIAJES -->
-    <div class="buscador_box">
-      <div class="seeker">
-        <app-buscador></app-buscador>
-      </div>
-    </div>
-    <app-resultados-busqueda></app-resultados-busqueda>
-  </div>
+  <app-datos-usuario></app-datos-usuario>
 </ion-content>
