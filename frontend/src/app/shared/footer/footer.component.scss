@@ -22,7 +22,6 @@ ion-toolbar {
   background-color: inherit;
   color: inherit;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -35,14 +34,16 @@ ion-toolbar {
 .footer-row {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .footer-item {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: row; /* Asegura que el icono y el texto estén en la misma fila */
   text-align: center;
-  white-space: nowrap;
+  gap: 0.5rem; /* Espacio entre el icono y el texto */
 }
 
 .footer-link {
@@ -50,6 +51,14 @@ ion-toolbar {
   color: var(--ion-text-color);
   text-decoration: none;
   font-weight: 500;
+  margin-top: 0.3rem; 
+  white-space: nowrap; 
+}
+
+.footer-row > ion-col {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-title-container {
@@ -62,7 +71,6 @@ ion-toolbar {
 .footer-logo {
   width: 40px;
   height: 40px;
-  margin-bottom: 0.5rem;
   border-radius: 35px;
 }
 
@@ -73,7 +81,7 @@ ion-title {
 
 .sizeGrid {
   width: 100%;
-  max-width: 350px;
+  max-width: 260px;
 }
 
 ion-title {
