@@ -7,15 +7,13 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { BuscadorComponent } from '../../components/buscador/buscador.component';
-import { MatIconModule } from '@angular/material/icon';
-import { ResultadosBusquedaComponent } from 'src/app/components/resultados-busqueda/resultados-busqueda.component';
+import { MatIcon } from '@angular/material/icon';
 import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usuario.component';
 
 @Component({
-  selector: 'app-busqueda-viajes',
-  templateUrl: './busqueda-viajes.page.html',
-  styleUrls: ['./busqueda-viajes.page.scss'],
+  selector: 'app-perfil-usuario',
+  templateUrl: './perfil-usuario.page.html',
+  styleUrls: ['./perfil-usuario.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -24,12 +22,11 @@ import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usua
     IonToolbar,
     CommonModule,
     FormsModule,
-    BuscadorComponent,
-    MatIconModule,
-    ResultadosBusquedaComponent,
+    MatIcon,
+    DatosUsuarioComponent,
   ],
 })
-export class BusquedaViajesPage implements OnInit {
+export class PerfilUsuarioPage implements OnInit {
   constructor() {}
 
   ngOnInit() {}
