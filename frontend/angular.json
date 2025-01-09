@@ -34,8 +34,8 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": [],
+            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/cookieconsent/build/cookieconsent.min.css"],
+            "scripts": ["node_modules/cookieconsent/build/cookieconsent.min.js"],
             "browser": "src/main.ts"
           },
           "configurations": {
@@ -108,8 +108,8 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/cookieconsent/build/cookieconsent.min.css"],
+            "scripts": ["node_modules/cookieconsent/build/cookieconsent.min.js"]
           },
           "configurations": {
             "ci": {
