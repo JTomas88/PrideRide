@@ -1,3 +1,125 @@
-<p>
-  datos-contacto works!
-</p>
+<div class="container modal-datoscontacto">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Datos de contacto y verificaciones</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      Un usuario verificado proporciona a los demás usuarios una mayor confianza
+    </p>
+    <p>
+      Por eso, en este apartado, puedes verificar tus datos personales (email,
+      teléfono y documento de identidad)
+    </p>
+
+    <p>
+      Además si en algún momento quieres hacer un viaje como conductor, debes
+      subir una foto válida del carnet de conducir. Puedes dejarlo ya registrado
+      en este apartado
+    </p>
+    <p class="d-flex justify-content-center">
+      <strong>Verifica tu correo electrónico:</strong>
+    </p>
+    <ion-row class="mb-4">
+      <ion-col>
+        <div class="d-flex justify-content-center align-items-center">
+          <button type="btn" class="btn_bg">micorreo</button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <p>
+          Se enviará un correo a tu dirección, solo tienes que confirmar en el
+          botón que aparecerá
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <p class="d-flex justify-content-center mb-0">
+      <strong>Verifica tu teléfono:</strong>
+    </p>
+    <ion-row class="mb-4">
+      <ion-col class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn_bg" type="btn">66666666666</button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <p>Introduce aquí los 4 dígitos que has recibido:</p>
+        <div class="input-container">
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn mt-2 btn_bg"
+            style="
+              background-color: #a758e8;
+              width: 200px;
+              height: 30px;
+              font-size: 12px;
+            "
+          >
+            Confirmar código
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <p class="d-flex justify-content-center">
+      <strong>Verifica tu identidad:</strong>
+    </p>
+    <ion-row>
+      <ion-col class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center">
+          <div class="file-upload">
+            <label for="identidad" class="upload-button">+</label>
+            <input
+              type="file"
+              id="identidad"
+              class="file-input"
+              accept="image/*"
+              multiple
+              (change)="onFileSelected($event)"
+            />
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <p>
+          Mediante el botón de la izquierda puedes subir una foto de tu
+          documento de identidad, por ambas caras.
+        </p>
+      </ion-col>
+    </ion-row>
+    <mat-divider></mat-divider>
+    <div>
+      <h4>VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR</h4>
+      <p style="color: #ff4040">
+        Si tienes previsto publicar un viaje en algún momento, debemos tener
+        verificado tu carnet de conducir.
+      </p>
+      <div class="file-upload d-flex justify-content-center">
+        <label for="carnetconducir" class="upload-button">+</label>
+        <input
+          type="file"
+          id="carnetconducir"
+          class="file-input"
+          accept="image/*"
+          multiple
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+
+    <div></div>
+  </mat-dialog-content>
+</div>
