@@ -1,0 +1,23 @@
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  background-color: #e0a667;
+}
+
+ion-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 0;
+  border-radius: 15px;
+  color: black !important;
+}
+
+ion-title {
+  font-size: 18px;
+  text-align: center;
+  flex-grow: 1;
+}

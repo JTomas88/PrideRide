@@ -90,3 +90,36 @@ ion-content {
   border-radius: 30px;
   padding: 1%;
 }
+
+
+
+/**
+*   CONFIGURACIÓN PARA EL HEADER DE LA PÁGINA    *
+**/
+.diseno {
+  background-color: #e0a667 !important;
+}
+
+.buscar-viaje {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.nav-link.active {
+  margin-right: 20px;
+}
+
+.caja-icono {
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.tamano-icono {
+  font-size: 50px !important;
+  color: black;
+}
+
+.back-icon {
+  font-size: 24px;
+  color: black !important;
+}

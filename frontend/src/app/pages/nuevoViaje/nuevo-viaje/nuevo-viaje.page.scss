@@ -1,29 +1,4 @@
-/**
-*   CONFIGURACIÓN PARA EL HEADER DE LA PÁGINA    *
-**/
-.diseno {
-  background-color: #e0a667 !important;
-  height: 130px;
-}
 
-.buscar-viaje {
-  margin-left: auto;
-  margin-right: 20px;
-}
-
-.nav-link.active {
-  margin-right: 20px;
-}
-
-.caja-icono {
-  height: 50px !important;
-  width: 50px !important;
-}
-
-.tamano-icono {
-  font-size: 50px !important;
-  color: black;
-}
 
 /**
 *   CONFIGURACIÓN PARA EL CONTENIDO DE LA PÁGINA    *
@@ -162,6 +137,16 @@
 
 .input-container input {
   padding-left: 35px;
+}
+
+ion-title {
+  font-size: 18px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+ion-button{
+  color: #000000 !important;
 }
 
 /**

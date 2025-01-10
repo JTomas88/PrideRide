@@ -3,21 +3,28 @@
     <div class="container-fluid">
       <ul>
         <li class="nav-item d-flex flex-column align-items-center">
-          <a href="#">
-            <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
-          </a>
-          <h1 class="m-0 text-center">PrideRide</h1>
+          <ion-button fill="clear" routerLink="/home">
+            <mat-icon class="back-icon">arrow_back</mat-icon>
+            <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+            PrideRide
+          </ion-button>
         </li>
       </ul>
+
+      <ion-title>Publica tu viaje</ion-title>
 
       <form class="d-flex align-items-center buscar-viaje">
         <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
           Buscar viaje <mat-icon>search</mat-icon>
         </a>
+
+        <!-- Cambié la clase de 'dropdown-menu' a 'dropdown-menu-end' para alinear el menú a la derecha -->
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
         </a>
-        <ul class="dropdown-menu">
+
+        <!-- Agregué 'dropdown-menu-end' a 'ul' para que el menú se alinee a la derecha -->
+        <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
           <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
         </ul>
@@ -53,9 +60,9 @@
               <ion-select-option value="two">2</ion-select-option>
               <ion-select-option value="three">3</ion-select-option>
             </ion-select>
-            <p class="alert">Aún no estás regitrado para poder publicar un viaje</p>
+            <p class="alert">Aún no estás registrado para poder publicar un viaje</p>
           </div>
-          <button type="button" class="btn-publicar ion-activatable ripple-parent circle">Publicar Viaje <ion-ripple-effect></ion-ripple-effect></button>
+          <button type="button" class="btn-publicar ion-activatable ripple-parent circle" (click)="goTo()">Publicar Viaje<ion-ripple-effect></ion-ripple-effect></button>
         </form>
       </div>
     </div>
