@@ -43,5 +43,17 @@ export const routes: Routes = [
     path: 'perfil-usuario',
     loadComponent: () => import('./pages/perfil-usuario/perfil-usuario.page').then( m => m.PerfilUsuarioPage)
   },
+  {
+    path: 'nuevo-viaje',
+    loadComponent: () => import('./pages/nuevoViaje/nuevo-viaje/nuevo-viaje.page').then( m => m.NuevoViajePage)
+  },
+  {
+    path: 'data-viaje',
+    loadComponent: () => import('./pages/nuevoViaje/data-viaje/data-viaje.page').then( m => m.DataViajePage)
+  },
+  {
+    path: 'centro-ayuda',
+    loadComponent: () => import('./pages/centro-ayuda/centro-ayuda.page').then( m => m.CentroAyudaPage)
+  },
 
 ];

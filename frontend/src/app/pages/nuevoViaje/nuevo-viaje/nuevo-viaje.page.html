@@ -1,0 +1,80 @@
+<ion-header>
+  <nav class="navbar bg-body-tertiary diseno">
+    <div class="container-fluid">
+      <ul>
+        <li class="nav-item d-flex flex-column align-items-center">
+          <ion-button fill="clear" routerLink="/home">
+            <mat-icon class="back-icon">arrow_back</mat-icon>
+            <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+            PrideRide
+          </ion-button>
+        </li>
+      </ul>
+
+      <ion-title>Publica tu viaje</ion-title>
+
+      <form class="d-flex align-items-center buscar-viaje">
+        <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
+          Buscar viaje <mat-icon>search</mat-icon>
+        </a>
+
+        <!-- Cambié la clase de 'dropdown-menu' a 'dropdown-menu-end' para alinear el menú a la derecha -->
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
+        </a>
+
+        <!-- Agregué 'dropdown-menu-end' a 'ul' para que el menú se alinee a la derecha -->
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
+          <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
+        </ul>
+      </form>
+    </div>
+  </nav>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row class="primera-seccion">
+    <div class="imagen-fondo fondo_animacion">
+      <div class="formulario-viaje">
+        <form>
+          <div class="contenido_formulario">
+            <div class="input-container">
+              <mat-icon class="input-icon">location_on</mat-icon>
+              <input type="text" placeholder="Dónde comienza el viaje" class="input-viaje form-control" />
+            </div>
+  
+            <div class="input-container">
+              <mat-icon class="input-icon">location_on</mat-icon>
+              <input type="text" placeholder="Hasta dónde es el viaje" class="input-viaje form-control" />
+            </div>
+  
+            <ion-select aria-label="n_personas" placeholder="Número de pasajeros"
+              class="input-viaje form-control custom-select">
+              <mat-icon slot="start">
+                <span class="material-symbols-outlined">
+                  group
+                </span>
+              </mat-icon>
+              <ion-select-option value="one">1</ion-select-option>
+              <ion-select-option value="two">2</ion-select-option>
+              <ion-select-option value="three">3</ion-select-option>
+            </ion-select>
+            <p class="alert">Aún no estás registrado para poder publicar un viaje</p>
+          </div>
+          <button type="button" class="btn-publicar ion-activatable ripple-parent circle" (click)="goTo()">Publicar Viaje<ion-ripple-effect></ion-ripple-effect></button>
+        </form>
+      </div>
+    </div>
+  </ion-row>
+
+  <ion-row class="segunda-seccion">
+    <div class="centro-ayuda">
+      <h2>Centro de Ayuda</h2>
+      <p>¿Tienes dudas sobre tus viajes? Estamos aquí para ayudarte.</p>
+      <div class="d-flex justify-content-center">
+        <button type="button" mat-raised-button class="btn_bg">Consulta nuestro Centro de Ayuda</button>
+      </div>
+    </div>
+  </ion-row>
+</ion-content>

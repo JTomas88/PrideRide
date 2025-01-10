@@ -22,14 +22,10 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   openTerms() {
-    this.dialog.open(TerminosComponent, {
-
-    });
+    this.dialog.open(TerminosComponent, {});
   }
 
   openCookies() {
-    this.dialog.open(CookiesComponent, {
-
-    });
+    this.dialog.open(CookiesComponent, {});
   }
 }

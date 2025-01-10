@@ -1,0 +1,59 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h1>ELIGE LA FECHA DEL VIAJE</h1>
+      <div class="contenedor_calendario">
+        <mat-card class="demo-inline-calendar-card" style="box-shadow: 0 4px 6px rgba(0 0 0 / 28%);">
+          <mat-calendar [(selected)]="selected"></mat-calendar>
+        </mat-card>
+        <p>Fecha seleccionada: {{ selected() }}</p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <h1>HORA DE SALIDA</h1>
+      <div class="contenedor_hora">
+        <ion-item lines="none">
+          <ion-datetime display-format="h:mm A" picker-format="h:mm A" presentation="time" class="custom-datetime"
+            (ionChange)="onTimeChange($event)">
+          </ion-datetime>
+        </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- SELECCIÓN DE PASAJEROS Y COCHE -->
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h1>NÚMERO DE PASAJEROS</h1>
+      <div class="contenedor_inputs">
+        <ion-select aria-label="n_personas" placeholder="Número de pasajeros" class="form-control">
+          <mat-icon slot="start">
+            <span class="material-symbols-outlined">
+              group
+            </span>
+          </mat-icon>
+          <ion-select-option value="one">1</ion-select-option>
+          <ion-select-option value="two">2</ion-select-option>
+          <ion-select-option value="three">3</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-col>
+    <ion-col>
+      <h1>COCHE PARA VIAJAR</h1>
+      <div class="contenedor_inputs">
+        <ion-select aria-label="n_personas" placeholder="Número de pasajeros" class="form-control">
+          <mat-icon slot="start">
+            <span class="material-symbols-outlined">
+              directions_car
+            </span>
+          </mat-icon>
+          <ion-select-option value="one">Coche 1</ion-select-option>
+          <ion-select-option value="two">Coche 2</ion-select-option>
+          <ion-select-option value="three">Coche 3</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

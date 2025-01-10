@@ -1,0 +1,200 @@
+/**
+*   CONFIGURACIÓN PARA EL CONTENIDO DE LA PÁGINA    *
+**/
+.primera-seccion {
+  position: relative;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
+.imagen-fondo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.imagen-fondo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../../assets/imgs/bridge1.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  -webkit-animation: fondo_animacion 5s ease-out both;
+  animation: fondo_animacion 5s ease-out both;
+}
+
+.formulario-viaje {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  text-align: center;
+  z-index: 1;
+  width: 350px;
+}
+
+.contenido_formulario {
+  padding: 20px;
+}
+
+.input-viaje {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 35px;
+}
+
+.btn-publicar {
+  background-color: #a758e8;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 0px 0px 15px 15px;
+  font-size: 16px;
+  width: 100%;
+  height: 60px;
+}
+
+.btn-publicar:hover {
+  background-color: #cf9456;
+}
+
+.segunda-seccion {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centro-ayuda {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
+.centro-ayuda h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.centro-ayuda p {
+  font-size: 16px;
+  color: #555;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 35px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border: 3px solid #9b59b6 !important;
+  outline: none;
+}
+
+.alert {
+  border-radius: 15px;
+  border: 1px solid #cf9456;
+  padding: 1%;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-container .input-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 20px;
+  color: #000000;
+}
+
+.input-container input {
+  padding-left: 35px;
+}
+
+ion-title {
+  font-size: 18px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+ion-button {
+  color: #000000 !important;
+}
+
+/**
+*   CONFIGURACIÓN PARA DISPOSITIVOS MÓVILES    *
+**/
+@media (max-width: 768px) {
+  .buscar-viaje {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-link.active {
+    margin-right: 0;
+  }
+}
+
+/**
+*   CONFIGURACIÓN PARA LA ANIMACIÓN DEL FORMULARIO    *
+**/
+
+// .fondo_animacion {
+//   -webkit-animation: fondo_animacion 5s ease-out both;
+//   animation: fondo_animacion 5s ease-out both;
+// }
+
+// @-webkit-keyframes fondo_animacion {
+//   0% {
+//     -webkit-transform: scale(1) translateY(0);
+//     transform: scale(1) translateY(0);
+//     -webkit-transform-origin: 50% 16%;
+//     transform-origin: 50% 16%;
+//   }
+//   100% {
+//     -webkit-transform: scale(1.25) translateY(-15px);
+//     transform: scale(1.25) translateY(-15px);
+//     -webkit-transform-origin: top;
+//     transform-origin: top;
+//   }
+// }
+// @keyframes fondo_animacion {
+//   0% {
+//     -webkit-transform: scale(1) translateY(0);
+//     transform: scale(1) translateY(0);
+//     -webkit-transform-origin: 50% 16%;
+//     transform-origin: 50% 16%;
+//   }
+//   100% {
+//     -webkit-transform: scale(1.25) translateY(-15px);
+//     transform: scale(1.25) translateY(-15px);
+//     -webkit-transform-origin: top;
+//     transform-origin: top;
+//   }
+// }

@@ -61,14 +61,14 @@ html {
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-html, body { height: 100%;   background-color: var(--ion-background-color) ; }
+html, body { height: 100%; background-color: #199eff63; }
 body { 
   margin: 0; 
   font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: var(--ion-background-color); 
+  background-color: #199eff63;
 }
 
-h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input {
+h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input, ion-select {
   font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -76,16 +76,52 @@ h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input {
   font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
-:root {
-  --ion-background-color: #199eff63 !important;
+ion-content {
+  --background: transparent !important;
 }
 
 .btn_bg{
   background-color: #a758e8 !important;
+  color: white !important;
 }
 
 .logo {
   width: 60px;
   border-radius: 30px;
   padding: 1%;
+}
+
+button:hover{
+  background-color: #cf9456 !important;
+}
+
+/**
+*   CONFIGURACIÓN PARA EL HEADER DE LA PÁGINA    *
+**/
+.diseno {
+  background-color: #e0a667 !important;
+}
+
+.buscar-viaje {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.nav-link.active {
+  margin-right: 20px;
+}
+
+.caja-icono {
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.tamano-icono {
+  font-size: 50px !important;
+  color: black;
+}
+
+.back-icon {
+  font-size: 24px;
+  color: black !important;
 }

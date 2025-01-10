@@ -1,0 +1,66 @@
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #e0a667;
+}
+
+ion-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 0;
+  border-radius: 15px;
+  color: black !important;
+}
+
+ion-title {
+  font-size: 18px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.contenedor_inputs {
+  width: 60%;
+}
+
+.contenedor_mapa {
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+ion-select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ion-alert {
+  border-radius: 35px;
+}
+
+.route-option {
+  padding: 10px;
+  margin: 5px 0;
+  background: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.route-option:hover {
+  background: #e0e0e0;
+}
+
+.btn-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-banner button {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
