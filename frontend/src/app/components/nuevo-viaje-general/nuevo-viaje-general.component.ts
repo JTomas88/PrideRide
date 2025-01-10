@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -9,10 +10,14 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './nuevo-viaje-general.component.html',
   styleUrls: ['./nuevo-viaje-general.component.scss'],
 })
-export class NuevoViajeGeneralComponent  implements OnInit {
+export class NuevoViajeGeneralComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+
+  openNewTravel() {
+    this.router.navigate(['/nuevo-viaje'], {});
+  }
 }
