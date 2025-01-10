@@ -1,0 +1,23 @@
+.input-viaje {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid #a758e8;
+  border-radius: 35px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+}
+
+.input-viaje::placeholder {
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.input-viaje-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
