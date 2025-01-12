@@ -1,12 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <div style="display: flex; align-items: center;">
-      <ion-title [routerLink]="['/home']">
-        <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
-      </ion-title>
-      <ion-title style="margin-left: -10px;">Sobre Nosotros</ion-title> 
+<ion-header>
+  <nav class="navbar bg-body-tertiary diseno">
+    <div class="container-fluid">
+      <ul>
+        <li class="nav-item d-flex flex-column align-items-center">
+          <ion-button fill="clear" routerLink="/home">
+            <mat-icon class="back-icon">arrow_back</mat-icon>
+            <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+            PrideRide
+          </ion-button>
+        </li>
+      </ul>
+
+      <form class="d-flex align-items-center buscar-viaje">
+        <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
+          Buscar viaje <mat-icon>search</mat-icon>
+        </a>
+
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
+          <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
+        </ul>
+      </form>
     </div>
-  </ion-toolbar>
+  </nav>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -48,13 +68,13 @@
       <h6>ENLACES DE INTERÉS DE PRIDERIDE</h6>
       <ul>
         <li>
-          <a href="" class="me-2">Política de cookies</a>👈
+          <a href="" class="interes me-2">Política de cookies</a>👈
         </li>
         <li>
-          <a href="" class="me-2">Términos y condiciones</a> 👈
+          <a href="" class="interes me-2">Términos y condiciones</a> 👈
         </li>
         <li>
-          <a href="" class="me-2">Preguntas frecuentes</a>👈
+          <a href="" class="interes me-2">Preguntas frecuentes</a>👈
         </li>
       </ul>
     </div>

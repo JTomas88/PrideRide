@@ -2,6 +2,10 @@ ion-header{
   background-color: #e0a667 !important;
 }
 
+ion-button {
+  color: #000000 !important;
+}
+
 .space_title {
   margin-right: -91%;
 }
@@ -19,13 +23,13 @@ ion-header{
   padding: 1%;
 }
 
-a {
+.interes {
   color: #e0a667;
   text-decoration: underline;  
   text-decoration-color: #e0a667;
 }
 
-a:hover {
+.interes:hover {
   color: #9b4dca;
   text-decoration-color: #9b4dca;
 }

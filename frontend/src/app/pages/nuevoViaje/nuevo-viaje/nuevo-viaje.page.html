@@ -10,20 +10,15 @@
           </ion-button>
         </li>
       </ul>
-
-      <ion-title>Publica tu viaje</ion-title>
-
       <form class="d-flex align-items-center buscar-viaje">
         <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
           Buscar viaje <mat-icon>search</mat-icon>
         </a>
 
-        <!-- Cambié la clase de 'dropdown-menu' a 'dropdown-menu-end' para alinear el menú a la derecha -->
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
         </a>
 
-        <!-- Agregué 'dropdown-menu-end' a 'ul' para que el menú se alinee a la derecha -->
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
           <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
@@ -35,7 +30,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-row class="primera-seccion">
-    <div class="imagen-fondo fondo_animacion">
+    <div class="imagen-fondo">
       <div class="formulario-viaje">
         <form>
           <div class="contenido_formulario">

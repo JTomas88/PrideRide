@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -14,13 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     IonContent, 
     IonHeader, 
-    IonTitle, 
-    IonToolbar, 
+    IonTitle,  
     CommonModule, 
     FormsModule, 
     RouterModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIcon
   ]
 })
 export class SobreNosotrosPage implements OnInit {
