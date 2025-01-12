@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-cookies',
   templateUrl: './cookies.page.html',
   styleUrls: ['./cookies.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterModule]
+  imports: [IonContent, IonHeader, CommonModule, FormsModule, RouterModule, MatIcon, MatButtonModule]
 })
 export class CookiesPage implements OnInit {
   showPanel = true;

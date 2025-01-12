@@ -31,3 +31,21 @@ ion-item {
   --background: transparent;
   border: none;
 }
+
+
+/** 
+* CONFIGURACIÓN PARA EL CALENDARIO
+**/
+::ng-deep .mat-calendar-body-today {
+  border: 2px solid #a758e8 !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #a758e8 !important;
+  color: white !important;
+}
+
+::ng-deep .mat-calendar-body-cell:hover {
+  background-color: #e0a667 !important;
+  border-radius: 50% !important;
+}

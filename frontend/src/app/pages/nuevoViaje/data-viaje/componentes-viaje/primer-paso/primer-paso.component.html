@@ -6,16 +6,14 @@
         <mat-card class="demo-inline-calendar-card" style="box-shadow: 0 4px 6px rgba(0 0 0 / 28%);">
           <mat-calendar [(selected)]="selected"></mat-calendar>
         </mat-card>
-        <p>Fecha seleccionada: {{ selected() }}</p>
+        <p class="mt-2">Fecha seleccionada: {{ getFormattedDate() }}</p>
       </div>
     </ion-col>
     <ion-col>
       <h1>HORA DE SALIDA</h1>
-      <div class="contenedor_hora">
+      <div class="contenedor_hora d-flex justify-content-center">
         <ion-item lines="none">
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A" presentation="time" class="custom-datetime"
-            (ionChange)="onTimeChange($event)">
-          </ion-datetime>
+          <ion-datetime presentation="time" (ionChange)="onTimeChange($event)" class="custom-datetime"></ion-datetime>
         </ion-item>
       </div>
     </ion-col>

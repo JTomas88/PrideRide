@@ -20,15 +20,9 @@
   justify-content: space-between;
 }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+
+
+ion-button {
+  color: black !important;
 }
 
-button:hover {
-  background-color: #45a049;
-}
