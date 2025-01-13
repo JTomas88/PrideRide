@@ -4,8 +4,9 @@
 
 from flask import Blueprint, jsonify
 
+# Nombre único para evitar conflictos
 travel_blueprint = Blueprint('travel', __name__)
 
 @travel_blueprint.route('/info', methods=['GET'])
-def get_user_info():
-    return jsonify({'travel_name': 'viaje 1', 'date': '13/01/2025'})
+def get_travel_info():
+    return jsonify({'destination': 'Paris', 'price': 120})
