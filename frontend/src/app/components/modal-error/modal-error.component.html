@@ -1,7 +1,12 @@
 <div class="container">
-  <div class="modal-header d-flex align-items-center justify-content-center">
-    <mat-icon class="icon-red">warning</mat-icon>
-    <h2 class="ms-2">{{ data.title }}</h2>
+  <div class="modal-header d-flex align-items-center">
+    <div class="d-flex align-items-center">
+      <mat-icon class="icon-red">warning</mat-icon>
+      <h2 class="ms-2">{{ data.title }}</h2>
+    </div>
+    <button mat-icon-button class="close-button" (click)="close()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
   <mat-divider></mat-divider>
   <div class="modal-body">
