@@ -1,33 +1,41 @@
 {
-    "TITLE": "PrideRide",
-    "FOOTER": {
-        "TERMS": "Terms and conditions",
-        "COOKIES": "Cookies"
-    },
-    "HEADER": {
-        "ABOUT": "About Us",
-        "FAQS": "FAQs",
-        "DECALOGUE": "Decalogue",
-        "SEARCH_TRAVEL": "Search Trip",
-        "NEW_TRAVEL": "Post Trip",
-        "LOGIN": "Log In",
-        "REGISTER": "Sign Up",
-        "CHANGE_LANGUAGE": "Change language"
-    },
-    "JUMBOTRON": {
-        "TITLE": "Whatever you are like, we travel with you"
-    },
-    "INFO": {
-        "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
-        "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
-        "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
-    },
-    "FINDER_TRAVELS": {
-        "TITLE": "Travel Finder",
-        "FROM": "From",
-        "TO": "To",
-        "WHEN": "When",
-        "TRAVELERS": "No. of passengers",
-        "SEARCH": "Search"
-    }
+  "TITLE": "PrideRide",
+  "FOOTER": {
+    "TERMS": "Terms and conditions",
+    "COOKIES": "Cookies"
+  },
+  "HEADER": {
+    "ABOUT": "About Us",
+    "FAQS": "FAQs",
+    "DECALOGUE": "Decalogue",
+    "SEARCH_TRAVEL": "Search Trip",
+    "NEW_TRAVEL": "Post Trip",
+    "LOGIN": "Log In",
+    "REGISTER": "Sign Up",
+    "CHANGE_LANGUAGE": "Change language"
+  },
+  "JUMBOTRON": {
+    "TITLE": "Whatever you are like, we travel with you"
+  },
+  "INFO": {
+    "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
+    "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
+    "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
+  },
+  "FINDER_TRAVELS": {
+    "TITLE": "Travel Finder",
+    "FROM": "From",
+    "TO": "To",
+    "WHEN": "When",
+    "TRAVELERS": "No. of passengers",
+    "SEARCH": "Search"
+  },
+  "MI_PERFIL": {
+    "TITLE": "My Profile",
+    "SUBTITLE": "In this section, you can modify the personal information shown to others, as well as your travel preferences. You will also have the option to verify your data.",
+    "PRONOMBRE": "Pronoun",
+    "OTROS": "Others",
+    "NO_USO": "I don’t use any specific one",
+    "NO_RESPUESTA": "I prefer not to answer"
+  }
 }

@@ -1,0 +1,177 @@
+<ion-header>
+  <nav class="navbar bg-body-tertiary diseno">
+    <div class="container-fluid">
+      <ul>
+        <li class="nav-item d-flex flex-column align-items-center">
+          <a class="" href="#">
+            <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+          </a>
+          <h1 class="m-0 text-center">PrideRide</h1>
+        </li>
+      </ul>
+
+      <form class="d-flex align-items-center buscar-viaje">
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
+        >
+          Buscar viaje <mat-icon>search</mat-icon>
+        </a>
+
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
+        >
+          Publicar viaje
+        </a>
+
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="/login">Mi perfil</a></li>
+          <li>
+            <a class="dropdown-item" href="/registro">Saldo y transferencias</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/registro">Ajustes de la cuenta</a>
+          </li>
+          <li><a class="dropdown-item" href="/registro">Salir</a></li>
+        </ul>
+      </form>
+    </div>
+  </nav>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <h1>{{'MI_PERFIL.TITLE' | translate}}</h1>
+    </div>
+    <p class="d-flex justify-content-center">
+      En esta sección podrás modificar los datos personales que se muestan a los
+      demás, así como tus preferencias de viaje. También contarás con la opción
+      de verificar tus datos
+    </p>
+    <ion-row>
+      <ion-col size="3">
+        <form>
+          <div class="mb-3">
+            <label for="pronombre" class="form-label">Pronombre</label>
+            <select class="form-select" aria-label="Selección de pronombre">
+              <option selected>Selecciona una opcion</option>
+              <option value="1">Él / He / Him</option>
+              <option value="2">Ella / She / Her</option>
+              <option value="3">Elle / They / Them</option>
+              <option value="4">Otros</option>
+              <option value="5">No uso ninguno concreto</option>
+              <option value="6">Prefiero no responder</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="genero" class="form-label">
+              ¿Con qué genero te identificas?
+              <span
+                class="ms-2 text-primary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Más detalles"
+              >
+                <i class="bi-question-circle"></i>
+              </span>
+            </label>
+
+            <select class="form-select" aria-label="Selección de género">
+              >
+              <option selected>Selecciona una opción</option>
+              <option value="1">Hombre Cis</option>
+              <option value="2">Mujer Cis</option>
+              <option value="3">Tránsgenero</option>
+              <option value="4">No binario</option>
+              <option value="5">Intergénero</option>
+              <option value="6">No fluido</option>
+              <option value="7">Otro</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="orientacion" class="form-label"
+              >¿Cuál es tu orientación sexual?
+              <span
+                class="ms-2 text-primary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Más detalles"
+              >
+                <i class="bi-question-circle"></i>
+              </span>
+            </label>
+            <select class="form-select" aria-label="Selección de orientación">
+              >
+              <option selected>Selecciona una opción</option>
+              <option value="1">Gay</option>
+              <option value="2">Lesbiana</option>
+              <option value="3">Bisexual</option>
+              <option value="4">Pansexual</option>
+              <option value="5">Asexual</option>
+              <option value="6">Demisexual</option>
+              <option value="7">Queer</option>
+              <option value="8">Otro</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input
+              type="text"
+              class="form-control"
+              id="apellidos"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="email"
+              class="form-control"
+              id="nombre"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

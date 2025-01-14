@@ -1,33 +1,41 @@
 {
-    "TITLE": "PrideRide",
-    "FOOTER": {
-        "TERMS": "Términos y condiciones",
-        "COOKIES": "Cookies"
-    },
-    "HEADER": {
-        "ABOUT": "Quienes somos",
-        "FAQS": "FAQs",
-        "DECALOGUE": "Decálogo",
-        "SEARCH_TRAVEL": "Buscar viaje",
-        "NEW_TRAVEL": "Publicar viaje",
-        "LOGIN": "Iniciar sesión",
-        "REGISTER": "Regístrate",
-        "CHANGE_LANGUAGE": "Cambiar idioma"
-    },
-    "JUMBOTRON": {
-        "TITLE": "Seas como seas, viajamos contigo"
-    },
-    "INFO": {
-        "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",
-        "TEXT_TWO": "Planea tu próximo viaje con facilidad. Conéctate con personas que van en la misma dirección.",
-        "TEXT_THREE": "Comparte tus experiencias y crea recuerdos inolvidables con viajeros como tú."
-    },
-    "FINDER_TRAVELS": {
-        "TITLE": "Buscador de viajes",
-        "FROM": "De",
-        "TO": "A",
-        "WHEN": "Cuando",
-        "TRAVELERS": "Nº pasajeros",
-        "SEARCH": "Buscar"
-    }
+  "TITLE": "PrideRide",
+  "FOOTER": {
+    "TERMS": "Términos y condiciones",
+    "COOKIES": "Cookies"
+  },
+  "HEADER": {
+    "ABOUT": "Quienes somos",
+    "FAQS": "FAQs",
+    "DECALOGUE": "Decálogo",
+    "SEARCH_TRAVEL": "Buscar viaje",
+    "NEW_TRAVEL": "Publicar viaje",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Regístrate",
+    "CHANGE_LANGUAGE": "Cambiar idioma"
+  },
+  "JUMBOTRON": {
+    "TITLE": "Seas como seas, viajamos contigo"
+  },
+  "INFO": {
+    "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",
+    "TEXT_TWO": "Planea tu próximo viaje con facilidad. Conéctate con personas que van en la misma dirección.",
+    "TEXT_THREE": "Comparte tus experiencias y crea recuerdos inolvidables con viajeros como tú."
+  },
+  "FINDER_TRAVELS": {
+    "TITLE": "Buscador de viajes",
+    "FROM": "De",
+    "TO": "A",
+    "WHEN": "Cuando",
+    "TRAVELERS": "Nº pasajeros",
+    "SEARCH": "Buscar"
+  },
+  "MI_PERFIL": {
+    "TITLE": "Mis datos",
+    "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
+    "PRONOMBRE": "Pronombre",
+    "OTROS": "Otros",
+    "NO_USO": "No uso ninguno concreto",
+    "NO_RESPUESTA": "Prefiero no responder"
+  }
 }
