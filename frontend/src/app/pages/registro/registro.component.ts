@@ -101,10 +101,16 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Función para mostrar una ventana modal con un mensaje de error.
+   * 
+   * @param title Título que recibe la ventana modal
+   * @param message Mensaje de error que recibe la ventana modal.
+   */
   openError(title: string, message: string) {
     this.dialog.open(ModalErrorComponent, {
-      data: { title, message }
+      data: { title, message },
+      panelClass: 'dialog-animate'
     });
   }
 }
