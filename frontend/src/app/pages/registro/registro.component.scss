@@ -36,3 +36,8 @@
   border-color: #ffeeba;
   font-weight: bold;
 }
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 2px solid red;
+}

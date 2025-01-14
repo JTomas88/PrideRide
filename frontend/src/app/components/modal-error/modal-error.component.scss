@@ -1,0 +1,30 @@
+.modal-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-red {
+  color: red;
+  font-size: 2rem;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-body {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.container {
+  overflow: hidden;
+  padding: 1rem;
+}

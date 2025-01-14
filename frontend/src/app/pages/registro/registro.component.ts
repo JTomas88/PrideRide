@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+import { ModalErrorComponent } from 'src/app/components/modal-error/modal-error.component';
 import { UserServicesService } from 'src/app/core/user-services/user-services.service';
 
 @Component({
@@ -24,6 +26,8 @@ export class RegistroComponent implements OnInit {
   formulario3: FormGroup;
   paso1: boolean = false;
 
+  dialog = inject(MatDialog);
+
   constructor(private fb: FormBuilder, private userService: UserServicesService) {
     this.formulario1 = this.fb.group({
       email: ['', Validators.required],
@@ -39,8 +43,9 @@ export class RegistroComponent implements OnInit {
     });
 
     this.formulario3 = this.fb.group({
-      password: ['', Validators.required, Validators.minLength(6)],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
   }
 
   ngOnInit() {
@@ -59,6 +64,8 @@ export class RegistroComponent implements OnInit {
     } else if (this.pasoActual === 2 && this.formulario2.valid) {
       this.pasoActual++;
       this.paso1 = false;
+    } else {
+
     }
   }
 
@@ -86,9 +93,18 @@ export class RegistroComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al registrar:', err);
-          alert('Error en el registro');
+          const title = 'Error!';
+          const message = 'Hemos tenido un problema. Por favor, inténtalo de nuevo.'
+          this.openError(title, message)
         },
       });
     }
+  }
+
+
+  openError(title: string, message: string) {
+    this.dialog.open(ModalErrorComponent, {
+      data: { title, message }
+    });
   }
 }

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="modal-header d-flex align-items-center justify-content-center">
+    <mat-icon class="icon-red">warning</mat-icon>
+    <h2 class="ms-2">{{ data.title }}</h2>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="modal-body">
+    <p>{{ data.message }}</p>
+  </div>
+  <div class="modal-footer">
+    <button mat-button (click)="close()">Cerrar</button>
+  </div>
+</div>
