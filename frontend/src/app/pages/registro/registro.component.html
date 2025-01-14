@@ -114,14 +114,9 @@
     </ul>
   </nav>
 
-  <div *ngIf="
-  (pasoActual === 1 && !formulario1.valid) ||
-  (pasoActual === 2 && !formulario2.valid) ||
-  (pasoActual === 3 && !formulario3.valid)
-" class="d-flex justify-content-center">
-    <button type="button" class="btn btn-primary mt-3" (click)="registrar()" [disabled]="
-      !formulario1.valid || !formulario2.valid || !formulario3.valid
-    ">
+  <div *ngIf="pasoActual === 3 && formulario1.valid && formulario2.valid && formulario3.valid"
+    class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary mt-3" (click)="registrar()">
       Registrar
     </button>
   </div>
