@@ -1,5 +1,9 @@
 {
     "TITLE": "PrideRide",
+    "FOOTER": {
+        "TERMS": "Términos y condiciones",
+        "COOKIES": "Cookies"
+    },
     "HEADER": {
         "ABOUT": "Quienes somos",
         "FAQS": "FAQs",
@@ -9,5 +13,8 @@
         "LOGIN": "Iniciar sesión",
         "REGISTER": "Regístrate",
         "CHANGE_LANGUAGE": "Cambiar idioma"
+    },
+    "JUMBOTRON": {
+        "TITLE": "Seas como seas, viajamos contigo"
     }
 }

@@ -4,6 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { TerminosComponent } from 'src/app/components/terminos/terminos.component';
 import { CookiesComponent } from 'src/app/components/cookies/cookies.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { CookiesComponent } from 'src/app/components/cookies/cookies.component';
   standalone: true,
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
-  imports: [IonicModule, MatIconModule],
+  imports: [IonicModule, MatIconModule, TranslateModule],
 })
 export class FooterComponent implements OnInit {
 
