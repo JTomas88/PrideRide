@@ -10,10 +10,23 @@
         </li>
       </ul>
 
-      <form class="d-flex align-items-center" role="search">
-        <a class="nav-link me-4" aria-current="page" href="/publicarviaje"
-          >Publicar viaje</a
+      <form class="d-flex align-items-center buscar-viaje">
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
         >
+          Buscar viaje <mat-icon>search</mat-icon>
+        </a>
+
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
+        >
+          Publicar viaje
+        </a>
+
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -21,13 +34,18 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <mat-icon class="caja-icono tamano-icono"> person</mat-icon>
+          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-          <li><a class="dropdown-item" href="#">Mis viajes</a></li>
-          <li><a class="dropdown-item" href="#">Pagos</a></li>
-          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="/login">Mi perfil</a></li>
+          <li>
+            <a class="dropdown-item" href="/registro">Saldo y transferencias</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/registro">Ajustes de la cuenta</a>
+          </li>
+          <li><a class="dropdown-item" href="/registro">Salir</a></li>
         </ul>
       </form>
     </div>

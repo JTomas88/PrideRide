@@ -1,5 +1,4 @@
 {
-    "TITLE": "PrideRide",
     "HOME": {
         "NEW_TRAVEL_TITLE": "¿Quieres compartir tu próximo viaje?",
         "NEW_TRAVEL_BUTTON": "Publica tu próximo viaje aquí",
@@ -7,6 +6,7 @@
         "QUESTIONS_TITLE": "¿TIENES DUDAS?",
         "CHECK_HERE": "Consulta aquí"
     },
+    "TITLE": "PrideRide",
     "FOOTER": {
         "TERMS": "Términos y condiciones",
         "COOKIES": "Cookies"
@@ -36,5 +36,13 @@
         "WHEN": "Cuando",
         "TRAVELERS": "Nº pasajeros",
         "SEARCH": "Buscar"
+    },
+    "MI_PERFIL": {
+        "TITLE": "Mis datos",
+        "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
+        "PRONOMBRE": "Pronombre",
+        "OTROS": "Otros",
+        "NO_USO": "No uso ninguno concreto",
+        "NO_RESPUESTA": "Prefiero no responder"
     }
 }

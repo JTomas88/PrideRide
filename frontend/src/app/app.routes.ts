@@ -59,5 +59,9 @@ export const routes: Routes = [
     path: 'faqs',
     loadComponent: () => import('./pages/faqs/faqs.page').then( m => m.FaqsPage)
   },
+  {
+    path: 'mi-perfil',
+    loadComponent: () => import('./pages/perfil-usuario/componentesPerfil/mi-perfil/mi-perfil.page').then( m => m.MiPerfilPage)
+  },
 
 ];
