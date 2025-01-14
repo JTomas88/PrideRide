@@ -25,7 +25,8 @@ registerLocaleData(localeEs);
 })
 export class PrimerPasoComponent  implements OnInit {
 
-  selected: Date | null = null;
+  fecha_seleccionada: Date | null = null;
+  hora_seleccionada: string | null = null;
 
   constructor() { }
 
@@ -38,11 +39,24 @@ export class PrimerPasoComponent  implements OnInit {
    * @returns Devuelve la fecha seleccionada en el formato local (Solo día, mes y año)
    */
   getFormattedDate(): string {
-    return this.selected ? this.selected.toLocaleDateString() : 'Ninguna fecha seleccionada';
+    return this.fecha_seleccionada ? this.fecha_seleccionada.toLocaleDateString() : 'Ninguna fecha seleccionada';
   }
 
-  // Recoge la hora seleccionada en el componente de la hora
+  /**
+   * Función para mostrar la hora seleccionada, si la hay.
+   * 
+   * @returns Devuelve la hora seleccionada
+   */
+  getTime(): string {
+    return this.hora_seleccionada ? this.hora_seleccionada : 'Ninguna hora seleccionada';
+  }
+
+  /**
+   * Función que recoge la hora seleccionada y le da formato de HH:mm
+   * @param event Recoge la hora que se ha seleccionado en el input
+   */
   onTimeChange(event: any) {
-    console.log('Hora seleccionada:', event.detail.value);
+    const timeValue = new Date(event.detail.value);
+    this.hora_seleccionada = timeValue.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 }
