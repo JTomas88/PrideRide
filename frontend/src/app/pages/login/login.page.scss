@@ -47,3 +47,19 @@
 .form-control.ng-invalid.ng-touched {
   border-color: red;
 }
+
+
+/**
+* CONFIGURACIÓN PARA EL ENLACE DE REGISTRO
+*/
+.enlace{
+  color: #9b59b6;
+  text-decoration: none;
+  padding: 1%;
+}
+
+a:hover{
+  border-radius: 10px;
+  background-color: #cf9456;
+  color: white;
+}
