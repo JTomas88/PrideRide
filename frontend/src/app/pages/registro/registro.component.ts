@@ -6,11 +6,14 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { UserServicesService } from 'src/app/core/user-services/user-services.service';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  providers: [UserServicesService],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss'],
 })
@@ -21,7 +24,7 @@ export class RegistroComponent implements OnInit {
   formulario3: FormGroup;
   paso1: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserServicesService) {
     this.formulario1 = this.fb.group({
       email: ['', Validators.required],
       fnacimiento: ['', Validators.required],
@@ -65,6 +68,27 @@ export class RegistroComponent implements OnInit {
   pasoAnterior() {
     if (this.pasoActual > 1) {
       this.pasoActual--;
+    }
+  }
+
+  registrar() {
+    if (this.formulario1.valid && this.formulario2.valid && this.formulario3.valid) {
+      const datosRegistro = {
+        ...this.formulario1.value,
+        ...this.formulario2.value,
+        ...this.formulario3.value,
+      };
+
+      this.userService.registrarUsuario(datosRegistro).subscribe({
+        next: (response) => {
+          console.log('Usuario registrado:', response);
+          alert('Registro exitoso');
+        },
+        error: (err) => {
+          console.error('Error al registrar:', err);
+          alert('Error en el registro');
+        },
+      });
     }
   }
 }

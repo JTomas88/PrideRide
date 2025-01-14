@@ -1,6 +1,6 @@
 <div style="overflow: auto">
   <div class="d-flex justify-content-center mt-4">
-    <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+    <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" [routerLink]="['/home']" />
   </div>
 
   <!-- Formulario pantalla 1 -->
@@ -9,27 +9,15 @@
       <h1>AQUÍ PUEDES COMENZAR A REGISTRARTE</h1>
     </div>
     <div class="container d-flex justify-content-center">
-      <form [formGroup]="formulario1">
+      <form [formGroup]="formulario1" class="formulario">
         <div class="mb-3">
           <label for="email" class="form-label">Correo electrónico</label>
-          <input
-            type="email"
-            class="form-control form-input"
-            id="email"
-            formControlName="email"
-            aria-describedby="emailHelp"
-          />
+          <input type="email" class="form-control form-input" id="email" formControlName="email"
+            aria-describedby="emailHelp" />
         </div>
         <div class="mb-3">
-          <label for="fnacimiento" class="form-label"
-            >Fecha de nacimiento</label
-          >
-          <input
-            type="date"
-            class="form-control"
-            id="fnacimiento"
-            formControlName="fnacimiento"
-          />
+          <label for="fnacimiento" class="form-label">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="fnacimiento" formControlName="fnacimiento" />
         </div>
       </form>
     </div>
@@ -41,54 +29,29 @@
       <h1>¿NOS CONOCEMOS UN POCO MÁS?</h1>
     </div>
     <div class="container d-flex justify-content-center">
-      <form [formGroup]="formulario2">
+      <form [formGroup]="formulario2" class="formulario">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
-          <input
-            type="text"
-            class="form-control form-input"
-            id="nombre"
-            formControlName="nombre"
-          />
+          <input type="text" class="form-control form-input" id="nombre" formControlName="nombre" />
         </div>
 
         <div class="mb-3">
           <label for="apellidos" class="form-label">Apellidos</label>
-          <input
-            type="text"
-            class="form-control form-input"
-            id="apellidos"
-            formControlName="apellidos"
-          />
+          <input type="text" class="form-control form-input" id="apellidos" formControlName="apellidos" />
         </div>
 
         <div class="mb-3">
           <label for="telefono" class="form-label">Teléfono</label>
-          <input
-            type="text"
-            class="form-control form-input"
-            id="telefono"
-            formControlName="telefono"
-          />
+          <input type="text" class="form-control form-input" id="telefono" formControlName="telefono" />
         </div>
 
         <div class="mb-3">
-          <label for="orientacion" class="form-label"
-            >¿Cuál es tu orientación sexual?
-            <span
-              class="ms-2 text-primary"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Más detalles"
-            >
+          <label for="orientacion" class="form-label">¿Cuál es tu orientación sexual?
+            <span class="ms-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Más detalles">
               <i class="bi-question-circle"></i>
             </span>
           </label>
-          <select
-            class="form-select"
-            aria-label="Selección de orientación"
-            formControlName="orientacion"
-          >
+          <select class="form-select" aria-label="Selección de orientación" formControlName="orientacion">
             >
             <option selected>Selecciona una opción</option>
             <option value="1">Gay</option>
@@ -111,29 +74,28 @@
       <h1>ALGO IMPORTANTE: TU CONTRASEÑA</h1>
     </div>
     <div class="container d-flex justify-content-center">
-      <form [formGroup]="formulario3">
+      <form [formGroup]="formulario3" class="formulario">
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input
-            formControlName="password"
-            type="password"
-            class="form-control form-input"
-            id="password"
-          />
+          <input formControlName="password" type="password" class="form-control form-input" id="password" />
         </div>
       </form>
     </div>
   </div>
 
+  <!-- Mensaje de advertencia -->
+  <div *ngIf="
+  (pasoActual === 1 && !formulario1.valid) ||
+  (pasoActual === 2 && !formulario2.valid) ||
+  (pasoActual === 3 && !formulario3.valid)
+  " class="alert alert-warning mt-3 text-center container" role="alert">
+    Por favor, completa todos los campos obligatorios para continuar.
+  </div>
+
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <li class="page-item">
-        <button
-          *ngIf="!paso1"
-          type="button"
-          class="page-link"
-          (click)="pasoAnterior()"
-        >
+        <button *ngIf="!paso1" type="button" class="page-link" (click)="pasoAnterior()">
           Atrás
         </button>
         <button *ngIf="paso1" type="button" class="page-link disabled">
@@ -141,19 +103,27 @@
         </button>
       </li>
       <li class="page-item">
-        <button
-          type="button"
-          class="page-link"
-          (click)="siguientePaso()"
-          [disabled]="
+        <button type="button" class="page-link" (click)="siguientePaso()" [disabled]="
             (pasoActual === 1 && !formulario1.valid) ||
             (pasoActual === 2 && !formulario2.valid) ||
             (pasoActual === 3 && !formulario3.valid)
-          "
-        >
+          ">
           Siguiente
         </button>
       </li>
     </ul>
   </nav>
+
+  <div *ngIf="
+  (pasoActual === 1 && !formulario1.valid) ||
+  (pasoActual === 2 && !formulario2.valid) ||
+  (pasoActual === 3 && !formulario3.valid)
+" class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary mt-3" (click)="registrar()" [disabled]="
+      !formulario1.valid || !formulario2.valid || !formulario3.valid
+    ">
+      Registrar
+    </button>
+  </div>
+
 </div>
