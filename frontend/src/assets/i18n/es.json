@@ -1,0 +1,13 @@
+{
+    "TITLE": "PrideRide",
+    "HEADER": {
+        "ABOUT": "Quienes somos",
+        "FAQS": "FAQs",
+        "DECALOGUE": "Decálogo",
+        "SEARCH_TRAVEL": "Buscar viaje",
+        "NEW_TRAVEL": "Publicar viaje",
+        "LOGIN": "Iniciar sesión",
+        "REGISTER": "Regístrate",
+        "CHANGE_LANGUAGE": "Cambiar idioma"
+    }
+}

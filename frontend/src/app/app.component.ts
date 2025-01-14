@@ -1,21 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-
 import { NgcCookieConsentService } from 'ngx-cookieconsent';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet],
   standalone: true,
+  imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
   constructor(
     private ccService: NgcCookieConsentService,
-    private cookieService: CookieService
-  ) {}
+    private cookieService: CookieService,
+    private translate: TranslateService
+  ) {
+    
+    // Establecer el idioma predeterminado
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');
+  }
+
   ngOnInit() {
+    // Eventos del banner de cookies
     this.ccService.popupOpen$.subscribe(() => {
       console.log('El banner de cookies está visible');
     });
@@ -24,11 +38,11 @@ export class AppComponent implements OnInit {
       console.log('El banner de cookies fue cerrado');
     });
 
+    // Verificar el consentimiento de cookies
     const hasConsent =
       this.cookieService.check('analytics') ||
       this.cookieService.check('advertising');
     if (!hasConsent) {
-      // Mostrar el panel si no hay preferencias guardadas
       console.log('No se han establecido preferencias de cookies.');
     }
   }

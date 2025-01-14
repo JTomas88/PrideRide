@@ -3,11 +3,13 @@ import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } 
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 
 import { routes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { AppComponent, HttpLoaderFactory } from './app/app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { importProvidersFrom } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -50,6 +52,12 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)), provideAnimationsAsync(),
-    importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig))
+    importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig), HttpClientModule, TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }))
   ],
 });

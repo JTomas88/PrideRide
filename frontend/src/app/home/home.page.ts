@@ -9,6 +9,8 @@ import { InfoComponent } from "../components/info/info.component";
 import { NuevoViajeGeneralComponent } from "../components/nuevo-viaje-general/nuevo-viaje-general.component";
 import { TrayectosPopularesComponent } from '../components/trayectos-populares/trayectos-populares.component';
 import { VentanaDudasComponent } from '../components/ventana-dudas/ventana-dudas.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-home',
@@ -25,9 +27,13 @@ import { VentanaDudasComponent } from '../components/ventana-dudas/ventana-dudas
     NuevoViajeGeneralComponent, 
     MatDividerModule, 
     TrayectosPopularesComponent,
-    VentanaDudasComponent
-  ],
+    VentanaDudasComponent,
+    TranslateModule
+  ]
 })
 export class HomePage {
-  constructor() { }
+  constructor(private translate: TranslateService) { }
+  changeLanguage(lang: string) {
+    this.translate.use(lang);
+  }
 }

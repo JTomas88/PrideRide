@@ -1,79 +1,59 @@
 <ion-header>
   <nav class="navbar navbar-expand-lg navbar-diseno">
     <div class="container">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse row" id="navbarSupportedContent">
-        <ul
-          class="navbar-nav me-auto justify-content-between mb-2 mb-lg-0 w-100 align-items-center"
-        >
+        <ul class="navbar-nav me-auto justify-content-between mb-2 mb-lg-0 w-100 align-items-center">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/sobre-nosotros"
-              >Quienes sómos</a
-            >
+            <a class="nav-link active" aria-current="page" href="/sobre-nosotros">{{ 'HEADER.ABOUT' | translate }}</a>
           </li>
 
           <li class="nav-item ion-activatable ripple-parent circle">
             <a class="nav-link active" aria-current="page" href="/faqs">
-              FAQs
+              {{ 'HEADER.FAQS' | translate }}
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/decalogo"
-              >Decálogo</a
-            >
+            <a class="nav-link active" aria-current="page" href="/decalogo">{{ 'HEADER.DECALOGUE' | translate }}</a>
           </li>
 
           <li class="nav-item d-flex flex-column align-items-center">
             <a class="" href="#">
-              <img
-                src="../../../assets/logo/Logo2.png"
-                alt="Logo"
-                class="logo"
-              />
+              <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
             </a>
-            <h1 class="m-0 text-center">PrideRide</h1>
+            <h1 class="m-0 text-center">{{ 'TITLE' | translate }}</h1>
           </li>
 
           <li class="nav-item">
-            <a
-              class="nav-link active d-flex align-items-center"
-              aria-current="page"
-              href="/busqueda-viajes"
-              >Buscar viaje
+            <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">{{ 'HEADER.SEARCH_TRAVEL' | translate }}
               <mat-icon>search</mat-icon>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/nuevo-viaje"
-              >Publicar viaje</a
-            >
+            <a class="nav-link active" href="#" aria-current="page" href="/nuevo-viaje">{{ 'HEADER.NEW_TRAVEL' | translate }}</a>
           </li>
-
           <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+              aria-current="page">
+              {{ 'HEADER.CHANGE_LANGUAGE' | translate }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="changeLanguage('es')">Español</a></li>
+              <li><a class="dropdown-item" (click)="changeLanguage('en')">Inglés</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <mat-icon class="caja-icono tamano-icono"> person_off </mat-icon>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
-              <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
+              <li><a class="dropdown-item" href="/login">{{ 'HEADER.LOGIN' | translate }}</a></li>
+              <li><a class="dropdown-item" href="/registro">{{ 'HEADER.REGISTER' | translate }}</a></li>
             </ul>
           </li>
         </ul>
