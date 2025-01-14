@@ -45,5 +45,20 @@
         "OTROS": "Otros",
         "NO_USO": "No uso ninguno concreto",
         "NO_RESPUESTA": "Prefiero no responder"
+    },
+    "NUEVO_VIAJE": {
+        "TITLE_BTN_BACK": "PrideRide",
+        "ALT_LOGO": "Logotipo de PrideRide",
+        "SEARCH_TRAVEL": "Buscar viaje",
+        "FROM": "¿Dónde comienza el viaje?",
+        "TO": "¿Hasta dónde es el viaje?",
+        "TRAVELERS": "Número de pasajeros",
+        "NO_REGISTER_ALERT": "Aún no estás registrado para poder publicar un viaje",
+        "NO_CARNET_ALERT": "Aún no tienes registrado tu carnet de conducir para poder publicar un viaje",
+        "PUBLISH_TRIP":"Publicar viaje",
+        "PUBLISH_TRIP_TITLE":"Botón para publicar viaje",
+        "HELP_CENTER_TITLE": "Centro de ayuda",
+        "HELP_CENTER_SUBTITLE": "¿Tienes dudas sobre tus viajes? Estamos aquí para ayudarte",
+        "HELP_CENTER_BTN": "Consulta nuestro Centro de Ayuda"
     }
 }

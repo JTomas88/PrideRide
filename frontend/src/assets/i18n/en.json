@@ -37,5 +37,28 @@
         "WHEN": "When",
         "TRAVELERS": "No. of passengers",
         "SEARCH": "Search"
+    },
+    "MI_PERFIL": {
+        "TITLE": "My Profile",
+        "SUBTITLE": "In this section, you can modify the personal information shown to others, as well as your travel preferences. You will also have the option to verify your data.",
+        "PRONOMBRE": "Pronoun",
+        "OTROS": "Others",
+        "NO_USO": "I don’t use any specific one",
+        "NO_RESPUESTA": "I prefer not to answer"
+    },
+    "NUEVO_VIAJE": {
+        "TITLE_BTN_BACK": "PrideRide",
+        "ALT_LOGO": "PrideRide Logo",
+        "SEARCH_TRAVEL": "Search Trip",
+        "FROM": "Where does the trip start?",
+        "TO": "Where is the trip to?",
+        "TRAVELERS": "Number of passengers",
+        "NO_REGISTER_ALERT": "You are not registered yet to post a trip",
+        "NO_CARNET_ALERT": "You haven't registered your driver's license to post a trip yet",
+        "PUBLISH_TRIP": "Post Trip",
+        "PUBLISH_TRIP_TITLE": "Button to post trip",
+        "HELP_CENTER_TITLE": "Help Center",
+        "HELP_CENTER_SUBTITLE": "Do you have questions about your trips? We are here to help",
+        "HELP_CENTER_BTN": "Check our Help Center"
     }
 }
