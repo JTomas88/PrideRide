@@ -16,7 +16,16 @@ export class NavbarComponent  implements OnInit {
 
   ngOnInit() {}
 
+
+  /**
+   * Función para realizar el cambio de idiomas de la aplicación.
+   * Al seleccionar un idioma, guarda la selección en la caché del navegador
+   * para poder así mantener el idioma seleccionado durante la navegación.
+   * 
+   * @param lang Recibe el idioma seleccionado en el selector de idiomas.
+   */
   changeLanguage(lang: string) {
-    this.translate.use(lang); // Cambiar idioma
+    this.translate.use(lang);
+    localStorage.setItem('language', lang);
   }
 }
