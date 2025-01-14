@@ -1,6 +1,6 @@
 {
     "TITLE": "PrideRide",
-    "FOOTER" :{
+    "FOOTER": {
         "TERMS": "Terms and conditions",
         "COOKIES": "Cookies"
     },
@@ -16,5 +16,18 @@
     },
     "JUMBOTRON": {
         "TITLE": "Whatever you are like, we travel with you"
+    },
+    "INFO": {
+        "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
+        "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
+        "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
+    },
+    "FINDER_TRAVELS": {
+        "TITLE": "Travel Finder",
+        "FROM": "From",
+        "TO": "To",
+        "WHEN": "When",
+        "TRAVELERS": "No. of passengers",
+        "SEARCH": "Search"
     }
 }

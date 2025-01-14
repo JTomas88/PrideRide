@@ -16,5 +16,18 @@
     },
     "JUMBOTRON": {
         "TITLE": "Seas como seas, viajamos contigo"
+    },
+    "INFO": {
+        "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",
+        "TEXT_TWO": "Planea tu próximo viaje con facilidad. Conéctate con personas que van en la misma dirección.",
+        "TEXT_THREE": "Comparte tus experiencias y crea recuerdos inolvidables con viajeros como tú."
+    },
+    "FINDER_TRAVELS": {
+        "TITLE": "Buscador de viajes",
+        "FROM": "De",
+        "TO": "A",
+        "WHEN": "Cuando",
+        "TRAVELERS": "Nº pasajeros",
+        "SEARCH": "Buscar"
     }
 }

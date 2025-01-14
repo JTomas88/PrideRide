@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { eye, lockClosed } from 'ionicons/icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-buscador',
@@ -22,7 +23,8 @@ import { eye, lockClosed } from 'ionicons/icons';
     MatNativeDateModule, 
     MatFormFieldModule, 
     CommonModule, 
-    FormsModule
+    FormsModule,
+    TranslateModule
   ],
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss'],
