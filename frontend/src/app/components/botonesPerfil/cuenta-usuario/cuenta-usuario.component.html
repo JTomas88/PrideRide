@@ -1,0 +1,91 @@
+<div class="container modal-datoscontacto">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Datos de contacto y verificaciones</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      Desde aquí podrás cambiar tu contraseña, consulta de saldo, métodos para
+      recargar y preferencias de transferencias.
+    </p>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center">
+      <strong>Cambio de contraseña:</strong>
+    </p>
+    <ion-row class="mb-4">
+      <ion-col>
+        <div class="mb-3">
+          <label for="cActual" class="form-label">Contraseña actual:</label>
+          <input type="password" class="form-control" id="cActual" />
+        </div>
+        <div class="mb-1">
+          <label for="pNueva" class="form-label">Nueva contraseña:</label>
+          <input type="password" class="form-control" id="pNueva" />
+        </div>
+        <div class="mb-1">
+          <label for="pNuevaConf" class="form-label"
+            >Confirmar nueva contraseña:</label
+          >
+          <input type="password" class="form-control" id="pNuevaConf" />
+        </div>
+      </ion-col>
+      <ion-col class="d-flex justify-content-center align-items-center">
+        <div>
+          <button type="button" class="btn btn_bg">Cambiar!</button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center mb-0">
+      <strong>Preferencias de comunicación</strong>
+    </p>
+    <ion-row class="mb-4">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Acepto recibir comunicaciones comerciales por email
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+          Acepto que mis datos puedan ser usadaos con fines comerciales a
+          terceros
+        </label>
+      </div>
+    </ion-row>
+    <mat-divider></mat-divider>
+    <p class="d-flex justify-content-center mb-0">
+      <strong>Preferencias de comunicación</strong>
+    </p>
+    <div>
+      <p style="color: red; font-weight: bold; text-align: justify">
+        Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo,
+        recuerda realizar primero la transferencia a tu cuenta bancaria para no
+        perder ese dinero.
+      </p>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn_bg">Eliminar mi cuenta</button>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

@@ -30,6 +30,7 @@
     "@capacitor/keyboard": "6.0.3",
     "@capacitor/status-bar": "6.0.2",
     "@ionic/angular": "^8.0.0",
+    "@types/google.maps": "^3.58.1",
     "cally": "^0.7.2",
     "ionicons": "^7.0.0",
     "ngx-cookie-service": "^19.0.0",

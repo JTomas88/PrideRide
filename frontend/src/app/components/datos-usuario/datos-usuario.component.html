@@ -18,20 +18,34 @@
       </ion-row>
     </ion-col>
   </ion-row>
+
   <ion-row>
-    <ion-col>
-      <ion-col class="footer-item" size="6">
-        <a type="button" class="footer-link" (click)="openInfoVisible()"
-          >Tu información visible</a
-        >
-      </ion-col>
+    <ion-col size="auto">
+      <button type="button" class="btn btn_bg" (click)="openInfoVisible()">
+        Tu información visible
+      </button>
     </ion-col>
-    <ion-col>
-      <ion-col class="footer-item" size="6">
-        <a type="button" class="footer-link" (click)="openDatosContacto()"
-          >Verificaciones / Datos de contacto</a
-        >
-      </ion-col>
+
+    <ion-col size="auto">
+      <button type="button" class="btn btn_bg" (click)="openDatosContacto()">
+        Verificaciones / Datos de contacto
+      </button>
+    </ion-col>
+
+    <ion-col size="auto">
+      <button type="button" class="btn btn_bg" (click)="openAjustesCuenta()">
+        Ajustes cuenta
+      </button>
+    </ion-col>
+
+    <ion-col size="auto">
+      <button
+        type="button"
+        class="btn btn_bg"
+        (click)="openSaldoTransferencias()"
+      >
+        Saldo y transferencias
+      </button>
     </ion-col>
   </ion-row>
 </div>

@@ -1,0 +1,197 @@
+<div class="container modal-datoscontacto">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Saldo y transferencias a tu cuenta</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      En este apartado puedes consutar tu saldo disponible, ver los últimos
+      movimientos, establecer tus métodos de recarga y efectuar recargas
+    </p>
+    <p>Si tienes saldo puedes transferirlo a tu cuenta bancaria.</p>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center">
+      <strong>Saldo actual</strong>
+    </p>
+    <ion-row class="mb-2 d-flex justify-content-center">
+      <p>
+        <strong style="font-size: 40px">83€</strong>
+      </p>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center mb-4">
+      <strong>Últimos movimientos:</strong>
+    </p>
+
+    <ion-row class="mb-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Abono/Gasto</th>
+            <th scope="col">Saldo final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">12/12/2024</th>
+            <td>Viaje xxx</td>
+            <td>-25 €</td>
+            <td>80 €</td>
+          </tr>
+          <tr>
+            <th scope="row">10/12/2024</th>
+            <td>Recarga</td>
+            <td>+25 €</td>
+            <td>105 €</td>
+          </tr>
+          <tr>
+            <th scope="row">01/12/2024</th>
+            <td>Pasajero xxx</td>
+            <td>+25 €</td>
+            <td>100 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center">
+      <strong>Tus métodos de recarga</strong>
+    </p>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <p>Mis tarjetas vinculadas</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ul>
+        <li>Tarjeta "principal"</li>
+        <div
+          class="card"
+          style="width: 10rem; height: 3rem; background-color: red"
+        >
+          <div class="d-flex align-items-center">
+            <p>XXXX-XXXX-XXXX-5201</p>
+          </div>
+        </div>
+      </ul>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="d-flex align-content-center justify-content-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn_bg">
+            Añadir tarjeta de crédito
+          </button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <form>
+            <input
+              style="width: 200px"
+              class="form-input"
+              id="disabledFieldsetCheck"
+              placeholder="Alias tarjeta"
+            />
+            <input
+              style="width: 200px"
+              class="form-input"
+              id="disabledFieldsetCheck"
+              placeholder="Numero de tarjeta"
+            />
+
+            <ion-row>
+              <input
+                style="width: 50px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="MM"
+              />
+              <input
+                style="width: 50px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="AA"
+              />
+            </ion-row>
+            <ion-row>
+              <input
+                style="width: 80px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="CVV"
+              />
+            </ion-row>
+            <ion-row>
+              <button type="submit" class="btn btn_bg">Guardar</button>
+            </ion-row>
+          </form>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="mt-2">
+      <ion-col>
+        <div>
+          <p>Pago por Paypal</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div class="d-flex justify-content-center align-items-center mb-4">
+        <button type="button" class="btn btn_bg">Vamos a Paypal</button>
+      </div>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center mb-4">
+      <strong>Transferencias a tu cuenta bancaria</strong>
+    </p>
+    <ion-row class="mb-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Importe transferido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">12/12/2024</th>
+            <td>Viaje xxx</td>
+            <td>-25 €</td>
+          </tr>
+          <tr>
+            <th scope="row">10/12/2024</th>
+            <td>Recarga</td>
+            <td>-25 €</td>
+          </tr>
+          <tr>
+            <th scope="row">01/12/2024</th>
+            <td>Pasajero xxx</td>
+            <td>-25 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-row>
+  </mat-dialog-content>
+</div>

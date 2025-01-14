@@ -3,11 +3,13 @@ import { IonicModule } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoVisibleComponent } from '../botonesPerfil/info-visible/info-visible.component';
 import { DatosContactoComponent } from '../botonesPerfil/datos-contacto/datos-contacto.component';
+import { CuentaUsuarioComponent } from '../botonesPerfil/cuenta-usuario/cuenta-usuario.component';
+import { SaldoTransferenciasComponent } from '../botonesPerfil/saldo-transferencias/saldo-transferencias.component';
 
 @Component({
   selector: 'app-datos-usuario',
   standalone: true,
-  imports: [IonicModule, InfoVisibleComponent, DatosContactoComponent],
+  imports: [IonicModule],
   templateUrl: './datos-usuario.component.html',
   styleUrls: ['./datos-usuario.component.scss'],
 })
@@ -23,5 +25,11 @@ export class DatosUsuarioComponent implements OnInit {
   }
   openDatosContacto() {
     this.dialog.open(DatosContactoComponent, {});
+  }
+  openAjustesCuenta() {
+    this.dialog.open(CuentaUsuarioComponent, {});
+  }
+  openSaldoTransferencias() {
+    this.dialog.open(SaldoTransferenciasComponent, {});
   }
 }
