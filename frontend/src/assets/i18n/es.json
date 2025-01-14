@@ -22,7 +22,8 @@
         "CHANGE_LANGUAGE": "Cambiar idioma"
     },
     "JUMBOTRON": {
-        "TITLE": "Seas como seas, viajamos contigo"
+        "TITLE": "Seas como seas, viajamos contigo",
+        "HELP": "Imagen de la cabecera"
     },
     "INFO": {
         "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",

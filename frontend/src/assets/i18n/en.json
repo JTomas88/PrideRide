@@ -22,7 +22,8 @@
         "CHANGE_LANGUAGE": "Change language"
     },
     "JUMBOTRON": {
-        "TITLE": "Whatever you are like, we travel with you"
+        "TITLE": "Whatever you are like, we travel with you",
+        "HELP": "Header image"
     },
     "INFO": {
         "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
