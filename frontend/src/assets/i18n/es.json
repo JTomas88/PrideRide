@@ -1,5 +1,12 @@
 {
     "TITLE": "PrideRide",
+    "HOME": {
+        "NEW_TRAVEL_TITLE": "¿Quieres compartir tu próximo viaje?",
+        "NEW_TRAVEL_BUTTON": "Publica tu próximo viaje aquí",
+        "MOST_POPULAR_TRAVELS_TITLE": "TRAYECTOS MÁS POPULARES",
+        "QUESTIONS_TITLE": "¿TIENES DUDAS?",
+        "CHECK_HERE": "Consulta aquí"
+    },
     "FOOTER": {
         "TERMS": "Términos y condiciones",
         "COOKIES": "Cookies"

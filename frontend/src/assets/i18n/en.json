@@ -1,5 +1,12 @@
 {
     "TITLE": "PrideRide",
+    "HOME": {
+        "NEW_TRAVEL_TITLE": "Want to share your next trip?",
+        "NEW_TRAVEL_BUTTON": "Post your next trip here",
+        "MOST_POPULAR_TRAVELS_TITLE": "MOST POPULAR TRIPS",
+        "QUESTIONS_TITLE": "DO YOU HAVE QUESTIONS?",
+        "CHECK_HERE": "Check here"
+    },
     "FOOTER": {
         "TERMS": "Terms and conditions",
         "COOKIES": "Cookies"
