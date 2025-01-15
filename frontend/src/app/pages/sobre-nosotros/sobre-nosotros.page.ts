@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -21,7 +22,8 @@ import { MatIcon } from '@angular/material/icon';
     RouterModule,
     MatDividerModule,
     MatButtonModule,
-    MatIcon
+    MatIcon,
+    JumbotronComponent
   ]
 })
 export class SobreNosotrosPage implements OnInit {

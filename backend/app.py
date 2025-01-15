@@ -3,16 +3,20 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from services.user.user_service import user_blueprint
 from services.travel.travel_service import travel_blueprint
+from flask_jwt_extended import JWTManager
 from extensions import db
 from admin import setup_admin
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": [ "http://localhost:4200"], "supports_credentials": True}})
+
 
     # Configuración de la base de datos
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///prideride.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    jwt = JWTManager(app)
 
     # Inicializa la extensión db con la app
     db.init_app(app)
