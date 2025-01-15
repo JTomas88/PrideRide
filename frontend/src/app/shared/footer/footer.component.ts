@@ -20,7 +20,9 @@ export class FooterComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   openTerms() {
     this.dialog.open(TerminosComponent, {});

@@ -1,0 +1,59 @@
+<ion-header>
+  <nav class="navbar bg-body-tertiary diseno">
+    <div class="container-fluid">
+      <ul>
+        <li class="nav-item d-flex flex-column align-items-center">
+          <ion-button fill="clear" (click)="navigateBack()">
+            <mat-icon class="back-icon">arrow_back</mat-icon>
+            <img src="{{logo}}" alt="Logo" class="logo" />
+            PrideRide
+          </ion-button>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center buscar-viaje">
+        <a
+          *ngIf="searchRoute"
+          class="nav-link active d-flex align-items-center"
+          [routerLink]="searchRoute"
+        >
+          <span *ngIf="isDesktop">{{ dynamicTitle }}</span>
+          <mat-icon title="{{ dynamicTitle }}">{{ dynamicIcon }}</mat-icon>
+        </a>
+
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown" *ngIf="!isLoggedIn">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/login">{{ 'HEADER.LOGIN' | translate }}</a></li>
+              <li><a class="dropdown-item" href="/registro">{{ 'HEADER.REGISTER' | translate }}</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown" *ngIf="isLoggedIn">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon class="caja-icono tamano-icono">account_circle</mat-icon>
+            </a>
+            <ul class="dropdown-menu">
+              <div class="container">
+                <li><span class="dropdown-item">Bienvenido, {{ userData.nombre }}</span></li>
+                <mat-divider></mat-divider>
+                <li><a class="dropdown-item" href="/mi-perfil">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="/perfil-usuario">Saldo y transferencias</a></li>
+                <li><a class="dropdown-item" href="/perfil-usuario">Ajustes de la cuenta</a></li>
+                <mat-divider></mat-divider>
+                <li class="d-flex align-items-center justify-content-center">
+                  <a class="dropdown-item d-flex align-items-center" (click)="logout()" type="button">
+                    <mat-icon class="me-2">power_settings_new</mat-icon> Salir
+                  </a>
+                </li>
+              </div>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</ion-header>
