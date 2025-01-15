@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from services.user.user_service import user_blueprint
 from services.travel.travel_service import travel_blueprint
 from flask_jwt_extended import JWTManager
+import secrets
 from extensions import db
 from admin import setup_admin
 
@@ -17,7 +18,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     jwt = JWTManager(app)
-
+    app.config['JWT_SECRET_KEY'] = secrets.token_hex(32)
     # Inicializa la extensión db con la app
     db.init_app(app)
 

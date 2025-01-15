@@ -32,11 +32,12 @@ def crear_usuario():
     if Usuario.query.filter_by(email=data['email']).first():
         return jsonify({"error": "El correo electrónico ya existe"}), 400
 
+    codificar_password = generate_password_hash(data['usPassword'])
     nuevo_usuario = Usuario(
         nombre=data['nombre'],
         apellidos=data['apellidos'],
         email=data['email'],
-        password=generate_password_hash(data['password']),
+        password=codificar_password,
         telefono=data.get('telefono'),
         biografia=data.get('biografia'),
         vehiculos=data.get('vehiculos'),
@@ -54,6 +55,39 @@ def crear_usuario():
         "access_token": access_token,
         "usuario": nuevo_usuario.serialize()
     }), 201
+
+
+#
+# LOGIN
+#
+@user_blueprint.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    # Buscar al usuario en la base de datos
+    usuario = Usuario.query.filter_by(email=email).first()
+
+    if usuario is None:
+        return jsonify({'Error': "No se ha encontrado el correo"}), 404
+
+    # Verificar si la contraseña coincide
+    if not check_password_hash(usuario.password, password):
+        return jsonify({'Error': 'Contraseña incorrecta'}), 401
+
+    # Crear el token de acceso
+    access_token = create_access_token(identity=usuario.id)
+
+    return jsonify({
+        'id': usuario.id,
+        'nombre': usuario.nombre,
+        'rol': usuario.rol,
+        'telefono': usuario.telefono,
+        'vehiculos': usuario.vehiculos,
+        'email': usuario.email,
+        'access_token': access_token
+    }), 200
 
 #
 # OBTENER TODOS LOS USUARIOS

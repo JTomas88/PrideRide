@@ -7,7 +7,7 @@
   <div>
     <div class="box_login container">
       <h1>INTRODUCE TU CORREO Y CONTRASEÑA</h1>
-      <form [formGroup]="loginForm" class="formulario">
+      <form [formGroup]="loginForm" class="formulario" (ngSubmit)="login()">
   
         <!-- Email -->
         <div class="mb-3 row">
