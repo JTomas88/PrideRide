@@ -17,3 +17,10 @@ ion-button {
   }
 }
 
+ol, ul {
+  padding-left: 0rem;
+}
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}

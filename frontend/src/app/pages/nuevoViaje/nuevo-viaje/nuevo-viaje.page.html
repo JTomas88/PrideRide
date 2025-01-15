@@ -1,32 +1,8 @@
-<ion-header>
-  <nav class="navbar bg-body-tertiary diseno">
-    <div class="container-fluid">
-      <ul>
-        <li class="nav-item d-flex flex-column align-items-center">
-          <ion-button fill="clear" routerLink="/home">
-            <mat-icon class="back-icon">arrow_back</mat-icon>
-            <img type="button" src="../../../assets/logo/Logo2.png" alt="{{ 'NUEVO_VIAJE.ALT_LOGO' | translate }}" title="{{ 'NUEVO_VIAJE.ALT_LOGO' | translate }}" class="logo" />
-            {{ 'NUEVO_VIAJE.TITLE_BTN_BACK' | translate }}
-          </ion-button>
-        </li>
-      </ul>
-      <form class="d-flex align-items-center buscar-viaje">
-        <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
-          {{ 'NUEVO_VIAJE.SEARCH_TRAVEL' | translate }} <mat-icon>search</mat-icon>
-        </a>
-
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="/login">{{ 'HEADER.LOGIN' | translate }}</a></li>
-          <li><a class="dropdown-item" href="/registro">{{ 'HEADER.REGISTER' | translate }}</a></li>
-        </ul>
-      </form>
-    </div>
-  </nav>
-</ion-header>
+<app-pagesnavbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
   <ion-row class="primera-seccion">

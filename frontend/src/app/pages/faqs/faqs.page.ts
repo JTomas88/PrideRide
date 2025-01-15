@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
+import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
+import { Usuario } from 'src/app/models/user/usuario.model';
 
 @Component({
   selector: 'app-faqs',
@@ -21,14 +23,23 @@ import { JumbotronComponent } from '../jumbotron/jumbotron.component';
     MatButtonModule, 
     RouterModule, 
     MatDivider, 
-    JumbotronComponent
+    JumbotronComponent,
+    PagesnavbarComponent
   ]
 })
 export class FaqsPage implements OnInit {
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
 
   constructor() { }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
   }
 
 }

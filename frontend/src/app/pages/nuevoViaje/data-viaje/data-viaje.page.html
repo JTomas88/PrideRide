@@ -1,36 +1,12 @@
-<ion-header>
-  <nav class="navbar bg-body-tertiary diseno">
-    <div class="container-fluid">
-      <ul>
-        <li class="nav-item d-flex flex-column align-items-center">
-          <ion-button fill="clear" routerLink="/nuevo-viaje">
-            <mat-icon class="back-icon">arrow_back</mat-icon>
-            <img type="button" src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
-            PrideRide
-          </ion-button>
-        </li>
-      </ul>
-
-      <form class="d-flex align-items-center buscar-viaje">
-        <a class="nav-link active d-flex align-items-center" aria-current="page" href="/busqueda-viajes">
-          Buscar viaje <mat-icon>search</mat-icon>
-        </a>
-
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
-          <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
-        </ul>
-      </form>
-    </div>
-  </nav>
-</ion-header>
+<app-pagesnavbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
-  <app-jumbotron></app-jumbotron>
+  <app-jumbotron [title]="'Un espacio seguro para compartir cada kilómetro.'" [imageSrc]="'../../assets/folder/jumbo4.jpg'" [helpText]="'JUMBOTRON.HELP'">
+  </app-jumbotron>
 
   <!-- PRIMER PASO PARA CREAR UN VIAJE -->
   <div class="container" id="primer_paso" *ngIf="primer_paso">

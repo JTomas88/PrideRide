@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { PrimerPasoComponent } from "./componentes-viaje/primer-paso/primer-paso.component";
 import { SegundoPasoComponent } from "./componentes-viaje/segundo-paso/segundo-paso.component";
+import { Usuario } from 'src/app/models/user/usuario.model';
+import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 
 
 @Component({
@@ -27,7 +29,6 @@ import { SegundoPasoComponent } from "./componentes-viaje/segundo-paso/segundo-p
     CommonModule,
     FormsModule,
     RouterModule,
-    MatIcon,
     MatDatepickerModule,
     MatCardModule,
     JumbotronComponent,
@@ -36,7 +37,8 @@ import { SegundoPasoComponent } from "./componentes-viaje/segundo-paso/segundo-p
     GoogleMapsModule,
     MatButtonModule,
     PrimerPasoComponent,
-    SegundoPasoComponent
+    SegundoPasoComponent,
+    PagesnavbarComponent
 ],
   providers: [provideNativeDateAdapter()],
 })
@@ -57,6 +59,9 @@ export class DataViajePage implements OnInit, OnDestroy  {
 
   private directionsService: google.maps.DirectionsService;
 
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
+
   constructor(private router: Router) {
     this.directionsService = new google.maps.DirectionsService();
     // Escucha los eventos de navegación
@@ -69,6 +74,12 @@ export class DataViajePage implements OnInit, OnDestroy  {
 
   ngOnInit() {
     // this.loadGoogleMapsScript();
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
   }
 
   onTimeChange(event: any) {

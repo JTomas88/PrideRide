@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
+import { Usuario } from 'src/app/models/user/usuario.model';
 
 
 
@@ -21,14 +23,23 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule, 
     MatButtonModule, 
     RouterModule, 
-    TranslateModule
+    TranslateModule,
+    PagesnavbarComponent
   ]
 })
 export class NuevoViajePage implements OnInit {
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
   }
 
   /**
