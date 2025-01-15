@@ -62,8 +62,12 @@
       demás, así como tus preferencias de viaje. También contarás con la opción
       de verificar tus datos
     </p>
-    <ion-row>
-      <ion-col size="3">
+    <ion-row class="mb-3 fila-datos">
+      <ion-col
+        size="12"
+        size-md="4"
+        class="d-flex justify-content-center contenido-fila"
+      >
         <form>
           <div class="mb-3">
             <label for="pronombre" class="form-label">Pronombre</label>
@@ -131,6 +135,22 @@
           </div>
 
           <div class="mb-3">
+            <label for="bio" class="form-label">Sobre ti</label>
+            <textarea
+              class="form-control"
+              id="bio"
+              rows="5"
+              placeholder="Siéntete libre de contar a los demás lo que quieras que sepan sobre ti"
+            ></textarea>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn_bg">Guardar</button>
+          </div>
+        </form>
+      </ion-col>
+      <ion-col size="12" size-md="4" style="padding-right: 5%">
+        <form>
+          <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input
               type="text"
@@ -150,6 +170,13 @@
           </div>
 
           <div class="mb-3">
+            <label for="fnacimiento" class="form-label"
+              >Fecha de nacimiento</label
+            >
+            <input type="date" class="form-control" id="fnacimiento" />
+          </div>
+
+          <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
               type="email"
@@ -160,17 +187,233 @@
           </div>
 
           <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="telefono" class="form-label">Teléfono</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
-              id="nombre"
+              id="telefono"
               aria-describedby="emailHelp"
             />
           </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="d-flex justify-content-center" style="margin-top: 28px">
+            <button type="submit" class="btn btn_bg">Guardar</button>
+          </div>
         </form>
+      </ion-col>
+
+      <ion-col size="12" size-md="4" class="d-flex justify-content-center">
+        <form>
+          <ion-grid>
+            <ion-row class="d-flex justify-content-center mb-3">
+              <h4>Vehículos y preferencias de viaje</h4>
+            </ion-row>
+
+            <ion-row class="mb-3 d-flex justify-content-center">
+              <label for="telefono" class="form-label">Mis vehículos</label>
+            </ion-row>
+            <ion-row class="d-flex justify-content-center">
+              <ul>
+                <li class="d-flex align-items-center">
+                  <mat-icon>directions_car</mat-icon>
+                  Nombre vehículo
+                </li>
+              </ul>
+            </ion-row>
+            <ion-row class="d-flex justify-content-center">
+              <button type="button" class="btn btn_bg" style="height: 33px">
+                Añadir vehículo
+              </button>
+            </ion-row>
+            <ion-row class="d-flex justify-content-center">
+              <div class="mb-4 mt-4">
+                <label for="preferencias" class="form-label"
+                  >Cuando viajo prefiero...</label
+                >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Hablar
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Escuchar música
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Dormir
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckChecked"
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Ir en silencio
+                  </label>
+                </div>
+              </div>
+            </ion-row>
+          </ion-grid>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn_bg" style="margin-top: 51px">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <div class="d-flex justify-content-center">
+      <ion-col>
+        <ion-row class="d-flex justify-content-center">
+          <h1>Verifica tus datos de contacto y documentos</h1>
+        </ion-row>
+        <ion-row class="d-flex justify-content-center">
+          <p class="d-flex justify-content-center">
+            Un usuario verificado aporta mayor fiabilidad al resto de usuarios.
+            Recuerda que para ser usuario verificado tienes que confirmar tu
+            correo electrónico, teléfono y documento. Además, si en algún
+            momento quieres publicar un viaje deberás subir una foto de tu
+            carnet de conducir
+          </p>
+        </ion-row>
+      </ion-col>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="form-check d-flex justify-content-center checkverficado">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="defaultCheck1"
+        />
+        <label
+          class="form-check-label d-flex justify-content-center ms-1 label-uverif"
+          for="defaultCheck1"
+        >
+          Usuario verificado
+        </label>
+      </div>
+    </div>
+
+    <ion-row class="mt-3 fila-datos">
+      <ion-col>
+        <ion-row class="d-flex justify-content-center"
+          ><h5>Confirma tu correo electrónico</h5></ion-row
+        >
+        <ion-row>
+          <p>
+            Se enviará un correo a tu dirección, solo tienes que confirmar en el
+            enlace que aparecerá
+          </p></ion-row
+        >
+        <ion-row class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="btn" class="btn btn_bg">micorreo</button>
+          </div></ion-row
+        >
+      </ion-col>
+      <ion-col>
+        <ion-row class="d-flex justify-content-center"
+          ><h5>Confirma tu teléfono</h5></ion-row
+        >
+        <ion-row class="d-flex justify-content-center align-items-center"
+          ><div>
+            <button class="btn_bg btn" type="btn">66666666666</button>
+          </div></ion-row
+        >
+        <ion-row
+          class="d-flex justify-content-center align-items-center mt-3 mb-3"
+          ><p>Introduce aquí los 4 dígitos que has recibido:</p></ion-row
+        >
+        <ion-row class="input-container d-flex justify-content-center">
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+          <input type="text" maxlength="1" class="digit-input" />
+        </ion-row>
+        <ion-row class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn mt-2 btn_bg"
+            style="
+              background-color: #a758e8;
+              width: 200px;
+              height: 30px;
+              font-size: 12px;
+            "
+          >
+            Confirmar código
+          </button>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-row class="d-flex justify-content-center"
+          ><h5>Confirma tu documento</h5></ion-row
+        >
+        <ion-row class="d-flex justify-content-center">
+          <ul>
+            <li>Documento frontal</li>
+            <div
+              class="card"
+              style="width: 10rem; height: 3rem; background-color: red"
+            >
+              <div class="d-flex align-items-center">
+                <p>XXXX-XXXX-XXXX-5201</p>
+              </div>
+            </div>
+
+            <li>Documento trasero</li>
+            <div
+              class="card"
+              style="width: 10rem; height: 3rem; background-color: red"
+            >
+              <div class="d-flex align-items-center">
+                <p>XXXX-XXXX-XXXX-5201</p>
+              </div>
+            </div>
+          </ul>
+        </ion-row>
+        <ion-row class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center">
+            <div class="file-upload">
+              <label for="identidad" class="upload-button">+</label>
+              <input
+                type="file"
+                id="identidad"
+                class="file-input"
+                accept="image/*"
+                multiple
+                (change)="onFileSelected($event)"
+              />
+            </div>
+          </div>
+        </ion-row>
       </ion-col>
     </ion-row>
   </div>
