@@ -92,9 +92,9 @@ export class RegistroComponent implements OnInit {
           alert('Registro exitoso');
         },
         error: (err) => {
-          console.error('Error al registrar:', err);
+          console.error('Error al registrar:', err.error.error);
           const title = 'Error!';
-          const message = 'Hemos tenido un problema. Por favor, inténtalo de nuevo.'
+          const message = err.error.error
           this.openError(title, message)
         },
       });
