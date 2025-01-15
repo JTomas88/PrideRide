@@ -1,64 +1,128 @@
 {
-    "TITLE": "PrideRide",
-    "HOME": {
-        "NEW_TRAVEL_TITLE": "Want to share your next trip?",
-        "NEW_TRAVEL_BUTTON": "Post your next trip here",
-        "MOST_POPULAR_TRAVELS_TITLE": "MOST POPULAR TRIPS",
-        "QUESTIONS_TITLE": "DO YOU HAVE QUESTIONS?",
-        "CHECK_HERE": "Check here"
+  "DATOS_USUARIO": {
+    "NOMBRE": "Name",
+    "APELLIDOS": "Surname",
+    "FECHA_NACIMIENTO": "Date of birth",
+    "EMAIL": "Email",
+    "TELEFONO": "Phone"
+  },
+  "GUARDAR": "Save",
+
+  "HOME": {
+    "NEW_TRAVEL_TITLE": "Do you want to share your next trip?",
+    "NEW_TRAVEL_BUTTON": "Post your next trip here",
+    "MOST_POPULAR_TRAVELS_TITLE": "MOST POPULAR TRIPS",
+    "QUESTIONS_TITLE": "DO YOU HAVE QUESTIONS?",
+    "CHECK_HERE": "Check here"
+  },
+  "TITLE": "PrideRide",
+  "FOOTER": {
+    "TERMS": "Terms and conditions",
+    "COOKIES": "Cookies"
+  },
+  "HEADER": {
+    "ABOUT": "About us",
+    "FAQS": "FAQs",
+    "DECALOGUE": "Decalogue",
+    "SEARCH_TRAVEL": "Search trip",
+    "NEW_TRAVEL": "Post trip",
+    "LOGIN": "Log in",
+    "REGISTER": "Sign up",
+    "CHANGE_LANGUAGE": "Change language"
+  },
+  "JUMBOTRON": {
+    "TITLE": "Whoever you are, we travel with you",
+    "HELP": "Header image"
+  },
+  "INFO": {
+    "TEXT_ONE": "Explore new adventures and incredible destinations. Find travel companions who share your passion for discovering the world.",
+    "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
+    "TEXT_THREE": "Share your experiences and create unforgettable memories with travelers like you."
+  },
+  "FINDER_TRAVELS": {
+    "TITLE": "Trip Finder",
+    "FROM": "From",
+    "TO": "To",
+    "WHEN": "When",
+    "TRAVELERS": "No. of passengers",
+    "SEARCH": "Search"
+  },
+  "MI_PERFIL": {
+    "TITLE": "My Details",
+    "SUBTITLE": "In this section, you can modify the personal details displayed to others as well as your travel preferences. You will also have the option to verify your details.",
+    "PRONOMBRE": "Pronoun",
+    "OTROS": "Others",
+    "NO_USO": "I don’t use any specific one",
+    "NO_RESPUESTA": "I prefer not to answer",
+    "SELECTOR_GENERO": {
+      "TITLE": "What gender do you identify with?",
+      "SELECTOR_OPCION": "Select an option",
+      "HOMBRE_CIS": "Cis Man",
+      "MUJER_CIS": "Cis Woman",
+      "TRANSGENERO": "Transgender",
+      "NO_BINARIO": "Non-binary",
+      "INTERGENERO": "Intergender",
+      "NO_FLUIDO": "Gender fluid",
+      "OTRO": "Other"
     },
-    "FOOTER": {
-        "TERMS": "Terms and conditions",
-        "COOKIES": "Cookies"
+    "SELECTOR_ORIENTACION": {
+      "TITLE": "What is your sexual orientation?",
+      "SELECTOR_OPCION": "Select an option",
+      "GAY": "Gay",
+      "LESBIANA": "Lesbian",
+      "BISEXUAL": "Bisexual",
+      "PANSEXUAL": "Pansexual",
+      "ASEXUAL": "Asexual",
+      "DEMISEXUAL": "Demisexual",
+      "QUEER": "Queer",
+      "OTRO": "Other"
     },
-    "HEADER": {
-        "ABOUT": "About Us",
-        "FAQS": "FAQs",
-        "DECALOGUE": "Decalogue",
-        "SEARCH_TRAVEL": "Search Trip",
-        "NEW_TRAVEL": "Post Trip",
-        "LOGIN": "Log In",
-        "REGISTER": "Sign Up",
-        "CHANGE_LANGUAGE": "Change language"
+    "SOBRE_TI": "About You",
+    "PLACE_SOBRETI": "Feel free to share whatever you'd like others to know about you",
+    "PREF_VIAJE": {
+      "TITLE": "Vehicles and Travel Preferences",
+      "MIS_VEHICULOS": "My Vehicles",
+      "ANADIR_VEHICULO": "Add Vehicle",
+      "CUANDO_VIAJO": "When I travel, I prefer...",
+      "HABLAR": "Talking",
+      "MUSICA": "Listening to music",
+      "DORMIR": "Sleeping",
+      "SILENCIO": "Silence"
     },
-    "JUMBOTRON": {
-        "TITLE": "Whatever you are like, we travel with you",
-        "HELP": "Header image"
+    "VERIFICAR": {
+      "TITLE": "Verify Your Contact Details and Documents",
+      "SUBTITLE": "A verified user provides greater reliability to others. Remember that to be a verified user, you need to confirm your email, phone, and document. Additionally, if you ever want to post a trip, you’ll need to upload a photo of your driver’s license.",
+      "USUARIO_VERIFICADO": "Verified User",
+      "CORREO_TITLE": "Confirm Your Email",
+      "CORREO_SUBTITLE": "An email will be sent to your address; you just need to confirm it through the link provided.",
+      "TELEFONO_TITLE": "Confirm Your Phone Number",
+      "TELEFONO_SUBTITLE": "Enter the 4 digits you received here:",
+      "TELEFONO_BOTON": "Confirm Code",
+      "DOC_TITLE": "Confirm Your Document",
+      "DOC_FRONTAL": "Front of Document",
+      "DOC_TRASERO": "Back of Document"
     },
-    "INFO": {
-        "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
-        "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
-        "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
-    },
-    "FINDER_TRAVELS": {
-        "TITLE": "Travel Finder",
-        "FROM": "From",
-        "TO": "To",
-        "WHEN": "When",
-        "TRAVELERS": "No. of passengers",
-        "SEARCH": "Search"
-    },
-    "MI_PERFIL": {
-        "TITLE": "My Profile",
-        "SUBTITLE": "In this section, you can modify the personal information shown to others, as well as your travel preferences. You will also have the option to verify your data.",
-        "PRONOMBRE": "Pronoun",
-        "OTROS": "Others",
-        "NO_USO": "I don’t use any specific one",
-        "NO_RESPUESTA": "I prefer not to answer"
-    },
-    "NUEVO_VIAJE": {
-        "TITLE_BTN_BACK": "PrideRide",
-        "ALT_LOGO": "PrideRide Logo",
-        "SEARCH_TRAVEL": "Search Trip",
-        "FROM": "Where does the trip start?",
-        "TO": "Where is the trip to?",
-        "TRAVELERS": "Number of passengers",
-        "NO_REGISTER_ALERT": "You are not registered yet to post a trip",
-        "NO_CARNET_ALERT": "You haven't registered your driver's license to post a trip yet",
-        "PUBLISH_TRIP": "Post Trip",
-        "PUBLISH_TRIP_TITLE": "Button to post trip",
-        "HELP_CENTER_TITLE": "Help Center",
-        "HELP_CENTER_SUBTITLE": "Do you have questions about your trips? We are here to help",
-        "HELP_CENTER_BTN": "Check our Help Center"
+    "VERIF_ADICIONAL": {
+      "TITLE": "Additional Verification",
+      "SUBTITLE": "Complete this verification if you plan to post a trip as a driver. You must upload a photo of your valid driver’s license (both sides). You only need to upload it once.",
+      "FRONTAL": "Front of Driver’s License",
+      "TRASERO": "Back of Driver’s License"
     }
+  },
+
+  "NUEVO_VIAJE": {
+    "TITLE_BTN_BACK": "PrideRide",
+    "ALT_LOGO": "PrideRide Logo",
+    "SEARCH_TRAVEL": "Search Trip",
+    "FROM": "Where does the trip start?",
+    "TO": "Where does the trip end?",
+    "TRAVELERS": "Number of passengers",
+    "NO_REGISTER_ALERT": "You are not yet registered to post a trip.",
+    "NO_CARNET_ALERT": "You have not yet registered your driver’s license to post a trip.",
+    "PUBLISH_TRIP": "Post Trip",
+    "PUBLISH_TRIP_TITLE": "Button to post trip",
+    "HELP_CENTER_TITLE": "Help Center",
+    "HELP_CENTER_SUBTITLE": "Do you have questions about your trips? We’re here to help.",
+    "HELP_CENTER_BTN": "Visit our Help Center"
+  }
 }

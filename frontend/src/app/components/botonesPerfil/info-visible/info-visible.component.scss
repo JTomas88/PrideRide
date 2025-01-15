@@ -1,6 +1,6 @@
 .modal-infovisible{
   width: 560px;
-  height: 670px;
+  height: auto;
 }
 
 .style_h2{
@@ -21,4 +21,11 @@
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .modal-infovisible{
+    width: auto;
+    height: auto;
+  }
 }
