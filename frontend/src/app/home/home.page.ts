@@ -10,7 +10,6 @@ import { NuevoViajeGeneralComponent } from "../components/nuevo-viaje-general/nu
 import { TrayectosPopularesComponent } from '../components/trayectos-populares/trayectos-populares.component';
 import { VentanaDudasComponent } from '../components/ventana-dudas/ventana-dudas.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { UserServicesService } from '../core/user-services/user-services.service';
 
 
 @Component({
@@ -34,25 +33,14 @@ import { UserServicesService } from '../core/user-services/user-services.service
 })
 export class HomePage implements OnInit{
 
-  constructor(private translate: TranslateService, private userService: UserServicesService) { }
+  constructor(private translate: TranslateService) { }
 
   changeLanguage(lang: string) {
     this.translate.use(lang);
   }
 
-  ngOnInit(): void {
-    this.obtenerUsuarios();
-    const usuario = JSON.parse(localStorage.getItem('userData') || '{}');
-    console.log('DATOS DEL USUARIO LOGADO: ', usuario);
-    
+  ngOnInit(): void {  
   }
 
-  obtenerUsuarios(){
-    this.userService.obtenerUsuarios().subscribe((respuesta) => {
-      console.log('LISTA USUARIOS: ', respuesta);
-    },
-    (error) => {
-      console.error('Error al obtener la lista de usuarios registrados:', error);
-    })
-  }
+
 }

@@ -2,19 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import {MatIconModule} from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Usuario } from 'src/app/models/user/usuario.model';
+import { CommonModule } from '@angular/common';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [IonicModule, MatIconModule, TranslateModule],
+  imports: [IonicModule, MatIconModule, TranslateModule, CommonModule, MatDivider],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent  implements OnInit {
 
+  userData: Usuario = {} as Usuario;
+  isLoggedIn: boolean = false;
+
   constructor(private translate: TranslateService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  }
 
 
   /**
@@ -27,5 +40,11 @@ export class NavbarComponent  implements OnInit {
   changeLanguage(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('language', lang);
+  }
+
+
+  logout() {
+    localStorage.removeItem('userData');
+    window.location.reload();
   }
 }
