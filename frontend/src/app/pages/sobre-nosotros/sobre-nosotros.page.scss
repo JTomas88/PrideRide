@@ -1,4 +1,4 @@
-ion-header{
+ion-header {
   background-color: #e0a667 !important;
 }
 
@@ -15,7 +15,7 @@ ion-button {
   padding: 1%;
 }
 
-.box_sugerencias{
+.box_sugerencias {
   border-radius: 15px;
   border: #e0a667 solid 1px;
   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
@@ -24,12 +24,38 @@ ion-button {
 }
 
 .interes {
-  color: #e0a667;
-  text-decoration: underline;  
-  text-decoration-color: #e0a667;
+  color: #9b4dca;
+  text-decoration: underline;
+  text-decoration-color: #9b4dca;
 }
 
 .interes:hover {
-  color: #9b4dca;
-  text-decoration-color: #9b4dca;
+  color: #e0a667;
+  text-decoration-color: #e0a667;
+}
+
+.box_text {
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  background-color: #199eff;
+  margin-bottom: 3%;
+  margin-top: 2%;
+}
+
+.box_img {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  position: relative;
+  z-index: 1;
+  bottom: 130px;
+  left: 67px;
+}
+
+.img_arco {
+  width: 15%;
+  transform: rotate(-52deg);
+  position: absolute;
+  z-index: 100;
 }

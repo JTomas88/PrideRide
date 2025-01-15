@@ -7,7 +7,7 @@
 <ion-content [fullscreen]="true">
   <app-jumbotron [title]="'Tu camino, tu comunidad.'" [imageSrc]="'../../assets/folder/jumbo2.jpg'" [helpText]="'JUMBOTRON.HELP'">
   </app-jumbotron>
-  <div class="container mt-2">
+  <div class="container box_text">
     <ion-title size="large">SOBRE NOSOTROS</ion-title>
     <mat-divider class="mb-2"></mat-divider>
     <div id="general">
@@ -37,11 +37,11 @@
       <mat-divider class="mb-2"></mat-divider>
       <p>Si tienes algún tipo de sugerencia,háznoslo saber. Estaremos encantados de atenderte en todo lo posible. 😀</p>
       <div class="d-flex justify-content-center">
-        <button type="button" mat-raised-button>Envíanos tu sugerencia</button>
+        <button type="button" mat-raised-button class="btn_bg">Envíanos tu sugerencia</button>
       </div>
     </div>
 
-    <div class="mt-2 borderDraw">
+    <div class="mt-2 mb-2 borderDraw">
       <h6>ENLACES DE INTERÉS DE PRIDERIDE</h6>
       <ul>
         <li>
@@ -55,6 +55,8 @@
         </li>
       </ul>
     </div>
-
+    <div class="container box_img">
+      <img class="img_arco" src="../../../assets/imgs/arcoiris.png">
+    </div>
   </div>
 </ion-content>
