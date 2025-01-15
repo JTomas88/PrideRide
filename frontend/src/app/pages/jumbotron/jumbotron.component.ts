@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -12,7 +12,10 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class JumbotronComponent  implements OnInit {
 
-  cabeceraIMG = '../../../assets/folder/jumbo.jpg';
+  @Input() title: string = 'Default Title';
+  @Input() imageSrc: string = '../../../assets/folder/jumbo.jpg';
+  @Input() helpText: string = 'Help Text';
+
   constructor() { }
 
   ngOnInit() {}

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IonicModule } from '@ionic/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -13,7 +14,15 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './nuevo-viaje.page.html',
   styleUrls: ['./nuevo-viaje.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule, IonicModule, MatButtonModule, RouterModule]
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    MatIconModule, 
+    IonicModule, 
+    MatButtonModule, 
+    RouterModule, 
+    TranslateModule
+  ]
 })
 export class NuevoViajePage implements OnInit {
 
@@ -22,6 +31,9 @@ export class NuevoViajePage implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Función para navegar hasta la página "data-viaje"
+   */
   goTo() {
     this.router.navigate(['/data-viaje'], {});
   }

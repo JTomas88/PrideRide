@@ -1,41 +1,64 @@
 {
-  "TITLE": "PrideRide",
-  "FOOTER": {
-    "TERMS": "Términos y condiciones",
-    "COOKIES": "Cookies"
-  },
-  "HEADER": {
-    "ABOUT": "Quienes somos",
-    "FAQS": "FAQs",
-    "DECALOGUE": "Decálogo",
-    "SEARCH_TRAVEL": "Buscar viaje",
-    "NEW_TRAVEL": "Publicar viaje",
-    "LOGIN": "Iniciar sesión",
-    "REGISTER": "Regístrate",
-    "CHANGE_LANGUAGE": "Cambiar idioma"
-  },
-  "JUMBOTRON": {
-    "TITLE": "Seas como seas, viajamos contigo"
-  },
-  "INFO": {
-    "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",
-    "TEXT_TWO": "Planea tu próximo viaje con facilidad. Conéctate con personas que van en la misma dirección.",
-    "TEXT_THREE": "Comparte tus experiencias y crea recuerdos inolvidables con viajeros como tú."
-  },
-  "FINDER_TRAVELS": {
-    "TITLE": "Buscador de viajes",
-    "FROM": "De",
-    "TO": "A",
-    "WHEN": "Cuando",
-    "TRAVELERS": "Nº pasajeros",
-    "SEARCH": "Buscar"
-  },
-  "MI_PERFIL": {
-    "TITLE": "Mis datos",
-    "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
-    "PRONOMBRE": "Pronombre",
-    "OTROS": "Otros",
-    "NO_USO": "No uso ninguno concreto",
-    "NO_RESPUESTA": "Prefiero no responder"
-  }
+    "HOME": {
+        "NEW_TRAVEL_TITLE": "¿Quieres compartir tu próximo viaje?",
+        "NEW_TRAVEL_BUTTON": "Publica tu próximo viaje aquí",
+        "MOST_POPULAR_TRAVELS_TITLE": "TRAYECTOS MÁS POPULARES",
+        "QUESTIONS_TITLE": "¿TIENES DUDAS?",
+        "CHECK_HERE": "Consulta aquí"
+    },
+    "TITLE": "PrideRide",
+    "FOOTER": {
+        "TERMS": "Términos y condiciones",
+        "COOKIES": "Cookies"
+    },
+    "HEADER": {
+        "ABOUT": "Quienes somos",
+        "FAQS": "FAQs",
+        "DECALOGUE": "Decálogo",
+        "SEARCH_TRAVEL": "Buscar viaje",
+        "NEW_TRAVEL": "Publicar viaje",
+        "LOGIN": "Iniciar sesión",
+        "REGISTER": "Regístrate",
+        "CHANGE_LANGUAGE": "Cambiar idioma"
+    },
+    "JUMBOTRON": {
+        "TITLE": "Seas como seas, viajamos contigo",
+        "HELP": "Imagen de la cabecera"
+    },
+    "INFO": {
+        "TEXT_ONE": "Explora nuevas aventuras y destinos increíbles. Encuentra compañeros de viaje que compartan tu pasión por descubrir el mundo.",
+        "TEXT_TWO": "Planea tu próximo viaje con facilidad. Conéctate con personas que van en la misma dirección.",
+        "TEXT_THREE": "Comparte tus experiencias y crea recuerdos inolvidables con viajeros como tú."
+    },
+    "FINDER_TRAVELS": {
+        "TITLE": "Buscador de viajes",
+        "FROM": "De",
+        "TO": "A",
+        "WHEN": "Cuando",
+        "TRAVELERS": "Nº pasajeros",
+        "SEARCH": "Buscar"
+    },
+    "MI_PERFIL": {
+        "TITLE": "Mis datos",
+        "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
+        "PRONOMBRE": "Pronombre",
+        "OTROS": "Otros",
+        "NO_USO": "No uso ninguno concreto",
+        "NO_RESPUESTA": "Prefiero no responder"
+    },
+    "NUEVO_VIAJE": {
+        "TITLE_BTN_BACK": "PrideRide",
+        "ALT_LOGO": "Logotipo de PrideRide",
+        "SEARCH_TRAVEL": "Buscar viaje",
+        "FROM": "¿Dónde comienza el viaje?",
+        "TO": "¿Hasta dónde es el viaje?",
+        "TRAVELERS": "Número de pasajeros",
+        "NO_REGISTER_ALERT": "Aún no estás registrado para poder publicar un viaje",
+        "NO_CARNET_ALERT": "Aún no tienes registrado tu carnet de conducir para poder publicar un viaje",
+        "PUBLISH_TRIP":"Publicar viaje",
+        "PUBLISH_TRIP_TITLE":"Botón para publicar viaje",
+        "HELP_CENTER_TITLE": "Centro de ayuda",
+        "HELP_CENTER_SUBTITLE": "¿Tienes dudas sobre tus viajes? Estamos aquí para ayudarte",
+        "HELP_CENTER_BTN": "Consulta nuestro Centro de Ayuda"
+    }
 }

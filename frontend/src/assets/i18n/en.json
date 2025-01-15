@@ -1,41 +1,64 @@
 {
-  "TITLE": "PrideRide",
-  "FOOTER": {
-    "TERMS": "Terms and conditions",
-    "COOKIES": "Cookies"
-  },
-  "HEADER": {
-    "ABOUT": "About Us",
-    "FAQS": "FAQs",
-    "DECALOGUE": "Decalogue",
-    "SEARCH_TRAVEL": "Search Trip",
-    "NEW_TRAVEL": "Post Trip",
-    "LOGIN": "Log In",
-    "REGISTER": "Sign Up",
-    "CHANGE_LANGUAGE": "Change language"
-  },
-  "JUMBOTRON": {
-    "TITLE": "Whatever you are like, we travel with you"
-  },
-  "INFO": {
-    "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
-    "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
-    "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
-  },
-  "FINDER_TRAVELS": {
-    "TITLE": "Travel Finder",
-    "FROM": "From",
-    "TO": "To",
-    "WHEN": "When",
-    "TRAVELERS": "No. of passengers",
-    "SEARCH": "Search"
-  },
-  "MI_PERFIL": {
-    "TITLE": "My Profile",
-    "SUBTITLE": "In this section, you can modify the personal information shown to others, as well as your travel preferences. You will also have the option to verify your data.",
-    "PRONOMBRE": "Pronoun",
-    "OTROS": "Others",
-    "NO_USO": "I don’t use any specific one",
-    "NO_RESPUESTA": "I prefer not to answer"
-  }
+    "TITLE": "PrideRide",
+    "HOME": {
+        "NEW_TRAVEL_TITLE": "Want to share your next trip?",
+        "NEW_TRAVEL_BUTTON": "Post your next trip here",
+        "MOST_POPULAR_TRAVELS_TITLE": "MOST POPULAR TRIPS",
+        "QUESTIONS_TITLE": "DO YOU HAVE QUESTIONS?",
+        "CHECK_HERE": "Check here"
+    },
+    "FOOTER": {
+        "TERMS": "Terms and conditions",
+        "COOKIES": "Cookies"
+    },
+    "HEADER": {
+        "ABOUT": "About Us",
+        "FAQS": "FAQs",
+        "DECALOGUE": "Decalogue",
+        "SEARCH_TRAVEL": "Search Trip",
+        "NEW_TRAVEL": "Post Trip",
+        "LOGIN": "Log In",
+        "REGISTER": "Sign Up",
+        "CHANGE_LANGUAGE": "Change language"
+    },
+    "JUMBOTRON": {
+        "TITLE": "Whatever you are like, we travel with you",
+        "HELP": "Header image"
+    },
+    "INFO": {
+        "TEXT_ONE": "Explore new adventures and amazing destinations. Find travel companions who share your passion for discovering the world.",
+        "TEXT_TWO": "Plan your next trip with ease. Connect with people heading in the same direction.",
+        "TEXT_THREE": "Share your experiences and create unforgettable memories with fellow travelers like you."
+    },
+    "FINDER_TRAVELS": {
+        "TITLE": "Travel Finder",
+        "FROM": "From",
+        "TO": "To",
+        "WHEN": "When",
+        "TRAVELERS": "No. of passengers",
+        "SEARCH": "Search"
+    },
+    "MI_PERFIL": {
+        "TITLE": "My Profile",
+        "SUBTITLE": "In this section, you can modify the personal information shown to others, as well as your travel preferences. You will also have the option to verify your data.",
+        "PRONOMBRE": "Pronoun",
+        "OTROS": "Others",
+        "NO_USO": "I don’t use any specific one",
+        "NO_RESPUESTA": "I prefer not to answer"
+    },
+    "NUEVO_VIAJE": {
+        "TITLE_BTN_BACK": "PrideRide",
+        "ALT_LOGO": "PrideRide Logo",
+        "SEARCH_TRAVEL": "Search Trip",
+        "FROM": "Where does the trip start?",
+        "TO": "Where is the trip to?",
+        "TRAVELERS": "Number of passengers",
+        "NO_REGISTER_ALERT": "You are not registered yet to post a trip",
+        "NO_CARNET_ALERT": "You haven't registered your driver's license to post a trip yet",
+        "PUBLISH_TRIP": "Post Trip",
+        "PUBLISH_TRIP_TITLE": "Button to post trip",
+        "HELP_CENTER_TITLE": "Help Center",
+        "HELP_CENTER_SUBTITLE": "Do you have questions about your trips? We are here to help",
+        "HELP_CENTER_BTN": "Check our Help Center"
+    }
 }

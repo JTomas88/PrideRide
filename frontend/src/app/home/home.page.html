@@ -2,7 +2,9 @@
 
 <ion-content [fullscreen]="true">
   <!-- COMPONENTE DEL JUMBOTRON -->
-  <app-jumbotron></app-jumbotron>
+  <app-jumbotron [title]="'JUMBOTRON.TITLE'" [imageSrc]="'../../assets/folder/jumbo.jpg'"
+    [helpText]="'JUMBOTRON.HELP'">
+  </app-jumbotron>
   <!-- COMPONENTE DEL BUSCADOR DE VIAJES -->
   <div class="buscador_box">
     <div class="seeker">
@@ -17,7 +19,7 @@
     </div>
 
     <mat-divider></mat-divider>
-    
+
     <!-- COMPONENTE PARA PUBLICAR UN NUEVO VIAJE -->
     <div id="publicar_viaje">
       <app-nuevo-viaje-general></app-nuevo-viaje-general>
@@ -37,6 +39,6 @@
       <app-ventana-dudas></app-ventana-dudas>
     </div>
   </div>
-  
+
 </ion-content>
 <app-footer></app-footer>
