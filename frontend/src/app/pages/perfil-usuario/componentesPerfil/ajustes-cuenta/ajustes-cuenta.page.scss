@@ -1,0 +1,13 @@
+.input-contras {
+  width: 400px;
+}
+
+.col-separator {
+  border-right: 1px solid rgb(143, 141, 141); /* Línea vertical */
+  padding-right: 15px; /* Espaciado interno a la derecha */
+  margin-right: 15px; /* Espaciado externo a la derecha */
+}
+
+.col-separator:last-child {
+  border-right: none; /* Elimina la línea en la última columna */
+}

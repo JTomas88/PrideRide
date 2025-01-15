@@ -1,0 +1,153 @@
+<ion-header>
+  <nav class="navbar bg-body-tertiary diseno">
+    <div class="container-fluid">
+      <ul>
+        <li class="nav-item d-flex flex-column align-items-center">
+          <a class="" href="#">
+            <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
+          </a>
+          <h1 class="m-0 text-center">PrideRide</h1>
+        </li>
+      </ul>
+
+      <form class="d-flex align-items-center buscar-viaje">
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
+        >
+          Buscar viaje <mat-icon>search</mat-icon>
+        </a>
+
+        <a
+          class="nav-link active d-flex align-items-center"
+          aria-current="page"
+          href="/busqueda-viajes"
+        >
+          Publicar viaje
+        </a>
+
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="/login">Mi perfil</a></li>
+          <li>
+            <a class="dropdown-item" href="/registro">Saldo y transferencias</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/registro">Ajustes de la cuenta</a>
+          </li>
+          <li><a class="dropdown-item" href="/registro">Salir</a></li>
+        </ul>
+      </form>
+    </div>
+  </nav>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <h1>{{'MODAL_AJCUENTA.TITULO' | translate}}</h1>
+    </div>
+    <p class="d-flex justify-content-center">
+      {{'MODAL_AJCUENTA.SUBTITULO' | translate}}
+    </p>
+    <ion-row>
+      <ion-col class="mb-3 col-separator">
+        <h1 class="d-flex justify-content-center">
+          {{'MODAL_AJCUENTA.CCONTRASENA_TITULO' | translate}}
+        </h1>
+        <div class="mb-3">
+          <label for="cActual" class="form-label"
+            >{{'MODAL_AJCUENTA.CONTRASENA_ACTUAL' | translate}}</label
+          >
+          <input
+            type="password"
+            class="form-control input-contras"
+            id="cActual"
+          />
+        </div>
+        <div class="mb-1">
+          <label for="pNueva" class="form-label"
+            >{{'MODAL_AJCUENTA.CONTRASENA_NUEVA' | translate}}</label
+          >
+          <input
+            type="password"
+            class="form-control input-contras"
+            id="pNueva"
+          />
+        </div>
+        <div class="mb-1">
+          <label for="pNuevaConf" class="form-label"
+            >{{'MODAL_AJCUENTA.CONTRASENA_CONF' | translate}}</label
+          >
+          <input
+            type="password"
+            class="form-control input-contras"
+            id="pNuevaConf"
+          />
+        </div>
+        <ion-col class="d-flex justify-content-center align-items-center">
+          <div>
+            <button type="button" class="btn btn_bg">
+              {{'MODAL_AJCUENTA.CONTRASENA_BOTON' | translate}}
+            </button>
+          </div>
+        </ion-col>
+      </ion-col>
+
+      <ion-col class="col-separator">
+        <h1 class="d-flex justify-content-center mb-4">
+          {{'MODAL_AJCUENTA.PREFCOM_TITULO' | translate}}
+        </h1>
+        <ion-row class="mb-4">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              {{'MODAL_AJCUENTA.PREFCOM_COMERCIALES' | translate}}
+            </label>
+          </div>
+        </ion-row>
+        <ion-row>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckChecked"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              {{'MODAL_AJCUENTA.PREFCOM_TERCEROS' | translate}}
+            </label>
+          </div>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <h1 class="d-flex justify-content-center">
+          {{'MODAL_AJCUENTA.BORRARCUENTA_TITULO' | translate}}
+        </h1>
+        <p class="mt-3">
+          {{'MODAL_AJCUENTA.BORRARCUENTA_SUBTITULO' | translate}}
+        </p>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn_bg">
+            {{'MODAL_AJCUENTA.BORRARCUENTA_BOTON' | translate}}
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

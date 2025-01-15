@@ -35,33 +35,57 @@ export const routes: Routes = [
       import('./pages/busqueda-viajes/busqueda-viajes.page').then(
         (m) => m.BusquedaViajesPage
       ),
-  },  {
+  },
+  {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
+    loadComponent: () =>
+      import('./pages/login/login.page').then((m) => m.LoginPage),
   },
   {
     path: 'perfil-usuario',
-    loadComponent: () => import('./pages/perfil-usuario/perfil-usuario.page').then( m => m.PerfilUsuarioPage)
+    loadComponent: () =>
+      import('./pages/perfil-usuario/perfil-usuario.page').then(
+        (m) => m.PerfilUsuarioPage
+      ),
   },
   {
     path: 'nuevo-viaje',
-    loadComponent: () => import('./pages/nuevoViaje/nuevo-viaje/nuevo-viaje.page').then( m => m.NuevoViajePage)
+    loadComponent: () =>
+      import('./pages/nuevoViaje/nuevo-viaje/nuevo-viaje.page').then(
+        (m) => m.NuevoViajePage
+      ),
   },
   {
     path: 'data-viaje',
-    loadComponent: () => import('./pages/nuevoViaje/data-viaje/data-viaje.page').then( m => m.DataViajePage)
+    loadComponent: () =>
+      import('./pages/nuevoViaje/data-viaje/data-viaje.page').then(
+        (m) => m.DataViajePage
+      ),
   },
   {
     path: 'centro-ayuda',
-    loadComponent: () => import('./pages/centro-ayuda/centro-ayuda.page').then( m => m.CentroAyudaPage)
+    loadComponent: () =>
+      import('./pages/centro-ayuda/centro-ayuda.page').then(
+        (m) => m.CentroAyudaPage
+      ),
   },
   {
     path: 'faqs',
-    loadComponent: () => import('./pages/faqs/faqs.page').then( m => m.FaqsPage)
+    loadComponent: () =>
+      import('./pages/faqs/faqs.page').then((m) => m.FaqsPage),
   },
   {
     path: 'mi-perfil',
-    loadComponent: () => import('./pages/perfil-usuario/componentesPerfil/mi-perfil/mi-perfil.page').then( m => m.MiPerfilPage)
+    loadComponent: () =>
+      import(
+        './pages/perfil-usuario/componentesPerfil/mi-perfil/mi-perfil.page'
+      ).then((m) => m.MiPerfilPage),
   },
-
+  {
+    path: 'ajustes-cuenta',
+    loadComponent: () =>
+      import(
+        './pages/perfil-usuario/componentesPerfil/ajustes-cuenta/ajustes-cuenta.page'
+      ).then((m) => m.AjustesCuentaPage),
+  },
 ];
