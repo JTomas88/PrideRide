@@ -11,6 +11,7 @@ import { BuscadorComponent } from '../../components/buscador/buscador.component'
 import { MatIconModule } from '@angular/material/icon';
 import { ResultadosBusquedaComponent } from 'src/app/components/resultados-busqueda/resultados-busqueda.component';
 import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usuario.component';
+import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 
 @Component({
   selector: 'app-busqueda-viajes',
@@ -20,13 +21,12 @@ import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usua
   imports: [
     IonContent,
     IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     BuscadorComponent,
     MatIconModule,
     ResultadosBusquedaComponent,
+    JumbotronComponent
   ],
 })
 export class BusquedaViajesPage implements OnInit {
