@@ -8,6 +8,7 @@ import {
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { IonRow, IonCol } from '@ionic/angular/standalone';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-datos-contacto',
@@ -19,6 +20,7 @@ import { IonRow, IonCol } from '@ionic/angular/standalone';
     MatDialogContent,
     MatDividerModule,
     MatIcon,
+    TranslateModule,
   ],
   templateUrl: './datos-contacto.component.html',
   styleUrls: ['./datos-contacto.component.scss'],

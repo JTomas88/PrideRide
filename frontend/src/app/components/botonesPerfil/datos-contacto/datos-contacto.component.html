@@ -1,6 +1,6 @@
 <div class="container modal-datoscontacto">
   <div class="dialog-header">
-    <h2 mat-dialog-title>Datos de contacto y verificaciones</h2>
+    <h2 mat-dialog-title>{{ "MODAL_VERIFICACIONES.TITULO" | translate }}</h2>
     <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
       <mat-icon>close</mat-icon>
     </button>
@@ -10,23 +10,20 @@
 
   <mat-dialog-content>
     <p>
-      Un usuario verificado proporciona a los demás usuarios una mayor confianza
+      {{ "MODAL_VERIFICACIONES.SUBTITULO1" | translate }}
     </p>
     <p>
-      Por eso, en este apartado, puedes verificar tus datos personales (email,
-      teléfono y documento de identidad)
+      {{ "MODAL_VERIFICACIONES.SUBTITULO2" | translate }}
     </p>
 
     <p>
-      Además si en algún momento quieres hacer un viaje como conductor, debes
-      subir una foto válida del carnet de conducir. Puedes dejarlo ya registrado
-      en este apartado
+      {{ "MODAL_VERIFICACIONES.SUBTITULO3" | translate }}
     </p>
 
     <mat-divider></mat-divider>
 
     <p class="d-flex justify-content-center">
-      <strong>Verifica tu correo electrónico:</strong>
+      <strong>{{ "MODAL_VERIFICACIONES.CORREO_TITULO" | translate }}</strong>
     </p>
     <ion-row class="mb-4">
       <ion-col>
@@ -36,8 +33,7 @@
       </ion-col>
       <ion-col>
         <p>
-          Se enviará un correo a tu dirección, solo tienes que confirmar en el
-          enlace que aparecerá
+          {{ "MODAL_VERIFICACIONES.CORREO_SUBTITULO" | translate }}
         </p>
       </ion-col>
     </ion-row>
@@ -45,7 +41,7 @@
     <mat-divider></mat-divider>
 
     <p class="d-flex justify-content-center mb-0">
-      <strong>Verifica tu teléfono:</strong>
+      <strong>{{ "MODAL_VERIFICACIONES.TFNO_TITULO" | translate }}</strong>
     </p>
     <ion-row class="mb-4">
       <ion-col class="d-flex justify-content-center align-items-center">
@@ -54,7 +50,7 @@
         </div>
       </ion-col>
       <ion-col>
-        <p>Introduce aquí los 4 dígitos que has recibido:</p>
+        <p>{{ "MODAL_VERIFICACIONES.TFNO_SUBTITULO" | translate }}</p>
         <div class="input-container">
           <input type="text" maxlength="1" class="digit-input" />
           <input type="text" maxlength="1" class="digit-input" />
@@ -72,7 +68,7 @@
               font-size: 12px;
             "
           >
-            Confirmar código
+            {{ "MODAL_VERIFICACIONES.TFNO_BOTON" | translate }}
           </button>
         </div>
       </ion-col>
@@ -81,7 +77,7 @@
     <mat-divider></mat-divider>
 
     <p class="d-flex justify-content-center">
-      <strong>Verifica tu identidad:</strong>
+      <strong>{{ "MODAL_VERIFICACIONES.IDENTIDAD_TITULO" | translate }}</strong>
     </p>
     <ion-row>
       <ion-col class="d-flex justify-content-center align-items-center">
@@ -102,8 +98,7 @@
 
       <ion-col>
         <p>
-          Mediante el botón de la izquierda puedes subir una foto de tu
-          documento de identidad, por ambas caras.
+          {{ "MODAL_VERIFICACIONES.IDENTIDAD_SUBTITULO" | translate }}
         </p>
       </ion-col>
     </ion-row>
@@ -111,10 +106,9 @@
     <mat-divider></mat-divider>
 
     <div>
-      <h4>VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR</h4>
+      <h4>{{ "MODAL_VERIFICACIONES.CCONDUCIR_TITULO" | translate }}</h4>
       <p style="color: #ff4040">
-        Si tienes previsto publicar un viaje en algún momento, debemos tener
-        verificado tu carnet de conducir.
+        {{ "MODAL_VERIFICACIONES.CCONDUCIR_SUBTITULO" | translate }}
       </p>
       <div class="file-upload d-flex justify-content-center">
         <label for="carnetconducir" class="upload-button">+</label>

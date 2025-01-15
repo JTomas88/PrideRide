@@ -3,8 +3,10 @@
     "NOMBRE": "Name",
     "APELLIDOS": "Surname",
     "FECHA_NACIMIENTO": "Date of birth",
+    "EDAD": "Age",
     "EMAIL": "Email",
-    "TELEFONO": "Phone"
+    "TELEFONO": "Phone",
+    "MIS_VEHICULOS": "My vehicles"
   },
   "GUARDAR": "Save",
 
@@ -108,6 +110,83 @@
       "FRONTAL": "Front of Driver’s License",
       "TRASERO": "Back of Driver’s License"
     }
+  },
+
+  "PERFIL_USUARIO": {
+    "INFO_PERSONAL": "PERSONAL INFORMATION",
+    "BT_INFOVISIBLE": "Your visible information",
+    "BT_VERIFICACIONES": "Verifications / Contact details",
+    "BT_AJCUENTA": "Account settings",
+    "BT_SALDO": "Balance and transfers"
+  },
+  "MODAL_INFOVISIBLE": {
+    "TITULO": "Your visible information",
+    "SUBTITULO": "This is the information that will be visible to others",
+    "SEL_PRONOMBRE": {
+      "PRONOMBRE": "Pronoun",
+      "SELECCIONA": "Select an option",
+      "OTROS": "Others",
+      "NINGUNO": "I don't use any specifically",
+      "NO_RESPONDE": "Prefer not to answer"
+    }
+  },
+
+  "MODAL_VERIFICACIONES": {
+    "TITULO": "Contact details and verifications",
+    "SUBTITULO1": "A verified user provides greater trust to other users.",
+    "SUBTITULO2": "Therefore, in this section, you can verify your personal details (email, phone number, and identity document)",
+    "SUBTITULO3": "Additionally, if at any point you want to drive during a trip, you must upload a valid photo of your driving license. You can register it now in this section.",
+    "CORREO_TITULO": "Verify your email:",
+    "CORREO_SUBTITULO": "An email will be sent to your address, you just need to confirm the link that will appear.",
+    "TFNO_TITULO": "Verify your phone:",
+    "TFNO_SUBTITULO": "Enter here the 4 digits you received:",
+    "TFNO_BOTON": "Confirm code",
+    "IDENTIDAD_TITULO": "Verify your identity:",
+    "IDENTIDAD_SUBTITULO": "Using the button on the left, you can upload a photo of your identity document, both sides.",
+    "CCONDUCIR_TITULO": "ADDITIONAL VERIFICATION: DRIVING LICENSE",
+    "CCONDUCIR_SUBTITULO": "If you plan to publish a trip at any point, we need your driving license verified."
+  },
+
+  "MODAL_AJCUENTA": {
+    "TITULO": "Account settings",
+    "SUBTITULO": "From here, you can change your password, choose your communication preferences, and permanently delete your account.",
+    "CCONTRASENA_TITULO": "Password change:",
+    "CONTRASENA_ACTUAL": "Current password:",
+    "CONTRASENA_NUEVA": "New password:",
+    "CONTRASENA_CONF": "Confirm new password:",
+    "CONTRASENA_BOTON": "Change!",
+    "PREFCOM_TITULO": "Communication preferences",
+    "PREFCOM_COMERCIALES": "I agree to receive commercial communications via email",
+    "PREFCOM_TERCEROS": "I agree that my data may be used for commercial purposes by third parties",
+    "BORRARCUENTA_TITULO": "Delete account",
+    "BORRARCUENTA_SUBTITULO": "This action will permanently delete your account. If you have a balance, remember to first transfer it to your bank account to avoid losing the money.",
+    "BORRARCUENTA_BOTON": "Delete my account"
+  },
+
+  "MODAL_SALDO": {
+    "TITULO": "Balance and transfers to your account",
+    "SUBTITULO1": "In this section, you can check your available balance, view recent transactions, set up your top-up methods, and make top-ups.",
+    "SUBTITULO2": "If you have a balance, you can transfer it to your bank account.",
+    "SALDO_TITULO": "Current balance:",
+    "MOV_TITULO": "Recent transactions:",
+    "MOV_FECHA": "Date",
+    "MOV_CONCEPTO": "Concept",
+    "MOV_ABONO_GASTO": "Credit/Expense",
+    "MOV_SALDO_FINAL": "Final balance",
+    "CONCEPTO_VIAJE": "Trip",
+    "CONCEPTO_RECARGA": "Top-up",
+    "CONCEPTO_PASAJERO": "Passenger",
+    "METODOS_TITULO": "Your top-up methods:",
+    "MIS_TARJETAS": "My linked cards",
+    "TARJETA": "Card",
+    "ANADIRTARJETA_BOTON": "Add credit card",
+    "ALIAS_TARJETA": "Card alias",
+    "NUM_TARJETA": "Card number",
+    "PAGO_PAYPAL": "Payment via Paypal",
+    "PAYPAL_BOTON": "Go to Paypal!",
+    "TRANSF_TITULO": "Transfers to your bank account:",
+    "TRANSF_IMPORTE": "Transferred amount",
+    "TRANS_CONCEPTO": "Account transfer"
   },
 
   "NUEVO_VIAJE": {

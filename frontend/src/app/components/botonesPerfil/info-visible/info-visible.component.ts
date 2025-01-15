@@ -7,11 +7,18 @@ import {
 } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info-visible',
   standalone: true,
-  imports: [MatDialogTitle, MatDialogContent, MatDividerModule, MatIcon],
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    MatDividerModule,
+    MatIcon,
+    TranslateModule,
+  ],
   templateUrl: './info-visible.component.html',
   styleUrls: ['./info-visible.component.scss'],
 })

@@ -3,8 +3,10 @@
     "NOMBRE": "Nombre",
     "APELLIDOS": "Apellidos",
     "FECHA_NACIMIENTO": "Fecha de nacimiento",
+    "EDAD": "Edad",
     "EMAIL": "Email",
-    "TELEFONO": "Teléfono"
+    "TELEFONO": "Teléfono",
+    "MIS_VEHICULOS": "Mis vehículos"
   },
   "GUARDAR": "Guardar",
 
@@ -108,6 +110,82 @@
       "FRONTAL": "Carnet de conducir frontal",
       "TRASERO": "Carnet de conducir trasero"
     }
+  },
+
+  "PERFIL_USUARIO": {
+    "INFO_PERSONAL": "INFORMACIÓN PERSONAL",
+    "BT_INFOVISIBLE": "Tu información visible",
+    "BT_VERIFICACIONES": "Verificaciones / Datos de contacto",
+    "BT_AJCUENTA": "Ajustes cuenta",
+    "BT_SALDO": "Saldo y transferencias"
+  },
+  "MODAL_INFOVISIBLE": {
+    "TITULO": "Tu información visible",
+    "SUBTITULO": "Esta es la información que aparecerá visible a los demás",
+    "SEL_PRONOMBRE": {
+      "PRONOMBRE": "Pronombre",
+      "SELECCIONA": "Selecciona una opción",
+      "OTROS": "Otros",
+      "NINGUNO": "No uso ninguno en concreto",
+      "NO_RESPONDE": "Prefiero no responder"
+    }
+  },
+  "MODAL_VERIFICACIONES": {
+    "TITULO": "Datos de contacto y verificaciones",
+    "SUBTITULO1": "Un usuario verificado proporciona a los demás usuarios una mayor confianza.",
+    "SUBTITULO2": "Por eso, en este apartado, puedes verificar tus datos personales (email, teléfono y documento de identidad)",
+    "SUBTITULO3": "Además si en algún momento quieres hacer un viaje como conductor, debes subir una foto válida del carnet de conducir. Puedes dejarlo ya registrado en este apartado",
+    "CORREO_TITULO": "Verifica tu correo electrónico:",
+    "CORREO_SUBTITULO": "Se enviará un correo a tu dirección, solo tienes que confirmar en el enlace que aparecerá.",
+    "TFNO_TITULO": "Verifica tu teléfono:",
+    "TFNO_SUBTITULO": "Introduce aquí los 4 dígitos que has recibido:",
+    "TFNO_BOTON": "Confirmar código",
+    "IDENTIDAD_TITULO": "Verifica tu identidad:",
+    "IDENTIDAD_SUBTITULO": "Mediante el botón de la izquierda puedes subir una foto de tu documento de identidad, por ambas caras.",
+    "CCONDUCIR_TITULO": "VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR",
+    "CCONDUCIR_SUBTITULO": "Si tienes previsto publicar un viaje en algún momento, debemos tener verificado tu carnet de conducir."
+  },
+
+  "MODAL_AJCUENTA": {
+    "TITULO": "Ajustes de la cuenta",
+    "SUBTITULO": "Desde aquí podrás cambiar tu contraseña, elegir tus preferencias de comunicación y borrar de manera permanente tu cuenta.",
+    "CCONTRASENA_TITULO": "Cambio de contraseña:",
+    "CONTRASENA_ACTUAL": "Contraseña actual:",
+    "CONTRASENA_NUEVA": "Nueva contraseña:",
+    "CONTRASENA_CONF": "Confirmar la nueva contraseña:",
+    "CONTRASENA_BOTON": "Cambiar!",
+    "PREFCOM_TITULO": "Preferencias de comunicación",
+    "PREFCOM_COMERCIALES": "Acepto recibir comunicaciones comerciales por email",
+    "PREFCOM_TERCEROS": "Acepto que mis datos puedan ser usadaos con fines comerciales a terceros",
+    "BORRARCUENTA_TITULO": "Eliminar la cuenta",
+    "BORRARCUENTA_SUBTITULO": "Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo, recuerda realizar primero la transferencia a tu cuenta bancaria para no perder ese dinero.",
+    "BORRARCUENTA_BOTON": "Eliminar mi cuenta"
+  },
+
+  "MODAL_SALDO": {
+    "TITULO": "Saldo y transferencias a tu cuenta",
+    "SUBTITULO1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
+    "SUBTITULO2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
+    "SALDO_TITULO": "Saldo actual:",
+    "MOV_TITULO": "Últimos movimientos:",
+    "MOV_FECHA": "Fecha",
+    "MOV_CONCEPTO": "Concepto",
+    "MOV_ABONO_GASTO": "Abono/Gasto",
+    "MOV_SALDO_FINAL": "Saldo final",
+    "CONCEPTO_VIAJE": "Viaje",
+    "CONCEPTO_RECARGA": "Recarga",
+    "CONCEPTO_PASAJERO": "Pasajero",
+    "METODOS_TITULO": "Tus métodos de recarga:",
+    "MIS_TARJETAS": "Mis tarjetas vinculadas",
+    "TARJETA": "Tarjeta",
+    "ANADIRTARJETA_BOTON": "Añadir tarjeta de crédito",
+    "ALIAS_TARJETA": "Alias de la tarjeta",
+    "NUM_TARJETA": "Número de la tarjeta",
+    "PAGO_PAYPAL": "Pago por Paypal",
+    "PAYPAL_BOTON": "Vamos a Paypal!",
+    "TRANSF_TITULO": "Transferencias a tu cuenta bancaria:",
+    "TRANSF_IMPORTE": "Importe transferido",
+    "TRANS_CONCEPTO": "Transferencia a cuenta"
   },
 
   "NUEVO_VIAJE": {

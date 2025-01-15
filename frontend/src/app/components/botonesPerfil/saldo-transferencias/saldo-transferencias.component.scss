@@ -13,3 +13,15 @@
   border: none;
   cursor: pointer;
 }
+
+.modal-saldo{
+  width: 560px;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  .modal-saldo{
+    width: auto;
+    height: auto;
+  }
+}

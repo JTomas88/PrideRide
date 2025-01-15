@@ -1,0 +1,11 @@
+@media (max-width: 576px) {
+  .botonera{
+    flex-direction: column !important;
+    display: flex !important;
+  }
+  .botonera ion-col {
+    flex: 1 1 100%; /* Ocupa el 100% del ancho */
+    max-width: 100%; /* Evita que se desborde */
+    text-align: center; /* Centra el contenido */
+  }
+}

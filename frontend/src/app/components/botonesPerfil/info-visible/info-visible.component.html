@@ -1,6 +1,6 @@
 <div class="container modal-infovisible">
   <div class="dialog-header">
-    <h2 mat-dialog-title>Tu información visible</h2>
+    <h2 mat-dialog-title>{{ "MODAL_INFOVISIBLE.TITULO" | translate }}</h2>
     <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
       <mat-icon>close</mat-icon>
     </button>
@@ -8,44 +8,62 @@
   <mat-divider></mat-divider>
 
   <mat-dialog-content>
-    <p>Esta es la información que aparecerá visible a los demás</p>
+    <p>{{ "MODAL_INFOVISIBLE.SUBTITULO" | translate }}</p>
     <form>
       <div class="mb-3">
-        <label for="pronombre" class="form-label">Pronombre</label>
+        <label for="pronombre" class="form-label">{{
+          "MODAL_INFOVISIBLE.SEL_PRONOMBRE.PRONOMBRE" | translate
+        }}</label>
         <select class="form-select" aria-label="Selección de pronombre">
-          <option selected>Selecciona una opcion</option>
+          <option selected>
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.SELECCIONA" | translate }}
+          </option>
           <option value="1">Él / He / Him</option>
           <option value="2">Ella / She / Her</option>
           <option value="3">Elle / They / Them</option>
-          <option value="4">Otros</option>
-          <option value="5">No uso ninguno concreto</option>
-          <option value="6">Prefiero no responder</option>
+          <option value="4">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.OTROS" | translate }}
+          </option>
+          <option value="5">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.NINGUNO" | translate }}
+          </option>
+          <option value="6">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.NO_RESPONDE" | translate }}
+          </option>
         </select>
       </div>
 
       <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
+        <label for="nombre" class="form-label">{{
+          "DATOS_USUARIO.NOMBRE" | translate
+        }}</label>
         <input type="password" class="form-control" id="nombre" />
       </div>
 
       <div class="mb-3">
-        <label for="fnacimiento" class="form-label">Fecha de nacimiento</label>
+        <label for="fnacimiento" class="form-label">{{
+          "DATOS_USUARIO.FECHA_NACIMIENTO" | translate
+        }}</label>
         <input type="date" class="form-control" id="fnacimiento" />
       </div>
 
       <div class="mb-3">
-        <label for="edad" class="form-label">Edad: </label>
+        <label for="edad" class="form-label"
+          >{{ "DATOS_USUARIO.EDAD" | translate }}
+        </label>
       </div>
 
       <div class="mb-4">
-        <label for="vehiculos" class="form-label">Mis vehículos</label>
-        <input type="date" class="form-control" id="fnacimiento" />
+        <label for="vehiculos" class="form-label"
+          >{{ "DATOS_USUARIO.MIS_VEHICULOS" | translate }}
+        </label>
+        <input type="date" class="form-control" id="vehiculos" />
       </div>
 
       <div class="mb-4">
-        <label for="preferencias" class="form-label"
-          >Cuando viajo prefiero...</label
-        >
+        <label for="preferencias" class="form-label">{{
+          "MI_PERFIL.PREF_VIAJE.CUANDO_VIAJO" | translate
+        }}</label>
         <div class="form-check">
           <input
             class="form-check-input"
@@ -54,7 +72,7 @@
             id="flexCheckDefault"
           />
           <label class="form-check-label" for="flexCheckDefault">
-            Hablar
+            {{ "MI_PERFIL.PREF_VIAJE.HABLAR" | translate }}
           </label>
         </div>
         <div class="form-check">
@@ -65,7 +83,7 @@
             id="flexCheckChecked"
           />
           <label class="form-check-label" for="flexCheckChecked">
-            Escuchar música
+            {{ "MI_PERFIL.PREF_VIAJE.MUSICA" | translate }}
           </label>
         </div>
         <div class="form-check">
@@ -76,7 +94,7 @@
             id="flexCheckChecked"
           />
           <label class="form-check-label" for="flexCheckChecked">
-            Dormir
+            {{ "MI_PERFIL.PREF_VIAJE.DORMIR" | translate }}
           </label>
         </div>
 
@@ -88,23 +106,27 @@
             id="flexCheckChecked"
           />
           <label class="form-check-label" for="flexCheckChecked">
-            Ir en silencio
+            {{ "MI_PERFIL.PREF_VIAJE.SILENCIO" | translate }}
           </label>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="bio" class="form-label">Sobre ti</label>
+        <label for="bio" class="form-label">{{
+          "MI_PERFIL.SOBRE_TI" | translate
+        }}</label>
         <textarea
           class="form-control"
           id="bio"
           rows="5"
-          placeholder="Siéntete libre de contar a los demás lo que quieras que sepan sobre ti"
+          placeholder="{{ 'MI_PERFIL.PLACE_SOBRETI' | translate }}"
         ></textarea>
       </div>
 
       <div class="btn d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">Guardar datos</button>
+        <button type="submit" class="btn btn_bg">
+          {{ "GUARDAR" | translate }}
+        </button>
       </div>
     </form>
   </mat-dialog-content>

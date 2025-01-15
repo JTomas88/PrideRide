@@ -13,3 +13,16 @@
   border: none;
   cursor: pointer;
 }
+
+.modal-ajcuenta{
+  width: 560px;
+  height: auto;
+}
+
+
+@media (max-width: 576px) {
+  .modal-ajcuenta{
+    width: auto;
+    height: auto;
+  }
+}

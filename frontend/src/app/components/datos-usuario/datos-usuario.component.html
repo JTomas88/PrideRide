@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column align-items-center">
   <div class="d-flex justify-content-center">
-    <h2>INFORMACIÓN PERSONAL</h2>
+    <h2>{{ "PERFIL_USUARIO.INFO_PERSONAL" | translate }}</h2>
   </div>
 
   <ion-row class="d-flex justify-content-center mb-4">
@@ -19,22 +19,22 @@
     </ion-col>
   </ion-row>
 
-  <ion-row>
+  <ion-row class="botonera">
     <ion-col size="auto">
       <button type="button" class="btn btn_bg" (click)="openInfoVisible()">
-        Tu información visible
+        {{ "PERFIL_USUARIO.BT_INFOVISIBLE" | translate }}
       </button>
     </ion-col>
 
     <ion-col size="auto">
       <button type="button" class="btn btn_bg" (click)="openDatosContacto()">
-        Verificaciones / Datos de contacto
+        {{ "PERFIL_USUARIO.BT_VERIFICACIONES" | translate }}
       </button>
     </ion-col>
 
     <ion-col size="auto">
       <button type="button" class="btn btn_bg" (click)="openAjustesCuenta()">
-        Ajustes cuenta
+        {{ "PERFIL_USUARIO.BT_AJCUENTA" | translate }}
       </button>
     </ion-col>
 
@@ -44,7 +44,7 @@
         class="btn btn_bg"
         (click)="openSaldoTransferencias()"
       >
-        Saldo y transferencias
+        {{ "PERFIL_USUARIO.BT_SALDO" | translate }}
       </button>
     </ion-col>
   </ion-row>

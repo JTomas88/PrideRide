@@ -1,6 +1,6 @@
-<div class="container modal-datoscontacto">
+<div class="container modal-ajcuenta">
   <div class="dialog-header">
-    <h2 mat-dialog-title>Datos de contacto y verificaciones</h2>
+    <h2 mat-dialog-title>{{ "MODAL_AJCUENTA.TITULO" | translate }}</h2>
     <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
       <mat-icon>close</mat-icon>
     </button>
@@ -10,35 +10,40 @@
 
   <mat-dialog-content>
     <p>
-      Desde aquí podrás cambiar tu contraseña, consulta de saldo, métodos para
-      recargar y preferencias de transferencias.
+      {{ "MODAL_AJCUENTA.SUBTITULO" | translate }}
     </p>
 
     <mat-divider></mat-divider>
 
     <p class="d-flex justify-content-center">
-      <strong>Cambio de contraseña:</strong>
+      <strong>{{ "MODAL_AJCUENTA.CCONTRASENA_TITULO" | translate }}</strong>
     </p>
     <ion-row class="mb-4">
       <ion-col>
         <div class="mb-3">
-          <label for="cActual" class="form-label">Contraseña actual:</label>
+          <label for="cActual" class="form-label">{{
+            "MODAL_AJCUENTA.CONTRASENA_ACTUAL" | translate
+          }}</label>
           <input type="password" class="form-control" id="cActual" />
         </div>
         <div class="mb-1">
-          <label for="pNueva" class="form-label">Nueva contraseña:</label>
+          <label for="pNueva" class="form-label">{{
+            "MODAL_AJCUENTA.CONTRASENA_NUEVA" | translate
+          }}</label>
           <input type="password" class="form-control" id="pNueva" />
         </div>
         <div class="mb-1">
-          <label for="pNuevaConf" class="form-label"
-            >Confirmar nueva contraseña:</label
-          >
+          <label for="pNuevaConf" class="form-label">{{
+            "MODAL_AJCUENTA.CONTRASENA_CONF" | translate
+          }}</label>
           <input type="password" class="form-control" id="pNuevaConf" />
         </div>
       </ion-col>
       <ion-col class="d-flex justify-content-center align-items-center">
         <div>
-          <button type="button" class="btn btn_bg">Cambiar!</button>
+          <button type="button" class="btn btn_bg">
+            {{ "MODAL_AJCUENTA.CONTRASENA_BOTON" | translate }}
+          </button>
         </div>
       </ion-col>
     </ion-row>
@@ -46,7 +51,7 @@
     <mat-divider></mat-divider>
 
     <p class="d-flex justify-content-center mb-0">
-      <strong>Preferencias de comunicación</strong>
+      <strong>{{ "MODAL_AJCUENTA.PREFCOM_TITULO" | translate }}</strong>
     </p>
     <ion-row class="mb-4">
       <div class="form-check">
@@ -57,7 +62,7 @@
           id="flexCheckDefault"
         />
         <label class="form-check-label" for="flexCheckDefault">
-          Acepto recibir comunicaciones comerciales por email
+          {{ "MODAL_AJCUENTA.PREFCOM_COMERCIALES" | translate }}
         </label>
       </div>
       <div class="form-check">
@@ -68,23 +73,22 @@
           id="flexCheckChecked"
         />
         <label class="form-check-label" for="flexCheckChecked">
-          Acepto que mis datos puedan ser usadaos con fines comerciales a
-          terceros
+          {{ "MODAL_AJCUENTA.PREFCOM_TERCEROS" | translate }}
         </label>
       </div>
     </ion-row>
     <mat-divider></mat-divider>
     <p class="d-flex justify-content-center mb-0">
-      <strong>Preferencias de comunicación</strong>
+      <strong>{{ "MODAL_AJCUENTA.BORRARCUENTA_TITULO" | translate }}</strong>
     </p>
     <div>
       <p style="color: red; font-weight: bold; text-align: justify">
-        Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo,
-        recuerda realizar primero la transferencia a tu cuenta bancaria para no
-        perder ese dinero.
+        {{ "MODAL_AJCUENTA.BORRARCUENTA_SUBTITULO" | translate }}
       </p>
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn_bg">Eliminar mi cuenta</button>
+        <button type="button" class="btn btn_bg">
+          {{ "MODAL_AJCUENTA.BORRARCUENTA_BOTON" | translate }}
+        </button>
       </div>
     </div>
   </mat-dialog-content>
