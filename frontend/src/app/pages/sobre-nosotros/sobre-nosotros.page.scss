@@ -59,3 +59,22 @@ ion-button {
   position: absolute;
   z-index: 100;
 }
+
+@media (max-width: 576px) {
+  .box_img {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    position: relative;
+    z-index: 1;
+    bottom: 79px;
+    left: 51px;
+  }
+
+  .img_arco {
+    width: 30%;
+    transform: rotate(-52deg);
+    position: absolute;
+    z-index: 100;
+  }
+}

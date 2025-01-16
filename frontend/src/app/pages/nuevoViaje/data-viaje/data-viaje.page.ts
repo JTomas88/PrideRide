@@ -50,8 +50,9 @@ export class DataViajePage implements OnInit, OnDestroy  {
   routes: google.maps.DirectionsRoute[] = [];
   selectedRoute: google.maps.DirectionsResult | null = null;
 
-  origen: string = '';
-  destino: string = '';
+  origen: string =  ''
+  destino: string =  ''
+  viajeros: string =  ''
 
   primer_paso: boolean = true;
   segundo_paso: boolean = false;
@@ -75,10 +76,16 @@ export class DataViajePage implements OnInit, OnDestroy  {
   ngOnInit() {
     // this.loadGoogleMapsScript();
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
-      this.userLoggedIn = true;
-    } else {
-      this.userLoggedIn = false;
+    this.userLoggedIn = !!(this.userData && this.userData.email);
+
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { viajeData: { origen: string; destino: string; viajeros: string } };
+
+    if (state?.viajeData) {
+      this.origen = state.viajeData.origen || 'Sin especificar';
+      this.destino = state.viajeData.destino || 'Sin especificar';
+      this.viajeros = state.viajeData.viajeros || '1';
+      console.log('Datos recibidos:', state.viajeData);
     }
   }
 

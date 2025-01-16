@@ -147,6 +147,18 @@ ion-button {
   color: #000000 !important;
 }
 
+.help_btn:hover{
+  border-radius: 50%;
+}
+
+.material-symbols-sharp {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 /**
 *   CONFIGURACIÓN PARA DISPOSITIVOS MÓVILES    *
 **/

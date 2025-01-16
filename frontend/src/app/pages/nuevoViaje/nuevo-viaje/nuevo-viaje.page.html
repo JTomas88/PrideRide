@@ -12,27 +12,35 @@
           <div class="contenido_formulario">
             <div class="input-container">
               <mat-icon class="input-icon">location_on</mat-icon>
-              <input type="text" placeholder="{{ 'NUEVO_VIAJE.FROM' | translate }}" class="input-viaje form-control" />
+              <input type="text" placeholder="{{ 'NUEVO_VIAJE.FROM' | translate }}" class="input-viaje form-control" [(ngModel)]="origen" name="origen" [ngModelOptions]="{standalone: true}"/>
             </div>
   
             <div class="input-container">
               <mat-icon class="input-icon">location_on</mat-icon>
-              <input type="text" placeholder="{{ 'NUEVO_VIAJE.TO' | translate }}" class="input-viaje form-control" />
+              <input type="text" placeholder="{{ 'NUEVO_VIAJE.TO' | translate }}" class="input-viaje form-control" [(ngModel)]="destino" name="destino" [ngModelOptions]="{standalone: true}"/>
             </div>
   
             <ion-select aria-label="n_personas" placeholder="{{ 'NUEVO_VIAJE.TRAVELERS' | translate }}"
-              class="input-viaje form-control custom-select">
+              class="input-viaje form-control custom-select" [(ngModel)]="viajeros" name="viajeros" [ngModelOptions]="{standalone: true}">
               <mat-icon slot="start">
                 <span class="material-symbols-outlined">
                   group
                 </span>
               </mat-icon>
-              <ion-select-option value="one">1</ion-select-option>
-              <ion-select-option value="two">2</ion-select-option>
-              <ion-select-option value="three">3</ion-select-option>
-              <ion-select-option value="zero"></ion-select-option>
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="0">0</ion-select-option>
             </ion-select>
-            <p class="alert">{{ 'NUEVO_VIAJE.NO_REGISTER_ALERT' | translate }}</p>
+            <div class="alert" *ngIf="!userLoggedIn">
+              <p>{{ 'NUEVO_VIAJE.NO_REGISTER_ALERT' | translate }}</p>
+            </div>
+            <div class="alert" >
+              <p>{{ 'NUEVO_VIAJE.NO_CARNET_ALERT' | translate }}</p>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="help_btn d-flex justify-content-center" title="Ayuda para publicar un viaje" (click)="openHelp(title_help, message_help)"><mat-icon>help</mat-icon></button>
+              </div>
+            </div>
           </div>
           <button type="button" class="btn-publicar ion-activatable ripple-parent circle" title="{{ 'NUEVO_VIAJE.PUBLISH_TRIP_TITLE' | translate }}" (click)="goTo()">{{ 'NUEVO_VIAJE.PUBLISH_TRIP' | translate }}<ion-ripple-effect></ion-ripple-effect></button>
         </form>

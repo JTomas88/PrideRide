@@ -128,5 +128,9 @@ button:hover{
   color: black !important;
 }
 
-
+.modal-open {
+  ion-content {
+    overflow: hidden !important; /* Desactiva el desplazamiento */
+  }
+}
 
