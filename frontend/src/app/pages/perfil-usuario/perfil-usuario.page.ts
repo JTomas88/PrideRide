@@ -18,8 +18,6 @@ import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usua
   imports: [
     IonContent,
     IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     MatIcon,

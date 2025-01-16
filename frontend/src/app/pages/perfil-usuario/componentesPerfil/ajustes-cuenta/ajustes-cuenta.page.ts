@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import {
   IonContent,
   IonHeader,
-  IonTitle,
-  IonToolbar,
   IonRow,
   IonCol,
 } from '@ionic/angular/standalone';
@@ -23,12 +21,9 @@ import { TranslateModule } from '@ngx-translate/core';
     IonRow,
     IonContent,
     IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     MatIcon,
-    MatDivider,
     TranslateModule,
   ],
 })
