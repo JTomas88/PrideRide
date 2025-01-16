@@ -1,7 +1,7 @@
 <ion-grid>
   <ion-row>
-    <ion-col>
-      <h1>ELIGE LA FECHA DEL VIAJE</h1>
+    <ion-col class="line">
+      <h1 class="d-flex justify-content-center">ELIGE LA FECHA DEL VIAJE</h1>
       <div class="contenedor_calendario">
         <mat-card class="demo-inline-calendar-card" style="box-shadow: 0 4px 6px rgba(0 0 0 / 28%);">
           <mat-calendar [(selected)]="fecha_seleccionada"></mat-calendar>
@@ -9,15 +9,16 @@
         <p class="mt-2">Fecha seleccionada: {{ getFormattedDate() }}</p>
       </div>
     </ion-col>
-    <ion-col>
-      <h1>HORA DE SALIDA</h1>
-      <div class="contenedor_hora d-flex justify-content-center">
-        <ion-item lines="none">
-          <ion-datetime presentation="time" (ionChange)="onTimeChange($event)" class="custom-datetime"></ion-datetime>
-        </ion-item>
-        
+    <ion-col class="d-flex justify-content-center">
+      <div class="container">
+        <h1 class="d-flex justify-content-center">HORA DE SALIDA</h1>
+        <div class="contenedor_hora d-flex justify-content-center">
+          <ion-item lines="none">
+            <ion-datetime presentation="time" (ionChange)="onTimeChange($event)" class="custom-datetime"></ion-datetime>
+          </ion-item>
+        </div>
+        <p class="padding">Hora seleccionada: {{ getTime() }}</p>
       </div>
-      <p class="mt-2">Hora seleccionada: {{ getTime() }}</p>
     </ion-col>
   </ion-row>
 </ion-grid>
