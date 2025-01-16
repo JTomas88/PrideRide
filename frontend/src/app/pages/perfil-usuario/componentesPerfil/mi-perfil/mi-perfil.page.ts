@@ -5,6 +5,8 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { MatDivider } from '@angular/material/divider';
+import { Usuario } from 'src/app/models/user/usuario.model';
+import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -18,12 +20,21 @@ import { MatDivider } from '@angular/material/divider';
     MatIcon,
     TranslateModule,
     MatDivider,
+    PagesnavbarComponent
   ],
 })
 export class MiPerfilPage implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
+
+
+  constructor() { }
+
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.userLoggedIn = !!(this.userData && this.userData.email);
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
