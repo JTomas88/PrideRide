@@ -32,11 +32,25 @@ export class LoginPage implements OnInit {
     this.loginForm = new FormGroup({
       emailFormControl: new FormControl('', [Validators.required, Validators.email]),
       passwordFormControl: new FormControl('', [Validators.required]),
+      check: new FormControl(false),
     });
   }
 
   ngOnInit() {
     this.obtenerUsuarios();
+
+    // Recuperar datos si "Recuérdame" estaba marcado
+    const savedEmail = localStorage.getItem('email');
+    const savedPassword = localStorage.getItem('password');
+    const rememberMe = localStorage.getItem('remember_me') === 'true';
+
+    if (rememberMe && savedEmail) {
+      this.loginForm.patchValue({
+        emailFormControl: savedEmail,
+        passwordFormControl: savedPassword,
+        check: rememberMe,
+      });
+    }
   }
 
   // Verifica si un campo ha sido tocado o tiene un error
@@ -63,22 +77,36 @@ export class LoginPage implements OnInit {
   login() {
     const email = this.loginForm.get('emailFormControl')?.value;
     const password = this.loginForm.get('passwordFormControl')?.value;
-
+    const rememberMe = this.loginForm.value.check;
+  
+    /**
+     * "btoa" convierte el string a Base64
+     */
+    const encodedPassword = btoa(password);
+  
     this.userService.login(email, password).subscribe(
       (usuario) => {
-        console.log('ESTÁS LOGADO', usuario);   
         localStorage.setItem('userData', JSON.stringify(usuario));
+        if (rememberMe) {
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', encodedPassword);
+          localStorage.setItem('remember_me', 'true');
+        } else {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+          localStorage.removeItem('remember_me');
+        }
         this.router.navigate(['/home'], {
           queryParams: usuario
         });
       },
       (error) => {
-        const title = 'Error!'
+        const title = 'Error!';
         this.openError(title, error.error.Error);
       }
     );
-
   }
+  
 
   /**
    * Función para mostrar una ventana modal con un mensaje de error.
