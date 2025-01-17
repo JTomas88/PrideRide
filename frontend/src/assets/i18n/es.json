@@ -202,5 +202,11 @@
     "HELP_CENTER_TITLE": "Centro de ayuda",
     "HELP_CENTER_SUBTITLE": "¿Tienes dudas sobre tus viajes? Estamos aquí para ayudarte",
     "HELP_CENTER_BTN": "Consulta nuestro Centro de Ayuda"
+  },
+  "RESULTADOS_BUSQUEDA": {
+    "FILTRO_TITULO": "Filtrar por...",
+    "HORA_SALIDA": "Hora de salida",
+    "PRECIO": "Precio",
+    "RESULTADOS": "Resultados encontrados"
   }
 }

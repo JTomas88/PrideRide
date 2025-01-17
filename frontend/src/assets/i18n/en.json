@@ -203,5 +203,12 @@
     "HELP_CENTER_TITLE": "Help Center",
     "HELP_CENTER_SUBTITLE": "Do you have questions about your trips? We’re here to help.",
     "HELP_CENTER_BTN": "Visit our Help Center"
+  },
+
+  "RESULTADOS_BUSQUEDA": {
+    "FILTRO_TITULO": "Filter by...",
+    "HORA_SALIDA": "Departure time",
+    "PRECIO": "Price",
+    "RESULTADOS": "Results found"
   }
 }
