@@ -1,35 +1,58 @@
 <div class="container mainbox">
   <ion-accordion-group>
-    <ion-accordion value="first">
+    <ion-accordion value="first" class="contenido">
       <ion-item slot="header" class="white-header">
-        <mat-icon class="me-1">search</mat-icon> 
-        <ion-label>{{ 'FINDER_TRAVELS.TITLE' | translate }}</ion-label>
+        <mat-icon class="me-1">search</mat-icon>
+        <ion-label>{{ "FINDER_TRAVELS.TITLE" | translate }}</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
         <ion-grid>
-          <ion-row>
-            <ion-col>
+          <ion-row class="contenido">
+            <ion-col class="columna">
               <div class="input-container">
                 <mat-icon>share_location</mat-icon>
-                <ion-input label="{{ 'FINDER_TRAVELS.FROM' | translate }}" labelPlacement="floating" maxlength="20" [(ngModel)]="busquedaParams.desde"></ion-input>
+                <ion-input
+                  class="inputs"
+                  label="{{ 'FINDER_TRAVELS.FROM' | translate }}"
+                  labelPlacement="floating"
+                  maxlength="20"
+                  [(ngModel)]="busquedaParams.desde"
+                ></ion-input>
               </div>
             </ion-col>
-            <ion-col>
+            <ion-col class="columna">
               <div class="input-container">
                 <mat-icon>share_location</mat-icon>
-                <ion-input label="{{ 'FINDER_TRAVELS.TO' | translate }}" labelPlacement="floating" maxlength="20" [(ngModel)]="busquedaParams.hasta"></ion-input>
+                <ion-input
+                  class="inputs"
+                  label="{{ 'FINDER_TRAVELS.TO' | translate }}"
+                  labelPlacement="floating"
+                  maxlength="20"
+                  [(ngModel)]="busquedaParams.hasta"
+                ></ion-input>
               </div>
             </ion-col>
-            <ion-col>
+            <ion-col class="columna">
               <div class="input-container">
                 <mat-icon>schedule</mat-icon>
-                <ion-input label="{{ 'FINDER_TRAVELS.WHEN' | translate }}" labelPlacement="floating" type="date" [(ngModel)]="busquedaParams.cuando"></ion-input>
+                <ion-input
+                  class="inputs"
+                  label="{{ 'FINDER_TRAVELS.WHEN' | translate }}"
+                  labelPlacement="floating"
+                  type="date"
+                  [(ngModel)]="busquedaParams.cuando"
+                ></ion-input>
               </div>
             </ion-col>
-            <ion-col class="selector_personas">
+            <ion-col class="selector_personas columna">
               <div class="input-container cajon_selector_personas">
                 <mat-icon>group</mat-icon>
-                <ion-select aria-label="n_personas" interface="popover" placeholder="{{ 'FINDER_TRAVELS.TRAVELERS' | translate }}" [(ngModel)]="busquedaParams.numPersonas">
+                <ion-select
+                  aria-label="n_personas"
+                  interface="popover"
+                  placeholder="{{ 'FINDER_TRAVELS.TRAVELERS' | translate }}"
+                  [(ngModel)]="busquedaParams.numPersonas"
+                >
                   <ion-select-option value="one">1</ion-select-option>
                   <ion-select-option value="two">2</ion-select-option>
                   <ion-select-option value="three">3</ion-select-option>
@@ -41,9 +64,13 @@
 
         <!-- BOTON PARA BUSCAR -->
         <div class="caja_boton">
-          <button mat-raised-button class="btn_config" (click)="openSearchTravels()">
+          <button
+            mat-raised-button
+            class="btn_config"
+            (click)="openSearchTravels()"
+          >
             <mat-icon>search</mat-icon>
-            {{ 'FINDER_TRAVELS.SEARCH' | translate }}
+            {{ "FINDER_TRAVELS.SEARCH" | translate }}
           </button>
         </div>
       </div>

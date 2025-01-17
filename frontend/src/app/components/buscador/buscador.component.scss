@@ -23,7 +23,7 @@
 
 /* Estilo cuando el acordeón está abierto */
 .white-header:hover {
-  background-color: #f2f2f2; 
+  background-color: #f2f2f2;
   color: black;
 }
 
@@ -95,5 +95,18 @@ button{
   }
   .caja_boton {
     text-align: center;
+  }
+
+  .contenido{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .columna{
+    margin-bottom: 10%;
+  }
+
+  .inputs{
+    text-align: start !important;
   }
 }
