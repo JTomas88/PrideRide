@@ -23,7 +23,18 @@ export class CentroAyudaPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    /**
+     * Se recoge la información del usuario de la caché si la hay,
+     * en caso de no haber información, userData sería un objeto vacío {}.
+     */
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    /**
+     * Se comprueba el contenido de "userData", si contiene información y adeás hay datos
+     * en el atributo "email" de "userData" entonces "userLoggedIn" pasaría a tener el valor "true".
+     * 
+     * Si "userLoggedIn" tiene el valor "true" esto significa que el usuario está logado correctamente.
+     * En el caso contrario, su valor sería "false".
+     */
     if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
       this.userLoggedIn = true;
     } else {

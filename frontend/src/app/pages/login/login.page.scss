@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-//   height: 100vh;
+  //   height: 100vh;
   flex-direction: column;
 }
 
 .logo_login {
-    width: 170px;
-    border-radius: 30px;
-    padding: 1%;
+  width: 170px;
+  border-radius: 50%;
+  padding: 1%;
 }
 
 .formulario {
@@ -48,17 +48,16 @@
   border-color: red;
 }
 
-
 /**
 * CONFIGURACIÓN PARA EL ENLACE DE REGISTRO
 */
-.enlace{
+.enlace {
   color: #9b59b6;
   text-decoration: none;
   padding: 1%;
 }
 
-a:hover{
+a:hover {
   border-radius: 10px;
   background-color: #cf9456;
   color: white;

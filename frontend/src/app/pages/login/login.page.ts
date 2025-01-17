@@ -26,9 +26,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   listaUsuarios: Usuario[] = [];
 
-  dialog = inject(MatDialog);
-
-  constructor(private userService: UserServicesService, private router: Router) {
+  constructor(private userService: UserServicesService, private router: Router, private dialog: MatDialog) {
     this.loginForm = new FormGroup({
       emailFormControl: new FormControl('', [Validators.required, Validators.email]),
       passwordFormControl: new FormControl('', [Validators.required]),
@@ -39,7 +37,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.obtenerUsuarios();
 
-    // Recuperar datos si "Recuérdame" estaba marcado
+    /**
+     * Recuperación de datos si el check "Recuérdame" está marcado.
+     * Estos datos se recuperan de la caché
+     */
     const savedEmail = localStorage.getItem('email');
     const savedPassword = localStorage.getItem('password');
     const rememberMe = localStorage.getItem('remember_me') === 'true';
@@ -53,17 +54,25 @@ export class LoginPage implements OnInit {
     }
   }
 
-  // Verifica si un campo ha sido tocado o tiene un error
+  /**
+   * Función que verifica si un campo ha sido tocado
+   * o si tiene algún error.
+   * 
+   * @param field Recibe la información del input
+   * @returns Devuelve true o false en función de si hay error o no.
+   */
   isFieldInvalid(field: string): boolean {
     const control = this.loginForm.get(field);
     return control?.touched && control?.invalid ? true : false;
   }
 
+  /**
+   * Función para obtener la información de todos los usuarios.
+   */
   obtenerUsuarios() {
     this.userService.obtenerUsuarios().subscribe(
       (respuesta) => {
         this.listaUsuarios = respuesta;
-        console.log('LISTA USUARIOS CARGADA: ', this.listaUsuarios);
       },
       (error) => {
         console.error('Error al obtener la lista de usuarios registrados:', error);
