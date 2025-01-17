@@ -34,11 +34,14 @@
             </ion-select>
             <div class="alert" *ngIf="!userLoggedIn">
               <p>{{ 'NUEVO_VIAJE.NO_REGISTER_ALERT' | translate }}</p>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="help_btn d-flex justify-content-center" title="Ayuda para iniciar sesión / registrarse" (click)="openHelp(title_help_carnet, message_help_auth)"><mat-icon>help</mat-icon></button>
+              </div>
             </div>
-            <div class="alert" >
+            <div class="alert" *ngIf="userLoggedIn">
               <p>{{ 'NUEVO_VIAJE.NO_CARNET_ALERT' | translate }}</p>
               <div class="d-flex justify-content-center">
-                <button type="button" class="help_btn d-flex justify-content-center" title="Ayuda para publicar un viaje" (click)="openHelp(title_help, message_help)"><mat-icon>help</mat-icon></button>
+                <button type="button" class="help_btn d-flex justify-content-center" title="Ayuda para publicar un viaje" (click)="openHelp(title_help_carnet, message_help_carnet)"><mat-icon>help</mat-icon></button>
               </div>
             </div>
           </div>

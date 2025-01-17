@@ -10,7 +10,7 @@
   </div>
   <mat-divider></mat-divider>
   <div class="modal-body">
-    <p>{{ data.message }}</p>
+    <p [innerHTML]="message"></p>
   </div>
   <div class="modal-footer">
     <button mat-button (click)="close()">Cerrar</button>

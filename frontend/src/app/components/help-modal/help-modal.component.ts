@@ -5,6 +5,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-help-modal',
@@ -26,8 +27,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class HelpModalComponent implements OnInit {
 
+  message: SafeHtml;
+  title: string;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string; message: string },
-  private dialogRef: MatDialogRef<HelpModalComponent>) { }
+  private sanitizer: DomSanitizer,
+  private dialogRef: MatDialogRef<HelpModalComponent>) { 
+    this.title = data.title;
+    this.message = this.sanitizer.bypassSecurityTrustHtml(data.message);
+  }
 
   ngOnInit() { }
 
