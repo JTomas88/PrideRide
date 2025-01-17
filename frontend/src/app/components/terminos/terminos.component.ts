@@ -24,44 +24,18 @@ import { AnimationController } from '@ionic/angular/standalone';
   styleUrls: ['./terminos.component.scss'],
 })
 export class TerminosComponent  implements OnInit {
-  @ViewChild('terminosModal', { static: true }) terminosModal!: IonModal;
+ 
+  fechaActual: string = '';
+  
   constructor(private dialogRef: MatDialogRef<TerminosComponent>, private animationCtrl: AnimationController) { }
 
   ngOnInit() {
-    const enterAnimation = (baseEl: HTMLElement) => {
-      const root = baseEl.shadowRoot;
-
-      const backdropElement = root?.querySelector('ion-backdrop');
-      const wrapperElement = root?.querySelector('.modal-wrapper');
-
-      const backdropAnimation = this.animationCtrl
-        .create()
-        .addElement(backdropElement || baseEl)
-        .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
-
-      const wrapperAnimation = this.animationCtrl.create();
-
-      if (wrapperElement) {
-        wrapperAnimation.addElement(wrapperElement).keyframes([
-          { offset: 0, opacity: '0', transform: 'scale(0)' },
-          { offset: 1, opacity: '0.99', transform: 'scale(1)' },
-        ]);
-      }
-
-      return this.animationCtrl
-        .create()
-        .addElement(baseEl)
-        .easing('ease-out')
-        .duration(500)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-
-    const leaveAnimation = (baseEl: HTMLElement) => {
-      return enterAnimation(baseEl).direction('reverse');
-    };
-
-    this.terminosModal.enterAnimation = enterAnimation;
-    this.terminosModal.leaveAnimation = leaveAnimation;
+    const hoy = new Date();
+    this.fechaActual = hoy.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
   }
 
   closeDialog() {

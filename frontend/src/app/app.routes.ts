@@ -87,5 +87,9 @@ export const routes: Routes = [
       import(
         './pages/perfil-usuario/componentesPerfil/ajustes-cuenta/ajustes-cuenta.page'
       ).then((m) => m.AjustesCuentaPage),
+  },  {
+    path: 'terminos',
+    loadComponent: () => import('./pages/terminos/terminos.page').then( m => m.TerminosPage)
   },
+
 ];

@@ -1,9 +1,36 @@
 .caja_texto {
-    background-color: #e0a667;
-    color: #000000;
-    box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
-    border-radius: 5px;
-    height: 200px;
-    width: 300px;
-  }
-  
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+  border-radius: 15px;
+  height: 200px;
+  width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.caja_blur {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(1px);
+  padding: 20px 2px 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 90%;
+  max-height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.caja_blur p {
+  margin: 0;
+  font-size: 16px;
+  color: #000000;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -2,39 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { RouterModule } from '@angular/router';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-sobre-nosotros',
-  templateUrl: './sobre-nosotros.page.html',
-  styleUrls: ['./sobre-nosotros.page.scss'],
+  selector: 'app-terminos',
+  templateUrl: './terminos.page.html',
+  styleUrls: ['./terminos.page.scss'],
   standalone: true,
-  imports: [
-    IonContent,  
-    CommonModule, 
-    FormsModule, 
-    RouterModule,
-    MatDividerModule,
-    MatButtonModule,
-    JumbotronComponent,
-    PagesnavbarComponent
-  ]
+  imports: [IonContent, CommonModule, FormsModule, PagesnavbarComponent, MatDivider]
 })
-export class SobreNosotrosPage implements OnInit {
+export class TerminosPage implements OnInit {
+
+
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
+  fechaActual: string = '';
 
   constructor() { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.email);
+
+    const hoy = new Date();
+    this.fechaActual = hoy.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
   }
 
 }

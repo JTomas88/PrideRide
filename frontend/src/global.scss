@@ -130,7 +130,12 @@ button:hover{
 
 .modal-open {
   ion-content {
-    overflow: hidden !important; /* Desactiva el desplazamiento */
+    overflow: hidden !important;
   }
 }
 
+
+/* CONFIGURACIÓN PARA EVITAR SCROLL INNECESARIO CUANDO SE LEVANTA UNA VENTANA MODAL */
+html.cdk-global-scrollblock {
+  overflow: hidden !important;
+}
