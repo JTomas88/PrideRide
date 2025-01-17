@@ -39,8 +39,9 @@ export class NuevoViajePage implements OnInit {
   viajeros: string = '';
 
 
-  title_help: string = 'Ayuda';
-  message_help: string = 'Necesitas registrar tu carnet de conducir en los ajustes de tu perfil para poder publicar un viaje.';
+  title_help_carnet: string = 'Ayuda';
+  message_help_carnet: string = 'Necesitas registrar tu carnet de conducir en los ajustes de tu perfil para poder publicar un viaje.';
+  message_help_auth: string = '<p>Necesitas <a href="/login">iniciar sesión</a> o <a href="/registro">registrarte</a> previamente antes de poder publicar un viaje.';
 
   constructor(private router: Router, private dialog: MatDialog) { }
 
