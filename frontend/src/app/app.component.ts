@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import { NgcCookieConsentService } from 'ngx-cookieconsent';
+import { NgcCookieConsentService, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Subscription } from 'rxjs';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -18,6 +19,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
+  private consentGivenSubscription!: Subscription;
+
   constructor(
     private ccService: NgcCookieConsentService,
     private cookieService: CookieService,
@@ -34,8 +37,8 @@ export class AppComponent implements OnInit {
      * Se obtiene el idioma seleccionado desde la caché.
      */
     const savedLanguage = localStorage.getItem('language');
+    const consentStatus = localStorage.getItem('cookieConsentStatus');
 
-    // Eventos del banner de cookies
     this.ccService.popupOpen$.subscribe(() => {
       console.log('El banner de cookies está visible');
     });
@@ -51,6 +54,19 @@ export class AppComponent implements OnInit {
     if (!hasConsent) {
       console.log('No se han establecido preferencias de cookies.');
     }
+    
+    if (consentStatus === 'allow' || consentStatus === 'deny') {
+      // Si ya se ha dado consentimiento, no mostrar el banner
+      this.ccService.destroy();  // Elimina el banner si ya se ha aceptado o rechazado
+    } else {
+      this.consentGivenSubscription = this.ccService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
+        const status = event.status;
+
+        localStorage.setItem('cookieConsentStatus', status);
+
+        this.ccService.destroy();
+      });
+    }
 
     /**
      * Se comprueba el idioma establecido.
@@ -65,4 +81,11 @@ export class AppComponent implements OnInit {
     }
 
   }
+
+  ngOnDestroy() {
+    if (this.consentGivenSubscription) {
+      this.consentGivenSubscription.unsubscribe();
+    }
+  }
+
 }
