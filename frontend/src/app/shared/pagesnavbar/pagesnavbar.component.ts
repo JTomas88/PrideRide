@@ -15,6 +15,10 @@ import { Usuario } from 'src/app/models/user/usuario.model';
   styleUrls: ['./pagesnavbar.component.scss'],
 })
 export class PagesnavbarComponent implements OnInit {
+  /**
+   * Variables que van a recibir información de otros componentes
+   * mediante la anotación "Input()"
+   */
   @Input() backRoute: string | null = null;
   @Input() searchRoute: string | null = '/home';
   @Input() isLoggedIn: boolean = false;
@@ -23,18 +27,22 @@ export class PagesnavbarComponent implements OnInit {
   logo: string = '../../../assets/logo/PRIDECAR.png';
   userData: Usuario = {} as Usuario;
 
-  // Variables para el título y el icono dinámico
+  /**
+   * Variables para el título y el icono dinámicos.
+   * Por defecto muestran "Buscar viaje" si no se le pasa ninguna información
+   */
   dynamicTitle: string = 'Buscar viaje';
   dynamicIcon: string = 'search';
 
-  // Nueva variable para saber si estamos en un navegador o dispositivo móvil
   isMobileWeb: boolean = false;
   isDesktop: boolean = false;
 
   constructor(private router: Router, private platform: Platform) { }
 
   ngOnInit() {
-    // Verificamos si la aplicación está corriendo en el navegador
+    /**
+     * Comprobación para saber si la aplicación está ejecutándose en navegador(PC) o móvil.
+     */
     this.isMobileWeb = this.platform.is('mobileweb');
     this.isDesktop = this.platform.is('desktop');
     
@@ -52,13 +60,20 @@ export class PagesnavbarComponent implements OnInit {
     this.isLoggedIn = this.userData?.email ? true : false;
   }
 
+  /**
+   * Función para volver atrás en la aplicación.
+   */
   navigateBack() {
     if (this.backRoute) {
       this.router.navigate([this.backRoute]);
     }
   }
 
+  /**
+   * Función para cerrar la sesión.
+   */
   logout() {
-    console.log('Cerrar sesión');
+    localStorage.removeItem('userData');
+    window.location.reload();
   }
 }

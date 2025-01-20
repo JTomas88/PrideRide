@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -27,6 +27,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class HelpModalComponent implements OnInit {
 
+  /**
+   * En la variable "message" utilizamos el tipado de objetos SafeHtml
+   * para incrustar de forma segura código HTML en dicha variable
+   * y mostrar ese código en el HTML del componente.
+   */
   message: SafeHtml;
   title: string;
 

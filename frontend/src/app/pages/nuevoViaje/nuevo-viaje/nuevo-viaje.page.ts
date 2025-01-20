@@ -58,6 +58,12 @@ export class NuevoViajePage implements OnInit {
     this.router.navigate(['/data-viaje'], { state: { viajeData } });
   }
 
+  /**
+   * Función para abrir una ventana modal con mensajes de ayuda.
+   * 
+   * @param title Recibe el título que se va a mostrar en la ventana.
+   * @param message Recibe el contenido que se va a mostrar en la ventana.
+   */
   openHelp(title: string, message: string) {
     this.dialog.open(HelpModalComponent, {
       data: { title, message },
