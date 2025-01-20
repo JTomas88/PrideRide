@@ -10,6 +10,7 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { TravelService } from 'src/app/core/travel-services/travel.service';
 
 
 @Component({
@@ -43,19 +44,33 @@ export class NuevoViajePage implements OnInit {
   message_help_carnet: string = 'Necesitas registrar tu carnet de conducir en los ajustes de tu perfil para poder publicar un viaje.';
   message_help_auth: string = '<p>Necesitas <a href="/login">iniciar sesión</a> o <a href="/registro">registrarte</a> previamente antes de poder publicar un viaje.';
 
-  constructor(private router: Router, private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog, private viajesService: TravelService) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userLoggedIn = !!(this.userData && this.userData.email);
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
   }
 
   /**
    * Función para navegar hasta la página "data-viaje"
+   *
    */
   goTo() {
     const viajeData = { origen: this.origen, destino: this.destino, viajeros: this.viajeros };
-    this.router.navigate(['/data-viaje'], { state: { viajeData } });
+    if(!this.userLoggedIn){
+      this.openHelp(this.title_help_carnet, this.message_help_auth)
+    } else {
+ 
+      /**
+       * Se almacena temporalmente los datos del viaje.
+       */
+      this.viajesService.setViajeData(viajeData);
+      this.router.navigate(['/data-viaje']);
+    }
   }
 
   /**

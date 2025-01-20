@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from services.user.user_service import user_blueprint
 from services.travel.travel_service import travel_blueprint
+from services.vehicles.vehicle_service import vehicle_blueprint
 from flask_jwt_extended import JWTManager
 import secrets
 from extensions import db
@@ -33,9 +34,11 @@ def create_app():
     #
     # --> user_blueprint: Servicio relacionado con los usuarios
     # --> travel_blueprint: Servicio relacionado con los viajes
+    # --> vehicle_blueprint: Servicio relacionado con los vehículos
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     app.register_blueprint(user_blueprint, url_prefix="/user")
     app.register_blueprint(travel_blueprint, url_prefix="/travel")
+    app.register_blueprint(vehicle_blueprint, url_prefix="/vehicle")
 
     return app
 

@@ -1,5 +1,7 @@
-.contenedor_calendario {
-  width: 50%;
+.contenedor_calendario,
+.contenedor_inputs {
+  width: 60%;
+  margin: 0 auto;
 }
 
 .contenedor_hora {
@@ -7,12 +9,9 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
-.contenedor_inputs {
-  width: 60%;
-}
 
 .custom-datetime {
   --background: #ffffff;
@@ -23,8 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0; 
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  margin: 0;
 }
 
 ion-datetime .datetime-text {
@@ -37,44 +36,70 @@ ion-item {
   border: none;
 }
 
-
-/** 
-* CONFIGURACIÓN PARA EL CALENDARIO
-**/
-::ng-deep .mat-calendar-body-today {
-  border: 2px solid #a758e8 !important;
-}
-
-::ng-deep .mat-calendar-body-selected {
-  background-color: #a758e8 !important;
-  color: white !important;
-}
-
-::ng-deep .mat-calendar-body-cell:hover {
-  background-color: #e0a667 !important;
-  border-radius: 50% !important;
-}
-
-.line{
+.line {
   border-right: 2px solid #e0a667;
 }
 
 @media (max-width: 768px) {
-  .contenedor_calendario {
-    width: 100%;
-  }
-  
-  .contenedor_hora {
-    width: 100%;
-  }
-
+  .contenedor_calendario,
+  .contenedor_hora,
   .contenedor_inputs {
     width: 100%;
+    margin: 0 auto;
   }
   h1 {
     font-size: 1rem;
+  }
+  .line {
+    border-right: none;
+  }
 }
-.padding{
-  margin-top: 19%;
+
+/*
+* CONFIGURACIÓN PARA EL CALENDARIO
+* -------------------------------------------
+*/
+ion-datetime {
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  border-radius: 15px;
 }
+
+ion-datetime::part(calendar-day) {
+  color: #000000;
+}
+
+ion-datetime::part(calendar-day today) {
+  color: #a758e8;
+}
+
+ion-datetime::part(calendar-day):focus {
+  background-color: rgb(224 166 103 / 0.2);
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
+/*
+* Custom Material Design Datetime Day Parts
+* -------------------------------------------
+*/
+
+ion-datetime.md::part(calendar-day active),
+ion-datetime.md::part(calendar-day active):focus {
+  background-color: #a758e8;
+  border-color: #a758e8;
+  color: #fff;
+}
+
+ion-datetime.md::part(calendar-day today) {
+  border-color: #8462d1;
+}
+
+/*
+* Custom iOS Datetime Day Parts
+* -------------------------------------------
+*/
+
+ion-datetime.ios::part(calendar-day active),
+ion-datetime.ios::part(calendar-day active):focus {
+  background-color: rgb(154 209 98 / 0.2);
+  color: #a758e8;
 }
