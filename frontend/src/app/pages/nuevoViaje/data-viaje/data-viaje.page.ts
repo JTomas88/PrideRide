@@ -13,11 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
 import { GoogleMapsModule } from '@angular/google-maps';
-import { PrimerPasoComponent } from "./componentes-viaje/primer-paso/primer-paso.component";
-import { SegundoPasoComponent } from "./componentes-viaje/segundo-paso/segundo-paso.component";
+import { PrimerPasoComponent } from './componentes-viaje/primer-paso/primer-paso.component';
+import { SegundoPasoComponent } from './componentes-viaje/segundo-paso/segundo-paso.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
-
 
 @Component({
   selector: 'app-data-viaje',
@@ -38,11 +37,11 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
     MatButtonModule,
     PrimerPasoComponent,
     SegundoPasoComponent,
-    PagesnavbarComponent
-],
+    PagesnavbarComponent,
+  ],
   providers: [provideNativeDateAdapter()],
 })
-export class DataViajePage implements OnInit, OnDestroy  {
+export class DataViajePage implements OnInit, OnDestroy {
   selected = model<Date | null>(null);
 
   mapCenter = { lat: 40.4168, lng: -3.7038 }; // Ejemplo: Madrid
@@ -50,9 +49,9 @@ export class DataViajePage implements OnInit, OnDestroy  {
   routes: google.maps.DirectionsRoute[] = [];
   selectedRoute: google.maps.DirectionsResult | null = null;
 
-  origen: string =  ''
-  destino: string =  ''
-  viajeros: string =  ''
+  origen: string = '';
+  destino: string = '';
+  viajeros: string = '';
 
   primer_paso: boolean = true;
   segundo_paso: boolean = false;
@@ -68,10 +67,10 @@ export class DataViajePage implements OnInit, OnDestroy  {
     // Escucha los eventos de navegación
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.reiniciarPasos(); 
+        this.reiniciarPasos();
       }
     });
-   }
+  }
 
   ngOnInit() {
     // this.loadGoogleMapsScript();
@@ -79,7 +78,9 @@ export class DataViajePage implements OnInit, OnDestroy  {
     this.userLoggedIn = !!(this.userData && this.userData.email);
 
     const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { viajeData: { origen: string; destino: string; viajeros: string } };
+    const state = navigation?.extras.state as {
+      viajeData: { origen: string; destino: string; viajeros: string };
+    };
 
     if (state?.viajeData) {
       this.origen = state.viajeData.origen || 'Sin especificar';
@@ -95,7 +96,7 @@ export class DataViajePage implements OnInit, OnDestroy  {
 
   loadGoogleMapsScript() {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&v=weekly`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD2GJTw7EJR95V_4UQj_zIOTHw_RVGvkOM&libraries=places&v=weekly`;
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
@@ -127,10 +128,12 @@ export class DataViajePage implements OnInit, OnDestroy  {
       }
     );
   }
-  
 
   selectRoute(index: number): void {
-    this.selectedRoute = { routes: [this.routes[index]], request: {} } as google.maps.DirectionsResult;
+    this.selectedRoute = {
+      routes: [this.routes[index]],
+      request: {},
+    } as google.maps.DirectionsResult;
   }
 
   onPrimerPasoComplete() {
