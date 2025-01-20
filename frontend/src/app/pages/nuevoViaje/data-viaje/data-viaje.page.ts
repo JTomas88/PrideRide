@@ -2,7 +2,6 @@ import { Component, OnInit, model, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { MatIcon } from '@angular/material/icon';
 import { IonicModule } from '@ionic/angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
@@ -37,6 +36,7 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
     MatButtonModule,
     PrimerPasoComponent,
     SegundoPasoComponent,
+    PagesnavbarComponent,
     PagesnavbarComponent,
   ],
   providers: [provideNativeDateAdapter()],
@@ -92,6 +92,7 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   onTimeChange(event: any) {
     console.log('Hora seleccionada:', event.detail.value);
+    this.userLoggedIn = !!(this.userData && this.userData.email);
   }
 
   loadGoogleMapsScript() {
@@ -136,31 +137,41 @@ export class DataViajePage implements OnInit, OnDestroy {
     } as google.maps.DirectionsResult;
   }
 
+  /**
+   * Función para completar el primer paso
+   * y permitir ir al segundo
+   */
   onPrimerPasoComplete() {
     this.primer_paso = false;
-    this.segundo_paso = true; // Habilita el segundo paso
+    this.segundo_paso = true;
   }
 
+  /**
+   * Permite volver al paso previo
+   */
   onSegundoPasoBack() {
     this.segundo_paso = false;
-    this.primer_paso = true; // Vuelve al primer paso
+    this.primer_paso = true;
   }
 
-  // Completar el segundo paso
+  // Completa el segundo paso
   onSegundoPasoComplete() {
     this.segundo_paso = false;
-    this.tercer_paso = true; // Habilita el tercer paso
+    this.tercer_paso = true;
   }
 
-  // Completar el tercer paso
+  // Completa el tercer paso
   onTercerPasoComplete() {
     // Aquí puedes agregar la lógica para finalizar el viaje
     console.log('Viaje completado');
   }
 
+  /**
+   * Permite volver al segundo paso.
+   */
   onTercerPasoBack() {
     this.tercer_paso = false;
-    this.segundo_paso = true; // Vuelve al segundo paso
+    this.segundo_paso = true;
   }
 
   reiniciarPasos() {
