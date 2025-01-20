@@ -210,5 +210,12 @@
     "HORA_SALIDA": "Departure time",
     "PRECIO": "Price",
     "RESULTADOS": "Results found"
+  },
+
+  "SALDO": {
+    "TITLE": "Balance and Transfers",
+    "SUBTITLE1": "In this section, you can check your available balance, view recent transactions, set up your top-up methods, and make top-ups.",
+    "SUBTITLE2": "If you have balance, you can transfer it to your bank account.",
+    "TU_SALDO": "YOUR BALANCE"
   }
 }

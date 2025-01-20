@@ -208,5 +208,12 @@
     "HORA_SALIDA": "Hora de salida",
     "PRECIO": "Precio",
     "RESULTADOS": "Resultados encontrados"
+  },
+
+  "SALDO": {
+    "TITLE": "Saldo y transferencias",
+    "SUBTITLE1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
+    "SUBTITLE2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
+    "TU_SALDO": "TU SALDO"
   }
 }
