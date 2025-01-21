@@ -22,9 +22,7 @@
               "base": "www"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -119,9 +117,7 @@
               "src/theme/variables.scss",
               "node_modules/cookieconsent/build/cookieconsent.min.css"
             ],
-            "scripts": [
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
+            "scripts": ["node_modules/cookieconsent/build/cookieconsent.min.js"]
           },
           "configurations": {
             "ci": {
@@ -133,19 +129,14 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": "61070f82-5ecf-4bb8-936a-e1c2cecd430d"
   },
   "schematics": {
