@@ -16,6 +16,7 @@ import { PrimerPasoComponent } from './componentes-viaje/primer-paso/primer-paso
 import { SegundoPasoComponent } from './componentes-viaje/segundo-paso/segundo-paso.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
+import { TravelService } from '../../../core/travel-services/travel.service';
 
 @Component({
   selector: 'app-data-viaje',
@@ -62,7 +63,7 @@ export class DataViajePage implements OnInit, OnDestroy {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private travelService: TravelService) {
     this.directionsService = new google.maps.DirectionsService();
     // Escucha los eventos de navegación
     this.router.events.subscribe((event) => {
@@ -73,20 +74,26 @@ export class DataViajePage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.loadGoogleMapsScript();
+    this.loadGoogleMapsScript();
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.email);
 
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as {
-      viajeData: { origen: string; destino: string; viajeros: string };
-    };
+    const viajeData = this.travelService.getViajeData();
 
-    if (state?.viajeData) {
-      this.origen = state.viajeData.origen || 'Sin especificar';
-      this.destino = state.viajeData.destino || 'Sin especificar';
-      this.viajeros = state.viajeData.viajeros || '1';
-      console.log('Datos recibidos:', state.viajeData);
+    if (viajeData) {
+      this.origen = viajeData.origen || 'Sin especificar';
+      this.destino = viajeData.destino || 'Sin especificar';
+      this.viajeros = viajeData.viajeros || '1';
+      console.log('Datos recibidos:', viajeData);
+    }
+
+    if (
+      this.origen &&
+      this.destino &&
+      this.origen !== 'Sin especificar' &&
+      this.destino !== 'Sin especificar'
+    ) {
+      this.buscarRutas(this.origen, this.destino);
     }
   }
 
@@ -97,14 +104,10 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   loadGoogleMapsScript() {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD2GJTw7EJR95V_4UQj_zIOTHw_RVGvkOM&libraries=places&v=weekly`;
+    // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD2GJTw7EJR95V_4UQj_zIOTHw_RVGvkOM&libraries=places&v=weekly`;
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
-
-    script.onload = () => {
-      console.log('Google Maps API loaded');
-    };
 
     script.onerror = (error) => {
       console.error('Error loading Google Maps script:', error);
@@ -112,9 +115,14 @@ export class DataViajePage implements OnInit, OnDestroy {
   }
 
   buscarRutas(origen: string, destino: string): void {
+    if (!origen || !destino) {
+      console.error('El origen y destino deben estar definidos.');
+      return;
+    }
+
     this.directionsService.route(
       {
-        origin,
+        origin: origen,
         destination: destino,
         travelMode: google.maps.TravelMode.DRIVING,
         provideRouteAlternatives: true,
