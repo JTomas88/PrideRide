@@ -78,23 +78,16 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.email);
 
-    const viajeData = this.travelService.getViajeData();
-
-    if (viajeData) {
+    this.travelService.viajeData$.subscribe((viajeData) => {
       this.origen = viajeData.origen || 'Sin especificar';
       this.destino = viajeData.destino || 'Sin especificar';
       this.plazas = viajeData.plazas || '0';
       this.hora_seleccionada = viajeData.hora_salida || '';
-    }
-
-    if (
-      this.origen &&
-      this.destino &&
-      this.origen !== 'Sin especificar' &&
-      this.destino !== 'Sin especificar'
-    ) {
-      this.buscarRutas(this.origen, this.destino);
-    }
+  
+      if (this.origen !== 'Sin especificar' && this.destino !== 'Sin especificar') {
+        this.buscarRutas(this.origen, this.destino);
+      }
+    });
   }
 
 

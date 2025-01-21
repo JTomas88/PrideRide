@@ -21,3 +21,36 @@
   align-items: center;
   width: 100%;
 }
+
+/*
+* CONFIGURACIÓN PARA LA LISTA DE SUGERENCIAS
+* ------------------------------------------
+*/
+.container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.lista_sugerencias {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.lista_sugerencias li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.lista_sugerencias li:hover {
+  background-color: #f0f0f0;
+}
