@@ -24,6 +24,5 @@ export class SegundoPasoComponent implements OnInit {
       this.destino = viajeData.destino || 'Sin especificar';
       console.log('Datos del origen y del destino recibidos:', viajeData);
     }
-  
   }
 }
