@@ -28,12 +28,12 @@ ion-title {
 
 .contenedor_mapa {
   border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 }
 
 
 ion-select {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 }
 
 ion-alert {
@@ -45,11 +45,12 @@ ion-alert {
   margin: 5px 0;
   background: #f0f0f0;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 }
 
 .route-option:hover {
-  background: #e0e0e0;
+  background: #e0a667;
 }
 
 .btn-banner {
@@ -60,24 +61,27 @@ ion-alert {
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .btn-banner button {
   font-size: 0.9rem;
   padding: 8px 16px;
 }
+
 .route-option {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #a758e8;
+  border-radius: 15px;
   cursor: pointer;
   margin-bottom: 10px;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #e0a667;
   }
 
   &.selected {
-    background-color: #007bff;
+    background-color: #a758e8;
     color: white;
   }
 }

@@ -14,6 +14,7 @@ export class SegundoPasoComponent implements OnInit {
 
   origen: string = '';
   destino: string = '';
+  hora_salida: string = '';
 
   constructor(private travelService: TravelService) { }
 

@@ -45,14 +45,15 @@ import { TravelService } from '../../../core/travel-services/travel.service';
 export class DataViajePage implements OnInit, OnDestroy {
   selected = model<Date | null>(null);
 
-  mapCenter = { lat: 40.4168, lng: -3.7038 }; // Ejemplo: Madrid
+  mapCenter = { lat: 40.4168, lng: -3.7038 };
   zoom = 12;
   routes: google.maps.DirectionsRoute[] = [];
   selectedRoute: google.maps.DirectionsResult | null = null;
 
   origen: string = '';
   destino: string = '';
-  viajeros: string = '';
+  hora_seleccionada: string = '';
+  plazas: string = '';
 
   primer_paso: boolean = true;
   segundo_paso: boolean = false;
@@ -74,7 +75,6 @@ export class DataViajePage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loadGoogleMapsScript();
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.email);
 
@@ -83,8 +83,8 @@ export class DataViajePage implements OnInit, OnDestroy {
     if (viajeData) {
       this.origen = viajeData.origen || 'Sin especificar';
       this.destino = viajeData.destino || 'Sin especificar';
-      this.viajeros = viajeData.viajeros || '1';
-      console.log('Datos recibidos:', viajeData);
+      this.plazas = viajeData.plazas || '0';
+      this.hora_seleccionada = viajeData.hora_salida || '';
     }
 
     if (
@@ -97,23 +97,18 @@ export class DataViajePage implements OnInit, OnDestroy {
     }
   }
 
-  onTimeChange(event: any) {
-    console.log('Hora seleccionada:', event.detail.value);
-    this.userLoggedIn = !!(this.userData && this.userData.email);
-  }
 
-  loadGoogleMapsScript() {
-    const script = document.createElement('script');
-    // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD2GJTw7EJR95V_4UQj_zIOTHw_RVGvkOM&libraries=places&v=weekly`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-
-    script.onerror = (error) => {
-      console.error('Error loading Google Maps script:', error);
-    };
-  }
-
+  /**
+   * Función para buscar rutas.
+   * --------------------------
+   * Esta función utiliza un servicio propio de Google: "directionsService"
+   * Dicho servicio nos devuelve una lista de rutas que van en función de los parámetros que
+   * se le pasan, como pueden ser el origen y el destino.
+   * 
+   * @param origen -> Lugar de origen del viaje
+   * @param destino -> Lugar de destino del viaje
+   * @returns Devuelve una lista de rutas sugeridas en función del Origen y Destino
+   */
   buscarRutas(origen: string, destino: string): void {
     if (!origen || !destino) {
       console.error('El origen y destino deben estar definidos.');
@@ -126,10 +121,15 @@ export class DataViajePage implements OnInit, OnDestroy {
         destination: destino,
         travelMode: google.maps.TravelMode.DRIVING,
         provideRouteAlternatives: true,
+        drivingOptions: {
+          departureTime: new Date(this.hora_seleccionada),
+          trafficModel: google.maps.TrafficModel.OPTIMISTIC
+        },
       },
       (response, status) => {
         if (status === google.maps.DirectionsStatus.OK && response) {
           this.routes = response.routes;
+          console.log('Rutas sugeridas', this.routes);
           this.selectRoute(0); // Selecciona la primera ruta por defecto
         } else {
           console.error('Error al calcular rutas:', status);
@@ -138,6 +138,12 @@ export class DataViajePage implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * Función que se utiliza para seleccionar una ruta
+   * de la lista de rutas sugeridas previamente.
+   * 
+   * @param index -> Índice de la ruta seleccionada.
+   */
   selectRoute(index: number): void {
     this.selectedRoute = {
       routes: [this.routes[index]],
@@ -170,7 +176,7 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   // Completa el tercer paso
   onTercerPasoComplete() {
-    // Aquí puedes agregar la lógica para finalizar el viaje
+    // TODO
     console.log('Viaje completado');
   }
 
@@ -182,12 +188,20 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.segundo_paso = true;
   }
 
+  /**
+   * Función para reiniciar los pasos para crear un viaje.
+   * 
+   */
   reiniciarPasos() {
     this.primer_paso = true;
     this.segundo_paso = false;
     this.tercer_paso = false;
   }
 
+  /**
+   * Función que se ejecuta al salir de este componente.
+   * Al ejecutarse, reinicia la información de los pasos para crear un viaje.
+   */
   ngOnDestroy() {
     this.reiniciarPasos();
   }

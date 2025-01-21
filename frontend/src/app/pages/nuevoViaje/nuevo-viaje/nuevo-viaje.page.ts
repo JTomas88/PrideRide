@@ -36,7 +36,8 @@ export class NuevoViajePage implements OnInit {
 
   origen: string = '';
   destino: string = '';
-  viajeros: string = '';
+  plazas: string = '';
+  hora_seleccionada: string = '';
 
   title_help_carnet: string = 'Ayuda';
   message_help_carnet: string =
@@ -44,14 +45,15 @@ export class NuevoViajePage implements OnInit {
   message_help_auth: string =
     '<p>Necesitas <a href="/login">iniciar sesión</a> o <a href="/registro">registrarte</a> previamente antes de poder publicar un viaje.</p>';
 
-  sugerencias: any[] = [];
+  sugerenciasOrigen: any[] = [];
+  sugerenciasDestino: any[] = [];
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
     private viajesService: TravelService,
     private googleService: GoogleServices
-  ) {}
+  ) { }
 
   ngOnInit() {
     /**
@@ -93,7 +95,8 @@ export class NuevoViajePage implements OnInit {
     const viajeData = {
       origen: this.origen,
       destino: this.destino,
-      viajeros: this.viajeros,
+      plazas: this.plazas,
+      hora_salida: this.hora_seleccionada
     };
 
     if (!this.userLoggedIn) {
@@ -107,16 +110,54 @@ export class NuevoViajePage implements OnInit {
     }
   }
 
-  obtenerSugerencias(evento: Event) {
+  /**
+   * Función para obtener la lista de sugerencias para el origen
+   * en función de lo que escriba el usuario en el input correspondiente.
+   * 
+   * @param evento Recibe el evento del input.
+   */
+  obtenerSugerenciasOrigen(evento: Event) {
     const contenidoInput = (evento.target as HTMLInputElement).value;
-    console.log(contenidoInput);
     this.googleService
       .obtenerLocalidad(contenidoInput)
       .subscribe((respuesta: any) => {
-        console.log('respuesta del servicio de google', respuesta);
-        this.sugerencias = respuesta;
+        this.sugerenciasOrigen = respuesta;
       });
   }
 
-  seleccionarLocalidad(localidad: any) {}
+   /**
+   * Función para obtener la lista de sugerencias para el destino
+   * en función de lo que escriba el usuario en el input correspondiente.
+   * 
+   * @param evento Recibe el evento del input.
+   */
+  obtenerSugerenciasDestino(evento: Event) {
+    const contenidoInput = (evento.target as HTMLInputElement).value;
+    this.googleService
+      .obtenerLocalidad(contenidoInput)
+      .subscribe((respuesta: any) => {
+        this.sugerenciasDestino = respuesta;
+      });
+  }
+
+  /**
+   * Función para guardar la información de la localidad de origen seleccionada.
+   * 
+   * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
+   */
+  seleccionarLocalidadOrigen(localidad: any) {
+    this.origen = localidad.descripcion.split(',')[0].trim();
+    this.sugerenciasOrigen = [];
+  }
+
+
+  /**
+   * Función para guardar la información de la localidad de destino seleccionada.
+   * 
+   * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
+   */
+  seleccionarLocalidadDestino(localidad: any) {
+    this.destino = localidad.descripcion.split(',')[0].trim();
+    this.sugerenciasDestino = [];
+  }
 }

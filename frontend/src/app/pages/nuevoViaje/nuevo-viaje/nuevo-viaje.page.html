@@ -1,8 +1,4 @@
-<app-pagesnavbar
-  [backRoute]="'/home'"
-  [searchRoute]="'search'"
-  [isLoggedIn]="userLoggedIn"
-></app-pagesnavbar>
+<app-pagesnavbar [backRoute]="'/home'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
   <ion-row class="primera-seccion">
@@ -12,47 +8,34 @@
           <div class="contenido_formulario">
             <div class="input-container">
               <mat-icon class="input-icon">location_on</mat-icon>
-              <input
-                type="text"
-                placeholder="{{ 'NUEVO_VIAJE.FROM' | translate }}"
-                class="input-viaje form-control"
-                [(ngModel)]="origen"
-                name="origen"
-                [ngModelOptions]="{standalone: true}"
-                (input)="obtenerSugerencias($event)"
-              />
-              <ul *ngIf="sugerencias.length > 2" class="list-group">
-                <li
-                  *ngFor="let localidad of sugerencias; let i =index"
-                  [ngClass]="{'list-group-item': true}"
-                  style="color: black; cursor: pointer"
-                  (click)="seleccionarLocalidad(localidad)"
-                >
-                  {{localidad.descripcion}} - {{localidad.provincia}}
+              <input type="text" placeholder="{{ 'NUEVO_VIAJE.FROM' | translate }}" class="input-viaje form-control"
+                [(ngModel)]="origen" name="origen" [ngModelOptions]="{ standalone: true }"
+                (input)="obtenerSugerenciasOrigen($event)" />
+              <ul *ngIf="sugerenciasOrigen.length > 2" class="list-group lista_sugerencias">
+                <li *ngFor="let localidad of sugerenciasOrigen; let i = index" [ngClass]="{'list-group-item': true}"
+                  (click)="seleccionarLocalidadOrigen(localidad)">
+                  {{ localidad.descripcion.split(',')[0].trim() }} - {{ localidad.provincia }}
                 </li>
               </ul>
             </div>
 
             <div class="input-container">
               <mat-icon class="input-icon">location_on</mat-icon>
-              <input
-                type="text"
-                placeholder="{{ 'NUEVO_VIAJE.TO' | translate }}"
-                class="input-viaje form-control"
-                [(ngModel)]="destino"
-                name="destino"
-                [ngModelOptions]="{standalone: true}"
-              />
+              <input type="text" placeholder="{{ 'NUEVO_VIAJE.TO' | translate }}" class="input-viaje form-control"
+                [(ngModel)]="destino" name="destino" [ngModelOptions]="{ standalone: true }"
+                (input)="obtenerSugerenciasDestino($event)" />
+              <ul *ngIf="sugerenciasDestino.length > 2" class="list-group lista_sugerencias">
+                <li *ngFor="let localidad of sugerenciasDestino; let i = index" [ngClass]="{'list-group-item': true}"
+                  (click)="seleccionarLocalidadDestino(localidad)">
+                  {{ localidad.descripcion.split(',')[0].trim() }} - {{ localidad.provincia }}
+                </li>
+              </ul>
             </div>
 
-            <ion-select
-              aria-label="n_personas"
-              placeholder="{{ 'NUEVO_VIAJE.TRAVELERS' | translate }}"
-              class="input-viaje form-control custom-select"
-              [(ngModel)]="viajeros"
-              name="viajeros"
-              [ngModelOptions]="{standalone: true}"
-            >
+
+            <ion-select aria-label="n_personas" placeholder="{{ 'NUEVO_VIAJE.TRAVELERS' | translate }}"
+              class="input-viaje form-control custom-select" [(ngModel)]="plazas" name="viajeros"
+              [ngModelOptions]="{standalone: true}">
               <mat-icon slot="start">
                 <span class="material-symbols-outlined"> group </span>
               </mat-icon>
@@ -64,12 +47,9 @@
             <div class="alert" *ngIf="!userLoggedIn">
               <p>{{ 'NUEVO_VIAJE.NO_REGISTER_ALERT' | translate }}</p>
               <div class="d-flex justify-content-center">
-                <button
-                  type="button"
-                  class="help_btn d-flex justify-content-center"
+                <button type="button" class="help_btn d-flex justify-content-center"
                   title="Ayuda para iniciar sesión / registrarse"
-                  (click)="openHelp(title_help_carnet, message_help_auth)"
-                >
+                  (click)="openHelp(title_help_carnet, message_help_auth)">
                   <mat-icon>help</mat-icon>
                 </button>
               </div>
@@ -77,25 +57,16 @@
             <div class="alert" *ngIf="userLoggedIn">
               <p>{{ 'NUEVO_VIAJE.NO_CARNET_ALERT' | translate }}</p>
               <div class="d-flex justify-content-center">
-                <button
-                  type="button"
-                  class="help_btn d-flex justify-content-center"
-                  title="Ayuda para publicar un viaje"
-                  (click)="openHelp(title_help_carnet, message_help_carnet)"
-                >
+                <button type="button" class="help_btn d-flex justify-content-center"
+                  title="Ayuda para publicar un viaje" (click)="openHelp(title_help_carnet, message_help_carnet)">
                   <mat-icon>help</mat-icon>
                 </button>
               </div>
             </div>
           </div>
-          <button
-            type="button"
-            class="btn-publicar ion-activatable ripple-parent circle"
-            title="{{ 'NUEVO_VIAJE.PUBLISH_TRIP_TITLE' | translate }}"
-            (click)="goTo()"
-          >
-            {{ 'NUEVO_VIAJE.PUBLISH_TRIP' | translate }}<ion-ripple-effect
-            ></ion-ripple-effect>
+          <button type="button" class="btn-publicar ion-activatable ripple-parent circle"
+            title="{{ 'NUEVO_VIAJE.PUBLISH_TRIP_TITLE' | translate }}" (click)="goTo()">
+            {{ 'NUEVO_VIAJE.PUBLISH_TRIP' | translate }}<ion-ripple-effect></ion-ripple-effect>
           </button>
         </form>
       </div>
@@ -107,12 +78,7 @@
       <h2>{{ 'NUEVO_VIAJE.HELP_CENTER_TITLE' | translate }}</h2>
       <p>{{ 'NUEVO_VIAJE.HELP_CENTER_SUBTITLE' | translate }}</p>
       <div class="d-flex justify-content-center">
-        <button
-          type="button"
-          mat-raised-button
-          class="btn_bg"
-          routerLink="/centro-ayuda"
-        >
+        <button type="button" mat-raised-button class="btn_bg" routerLink="/centro-ayuda">
           {{ 'NUEVO_VIAJE.HELP_CENTER_BTN' | translate }}
         </button>
       </div>

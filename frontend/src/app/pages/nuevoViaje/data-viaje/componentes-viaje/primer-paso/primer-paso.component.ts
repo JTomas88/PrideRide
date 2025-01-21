@@ -29,7 +29,11 @@ export class PrimerPasoComponent implements OnInit {
   fecha_seleccionada: string | null = null;
   hora_seleccionada: string | null = null;
 
-  viajeros: string = '0';
+  origen: string = '';
+  destino: string = '';
+  viajeros: string = '';
+  hora_salida: string = '';
+  plazas: string = '';
 
   constructor(private travelService: TravelService) {}
 
@@ -43,7 +47,6 @@ export class PrimerPasoComponent implements OnInit {
 
     if (viajeData) {
       this.viajeros = viajeData.viajeros || '0';
-      console.log('Datos de los viajereos recibidos:', viajeData);
     }
   }
 
@@ -74,8 +77,31 @@ export class PrimerPasoComponent implements OnInit {
     this.fecha_seleccionada = event.detail.value;
   }
 
+  /**
+   * Función para seleccionar la hora.
+   * ---------------------------------
+   * -> En esta función debemos mantener los datos previos
+   *    que hubiera en el servicio del viaje.
+   * 
+   * -> En primer lugar obtenemos la información que hubiera guardada previamente para el viaje.
+   * -> Cuando la tenemos, actualizamos la hora que ha seleccionado el usuario.
+   * -> En un tercer paso, guardamos la hora seleccionada en el servicio pero teniendo en cuenta
+   *    que hay que mantener los datos que hubiera previamente.
+   * -> Como último paso, se guarda toda la información en el servicio de los viajes.
+   * 
+   * @param event -> Recibe la información del evento en el input de la selección de hora.
+   */
   onTimeChange(event: any) {
+    const currentViajeData = this.travelService.getViajeData() || {};
+  
     const timeValue = new Date(event.detail.value);
     this.hora_seleccionada = timeValue.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+    const viajeData = {
+      ...currentViajeData,
+      hora_salida: this.hora_seleccionada,
+    };
+  
+    this.travelService.setViajeData(viajeData);
   }
 }

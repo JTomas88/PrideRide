@@ -1,27 +1,15 @@
-<app-pagesnavbar
-  [backRoute]="'/nuevo-viaje'"
-  [searchRoute]="'search'"
-  [isLoggedIn]="userLoggedIn"
-></app-pagesnavbar>
+<app-pagesnavbar [backRoute]="'/nuevo-viaje'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
-  <app-jumbotron
-    [title]="'Un espacio seguro para compartir cada kilómetro.'"
-    [imageSrc]="'../../assets/folder/jumbo4.jpg'"
-    [helpText]="'JUMBOTRON.HELP'"
-  >
+  <app-jumbotron [title]="'Un espacio seguro para compartir cada kilómetro.'"
+    [imageSrc]="'../../assets/folder/jumbo4.jpg'" [helpText]="'JUMBOTRON.HELP'">
   </app-jumbotron>
 
   <!-- PRIMER PASO PARA CREAR UN VIAJE -->
   <div class="container" id="primer_paso" *ngIf="primer_paso">
     <app-primer-paso></app-primer-paso>
     <div class="d-flex justify-content-center mt-3 mb-3">
-      <button
-        type="button"
-        mat-raised-button
-        class="btn_bg"
-        (click)="onPrimerPasoComplete()"
-      >
+      <button type="button" mat-raised-button class="btn_bg" (click)="onPrimerPasoComplete()">
         Continuar
       </button>
     </div>
@@ -32,20 +20,10 @@
     <app-segundo-paso></app-segundo-paso>
     <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
       <!-- Botón Atrás -->
-      <button
-        type="button"
-        mat-raised-button
-        class="btn_bg"
-        (click)="onSegundoPasoBack()"
-      >
+      <button type="button" mat-raised-button class="btn_bg" (click)="onSegundoPasoBack()">
         Atrás
       </button>
-      <button
-        type="button"
-        mat-raised-button
-        class="btn_bg"
-        (click)="onSegundoPasoComplete()"
-      >
+      <button type="button" mat-raised-button class="btn_bg" (click)="onSegundoPasoComplete()">
         Continuar
       </button>
     </div>
@@ -62,12 +40,8 @@
         <ion-row>
           <ion-col>
             <div *ngIf="routes.length > 0">
-              <div
-                *ngFor="let route of routes; let i = index"
-                (click)="selectRoute(i)"
-                class="route-option"
-                [class.selected]="selectedRoute?.routes?.[0] === route"
-              >
+              <div *ngFor="let route of routes; let i = index" (click)="selectRoute(i)" class="route-option"
+                [class.selected]="selectedRoute?.routes?.[0] === route">
                 <h3>Ruta {{ i + 1 }}</h3>
                 <p>Distancia: {{ route.legs[0].distance?.text }}</p>
                 <p>Duración: {{ route.legs[0].duration?.text }}</p>
@@ -83,16 +57,8 @@
 
           <ion-col>
             <div class="contenedor_mapa">
-              <google-map
-                [center]="mapCenter"
-                [zoom]="zoom"
-                height="500px"
-                width="100%"
-              >
-                <map-directions-renderer
-                  *ngIf="selectedRoute"
-                  [directions]="selectedRoute"
-                ></map-directions-renderer>
+              <google-map [center]="mapCenter" [zoom]="zoom" height="500px" width="100%">
+                <map-directions-renderer *ngIf="selectedRoute" [directions]="selectedRoute"></map-directions-renderer>
               </google-map>
             </div>
           </ion-col>
@@ -102,20 +68,10 @@
 
     <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
       <!-- Botón Atrás -->
-      <button
-        type="button"
-        mat-raised-button
-        class="btn_bg"
-        (click)="onTercerPasoBack()"
-      >
+      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoBack()">
         Atrás
       </button>
-      <button
-        type="button"
-        mat-raised-button
-        class="btn_bg"
-        (click)="onTercerPasoComplete()"
-      >
+      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoComplete()">
         Finalizar viaje
       </button>
     </div>
