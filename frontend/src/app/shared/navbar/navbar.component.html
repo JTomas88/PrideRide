@@ -1,16 +1,13 @@
 <ion-header>
   <nav class="navbar navbar-expand-lg navbar-diseno">
     <div class="container">
-      <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-controls="navbarSupportedContent"
+      <button class="navbar-toggler ms-auto" type="button" (click)="toggleMenu()" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <mat-icon *ngIf="!menuOpen"> menu </mat-icon>
+        <mat-icon *ngIf="menuOpen"> close </mat-icon>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{'show': menuOpen}">
-        <button class="navbar-toggler mt-3" type="button" (click)="toggleMenu()" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-close">X</span>
-        </button>
         <ul class="navbar-nav me-auto justify-content-between mb-2 mb-lg-0 w-100 align-items-center">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/sobre-nosotros">{{ 'HEADER.ABOUT' | translate }}</a>
