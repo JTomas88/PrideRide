@@ -17,10 +17,14 @@ import { Usuario } from 'src/app/models/user/usuario.model';
   imports: [CommonModule, FormsModule, MatIconModule, IonicModule, MatButtonModule, RouterModule, MatDivider, PagesnavbarComponent]
 })
 export class CentroAyudaPage implements OnInit {
+  
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
   isLoading: boolean = true;
-  constructor() { this.loadData();}
+
+  constructor() { 
+    this.loadData();
+  }
 
   ngOnInit() {
     
