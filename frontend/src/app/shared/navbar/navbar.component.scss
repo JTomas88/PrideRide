@@ -34,14 +34,49 @@
 .navbar {
   position: relative;
   z-index: 10;
+}
 
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: auto;
-    right: 0;
-    transform: translateY(0);
-    z-index: 1050;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+#navbarSupportedContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 576px) {
+  .collapse.navbar-collapse {
+    background: #e0a667;
+    border: 0;
+    border-radius: 15px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 250px;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .collapse.navbar-collapse.show {
+    transform: translateX(0);
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}
+
+@media (min-width: 577px) {
+  .collapse.navbar-collapse {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  #aside-nav {
+    display: none;
   }
 }
