@@ -17,7 +17,8 @@ export class NavbarComponent  implements OnInit {
 
   userData: Usuario = {} as Usuario;
   isLoggedIn: boolean = false;
-
+  menuOpen = false;
+  
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
@@ -42,6 +43,9 @@ export class NavbarComponent  implements OnInit {
     localStorage.setItem('language', lang);
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   logout() {
     localStorage.removeItem('userData');
