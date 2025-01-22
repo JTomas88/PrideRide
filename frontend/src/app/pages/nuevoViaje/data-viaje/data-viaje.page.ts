@@ -17,6 +17,8 @@ import { SegundoPasoComponent } from './componentes-viaje/segundo-paso/segundo-p
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { TravelService } from '../../../core/travel-services/travel.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-viaje',
@@ -60,6 +62,7 @@ export class DataViajePage implements OnInit, OnDestroy {
   tercer_paso: boolean = false;
 
   private directionsService: google.maps.DirectionsService;
+  private destroy$ = new Subject<void>();
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
@@ -78,16 +81,16 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.email);
 
-    this.travelService.viajeData$.subscribe((viajeData) => {
-      this.origen = viajeData.origen || 'Sin especificar';
-      this.destino = viajeData.destino || 'Sin especificar';
-      this.plazas = viajeData.plazas || '0';
-      this.hora_seleccionada = viajeData.hora_salida || '';
-  
-      if (this.origen !== 'Sin especificar' && this.destino !== 'Sin especificar') {
-        this.buscarRutas(this.origen, this.destino);
-      }
-    });
+    this.travelService.viajeData$
+      .pipe(takeUntil(this.destroy$))  // Elimina la suscripción al servicio una vez se sale del componente.
+      .subscribe((viajeData) => {
+        this.selectedRoute = viajeData?.ruta_seleccionada || null;
+        if (viajeData.origen !== this.origen || viajeData.destino !== this.destino) {
+          this.origen = viajeData.origen || 'Sin especificar';
+          this.destino = viajeData.destino || 'Sin especificar';
+          this.buscarRutas(this.origen, this.destino);
+        }
+      });
   }
 
 
@@ -138,10 +141,26 @@ export class DataViajePage implements OnInit, OnDestroy {
    * @param index -> Índice de la ruta seleccionada.
    */
   selectRoute(index: number): void {
+    if (this.selectedRoute && this.selectedRoute.routes[0] === this.routes[index]) {
+      return;
+    }
+
     this.selectedRoute = {
       routes: [this.routes[index]],
       request: {},
     } as google.maps.DirectionsResult;
+
+    /**
+     * Guardamos la ruta seleccionada en el servicio del viaje
+     * para mantener los datos temporalmente, mientras se publica
+     * un nuevo viaje.
+     */
+    const currentViajeData = this.travelService.getViajeData() || {};
+    const viajeData = {
+      ...currentViajeData,
+      ruta_seleccionada: this.selectedRoute,  
+    };
+    this.travelService.setViajeData(viajeData);
   }
 
   /**
@@ -170,7 +189,8 @@ export class DataViajePage implements OnInit, OnDestroy {
   // Completa el tercer paso
   onTercerPasoComplete() {
     // TODO
-    console.log('Viaje completado');
+    const currentViajeData = this.travelService.getViajeData() || {};
+    console.log('Viaje completado: ', currentViajeData);
   }
 
   /**
@@ -197,5 +217,7 @@ export class DataViajePage implements OnInit, OnDestroy {
    */
   ngOnDestroy() {
     this.reiniciarPasos();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

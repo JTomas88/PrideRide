@@ -35,7 +35,9 @@ export class PrimerPasoComponent implements OnInit {
   hora_salida: string = '';
   plazas: string = '';
 
-  constructor(private travelService: TravelService) {}
+  hoy: string = new Date().toISOString();
+
+  constructor(private travelService: TravelService) { }
 
   ngOnInit() {
     const date = new Date();
@@ -46,8 +48,29 @@ export class PrimerPasoComponent implements OnInit {
     const viajeData = this.travelService.getViajeData();
 
     if (viajeData) {
+      this.fecha_seleccionada = viajeData.fecha_salida || this.fecha_seleccionada;
       this.viajeros = viajeData.viajeros || '0';
     }
+  }
+
+  /**
+   * Función para guardar los datos temporalmente en el servicio de los viajes.
+   * -> Esta función recibe dos parámetros de entrada: "clave" y "valor"
+   * 
+   * @param clave Es el nombre que va a recibir el atributo del objeto "Viaje"
+   * @param valor Es el valor que va a recibir el atributo.
+   * ------------------------------------------------------------------
+   * -> La función mantiene los datos que hubiera guardados anteriormente
+   *    en el objeto "ViajeData" y añade o modifica los nuevos.
+   */
+  guardaDatosDelViajeEnServicio(clave: string, valor: any) {
+    const currentViajeData = this.travelService.getViajeData() || {};
+
+    const viajeData = {
+      ...currentViajeData,
+      [clave]: valor,
+    };
+    this.travelService.setViajeData(viajeData);
   }
 
   /**
@@ -75,33 +98,22 @@ export class PrimerPasoComponent implements OnInit {
 
   onDateChange(event: any) {
     this.fecha_seleccionada = event.detail.value;
+    this.guardaDatosDelViajeEnServicio('fecha_salida', this.fecha_seleccionada);
   }
 
   /**
    * Función para seleccionar la hora.
    * ---------------------------------
-   * -> En esta función debemos mantener los datos previos
-   *    que hubiera en el servicio del viaje.
-   * 
-   * -> En primer lugar obtenemos la información que hubiera guardada previamente para el viaje.
-   * -> Cuando la tenemos, actualizamos la hora que ha seleccionado el usuario.
-   * -> En un tercer paso, guardamos la hora seleccionada en el servicio pero teniendo en cuenta
-   *    que hay que mantener los datos que hubiera previamente.
-   * -> Como último paso, se guarda toda la información en el servicio de los viajes.
+   * -> Recibe la información del evento en el input de la hora.
+   * -> Damos un formato a la hora de 2 dígitos tanto para la hora como para los minutos.
+   * -> Llamamos a la función que recibe los datos de la hora seleccionada
+   *    para guardarlos en el servicio de los viajes.
    * 
    * @param event -> Recibe la información del evento en el input de la selección de hora.
    */
   onTimeChange(event: any) {
-    const currentViajeData = this.travelService.getViajeData() || {};
-  
     const timeValue = new Date(event.detail.value);
     this.hora_seleccionada = timeValue.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
-    const viajeData = {
-      ...currentViajeData,
-      hora_salida: this.hora_seleccionada,
-    };
-  
-    this.travelService.setViajeData(viajeData);
+    this.guardaDatosDelViajeEnServicio('hora_salida', this.hora_seleccionada);
   }
 }

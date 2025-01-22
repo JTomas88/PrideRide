@@ -1,21 +1,22 @@
 <ion-grid>
   <ion-row>
-    <!-- Columna izquierda: Fecha y pasajeros -->
+    <!-- Columna izquierda: Fecha y plazas -->
     <ion-col class="line" size="12" size-xl="6">
       <h1 class="d-flex justify-content-center">ELIGE LA FECHA DEL VIAJE</h1>
       <div class="contenedor_calendario">
         <ion-datetime 
           presentation="date" 
+          [min]="hoy"
           [(ngModel)]="fecha_seleccionada"
           (ionChange)="onDateChange($event)"
         ></ion-datetime>
         <p class="mt-2">Fecha seleccionada: {{ getFormattedDate() }}</p>
       </div>
-      <h1 class="d-flex justify-content-center">NÚMERO DE PASAJEROS</h1>
+      <h1 class="d-flex justify-content-center">NÚMERO DE PLAZAS</h1>
       <div class="contenedor_inputs">
         <ion-select 
           aria-label="n_personas" 
-          placeholder="Número de pasajeros" 
+          placeholder="Número de plazas" 
           [(ngModel)]="viajeros" 
           class="form-control">
           <mat-icon slot="start">
@@ -26,6 +27,7 @@
           <ion-select-option value="1">1</ion-select-option>
           <ion-select-option value="2">2</ion-select-option>
           <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
         </ion-select>
       </div>
     </ion-col>

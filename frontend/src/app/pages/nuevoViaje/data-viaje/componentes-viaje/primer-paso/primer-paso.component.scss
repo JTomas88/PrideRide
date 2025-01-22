@@ -36,6 +36,11 @@ ion-item {
   border: none;
 }
 
+ion-select{
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
+
 .line {
   border-right: 2px solid #e0a667;
 }
