@@ -9,7 +9,6 @@
     "MIS_VEHICULOS": "My vehicles"
   },
   "GUARDAR": "Save",
-
   "HOME": {
     "NEW_TRAVEL_TITLE": "Do you want to share your next trip?",
     "NEW_TRAVEL_BUTTON": "Post your next trip here",
@@ -18,6 +17,7 @@
     "CHECK_HERE": "Check here"
   },
   "TITLE": "PrideRide",
+  "TITLE_YEAR": "PrideRide, 2025",
   "FOOTER": {
     "TERMS": "Terms and conditions",
     "COOKIES": "Cookies"

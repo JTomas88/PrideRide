@@ -1,5 +1,5 @@
 :host {
-  --ion-background-color: #E0A667;
+  --ion-background-color: #e0a667;
   --ion-text-color: #000000;
 }
 
@@ -9,7 +9,7 @@ ion-footer {
 }
 
 ::ng-deep ion-footer {
-  --background: #E0A667;
+  --background: #e0a667;
   --color: #000000;
 }
 
@@ -33,33 +33,25 @@ ion-toolbar {
 
 .footer-row {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .footer-item {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-direction: row; /* Asegura que el icono y el texto estén en la misma fila */
-  text-align: center;
-  gap: 0.5rem; /* Espacio entre el icono y el texto */
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .footer-link {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--ion-text-color);
   text-decoration: none;
   font-weight: 500;
-  margin-top: 0.3rem; 
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
-.footer-row > ion-col {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-}
 
 .footer-title-container {
   display: flex;
@@ -69,22 +61,47 @@ ion-toolbar {
 }
 
 .footer-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 35px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
-ion-title {
-  font-size: 1.2rem;
+.footer-title {
+  font-size: 0.8rem;
   font-weight: bold;
+  color: inherit;
+  margin-top: 0.3rem;
 }
 
 .sizeGrid {
   width: 100%;
-  max-width: 260px;
 }
 
 ion-title {
   font-size: 0.8rem;
   color: black;
+}
+
+@media (max-width: 576px) {
+  .footer-row {
+    flex-wrap: wrap;
+  }
+
+  .footer-item {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .footer-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-title {
+    font-size: 0.7rem;
+  }
+
+  .footer-link {
+    font-size: 0.7rem;
+  }
 }
