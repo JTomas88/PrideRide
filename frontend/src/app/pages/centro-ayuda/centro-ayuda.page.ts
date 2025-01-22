@@ -19,10 +19,11 @@ import { Usuario } from 'src/app/models/user/usuario.model';
 export class CentroAyudaPage implements OnInit {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
-
-  constructor() { }
+  isLoading: boolean = true;
+  constructor() { this.loadData();}
 
   ngOnInit() {
+    
     /**
      * Se recoge la información del usuario de la caché si la hay,
      * en caso de no haber información, userData sería un objeto vacío {}.
@@ -42,4 +43,9 @@ export class CentroAyudaPage implements OnInit {
     }
   }
 
+  loadData() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  }
 }

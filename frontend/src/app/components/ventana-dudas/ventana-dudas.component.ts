@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -13,8 +14,10 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class VentanaDudasComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {}
-
+  navigateToCentroAyuda() {
+    this.navController.navigateForward('/centro-ayuda');
+  }
 }

@@ -4,7 +4,7 @@
   [isLoggedIn]="userLoggedIn"
 ></app-pagesnavbar>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!isLoading">
 
   <div class="container">
     <h1>CENTRO DE AYUDA</h1>
@@ -152,3 +152,5 @@
   </div>
 
 </ion-content>
+
+<ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>

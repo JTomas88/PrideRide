@@ -82,6 +82,18 @@ ion-content {
   --background: transparent !important;
 }
 
+ion-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+ion-content {
+  position: relative;
+}
+
 .btn_bg{
   background-color: #a758e8 !important;
   color: white !important;
