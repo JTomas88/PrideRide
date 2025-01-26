@@ -16,30 +16,33 @@ import { Usuario } from 'src/app/models/user/usuario.model';
   styleUrls: ['./faqs.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    MatIconModule, 
-    IonicModule, 
-    MatButtonModule, 
-    RouterModule, 
-    MatDivider, 
+    CommonModule,
+    FormsModule,
+    MatIconModule,
+    IonicModule,
+    MatButtonModule,
+    RouterModule,
+    MatDivider,
     JumbotronComponent,
-    PagesnavbarComponent
-  ]
+    PagesnavbarComponent,
+  ],
 })
 export class FaqsPage implements OnInit {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+    if (
+      this.userData &&
+      Object.keys(this.userData).length > 0 &&
+      this.userData.email
+    ) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
     }
   }
-
 }

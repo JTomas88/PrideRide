@@ -95,5 +95,9 @@ export const routes: Routes = [
     path: 'saldo-transferencias',
     loadComponent: () => import('./pages/perfil-usuario/componentesPerfil/saldo-transferencias/saldo-transferencias.page').then( m => m.SaldoTransferenciasPage)
   },
+  {
+    path: 'decalogo',
+    loadComponent: () => import('./pages/decalogo/decalogo.page').then( m => m.DecalogoPage)
+  },
 
 ];
