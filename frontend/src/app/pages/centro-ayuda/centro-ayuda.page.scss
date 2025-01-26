@@ -7,5 +7,13 @@ ion-accordion {
   border: 1px solid black;
   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
   color: black;
-  background-color: #f4f5f8;
+
+}
+
+
+.white-header {
+  background-color: #b7e0b4!important;
+  color: black !important;
+  --background: #b7e0b4;
+  --ion-text-color: black !important;
 }

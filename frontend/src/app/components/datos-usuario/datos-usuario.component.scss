@@ -9,3 +9,16 @@
     text-align: center; /* Centra el contenido */
   }
 }
+
+.boton-foto{
+  top: 225px;
+  left: 725px;
+  display: flex;
+  height: 40px;
+  position: absolute;
+}
+
+.boton{
+  clip-path: polygon(0 0, 100% 0, 100% 12%, 98% 50%, 100% 90%, 100% 100%, 0 100%);
+
+}

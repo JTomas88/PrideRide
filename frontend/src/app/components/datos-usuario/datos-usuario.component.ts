@@ -6,11 +6,12 @@ import { DatosContactoComponent } from '../botonesPerfil/datos-contacto/datos-co
 import { CuentaUsuarioComponent } from '../botonesPerfil/cuenta-usuario/cuenta-usuario.component';
 import { SaldoTransferenciasComponent } from '../botonesPerfil/saldo-transferencias/saldo-transferencias.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-datos-usuario',
   standalone: true,
-  imports: [IonicModule, TranslateModule],
+  imports: [IonicModule, TranslateModule, MatButton],
   templateUrl: './datos-usuario.component.html',
   styleUrls: ['./datos-usuario.component.scss'],
 })

@@ -4,6 +4,10 @@
   </div>
 
   <ion-row class="d-flex justify-content-center mb-4">
+    <div class="d-flex boton-foto">
+      <button type="button" class="btn btn_bg boton">Añadir/Editar foto</button>
+    </div>
+
     <ion-col>
       <div>
         <img
@@ -21,19 +25,34 @@
 
   <ion-row class="botonera">
     <ion-col size="auto">
-      <button type="button" class="btn btn_bg" (click)="openInfoVisible()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn btn_bg"
+        (click)="openInfoVisible()"
+      >
         {{ "PERFIL_USUARIO.BT_INFOVISIBLE" | translate }}
       </button>
     </ion-col>
 
     <ion-col size="auto">
-      <button type="button" class="btn btn_bg" (click)="openDatosContacto()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn btn_bg"
+        (click)="openDatosContacto()"
+      >
         {{ "PERFIL_USUARIO.BT_VERIFICACIONES" | translate }}
       </button>
     </ion-col>
 
     <ion-col size="auto">
-      <button type="button" class="btn btn_bg" (click)="openAjustesCuenta()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn btn_bg"
+        (click)="openAjustesCuenta()"
+      >
         {{ "PERFIL_USUARIO.BT_AJCUENTA" | translate }}
       </button>
     </ion-col>
@@ -41,6 +60,7 @@
     <ion-col size="auto">
       <button
         type="button"
+        mat-raised-button
         class="btn btn_bg"
         (click)="openSaldoTransferencias()"
       >

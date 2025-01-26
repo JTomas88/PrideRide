@@ -18,8 +18,8 @@ html {
 }
 
 @font-face {
-  font-family: "Dosis";
-  src: url('./assets/fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+  font-family: "Offside";
+  src: url('./assets/fonts/Offside-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -63,19 +63,19 @@ html {
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-html, body { height: 100%; background-color: #199eff63;}
-body { 
-  margin: 0; 
-  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #199eff63;
+html, body { height: 100%; background-color: #e9edd5;}
+body {
+  margin: 0;
+  font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e9edd5;
 }
 
 h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input, ion-select {
-  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ::ng-deep mat-raised-button {
-  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 ion-content {
@@ -95,8 +95,8 @@ ion-content {
 }
 
 .btn_bg{
-  background-color: #a758e8 !important;
-  color: white !important;
+  background-color: #b3b5e6 !important;
+  color: black !important;
 }
 
 .logo {
@@ -106,14 +106,14 @@ ion-content {
 }
 
 button:hover{
-  background-color: #cf9456 !important;
+  background-color: #F0D7B4 !important;
 }
 
 /**
 *   CONFIGURACIÓN PARA EL HEADER DE LA PÁGINA    *
 **/
 .diseno {
-  background-color: #e0a667 !important;
+  background-color: #efa93f !important;
 }
 
 .buscar-viaje {
@@ -145,6 +145,14 @@ button:hover{
     overflow: hidden !important;
   }
 }
+
+.white-header {
+  background-color: #b7e0b4!important;
+  color: black !important;
+  --background: #b7e0b4;
+  --ion-text-color: black !important;
+}
+
 
 
 /* CONFIGURACIÓN PARA EVITAR SCROLL INNECESARIO CUANDO SE LEVANTA UNA VENTANA MODAL */
