@@ -30,8 +30,8 @@ ion-button {
 }
 
 .interes:hover {
-  color: #e0a667;
-  text-decoration-color: #e0a667;
+  color: #F0D7B4;
+  text-decoration-color: #F0D7B4;
 }
 
 .box_text {
@@ -77,4 +77,63 @@ ion-button {
     position: absolute;
     z-index: 100;
   }
+}
+
+/*
+* CONFIGURACIÓN PARA LOS CARDS DE NUESTROS PERFILES
+* -------------------------------------------------
+*/
+.body-card {
+  max-width: 400px;
+  background-color: rgba(224, 166, 103, 0.28);
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  border-radius: 10px;
+}
+
+.image-container img:hover {
+  transform: scale(1.1);
+}
+
+.image-container img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+
+.header-image-tom {
+  background-image: url('../../../assets/autores/137113975.png');
+  background-size: cover;
+}
+
+.header-image-dani {
+  background-image: url('../../../assets/autores/24509644.jpeg');
+  background-size: cover;
 }
