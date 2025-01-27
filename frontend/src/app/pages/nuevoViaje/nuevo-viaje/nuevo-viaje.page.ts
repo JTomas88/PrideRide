@@ -12,6 +12,9 @@ import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.com
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TravelService } from 'src/app/core/travel-services/travel.service';
 import { GoogleServices } from 'src/app/core/google-services/google-services.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ToastModule } from 'primeng/toast';
+
 
 @Component({
   selector: 'app-nuevo-viaje',
@@ -28,6 +31,8 @@ import { GoogleServices } from 'src/app/core/google-services/google-services.ser
     TranslateModule,
     PagesnavbarComponent,
     MatDialogModule,
+    MatTooltipModule,
+    ToastModule
   ],
 })
 export class NuevoViajePage implements OnInit {

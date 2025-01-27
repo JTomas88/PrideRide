@@ -19,6 +19,9 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
 import { TravelService } from '../../../core/travel-services/travel.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-data-viaje',
@@ -41,8 +44,9 @@ import { takeUntil } from 'rxjs/operators';
     SegundoPasoComponent,
     PagesnavbarComponent,
     PagesnavbarComponent,
+    ToastModule
   ],
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), MessageService],
 })
 export class DataViajePage implements OnInit, OnDestroy {
   selected = model<Date | null>(null);
@@ -67,7 +71,7 @@ export class DataViajePage implements OnInit, OnDestroy {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-  constructor(private router: Router, private travelService: TravelService) {
+  constructor(private router: Router, private travelService: TravelService, private messageService: MessageService) {
     this.directionsService = new google.maps.DirectionsService();
     // Escucha los eventos de navegación
     this.router.events.subscribe((event) => {
@@ -86,8 +90,8 @@ export class DataViajePage implements OnInit, OnDestroy {
       .subscribe((viajeData) => {
         this.selectedRoute = viajeData?.ruta_seleccionada || null;
         if (viajeData.origen !== this.origen || viajeData.destino !== this.destino) {
-          this.origen = viajeData.origen || 'Sin especificar';
-          this.destino = viajeData.destino || 'Sin especificar';
+          this.origen = viajeData?.origen || 'Sin especificar';
+          this.destino = viajeData?.destino || 'Sin especificar';
           this.buscarRutas(this.origen, this.destino);
         }
       });
@@ -168,9 +172,23 @@ export class DataViajePage implements OnInit, OnDestroy {
    * y permitir ir al segundo
    */
   onPrimerPasoComplete() {
-    this.primer_paso = false;
-    this.segundo_paso = true;
+    // Verifica si el origen, destino y otros campos están vacíos
+    if (!this.origen || !this.destino || !this.hora_seleccionada || !this.plazas) {
+      // Si algún campo está vacío, muestra el toast
+      this.messageService.add({ 
+        severity: 'error', 
+        summary: 'Faltan datos', 
+        detail: 'Por favor, completa todos los campos para continuar.', 
+
+        life: 3000 
+      });
+    } else {
+      // Si todos los campos están completos, continúa al siguiente paso
+      this.primer_paso = false;
+      this.segundo_paso = true;
+    }
   }
+  
 
   /**
    * Permite volver al paso previo

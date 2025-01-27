@@ -9,6 +9,7 @@
   <div class="container" id="primer_paso" *ngIf="primer_paso">
     <app-primer-paso></app-primer-paso>
     <div class="d-flex justify-content-center mt-3 mb-3">
+      <p-toast position="bottom-center"></p-toast>
       <button type="button" mat-raised-button class="btn_bg" (click)="onPrimerPasoComplete()">
         Continuar
       </button>

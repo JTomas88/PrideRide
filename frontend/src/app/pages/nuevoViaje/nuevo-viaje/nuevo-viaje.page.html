@@ -65,7 +65,8 @@
             </div>
           </div>
           <button type="button" class="btn-publicar ion-activatable ripple-parent circle"
-            title="{{ 'NUEVO_VIAJE.PUBLISH_TRIP_TITLE' | translate }}" (click)="goTo()">
+            title="{{ 'NUEVO_VIAJE.PUBLISH_TRIP_TITLE' | translate }}" (click)="goTo()"
+            matTooltip="Puedes acceder al menú para publicar un nuevo viaje sin necesidad de rellenar los campos anteriores.">
             {{ 'NUEVO_VIAJE.PUBLISH_TRIP' | translate }}<ion-ripple-effect></ion-ripple-effect>
           </button>
         </form>
