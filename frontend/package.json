@@ -34,6 +34,7 @@
     "@ngx-translate/http-loader": "^16.0.1",
     "@types/google.maps": "^3.58.1",
     "cally": "^0.7.2",
+    "font-awesome": "^4.7.0",
     "ionicons": "^7.0.0",
     "ngx-cookie-service": "^19.0.0",
     "ngx-cookieconsent": "^8.0.0",

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { IonicModule } from '@ionic/angular';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -16,12 +16,13 @@ import { Usuario } from 'src/app/models/user/usuario.model';
   styleUrls: ['./sobre-nosotros.page.scss'],
   standalone: true,
   imports: [
-    IonContent,  
+    IonicModule,  
     CommonModule, 
     FormsModule, 
     RouterModule,
     MatDividerModule,
     MatButtonModule,
+    MatCardModule,
     JumbotronComponent,
     PagesnavbarComponent
   ]
@@ -37,4 +38,18 @@ export class SobreNosotrosPage implements OnInit {
     this.userLoggedIn = !!(this.userData && this.userData.email);
   }
 
+  /**
+   * Función para abrir los perfiles de Linkedin de cada uno.
+   * 
+   * @param perfil Recibe el nombre del perfil que se va a abrir.
+   */
+  openLinkedin(perfil: string) {
+    if(perfil === 'Dani') {
+      window.open('https://www.linkedin.com/in/daniel-garc%C3%ADa-d%C3%ADaz-0a970862/', '_blank');
+    } else if (perfil === 'Tomas') {
+      window.open('https://www.linkedin.com/in/jtomas88/', '_blank');
+    }
+    
+  }
+  
 }
