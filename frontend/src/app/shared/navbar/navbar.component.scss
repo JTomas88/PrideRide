@@ -45,3 +45,16 @@
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   }
 }
+
+.navbar .dropdown-menu li a:hover {
+  padding: auto; 
+  border: none; 
+  background-color: #F0D7B4;
+  border-radius: 15px;
+}
+
+.navbar .dropdown-menu .logout a:hover {
+  border: none; 
+  background-color: #FF5733;
+  color: white; 
+}

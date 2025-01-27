@@ -24,3 +24,20 @@ dl, ol, ul {
   margin-top: 0;
   margin-bottom: 0rem;
 }
+
+/**
+* CONFIGURACIÓN PARA LOS ENLACES DEL MENÚ
+* ---------------------------------------
+*/
+.navbar .dropdown-menu li a:hover {
+  padding: auto; 
+  border: none; 
+  background-color: #F0D7B4;
+  border-radius: 15px;
+}
+
+.navbar .dropdown-menu .logout a:hover {
+  border: none; 
+  background-color: #FF5733;
+  color: white; 
+}
