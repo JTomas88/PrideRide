@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
@@ -9,8 +10,8 @@ describe('DatosContactoComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatosContactoComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [DatosContactoComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DatosContactoComponent);
