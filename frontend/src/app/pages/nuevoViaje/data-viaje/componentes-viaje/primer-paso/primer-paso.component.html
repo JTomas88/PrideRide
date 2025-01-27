@@ -4,12 +4,15 @@
     <ion-col class="line" size="12" size-xl="6">
       <h1 class="d-flex justify-content-center">ELIGE LA FECHA DEL VIAJE</h1>
       <div class="contenedor_calendario">
-        <ion-datetime 
+        <div class="d-flex justify-content-center">
+          <ion-datetime 
           presentation="date" 
           [min]="hoy"
           [(ngModel)]="fecha_seleccionada"
           (ionChange)="onDateChange($event)"
         ></ion-datetime>
+        </div>
+
         <p class="mt-2">Fecha seleccionada: {{ getFormattedDate() }}</p>
       </div>
       <h1 class="d-flex justify-content-center">NÚMERO DE PLAZAS</h1>
