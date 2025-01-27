@@ -114,6 +114,7 @@
 
   "PERFIL_USUARIO": {
     "INFO_PERSONAL": "INFORMACIÓN PERSONAL",
+    "FOTO": "Añadir/Editar foto",
     "BT_INFOVISIBLE": "Tu información visible",
     "BT_VERIFICACIONES": "Verificaciones / Datos de contacto",
     "BT_AJCUENTA": "Ajustes cuenta",

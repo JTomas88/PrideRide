@@ -1,5 +1,6 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogContent,
   MatDialogRef,
@@ -18,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDividerModule,
     MatIcon,
     TranslateModule,
+    MatButtonModule,
   ],
   templateUrl: './info-visible.component.html',
   styleUrls: ['./info-visible.component.scss'],

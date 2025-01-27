@@ -5,7 +5,18 @@
 
   <ion-row class="d-flex justify-content-center mb-4">
     <div class="d-flex boton-foto">
-      <button type="button" class="btn btn_bg boton">Añadir/Editar foto</button>
+      <button type="button" class="btn btn_bg boton">
+        {{ "PERFIL_USUARIO.FOTO" | translate }}
+      </button>
+    </div>
+    <div class="d-flex boton-x">
+      <button
+        type="button"
+        matTooltip="Elimina tu foto"
+        class="btn text-boton d-flex justify-content-center align-items-center btn_bg"
+      >
+        X
+      </button>
     </div>
 
     <ion-col>
@@ -28,7 +39,7 @@
       <button
         type="button"
         mat-raised-button
-        class="btn btn_bg"
+        class="btn btn_bg btn_opciones"
         (click)="openInfoVisible()"
       >
         {{ "PERFIL_USUARIO.BT_INFOVISIBLE" | translate }}
@@ -39,7 +50,7 @@
       <button
         type="button"
         mat-raised-button
-        class="btn btn_bg"
+        class="btn btn_bg btn_opciones"
         (click)="openDatosContacto()"
       >
         {{ "PERFIL_USUARIO.BT_VERIFICACIONES" | translate }}
@@ -50,7 +61,7 @@
       <button
         type="button"
         mat-raised-button
-        class="btn btn_bg"
+        class="btn btn_bg btn_opciones"
         (click)="openAjustesCuenta()"
       >
         {{ "PERFIL_USUARIO.BT_AJCUENTA" | translate }}
@@ -61,7 +72,7 @@
       <button
         type="button"
         mat-raised-button
-        class="btn btn_bg"
+        class="btn btn_bg btn_opciones"
         (click)="openSaldoTransferencias()"
       >
         {{ "PERFIL_USUARIO.BT_SALDO" | translate }}
