@@ -6,6 +6,8 @@
   --ion-color-custom-white-contrast-rgb: 0, 0, 0;
   --ion-color-custom-white-shade: #e0e0e0;
   --ion-color-custom-white-tint: #f2f2f2;
+  --highlight-color-valid: var(#000000, #000000);
+
 }
 
 /* Estilo para el acordeón */
@@ -21,23 +23,18 @@
   color: black !important;
 }
 
-/* Estilo cuando el acordeón está abierto */
-.white-header:hover {
-  background-color: #f2f2f2;
-  color: black;
+.ion-valid.sc-ion-input-md-h {
+  --highlight-color: #000000 !important;
+}
+
+:host(.ion-valid) {
+  --highlight-color: #000000 !important;
 }
 
 /* Fondo blanco para el contenido del acordeón */
 div[slot='content'] {
   background-color: #F4F5F8 !important;
 }
-
-/* Ajuste de iconos en el acordeón */
-ion-item[slot="header"] {
-  --ion-item-background: #ffffff;
-  --ion-text-color: black;
-}
-
 
 /* Estilo general */
 .mainbox {
