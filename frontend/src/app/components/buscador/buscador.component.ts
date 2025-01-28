@@ -13,6 +13,7 @@ import { eye, lockClosed } from 'ionicons/icons';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { GoogleServices } from 'src/app/core/google-services/google-services.service';
 
 @Component({
   selector: 'app-buscador',
@@ -34,14 +35,16 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./buscador.component.scss'],
 })
 export class BuscadorComponent implements OnInit {
-  busquedaParams = {
-    desde: '',
-    hasta: '',
-    cuando: '',
-    n_plazas: '',
-  };
 
-  constructor(private router: Router, private messageService: MessageService) {
+  origen: string = '';
+  destino: string = '';
+  plazas: string = '';
+  fecha_salida: string = '';
+
+  sugerenciasOrigen: any[] = [];
+  sugerenciasDestino: any[] = [];
+
+  constructor(private router: Router, private messageService: MessageService, private googleService: GoogleServices) {
     addIcons({ eye, lockClosed });
   }
 
@@ -52,9 +55,14 @@ export class BuscadorComponent implements OnInit {
    * @queryParams => Envía los datos que se recogen en la búsqueda.
    */
   openSearchTravels() {
-    const { desde, hasta, cuando, n_plazas } = this.busquedaParams;
+    const viajeData = {
+      origen: this.origen,
+      destino: this.destino,
+      plazas: this.plazas,
+      fecha_salida: this.fecha_salida
+    };
 
-    if (!desde && !hasta && !cuando && !n_plazas) {
+    if (!viajeData.origen && !viajeData.destino && !viajeData.fecha_salida && !viajeData.plazas) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Campos incompletos',
@@ -63,9 +71,46 @@ export class BuscadorComponent implements OnInit {
       return;
     }
     this.router.navigate(['/busqueda-viajes'], {
-      queryParams: this.busquedaParams,
+      queryParams: viajeData,
     });
   }
   
+  obtenerSugerenciasOrigen(evento: Event) {
+    const contenidoInput = (evento.target as HTMLInputElement).value;
+    this.googleService
+      .obtenerLocalidad(contenidoInput)
+      .subscribe((respuesta: any) => {
+        this.sugerenciasOrigen = respuesta;
+      });
+  }
   
+  obtenerSugerenciasDestino(evento: Event) {
+    const contenidoInput = (evento.target as HTMLInputElement).value;
+    this.googleService
+      .obtenerLocalidad(contenidoInput)
+      .subscribe((respuesta: any) => {
+        this.sugerenciasDestino = respuesta;
+      });
+  }
+
+    /**
+   * Función para guardar la información de la localidad de origen seleccionada.
+   * 
+   * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
+   */
+    seleccionarLocalidadOrigen(localidad: any) {
+      this.origen = localidad.descripcion.split(',')[0].trim();
+      this.sugerenciasOrigen = [];
+    }
+  
+  
+    /**
+     * Función para guardar la información de la localidad de destino seleccionada.
+     * 
+     * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
+     */
+    seleccionarLocalidadDestino(localidad: any) {
+      this.destino = localidad.descripcion.split(',')[0].trim();
+      this.sugerenciasDestino = [];
+    }
 }
