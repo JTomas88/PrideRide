@@ -1,0 +1,48 @@
+<app-pagesnavbar [backRoute]="'/home'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
+<ion-content [fullscreen]="true">
+  <div class="container d-flex justify-content-center dialog-animate">
+    <ion-grid>
+      <ion-row>
+        <div class="container">
+          <h1>RESUMEN DEL VIAJE</h1>
+          <mat-divider></mat-divider>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6">
+          <div class="container d-flex align-items-center">
+            <div class="container">
+              <ul>
+                <li><mat-icon>location_on</mat-icon> <strong>Origen:</strong> {{ currentViajeData.origen }}</li>
+                <li><mat-icon>flag</mat-icon> <strong>Destino:</strong> {{ currentViajeData.destino }}</li>
+                <li><mat-icon>directions_car</mat-icon> <strong>Coche Seleccionado:</strong> {{ currentViajeData.coche }}</li>
+                <li><mat-icon>group</mat-icon> <strong>Número de Plazas Disponibles:</strong> {{ currentViajeData.plazas }}</li>
+                <li><mat-icon>event</mat-icon> <strong>Fecha de Salida:</strong> {{ getFormattedDate() }}</li>
+                <li><mat-icon>schedule</mat-icon> <strong>Hora de Salida:</strong> {{ currentViajeData.hora_salida }}</li>
+                <li><mat-icon>alt_route</mat-icon> <strong>Resumen de la Ruta:</strong> {{ currentViajeData.ruta_seleccionada.routes[0]?.summary }}</li>
+              </ul>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md="6" class="d-flex align-items-center justify-content-center">
+          <div class="container">
+            <img class="box_img" src="../../../../../../assets/imgs/travel_1.jpg">
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="d-flex justify-content-center">
+        <div class="container box_info d-flex justify-content-center align-items-center">
+          <p>
+            Si estás deacuerdo con el viaje que vas a realizar, confírmalo.
+            <br>
+            En caso contrario, tienes que volver atrás y modificar los parámetros que quieras
+          </p>
+        </div>
+        <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
+          <button type="button" mat-raised-button class="btn_bg" (click)="volverAInicioDelViaje()">Atrás</button>
+          <button type="button" mat-raised-button class="btn_bg" (click)="confirmarViaje()">Confirmar viaje</button>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

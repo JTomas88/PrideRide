@@ -162,33 +162,36 @@ export class DataViajePage implements OnInit, OnDestroy {
     const currentViajeData = this.travelService.getViajeData() || {};
     const viajeData = {
       ...currentViajeData,
-      ruta_seleccionada: this.selectedRoute,  
+      ruta_seleccionada: this.selectedRoute,
     };
     this.travelService.setViajeData(viajeData);
   }
 
   /**
-   * Función para completar el primer paso
-   * y permitir ir al segundo
+   * Función para completar el primer paso.
+   * Antes de poder continuar, se comprueban los datos almacenados en el servicio.
+   * 
+   * Si los datos están correctamente almacenados se permite continuar al siguiente paso.
+   * En caso contrario, lanzamos un mensaje de error informando al usuario de lo ocurrido.
    */
   onPrimerPasoComplete() {
-    // Verifica si el origen, destino y otros campos están vacíos
-    if (!this.origen || !this.destino || !this.hora_seleccionada || !this.plazas) {
-      // Si algún campo está vacío, muestra el toast
-      this.messageService.add({ 
-        severity: 'error', 
-        summary: 'Faltan datos', 
-        detail: 'Por favor, completa todos los campos para continuar.', 
+    const currentViajeData = this.travelService.getViajeData();
 
-        life: 3000 
+    if (!currentViajeData?.hora_salida || !currentViajeData?.plazas) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Faltan datos',
+        detail: 'Por favor, completa todos los campos para continuar.',
+        life: 3000
       });
     } else {
-      // Si todos los campos están completos, continúa al siguiente paso
+      console.log('Datos del servicio antes de continuar:', currentViajeData);
       this.primer_paso = false;
       this.segundo_paso = true;
     }
   }
-  
+
+
 
   /**
    * Permite volver al paso previo
@@ -198,17 +201,52 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.primer_paso = true;
   }
 
-  // Completa el segundo paso
+  /**
+   * Función para completar el segundo paso.
+   * Antes de poder continuar, se comprueban los datos almacenados en el servicio.
+   * 
+   * Si los datos están correctamente almacenados se permite continuar al siguiente paso.
+   * En caso contrario, lanzamos un mensaje de error informando al usuario de lo ocurrido.
+   */
   onSegundoPasoComplete() {
-    this.segundo_paso = false;
-    this.tercer_paso = true;
+    const currentViajeData = this.travelService.getViajeData();
+
+    if (!currentViajeData?.origen || !currentViajeData?.destino) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Faltan datos',
+        detail: 'Por favor, elige un punto de partida y de llegada para poder continuar.',
+        life: 3000
+      });
+    } else {
+      this.segundo_paso = false;
+      this.tercer_paso = true;
+    }
   }
 
-  // Completa el tercer paso
+  /**
+   * Función para completar el tercer paso.
+   * Antes de poder continuar, se comprueban los datos almacenados en el servicio.
+   * 
+   * Si los datos están correctamente almacenados se permite continuar al siguiente paso.
+   * En caso contrario, lanzamos un mensaje de error informando al usuario de lo ocurrido.
+   */
   onTercerPasoComplete() {
-    // TODO
-    const currentViajeData = this.travelService.getViajeData() || {};
-    console.log('Viaje completado: ', currentViajeData);
+    const currentViajeData = this.travelService.getViajeData();
+
+    if (!currentViajeData?.origen || !currentViajeData?.destino) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Faltan datos',
+        detail: 'Por favor, selecciona una ruta para poder continuar.',
+        life: 3000
+      });
+    } else {
+      this.router.navigate(['/resumen-viaje'], {
+        queryParams: currentViajeData
+      });
+    }
+
   }
 
   /**

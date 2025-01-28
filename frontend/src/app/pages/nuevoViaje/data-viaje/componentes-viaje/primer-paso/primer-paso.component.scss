@@ -12,6 +12,14 @@
   margin: 0 auto;
 }
 
+/**
+* Configuración para el botón de selección de la hora
+* ---------------------------------------------------
+*/
+ion-datetime-button{
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
 
 .custom-datetime {
   --background: #ffffff;
@@ -69,42 +77,28 @@ ion-datetime {
   border-radius: 15px;
 }
 
-ion-datetime::part(calendar-day) {
-  color: #000000;
-}
-
-ion-datetime::part(calendar-day today) {
-  color: #a758e8;
-}
-
-ion-datetime::part(calendar-day):focus {
-  background-color: rgb(224 166 103 / 0.2);
-  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
-}
-
 /*
-* Custom Material Design Datetime Day Parts
+* Configuración para el día activo(hoy) 
+* y para el día seleccionado.
 * -------------------------------------------
 */
-
 ion-datetime.md::part(calendar-day active),
 ion-datetime.md::part(calendar-day active):focus {
-  background-color: #a758e8;
-  border-color: #a758e8;
+  background-color: #B3B5E6;
+  border-color: #B3B5E6;
   color: #fff;
 }
 
 ion-datetime.md::part(calendar-day today) {
-  border-color: #8462d1;
+  border-color: #B3B5E6;
 }
 
 /*
-* Custom iOS Datetime Day Parts
+* Configuración para iOS.
 * -------------------------------------------
 */
-
 ion-datetime.ios::part(calendar-day active),
 ion-datetime.ios::part(calendar-day active):focus {
   background-color: rgb(154 209 98 / 0.2);
-  color: #a758e8;
+  color: #B3B5E6;
 }

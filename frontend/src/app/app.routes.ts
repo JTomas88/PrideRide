@@ -61,6 +61,14 @@ export const routes: Routes = [
       import('./pages/nuevoViaje/data-viaje/data-viaje.page').then(
         (m) => m.DataViajePage
       ),
+
+  },
+  {
+    path: 'resumen-viaje',
+    loadComponent: () =>
+      import('./pages/nuevoViaje/data-viaje/componentes-viaje/resumen-viaje/resumen-viaje.component').then(
+        (m) => m.ResumenViajeComponent
+      ),
   },
   {
     path: 'centro-ayuda',
@@ -87,7 +95,8 @@ export const routes: Routes = [
       import(
         './pages/perfil-usuario/componentesPerfil/ajustes-cuenta/ajustes-cuenta.page'
       ).then((m) => m.AjustesCuentaPage),
-  },  {
+  },
+  {
     path: 'terminos',
     loadComponent: () => import('./pages/terminos/terminos.page').then( m => m.TerminosPage)
   },

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: #e0a667;
+  background-color: #F0D7B4;
 }
 
 ion-button {
@@ -50,7 +50,7 @@ ion-alert {
 }
 
 .route-option:hover {
-  background: #e0a667;
+  background: #F0D7B4;
 }
 
 .btn-banner {
@@ -69,7 +69,7 @@ ion-alert {
 
 .route-option {
   padding: 10px;
-  border: 1px solid #a758e8;
+  border: 1px solid #B3B5E6;
   border-radius: 15px;
   cursor: pointer;
   margin-bottom: 10px;
@@ -77,11 +77,11 @@ ion-alert {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 
   &:hover {
-    background-color: #e0a667;
+    background-color: #F0D7B4;
   }
 
   &.selected {
-    background-color: #a758e8;
+    background-color: #B3B5E6;
     color: white;
   }
 }

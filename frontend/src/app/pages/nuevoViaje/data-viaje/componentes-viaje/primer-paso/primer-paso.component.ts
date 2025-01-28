@@ -34,6 +34,7 @@ export class PrimerPasoComponent implements OnInit {
   viajeros: string = '';
   hora_salida: string = '';
   plazas: string = '';
+  cocheSeleccionado: string = '';
 
   hoy: string = new Date().toISOString();
 
@@ -49,7 +50,10 @@ export class PrimerPasoComponent implements OnInit {
 
     if (viajeData) {
       this.fecha_seleccionada = viajeData.fecha_salida || this.fecha_seleccionada;
+      this.hora_seleccionada = viajeData.hora_salida || this.hora_seleccionada;
       this.viajeros = viajeData.viajeros || '0';
+      this.plazas = viajeData.plazas || '';
+      this.cocheSeleccionado = viajeData.coche || '';
     }
   }
 
