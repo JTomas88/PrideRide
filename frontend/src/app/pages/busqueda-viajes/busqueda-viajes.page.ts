@@ -10,6 +10,7 @@ import { ResultadosBusquedaComponent } from 'src/app/components/resultados-busqu
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-busqueda-viajes',
@@ -31,7 +32,10 @@ export class BusquedaViajesPage implements OnInit {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-  constructor() {}
+  /** Objeto para guardar los parámetros que vienen en la URL */
+  busquedaParams: any = {};
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -40,5 +44,13 @@ export class BusquedaViajesPage implements OnInit {
     } else {
       this.userLoggedIn = false;
     }
+
+    /**
+     * Aquí se obtienen los datos de los parámetros de la URL.
+     */
+    this.route.queryParams.subscribe((params) => {
+      this.busquedaParams = params;
+      console.log('Parámetros recibidos:', this.busquedaParams);
+    });
   }
 }

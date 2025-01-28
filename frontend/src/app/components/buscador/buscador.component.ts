@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { eye, lockClosed } from 'ionicons/icons';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-buscador',
@@ -24,8 +26,10 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormFieldModule, 
     CommonModule, 
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    ToastModule
   ],
+  providers:[MessageService],
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss'],
 })
@@ -34,10 +38,10 @@ export class BuscadorComponent implements OnInit {
     desde: '',
     hasta: '',
     cuando: '',
-    numPersonas: '',
+    n_plazas: '',
   };
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private messageService: MessageService) {
     addIcons({ eye, lockClosed });
   }
 
@@ -48,10 +52,20 @@ export class BuscadorComponent implements OnInit {
    * @queryParams => Envía los datos que se recogen en la búsqueda.
    */
   openSearchTravels() {
-    console.log('Parametros de búsqueda:', this.busquedaParams);
-    // Navega a la página de resultados con los parámetros de búsqueda
+    const { desde, hasta, cuando, n_plazas } = this.busquedaParams;
+
+    if (!desde && !hasta && !cuando && !n_plazas) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Campos incompletos',
+        detail: 'Por favor, rellena al menos un campo para continuar.',
+      });
+      return;
+    }
     this.router.navigate(['/busqueda-viajes'], {
-      queryParams: this.busquedaParams
+      queryParams: this.busquedaParams,
     });
   }
+  
+  
 }

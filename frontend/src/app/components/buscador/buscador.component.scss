@@ -102,3 +102,11 @@ div[slot='content'] {
     text-align: start !important;
   }
 }
+
+/**
+* Configuración para mostrar el mensaje de error sobre el footer
+* -------------------------------------------------------------
+*/
+::ng-deep .p-toast {
+  bottom: 80px !important;
+}

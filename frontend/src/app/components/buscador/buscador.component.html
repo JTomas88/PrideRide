@@ -48,10 +48,10 @@
               <div class="input-container cajon_selector_personas">
                 <mat-icon>group</mat-icon>
                 <ion-select
-                  aria-label="n_personas"
+                  aria-label="n_plazas"
                   interface="popover"
                   placeholder="{{ 'FINDER_TRAVELS.TRAVELERS' | translate }}"
-                  [(ngModel)]="busquedaParams.numPersonas"
+                  [(ngModel)]="busquedaParams.n_plazas"
                 >
                   <ion-select-option value="one">1</ion-select-option>
                   <ion-select-option value="two">2</ion-select-option>
@@ -64,6 +64,7 @@
 
         <!-- BOTON PARA BUSCAR -->
         <div class="caja_boton">
+          <p-toast position="bottom-center"></p-toast>
           <button
             mat-raised-button
             class="btn_config btn btn_bg"
