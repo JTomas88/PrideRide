@@ -7,7 +7,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
 import { ModalErrorComponent } from 'src/app/components/modal-error/modal-error.component';
 import { UserServicesService } from 'src/app/core/user-services/user-services.service';
 
@@ -28,7 +29,7 @@ export class RegistroComponent implements OnInit {
 
   dialog = inject(MatDialog);
 
-  constructor(private fb: FormBuilder, private userService: UserServicesService) {
+  constructor(private fb: FormBuilder, private userService: UserServicesService, private router: Router) {
     this.formulario1 = this.fb.group({
       email: ['', Validators.required],
       fnacimiento: ['', Validators.required],
@@ -88,8 +89,13 @@ export class RegistroComponent implements OnInit {
 
       this.userService.registrarUsuario(datosRegistro).subscribe({
         next: (response) => {
+          const title: string = '¡Bienvenido!'
+          const message: string = 'Tu usuario ha sido creado.';
+
           console.log('Usuario registrado:', response);
-          alert('Registro exitoso');
+
+          this.openHelp(title, message)
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error('Error al registrar:', err.error.error);
@@ -109,6 +115,19 @@ export class RegistroComponent implements OnInit {
    */
   openError(title: string, message: string) {
     this.dialog.open(ModalErrorComponent, {
+      data: { title, message },
+      panelClass: 'dialog-animate'
+    });
+  }
+
+  /**
+   * Función para mostrar una ventana modal con un mensaje de confirmación.
+   * 
+   * @param title Título que recibe la ventana modal
+   * @param message Mensaje de error que recibe la ventana modal.
+   */
+  openHelp(title: string, message: string) {
+    this.dialog.open(HelpModalComponent, {
       data: { title, message },
       panelClass: 'dialog-animate'
     });

@@ -8,6 +8,7 @@ import { CuentaUsuarioComponent } from '../botonesPerfil/cuenta-usuario/cuenta-u
 import { SaldoTransferenciasComponent } from '../botonesPerfil/saldo-transferencias/saldo-transferencias.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButton } from '@angular/material/button';
+import { Usuario } from 'src/app/models/user/usuario.model';
 
 @Component({
   selector: 'app-datos-usuario',
@@ -17,11 +18,16 @@ import { MatButton } from '@angular/material/button';
   styleUrls: ['./datos-usuario.component.scss'],
 })
 export class DatosUsuarioComponent implements OnInit {
-  dialog = inject(MatDialog);
 
-  constructor() {}
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
 
-  ngOnInit() {}
+  constructor(private dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.userLoggedIn = !!(this.userData && this.userData.email);
+  }
 
   openInfoVisible() {
     this.dialog.open(InfoVisibleComponent, {});

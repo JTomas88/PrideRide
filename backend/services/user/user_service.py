@@ -32,7 +32,7 @@ def crear_usuario():
     if Usuario.query.filter_by(email=data['email']).first():
         return jsonify({"error": "El correo electrónico ya existe"}), 400
 
-    codificar_password = generate_password_hash(data['usPassword'])
+    codificar_password = generate_password_hash(data['password'])
     nuevo_usuario = Usuario(
         nombre=data['nombre'],
         apellidos=data['apellidos'],
