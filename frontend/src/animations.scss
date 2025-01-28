@@ -13,58 +13,71 @@
 */
 
 .fondo_animacion {
-    -webkit-animation: fondo_animacion 5s ease-out both;
-    animation: fondo_animacion 5s ease-out both;
+  -webkit-animation: fondo_animacion 5s ease-out both;
+  animation: fondo_animacion 5s ease-out both;
+}
+
+@-webkit-keyframes fondo_animacion {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
   }
-  
-  @-webkit-keyframes fondo_animacion {
-    0% {
-      -webkit-transform: scale(1) translateY(0);
-      transform: scale(1) translateY(0);
-      -webkit-transform-origin: 50% 16%;
-      transform-origin: 50% 16%;
-    }
-    100% {
-      -webkit-transform: scale(1.25) translateY(-15px);
-      transform: scale(1.25) translateY(-15px);
-      -webkit-transform-origin: top;
-      transform-origin: top;
-    }
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+    transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+    transform-origin: top;
   }
-  @keyframes fondo_animacion {
-    0% {
-      -webkit-transform: scale(1) translateY(0);
-      transform: scale(1) translateY(0);
-      -webkit-transform-origin: 50% 16%;
-      transform-origin: 50% 16%;
-    }
-    100% {
-      -webkit-transform: scale(1.25) translateY(-15px);
-      transform: scale(1.25) translateY(-15px);
-      -webkit-transform-origin: top;
-      transform-origin: top;
-    }
+}
+@keyframes fondo_animacion {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
   }
-  
-  
-  /*
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+    transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+  }
+}
+
+/*
   *          CONFIGURACIÓN PARA MOSTRAR ANIMACIÓN
   *          ------------------------------------
   * Esta animación aumenta el tamaño desde el centro hacia afuera
   * Se está utilizando para levantar la ventana modal de error.
   */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .dialog-animate {
-    animation: fadeIn 0.3s ease-out;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
+}
+
+.dialog-animate {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes animate-scalein {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scalein {
+  animation: animate-scalein 1s ease-out;
+}
