@@ -9,6 +9,7 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { IonicModule } from '@ionic/angular';
 import { MatCardModule } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -24,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatCardModule,
     JumbotronComponent,
-    PagesnavbarComponent
+    PagesnavbarComponent,
+    MatIcon
   ]
 })
 export class SobreNosotrosPage implements OnInit {
@@ -49,7 +51,19 @@ export class SobreNosotrosPage implements OnInit {
     } else if (perfil === 'Tomas') {
       window.open('https://www.linkedin.com/in/jtomas88/', '_blank');
     }
-    
   }
   
+    /**
+   * Función para abrir los perfiles de GitHub de cada uno.
+   * 
+   * @param perfil Recibe el nombre del perfil que se va a abrir.
+   */
+    openGitHub(perfil: string) {
+      if(perfil === 'Dani') {
+        window.open('https://github.com/Daniel160490', '_blank');
+      } else if (perfil === 'Tomas') {
+        window.open('https://github.com/JTomas88', '_blank');
+      }
+    }
+
 }

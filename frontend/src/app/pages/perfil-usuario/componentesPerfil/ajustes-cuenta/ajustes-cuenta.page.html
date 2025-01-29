@@ -1,56 +1,4 @@
-<ion-header>
-  <nav class="navbar bg-body-tertiary diseno">
-    <div class="container-fluid">
-      <ul>
-        <li class="nav-item d-flex flex-column align-items-center">
-          <a class="" href="#">
-            <img src="../../../assets/logo/Logo2.png" alt="Logo" class="logo" />
-          </a>
-          <h1 class="m-0 text-center">PrideRide</h1>
-        </li>
-      </ul>
-
-      <form class="d-flex align-items-center buscar-viaje">
-        <a
-          class="nav-link active d-flex align-items-center"
-          aria-current="page"
-          href="/busqueda-viajes"
-        >
-          Buscar viaje <mat-icon>search</mat-icon>
-        </a>
-
-        <a
-          class="nav-link active d-flex align-items-center"
-          aria-current="page"
-          href="/busqueda-viajes"
-        >
-          Publicar viaje
-        </a>
-
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <mat-icon class="caja-icono tamano-icono">person_off</mat-icon>
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="/login">Mi perfil</a></li>
-          <li>
-            <a class="dropdown-item" href="/registro">Saldo y transferencias</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/registro">Ajustes de la cuenta</a>
-          </li>
-          <li><a class="dropdown-item" href="/registro">Salir</a></li>
-        </ul>
-      </form>
-    </div>
-  </nav>
-</ion-header>
+<app-pagesnavbar [backRoute]="'/home'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
   <div class="container">
@@ -66,34 +14,16 @@
           {{'MODAL_AJCUENTA.CCONTRASENA_TITULO' | translate}}
         </h1>
         <div class="mb-3">
-          <label for="cActual" class="form-label"
-            >{{'MODAL_AJCUENTA.CONTRASENA_ACTUAL' | translate}}</label
-          >
-          <input
-            type="password"
-            class="form-control input-contras"
-            id="cActual"
-          />
+          <label for="cActual" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_ACTUAL' | translate}}</label>
+          <input type="password" class="form-control input-contras" id="cActual" />
         </div>
         <div class="mb-1">
-          <label for="pNueva" class="form-label"
-            >{{'MODAL_AJCUENTA.CONTRASENA_NUEVA' | translate}}</label
-          >
-          <input
-            type="password"
-            class="form-control input-contras"
-            id="pNueva"
-          />
+          <label for="pNueva" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_NUEVA' | translate}}</label>
+          <input type="password" class="form-control input-contras" id="pNueva" />
         </div>
         <div class="mb-1">
-          <label for="pNuevaConf" class="form-label"
-            >{{'MODAL_AJCUENTA.CONTRASENA_CONF' | translate}}</label
-          >
-          <input
-            type="password"
-            class="form-control input-contras"
-            id="pNuevaConf"
-          />
+          <label for="pNuevaConf" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_CONF' | translate}}</label>
+          <input type="password" class="form-control input-contras" id="pNuevaConf" />
         </div>
         <ion-col class="d-flex justify-content-center align-items-center">
           <div>
@@ -110,12 +40,7 @@
         </h1>
         <ion-row class="mb-4">
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
             <label class="form-check-label" for="flexCheckDefault">
               {{'MODAL_AJCUENTA.PREFCOM_COMERCIALES' | translate}}
             </label>
@@ -123,15 +48,28 @@
         </ion-row>
         <ion-row>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckChecked"
-            />
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
             <label class="form-check-label" for="flexCheckChecked">
               {{'MODAL_AJCUENTA.PREFCOM_TERCEROS' | translate}}
             </label>
+          </div>
+          <div class="mt-3">
+            <a class="nav-link active dropdown-toggle d-flex align-items-center" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false" aria-current="page">
+              {{'MODAL_AJCUENTA.CAMBIO_IDIOMA' | translate}} <mat-icon class="ms-2">language</mat-icon>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a type="button" class="dropdown-item" (click)="changeLanguage('es')"><img
+                    src="../../../assets/flags/espana.png" class="flag-icon" />
+                  Español</a>
+              </li>
+              <li>
+                <a type="button" class="dropdown-item" (click)="changeLanguage('en')"><img
+                    src="../../../assets/flags/reino-unido.png" class="flag-icon" />
+                  Inglés</a>
+              </li>
+            </ul>
           </div>
         </ion-row>
       </ion-col>

@@ -161,7 +161,8 @@
     "PREFCOM_TERCEROS": "I agree that my data may be used for commercial purposes by third parties",
     "BORRARCUENTA_TITULO": "Delete account",
     "BORRARCUENTA_SUBTITULO": "This action will permanently delete your account. If you have a balance, remember to first transfer it to your bank account to avoid losing the money.",
-    "BORRARCUENTA_BOTON": "Delete my account"
+    "BORRARCUENTA_BOTON": "Delete my account",
+    "CAMBIO_IDIOMA": "Change language: "
   },
 
   "MODAL_SALDO": {

@@ -13,7 +13,7 @@ ion-button {
     right: 0;
     transform: translateY(0);
     z-index: 1050;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
   }
 }
 
@@ -29,6 +29,33 @@ dl, ol, ul {
 * CONFIGURACIÓN PARA LOS ENLACES DEL MENÚ
 * ---------------------------------------
 */
+.navbar .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: auto;
+  right: 0;
+  transform: translateY(-10px);
+  z-index: 1050;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  display: block; /* Sobreescribe el display por defecto de Bootstrap */
+}
+
+.navbar .dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.navbar .dropdown-menu li {
+  transition: transform 0.2s ease-in-out;
+}
+
+.navbar .dropdown-menu li:hover {
+  transform: translateX(5px);
+}
+
 .navbar .dropdown-menu li a:hover {
   padding: auto; 
   border: none; 
