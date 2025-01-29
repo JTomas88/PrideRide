@@ -3,13 +3,13 @@
     <h2>{{ "PERFIL_USUARIO.INFO_PERSONAL" | translate }}</h2>
   </div>
 
-  <ion-row class="d-flex justify-content-center mb-4">
-    <div class="d-flex boton-foto">
+  <ion-row class="d-flex justify-content-center mb-4 position-relative">
+    <div class="boton-foto">
       <button type="button" class="btn btn_bg boton">
         {{ "PERFIL_USUARIO.FOTO" | translate }}
       </button>
     </div>
-    <div class="d-flex boton-x">
+    <div class="boton-x">
       <button
         type="button"
         matTooltip="Elimina tu foto"
@@ -20,15 +20,15 @@
     </div>
 
     <ion-col>
-      <div>
+      <div class="img-container"> 
         <img
           src="../../../assets/User-Profile-PNG-Image.png"
-          style="width: 220px"
+          class="img_profile"
         />
       </div>
       <ion-row class="d-flex justify-content-center">
         <div>
-          <h5>{{userData.nombre}}</h5>
+          <h5>{{userData.nombre}} {{userData.apellidos}}</h5>
         </div>
       </ion-row>
     </ion-col>

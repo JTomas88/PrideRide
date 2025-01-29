@@ -82,6 +82,9 @@ def login():
     return jsonify({
         'id': usuario.id,
         'nombre': usuario.nombre,
+        'apellidos': usuario.apellidos,
+        'biografia': usuario.biografia,
+        'direccion': usuario.direccion,
         'rol': usuario.rol,
         'telefono': usuario.telefono,
         'vehiculos': usuario.vehiculos,
