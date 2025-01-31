@@ -2,20 +2,19 @@
   <ion-grid [fixed]="true" class="d-flex justify-content-center">
     <ion-row>
       <ion-col>
-        <div>
-          <img
-            title="imagen publicación de viaje"
-            src="../../../assets/imgs/bridge1.jpg"
-            class="img_travel"
-          />
+        <div class="container">
+          <img title="imagen publicación de viaje" src="../../../assets/imgs/bridge1.jpg" class="img_travel" />
         </div>
       </ion-col>
       <ion-col>
-        <div>
+        <div class="container">
           <h2>{{ 'HOME.NEW_TRAVEL_TITLE' | translate }}</h2>
-          <button type="button" mat-raised-button class="me-2 btns btn_bg" (click)="openNewTravel()">
-            {{ 'HOME.NEW_TRAVEL_BUTTON' | translate }}
-          </button>
+          <div class="d-flex justify-content-center">
+            <button type="button" mat-raised-button class="me-2 btns btn_bg travel-btn" (click)="openNewTravel()">
+              <mat-icon class="travel-icon">map</mat-icon>
+              <span class="travel-text">{{ 'HOME.NEW_TRAVEL_BUTTON' | translate }}</span>
+            </button>
+          </div>
         </div>
       </ion-col>
     </ion-row>
