@@ -5,7 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { MatDivider } from '@angular/material/divider';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
@@ -22,7 +21,6 @@ import { Usuario } from 'src/app/models/user/usuario.model';
     IonicModule,
     MatButtonModule,
     RouterModule,
-    MatDivider,
     JumbotronComponent,
     PagesnavbarComponent,
   ],
@@ -38,7 +36,7 @@ export class FaqsPage implements OnInit {
     if (
       this.userData &&
       Object.keys(this.userData).length > 0 &&
-      this.userData.email
+      this.userData.usuario.email
     ) {
       this.userLoggedIn = true;
     } else {

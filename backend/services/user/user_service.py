@@ -2,11 +2,13 @@
 #  SERVICIO DEDICADO PARA LA INFORMACIÓN DEL USUARIO  #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
+from datetime import datetime
 from flask import Blueprint, jsonify, Response,  request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from extensions import db
-from models.usuario import Usuario, RolUsuarioEnum
+from sqlalchemy.orm import joinedload 
+from models import Usuario, Monedero, RolUsuarioEnum
 
 
 # Nombre único para evitar conflictos
@@ -33,19 +35,25 @@ def crear_usuario():
         return jsonify({"error": "El correo electrónico ya existe"}), 400
 
     codificar_password = generate_password_hash(data['password'])
-    nuevo_usuario = Usuario(
+    nuevo_usuario = Usuario (
         nombre=data['nombre'],
         apellidos=data['apellidos'],
         email=data['email'],
         password=codificar_password,
         telefono=data.get('telefono'),
         biografia=data.get('biografia'),
-        vehiculos=data.get('vehiculos'),
         direccion=data.get('direccion'), 
-        rol=data.get('rol', RolUsuarioEnum.usuario.value)
+        rol=data.get('rol', RolUsuarioEnum.usuario.value),
+        carnet_conducir_verificado=data.get('carnet_conducir_verificado', False),
+        numero_carnet_conducir=data.get('numero_carnet_conducir'),
+        fecha_vencimiento_carnet=datetime.strptime(data['fecha_vencimiento_carnet'], '%Y-%m-%d') 
+        if data.get('fecha_vencimiento_carnet') else None
     )
 
     db.session.add(nuevo_usuario)
+    db.session.commit()
+
+    nuevo_usuario.monedero = Monedero()
     db.session.commit()
 
     access_token = create_access_token(identity=nuevo_usuario.id)
@@ -80,15 +88,7 @@ def login():
     access_token = create_access_token(identity=usuario.id)
 
     return jsonify({
-        'id': usuario.id,
-        'nombre': usuario.nombre,
-        'apellidos': usuario.apellidos,
-        'biografia': usuario.biografia,
-        'direccion': usuario.direccion,
-        'rol': usuario.rol,
-        'telefono': usuario.telefono,
-        'vehiculos': usuario.vehiculos,
-        'email': usuario.email,
+        'usuario': usuario.serialize(),
         'access_token': access_token
     }), 200
 
@@ -97,5 +97,25 @@ def login():
 #
 @user_blueprint.route('/obtener_usuarios', methods=['GET'])
 def obtener_usuarios():
-    listaUsuarios = Usuario.query.all()
-    return jsonify([usuarios.serialize() for usuarios in listaUsuarios])
+    lista_usuarios = Usuario.query.options(
+        joinedload(Usuario.vehiculos),
+        joinedload(Usuario.monedero),
+        joinedload(Usuario.puntuaciones)
+    ).all()
+    return jsonify([usuario.serialize() for usuario in lista_usuarios])
+
+
+#
+# ACTUALIZAR DATOS DEL USUARIO
+#
+@user_blueprint.route('/<int:user_id>', methods=['PUT'])
+def actualizar_usuario(user_id):
+    usuario = Usuario.query.get_or_404(user_id)
+    data = request.json
+    
+    for key in ['nombre', 'apellidos', 'telefono', 'biografia', 'direccion']:
+        if key in data:
+            setattr(usuario, key, data[key])
+    
+    db.session.commit()
+    return jsonify(usuario.serialize()), 200

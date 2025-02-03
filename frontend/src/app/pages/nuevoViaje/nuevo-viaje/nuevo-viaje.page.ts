@@ -71,7 +71,7 @@ export class NuevoViajePage implements OnInit {
     if (
       this.userData &&
       Object.keys(this.userData).length > 0 &&
-      this.userData.email
+      this.userData.usuario.email
     ) {
       this.userLoggedIn = true;
     } else {

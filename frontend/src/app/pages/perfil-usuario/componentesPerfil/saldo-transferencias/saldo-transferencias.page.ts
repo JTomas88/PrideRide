@@ -37,6 +37,6 @@ export class SaldoTransferenciasPage implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userLoggedIn = !!(this.userData && this.userData.email);
+    this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
   }
 }

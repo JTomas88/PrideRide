@@ -24,7 +24,7 @@ export class TerminosPage implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userLoggedIn = !!(this.userData && this.userData.email);
+    this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
 
     const hoy = new Date();
     this.fechaActual = hoy.toLocaleDateString('es-ES', {

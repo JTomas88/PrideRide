@@ -23,7 +23,7 @@ export class NavbarComponent  implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+    if (this.userData && Object.keys(this.userData.usuario).length > 0 && this.userData.usuario.email) {
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;

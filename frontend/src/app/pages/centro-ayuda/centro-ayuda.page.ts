@@ -40,7 +40,7 @@ export class CentroAyudaPage implements OnInit {
      * Si "userLoggedIn" tiene el valor "true" esto significa que el usuario está logado correctamente.
      * En el caso contrario, su valor sería "false".
      */
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.usuario.email) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;

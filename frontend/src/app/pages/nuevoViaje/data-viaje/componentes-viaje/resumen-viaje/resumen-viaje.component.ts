@@ -69,7 +69,7 @@ export class ResumenViajeComponent implements OnInit {
     if (
       this.userData &&
       Object.keys(this.userData).length > 0 &&
-      this.userData.email
+      this.userData.usuario.email
     ) {
       this.userLoggedIn = true;
     } else {
@@ -88,7 +88,7 @@ export class ResumenViajeComponent implements OnInit {
     const title: string = 'Confirmación de Viaje';
     const message: string = 'El viaje ha sido confirmado con éxito.';
   
-    this.travelService.guardarViaje(this.currentViajeData, this.userData.id).subscribe(
+    this.travelService.guardarViaje(this.currentViajeData, this.userData.usuario.id).subscribe(
       (response) => {
         const dialogRef = this.openHelp(title, message);
         console.log('Viaje guardado correctamente:', response);

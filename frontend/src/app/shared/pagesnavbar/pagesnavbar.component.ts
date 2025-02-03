@@ -57,7 +57,7 @@ export class PagesnavbarComponent implements OnInit {
     }
 
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.isLoggedIn = this.userData?.email ? true : false;
+    this.isLoggedIn = this.userData?.usuario.email ? true : false;
   }
 
   /**

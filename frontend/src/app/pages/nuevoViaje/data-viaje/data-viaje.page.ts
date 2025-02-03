@@ -83,7 +83,7 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userLoggedIn = !!(this.userData && this.userData.email);
+    this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
 
     this.travelService.viajeData$
       .pipe(takeUntil(this.destroy$))  // Elimina la suscripción al servicio una vez se sale del componente.

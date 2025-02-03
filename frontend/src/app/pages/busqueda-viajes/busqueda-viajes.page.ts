@@ -39,7 +39,7 @@ export class BusquedaViajesPage implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.email) {
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.usuario.email) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
