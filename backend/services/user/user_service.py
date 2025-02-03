@@ -14,10 +14,6 @@ from models import Usuario, Monedero, RolUsuarioEnum
 # Nombre único para evitar conflictos
 user_blueprint = Blueprint('user', __name__)
 
-@user_blueprint.route('/info', methods=['GET'])
-def get_user_info():
-    return jsonify({'username': 'test_user', 'email': 'test_user@example.com'})
-
 #
 # REGISTRAR USUARIO NUEVO
 #
