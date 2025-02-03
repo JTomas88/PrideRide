@@ -48,6 +48,7 @@ def crear_usuario():
         numero_carnet_conducir=data.get('numero_carnet_conducir'),
         fecha_vencimiento_carnet=datetime.strptime(data['fecha_vencimiento_carnet'], '%Y-%m-%d') 
         if data.get('fecha_vencimiento_carnet') else None
+        if data.get('fecha_nacimiento') else None
     )
 
     db.session.add(nuevo_usuario)
@@ -113,9 +114,12 @@ def actualizar_usuario(user_id):
     usuario = Usuario.query.get_or_404(user_id)
     data = request.json
     
-    for key in ['nombre', 'apellidos', 'telefono', 'biografia', 'direccion']:
+    for key in ['nombre', 'apellidos', 'telefono', 'biografia', 'direccion', 'fecha_nacimiento']:
         if key in data:
-            setattr(usuario, key, data[key])
+            if key == 'fecha_nacimiento' and data[key]:
+                setattr(usuario, key, datetime.strptime(data[key], '%Y-%m-%d'))
+            else:
+                setattr(usuario, key, data[key])
     
     db.session.commit()
     return jsonify(usuario.serialize()), 200

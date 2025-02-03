@@ -22,18 +22,27 @@ class Usuario(db.Model):
     carnet_conducir_verificado = db.Column(db.Boolean, default=False)
     numero_carnet_conducir = db.Column(db.String(50))
     fecha_vencimiento_carnet = db.Column(db.Date)
+    fecha_nacimiento = db.Column(db.Date)
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    # 
     # Relaciones
+    # 
+
+    # Relación de la tabla Vehículos con el usuario.
     vehiculos = db.relationship('Vehiculo', backref='usuario', cascade='all, delete-orphan')
+
+    # Relación de la tabla Monedero con el usuario.
     monedero = db.relationship('Monedero', backref='usuario', uselist=False, cascade='all, delete-orphan')
     
-    # Relación con puntuaciones, especificando la clave foránea correcta
+    # Relación de la tabla Puntuación con el usuario.
     puntuaciones = db.relationship('Puntuacion', backref='usuario', cascade='all, delete-orphan', foreign_keys='Puntuacion.usuario_id')
 
-    # Relación con las evaluaciones realizadas (evaluador_id), especificando la clave foránea
+    # Relación para las evaluaciones:
+    # -> Evaluaciones realizadas (evaluador_id), 
+    # 
     evaluaciones_realizadas = db.relationship(
         'Puntuacion', 
         foreign_keys='Puntuacion.evaluador_id', 
@@ -62,6 +71,7 @@ class Usuario(db.Model):
             "carnet_conducir_verificado": self.carnet_conducir_verificado,
             "numero_carnet_conducir": self.numero_carnet_conducir,
             "fecha_vencimiento_carnet": self.fecha_vencimiento_carnet.isoformat() if self.fecha_vencimiento_carnet else None,
+            "fecha_nacimiento": self.fecha_nacimiento.isoformat() if self.fecha_nacimiento else None,
             "vehiculos": [v.serialize() for v in self.vehiculos],
             "monedero": self.monedero.serialize() if self.monedero else None,
             "puntuacion_promedio": self.puntuacion_promedio,
