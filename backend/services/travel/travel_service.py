@@ -10,7 +10,7 @@ from extensions import db
 
 travel_blueprint = Blueprint('travel', __name__)
 
-@travel_blueprint.route('/crear', methods=['POST'])
+@travel_blueprint.route('/crear_viaje', methods=['POST'])
 @jwt_required() 
 def crear_viaje():
     data = request.json
@@ -25,6 +25,7 @@ def crear_viaje():
         fecha_salida = datetime.strptime(data['fecha_salida'], '%Y-%m-%dT%H:%M:%S')
     except ValueError:
         return jsonify({"error": "Formato de fecha de salida no válido"}), 400
+
 
     nuevo_viaje = Viaje(
         origen=data['origen'],

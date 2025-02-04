@@ -109,12 +109,12 @@ export class DataViajePage implements OnInit, OnDestroy {
    * @param destino -> Lugar de destino del viaje
    * @returns Devuelve una lista de rutas sugeridas en función del Origen y Destino
    */
-  buscarRutas(origen: string, destino: string): void {
+  buscarRutas(origen: string, destino: string, evitarPeajes: boolean = false): void {
     if (!origen || !destino) {
       console.error('El origen y destino deben estar definidos.');
       return;
     }
-
+  
     this.directionsService.route(
       {
         origin: origen,
@@ -125,18 +125,34 @@ export class DataViajePage implements OnInit, OnDestroy {
           departureTime: new Date(this.hora_seleccionada),
           trafficModel: google.maps.TrafficModel.OPTIMISTIC
         },
+        region: 'ES',
+        avoidTolls: evitarPeajes // 👈 Aquí indicamos si queremos evitar peajes o no
       },
       (response, status) => {
         if (status === google.maps.DirectionsStatus.OK && response) {
           this.routes = response.routes;
           console.log('Rutas sugeridas', this.routes);
-          this.selectRoute(0); // Selecciona la primera ruta por defecto
+          this.selectRoute(0);
         } else {
           console.error('Error al calcular rutas:', status);
         }
       }
     );
   }
+  
+
+  routeContainsTolls(route: any): boolean {
+    return route.legs.some((leg: any) =>
+      leg.steps.some((step: any) => step.tollRoad === true)
+    );
+  }
+  
+  onPeajeOptionChange(event: any): void {
+    const evitarPeajes = event.target.id === 'sinPeajes';
+    this.buscarRutas(this.origen, this.destino, evitarPeajes);
+  }
+
+  
 
   /**
    * Función que se utiliza para seleccionar una ruta

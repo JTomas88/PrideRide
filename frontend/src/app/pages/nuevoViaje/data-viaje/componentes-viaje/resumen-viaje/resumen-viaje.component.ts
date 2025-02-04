@@ -56,7 +56,10 @@ export class ResumenViajeComponent implements OnInit {
       !this.currentViajeData.hora_salida ||
       !this.currentViajeData.origen ||
       !this.currentViajeData.plazas ||
-      !this.currentViajeData.ruta_seleccionada
+      isNaN(Number(this.currentViajeData.plazas)) || 
+      !this.currentViajeData.ruta_seleccionada ||
+      !this.currentViajeData.ruta_seleccionada.summary ||
+      !this.currentViajeData.ruta_seleccionada.overview_polyline
     ) {
       this.router.navigate(['/home']);
       return;
@@ -88,7 +91,22 @@ export class ResumenViajeComponent implements OnInit {
     const title: string = 'Confirmación de Viaje';
     const message: string = 'El viaje ha sido confirmado con éxito.';
   
-    this.travelService.guardarViaje(this.currentViajeData, this.userData.usuario.id).subscribe(
+    /**
+     * Se valida que el número de plazas sea un número
+     */
+    this.currentViajeData.plazas = Number(this.currentViajeData.plazas);
+
+    // Si 'plazas' no es un número válido, mostrar error
+    if (isNaN(this.currentViajeData.plazas)) {
+      this.openError('Error!', 'El número de plazas no es válido. Por favor, verifica los datos.');
+      return;
+    }
+  
+    /**
+     * Llamamos al servicio de viajes para guardar el viaje en BBDD.
+     * Si el viaje se ha guardado correctamente se muestra mensaje de info
+     */
+    this.travelService.guardarViaje(this.currentViajeData).subscribe(
       (response) => {
         const dialogRef = this.openHelp(title, message);
         console.log('Viaje guardado correctamente:', response);
@@ -98,11 +116,12 @@ export class ResumenViajeComponent implements OnInit {
       },
       (error) => {
         const title = 'Error!';
-        this.openError(title, 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.')
+        this.openError(title, 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.');
         console.error('Error al guardar el viaje:', error);
       }
     );
   }
+  
   
   /**
    * Función para dar un formato específico a la fecha.

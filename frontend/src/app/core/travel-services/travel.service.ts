@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -29,15 +29,15 @@ export class TravelService {
    * Función para guardar los datos del viaje en la Base de Datos.
    * 
    * @param viajeData 
-   * @param id 
    * @returns 
    */
-  guardarViaje(viajeData: any, id: number): Observable<any> {
-    const viaje = {
-      ...viajeData,
-      userId: id,
-    };
+  guardarViaje(viajeData: any): Observable<any> {
+    const token = localStorage.getItem('token');  
 
-    return this.http.post(this.apiUrl, viaje);
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.post(this.apiUrl + '/travel/crear_viaje', JSON.stringify(viajeData), { headers });
   }
 }
