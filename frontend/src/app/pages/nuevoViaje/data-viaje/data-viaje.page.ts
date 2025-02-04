@@ -21,6 +21,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
@@ -44,7 +45,8 @@ import { MessageService } from 'primeng/api';
     SegundoPasoComponent,
     PagesnavbarComponent,
     PagesnavbarComponent,
-    ToastModule
+    ToastModule,
+    MatIcon
   ],
   providers: [provideNativeDateAdapter(), MessageService],
 })
@@ -66,6 +68,14 @@ export class DataViajePage implements OnInit, OnDestroy {
   tercer_paso: boolean = false;
 
   private directionsService: google.maps.DirectionsService;
+  /**
+   * Configuración para mostrar diferentes opciones en el mapa.
+   * 
+   */
+  mapOptions: google.maps.MapOptions = {
+    streetViewControl: false, 
+    fullscreenControl: false,
+  };
   private destroy$ = new Subject<void>();
 
   userLoggedIn: boolean = false;
@@ -110,10 +120,13 @@ export class DataViajePage implements OnInit, OnDestroy {
    * @returns Devuelve una lista de rutas sugeridas en función del Origen y Destino
    */
   buscarRutas(origen: string, destino: string, evitarPeajes: boolean = false): void {
+    const currentViajeData = this.travelService.getViajeData();
     if (!origen || !destino) {
       console.error('El origen y destino deben estar definidos.');
       return;
     }
+  
+    const fechaSalida = currentViajeData.fecha_salida ? new Date(currentViajeData.fecha_salida) : new Date();
   
     this.directionsService.route(
       {
@@ -122,14 +135,16 @@ export class DataViajePage implements OnInit, OnDestroy {
         travelMode: google.maps.TravelMode.DRIVING,
         provideRouteAlternatives: true,
         drivingOptions: {
-          departureTime: new Date(this.hora_seleccionada),
-          trafficModel: google.maps.TrafficModel.OPTIMISTIC
+          departureTime: fechaSalida,
+          trafficModel: google.maps.TrafficModel.OPTIMISTIC,
+          
         },
         region: 'ES',
-        avoidTolls: evitarPeajes // 👈 Aquí indicamos si queremos evitar peajes o no
+        avoidTolls: evitarPeajes
       },
       (response, status) => {
         if (status === google.maps.DirectionsStatus.OK && response) {
+          console.log('RUTAS: ', response);
           this.routes = response.routes;
           console.log('Rutas sugeridas', this.routes);
           this.selectRoute(0);
@@ -141,12 +156,12 @@ export class DataViajePage implements OnInit, OnDestroy {
   }
   
 
-  routeContainsTolls(route: any): boolean {
+  rutasQueContienenPeajes(route: any): boolean {
     return route.legs.some((leg: any) =>
       leg.steps.some((step: any) => step.tollRoad === true)
     );
   }
-  
+
   onPeajeOptionChange(event: any): void {
     const evitarPeajes = event.target.id === 'sinPeajes';
     this.buscarRutas(this.origen, this.destino, evitarPeajes);

@@ -76,16 +76,25 @@ ion-alert {
   margin-bottom: 10px;
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
-
-  &:hover {
-    background-color: #F0D7B4;
-  }
-
-  &.selected {
-    background-color: #B3B5E6;
-    color: white;
-  }
 }
+
+.route-option:hover {
+  background-color: #F0D7B4;
+}
+
+.route-option.selected {
+  background-color: #B3B5E6;
+  color: white;
+}
+
+.toll-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  text-align: right;
+}
+
 
 .route-list-container {
   max-height: 490px;
