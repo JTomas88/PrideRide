@@ -63,8 +63,8 @@
                 [class.selected]="selectedRoute?.routes?.[0] === route">
                 <div class="d-flex justify-content-between align-items-center">
                   <h3>{{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{ destino }}</h3>
-                  <label class="toll-label" *ngIf="rutasQueContienenPeajes(route)">Incluye peajes</label>
-                  <label class="toll-label" *ngIf="!rutasQueContienenPeajes(route)">Sin peajes</label>
+                  <label class="toll-label" *ngIf="marcaPeajes">Incluye peajes</label>
+                  <label class="toll-label" *ngIf="!marcaPeajes">Sin peajes</label>
                 </div>
                 <p>Distancia: {{ route.legs[0].distance?.text }}</p>
                 <p>Duración: {{ route.legs[0].duration?.text }}</p>
@@ -72,10 +72,15 @@
               </div>
             </div>
             <div *ngIf="routes.length === 0">
-              <p>
-                No se encontraron rutas. Intenta con otros puntos de origen o
-                destino.
-              </p>
+              <div *ngIf="isLoadingRoutes">
+                <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#B3B5E6" type="square-jelly-box" [fullScreen]="true">
+                  <p style="color: white">Cargando rutas...</p>
+                </ngx-spinner>
+              </div>
+              
+              <div *ngIf="!isLoadingRoutes && routes.length === 0">
+                <p>No se encontraron rutas. Intenta con otros puntos de origen o destino.</p>
+              </div>
             </div>
           </ion-col>
 

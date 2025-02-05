@@ -1,4 +1,4 @@
-import { Component, OnInit, model, OnDestroy } from '@angular/core';
+import { Component, OnInit, model, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapsModule, GoogleMap } from '@angular/google-maps';
 import { PrimerPasoComponent } from './componentes-viaje/primer-paso/primer-paso.component';
 import { SegundoPasoComponent } from './componentes-viaje/segundo-paso/segundo-paso.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
@@ -22,6 +22,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MatIcon } from '@angular/material/icon';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -46,7 +47,8 @@ import { MatIcon } from '@angular/material/icon';
     PagesnavbarComponent,
     PagesnavbarComponent,
     ToastModule,
-    MatIcon
+    MatIcon,
+    NgxSpinnerModule
   ],
   providers: [provideNativeDateAdapter(), MessageService],
 })
@@ -67,21 +69,27 @@ export class DataViajePage implements OnInit, OnDestroy {
   segundo_paso: boolean = false;
   tercer_paso: boolean = false;
 
+  marcaPeajes: boolean = true
+
   private directionsService: google.maps.DirectionsService;
+  @ViewChild(GoogleMap) googleMap!: GoogleMap;
+
   /**
    * Configuración para mostrar diferentes opciones en el mapa.
    * 
    */
   mapOptions: google.maps.MapOptions = {
-    streetViewControl: false, 
+    streetViewControl: false,
     fullscreenControl: false,
   };
   private destroy$ = new Subject<void>();
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
+  isLoadingRoutes: boolean = false;
 
-  constructor(private router: Router, private travelService: TravelService, private messageService: MessageService) {
+
+  constructor(private router: Router, private travelService: TravelService, private messageService: MessageService, private spinner: NgxSpinnerService) {
     this.directionsService = new google.maps.DirectionsService();
     // Escucha los eventos de navegación
     this.router.events.subscribe((event) => {
@@ -96,12 +104,25 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
 
     this.travelService.viajeData$
-      .pipe(takeUntil(this.destroy$))  // Elimina la suscripción al servicio una vez se sale del componente.
+      .pipe(takeUntil(this.destroy$)) // Elimina la suscripción al salir del componente.
       .subscribe((viajeData) => {
         this.selectedRoute = viajeData?.ruta_seleccionada || null;
-        if (viajeData.origen !== this.origen || viajeData.destino !== this.destino) {
-          this.origen = viajeData?.origen || 'Sin especificar';
-          this.destino = viajeData?.destino || 'Sin especificar';
+
+        const nuevoOrigen = viajeData?.origen || 'Sin especificar';
+        const nuevoDestino = viajeData?.destino || 'Sin especificar';
+
+        /**
+         * Hacemos una validación para ejecutar la función solo en caso
+         * de que el origen y el destino estén correctos.
+         * -----------------------------------------------------------
+         */
+        if (
+          nuevoOrigen !== 'Sin especificar' &&
+          nuevoDestino !== 'Sin especificar' &&
+          (nuevoOrigen !== this.origen || nuevoDestino !== this.destino)
+        ) {
+          this.origen = nuevoOrigen;
+          this.destino = nuevoDestino;
           this.buscarRutas(this.origen, this.destino);
         }
       });
@@ -120,14 +141,15 @@ export class DataViajePage implements OnInit, OnDestroy {
    * @returns Devuelve una lista de rutas sugeridas en función del Origen y Destino
    */
   buscarRutas(origen: string, destino: string, evitarPeajes: boolean = false): void {
+    this.isLoadingRoutes = true;
     const currentViajeData = this.travelService.getViajeData();
     if (!origen || !destino) {
       console.error('El origen y destino deben estar definidos.');
       return;
     }
-  
+
     const fechaSalida = currentViajeData.fecha_salida ? new Date(currentViajeData.fecha_salida) : new Date();
-  
+
     this.directionsService.route(
       {
         origin: origen,
@@ -137,37 +159,70 @@ export class DataViajePage implements OnInit, OnDestroy {
         drivingOptions: {
           departureTime: fechaSalida,
           trafficModel: google.maps.TrafficModel.OPTIMISTIC,
-          
+
         },
+        unitSystem: google.maps.UnitSystem.METRIC,
         region: 'ES',
         avoidTolls: evitarPeajes
       },
       (response, status) => {
+        this.isLoadingRoutes = false;
         if (status === google.maps.DirectionsStatus.OK && response) {
-          console.log('RUTAS: ', response);
+          if (response.request.avoidTolls === false) {
+            this.marcaPeajes = true
+          } else {
+            this.marcaPeajes = false
+          }
           this.routes = response.routes;
-          console.log('Rutas sugeridas', this.routes);
+
+          this.dibujoLineaEnMapa(this.routes);
+
           this.selectRoute(0);
         } else {
           console.error('Error al calcular rutas:', status);
+          this.routes = [];
         }
       }
     );
   }
+
+  dibujoLineaEnMapa(respuestaServicioGoogle: any) {
+    // Verifica si hay rutas disponibles antes de acceder a ellas.
+    if (respuestaServicioGoogle.routes && respuestaServicioGoogle.routes.length > 0) {
+      const route = respuestaServicioGoogle.routes[0];
+  
+      setTimeout(() => {
+        if (this.googleMap && this.googleMap.googleMap) {
+          const polyline = new google.maps.Polyline({
+            path: route.overview_path,
+            strokeColor: "#B3B5E6",
+            strokeOpacity: 1,
+            strokeWeight: 5,
+          });
+  
+          polyline.setMap(this.googleMap.googleMap);
+        } else {
+          console.error('El mapa aún no está disponible.');
+        }
+      }, 500);
+    } else {
+      console.error('No se encontraron rutas en la respuesta de Google Directions Service.');
+    }
+  }
   
 
-  rutasQueContienenPeajes(route: any): boolean {
-    return route.legs.some((leg: any) =>
-      leg.steps.some((step: any) => step.tollRoad === true)
-    );
-  }
-
+  /**
+   * Función para saber si se está marcando la opción "Con peajes" o "Sin peajes"
+   * Cada vez que se cambia la opción se vuelven a buscar las rutas, 
+   * pero cambiando la opción que incluya los peajes.
+   * 
+   * @param event Información del input seleccionado.
+   */
   onPeajeOptionChange(event: any): void {
     const evitarPeajes = event.target.id === 'sinPeajes';
     this.buscarRutas(this.origen, this.destino, evitarPeajes);
+    this.routes = [];
   }
-
-  
 
   /**
    * Función que se utiliza para seleccionar una ruta
@@ -176,27 +231,28 @@ export class DataViajePage implements OnInit, OnDestroy {
    * @param index -> Índice de la ruta seleccionada.
    */
   selectRoute(index: number): void {
-    if (this.selectedRoute && this.selectedRoute.routes[0] === this.routes[index]) {
+    if (!this.routes || this.routes.length === 0) {
+      console.error('No hay rutas disponibles.');
       return;
     }
 
     this.selectedRoute = {
       routes: [this.routes[index]],
-      request: {},
+      request: {} as google.maps.DirectionsRequest,
     } as google.maps.DirectionsResult;
 
-    /**
-     * Guardamos la ruta seleccionada en el servicio del viaje
-     * para mantener los datos temporalmente, mientras se publica
-     * un nuevo viaje.
-     */
-    const currentViajeData = this.travelService.getViajeData() || {};
+    this.dibujoLineaEnMapa(this.selectedRoute);
+
+
+    // Guardar la ruta seleccionada en el servicio
     const viajeData = {
-      ...currentViajeData,
+      ...this.travelService.getViajeData(),
       ruta_seleccionada: this.selectedRoute,
     };
     this.travelService.setViajeData(viajeData);
   }
+
+
 
   /**
    * Función para completar el primer paso.
@@ -221,8 +277,6 @@ export class DataViajePage implements OnInit, OnDestroy {
       this.segundo_paso = true;
     }
   }
-
-
 
   /**
    * Permite volver al paso previo

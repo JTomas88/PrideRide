@@ -35,7 +35,8 @@
             "styles": [
               "src/global.scss",
               "src/theme/variables.scss",
-              "node_modules/cookieconsent/build/cookieconsent.min.css"
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
             ],
             "scripts": [
               "node_modules/cookieconsent/build/cookieconsent.min.js"
@@ -115,7 +116,8 @@
             "styles": [
               "src/global.scss",
               "src/theme/variables.scss",
-              "node_modules/cookieconsent/build/cookieconsent.min.css"
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
             ],
             "scripts": ["node_modules/cookieconsent/build/cookieconsent.min.js"]
           },
