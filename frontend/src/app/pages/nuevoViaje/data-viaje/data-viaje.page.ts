@@ -72,6 +72,7 @@ export class DataViajePage implements OnInit, OnDestroy {
   marcaPeajes: boolean = true
 
   private directionsService: google.maps.DirectionsService;
+  private polyline: google.maps.Polyline | null = null;
   @ViewChild(GoogleMap) googleMap!: GoogleMap;
 
   /**
@@ -175,7 +176,7 @@ export class DataViajePage implements OnInit, OnDestroy {
           }
           this.routes = response.routes;
 
-          this.dibujoLineaEnMapa(this.routes);
+          this.dibujoLineaEnMapa(this.routes[0]);
 
           this.selectRoute(0);
         } else {
@@ -186,28 +187,32 @@ export class DataViajePage implements OnInit, OnDestroy {
     );
   }
 
-  dibujoLineaEnMapa(respuestaServicioGoogle: any) {
-    // Verifica si hay rutas disponibles antes de acceder a ellas.
-    if (respuestaServicioGoogle.routes && respuestaServicioGoogle.routes.length > 0) {
-      const route = respuestaServicioGoogle.routes[0];
-  
-      setTimeout(() => {
-        if (this.googleMap && this.googleMap.googleMap) {
-          const polyline = new google.maps.Polyline({
-            path: route.overview_path,
-            strokeColor: "#B3B5E6",
-            strokeOpacity: 1,
-            strokeWeight: 5,
-          });
-  
-          polyline.setMap(this.googleMap.googleMap);
-        } else {
-          console.error('El mapa aún no está disponible.');
+  /**
+   * Función que muestra en el mapa el recorrido de las rutas
+   * Este se muestra con unos estilos configurados en esta función.
+   * 
+   * 
+   * @param rutasSugeridas -> Rutas que sugiere el servicio de Google
+   */
+  dibujoLineaEnMapa(route: google.maps.DirectionsRoute) {
+    setTimeout(() => {
+      if (this.googleMap && this.googleMap.googleMap) {
+        /** -> Elimina la línea anterior dibujada en el mapa si existe. */
+        if (this.polyline) {
+          this.polyline.setMap(null);
         }
-      }, 500);
-    } else {
-      console.error('No se encontraron rutas en la respuesta de Google Directions Service.');
-    }
+        /** -> Se dibuja la nueva línea sobre la que está predefinida por el mapa */
+        this.polyline = new google.maps.Polyline({
+          path: route.overview_path,
+          strokeColor: "#B3B5E6",
+          strokeOpacity: 1,
+          strokeWeight: 10,
+        });
+        this.polyline.setMap(this.googleMap.googleMap);
+      } else {
+        console.error('El mapa aún no está disponible.');
+      }
+    }, 300);
   }
   
 
@@ -241,8 +246,12 @@ export class DataViajePage implements OnInit, OnDestroy {
       request: {} as google.maps.DirectionsRequest,
     } as google.maps.DirectionsResult;
 
-    this.dibujoLineaEnMapa(this.selectedRoute);
-
+    /**
+     * Llamamos a la función "dibujoLineaEnMapa" para volver a 
+     * construir la línea de la ruta seleccionada.
+     * 
+     */
+    this.dibujoLineaEnMapa(this.routes[index]);
 
     // Guardar la ruta seleccionada en el servicio
     const viajeData = {
