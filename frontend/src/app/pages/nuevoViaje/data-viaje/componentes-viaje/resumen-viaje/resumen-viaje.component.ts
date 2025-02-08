@@ -18,14 +18,14 @@ import { ModalErrorComponent } from 'src/app/components/modal-error/modal-error.
 @Component({
   selector: 'app-resumen-viaje',
   standalone: true,
-  imports: [IonicModule, 
-    MatIcon, 
-    MatCardModule, 
-    MatDatepickerModule, 
-    FormsModule, 
-    PagesnavbarComponent, 
-    MatDivider, 
-    MatButtonModule, 
+  imports: [IonicModule,
+    MatIcon,
+    MatCardModule,
+    MatDatepickerModule,
+    FormsModule,
+    PagesnavbarComponent,
+    MatDivider,
+    MatButtonModule,
     CommonModule
   ],
   templateUrl: './resumen-viaje.component.html',
@@ -40,31 +40,6 @@ export class ResumenViajeComponent implements OnInit {
   constructor(private travelService: TravelService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.currentViajeData = this.travelService.getViajeData();
-
-    /**
-     * Validamos los datos almacenados en el servicio.
-     * Si no están correctamente almacenados, reenviamos al home para evitar errores.
-     * 
-     * Si están correctos se muestra un resumen del viaje.
-     */
-    if (
-      !this.currentViajeData ||
-      !this.currentViajeData.coche ||
-      !this.currentViajeData.destino ||
-      !this.currentViajeData.fecha_salida ||
-      !this.currentViajeData.hora_salida ||
-      !this.currentViajeData.origen ||
-      !this.currentViajeData.plazas ||
-      isNaN(Number(this.currentViajeData.plazas)) || 
-      !this.currentViajeData.ruta_seleccionada ||
-      !this.currentViajeData.ruta_seleccionada.summary ||
-      !this.currentViajeData.ruta_seleccionada.overview_polyline
-    ) {
-      this.router.navigate(['/home']);
-      return;
-    }
-
     /**
      * Se valida si el usuario está logado o no
      */
@@ -90,39 +65,30 @@ export class ResumenViajeComponent implements OnInit {
   confirmarViaje() {
     const title: string = 'Confirmación de Viaje';
     const message: string = 'El viaje ha sido confirmado con éxito.';
-  
-    /**
-     * Se valida que el número de plazas sea un número
-     */
-    this.currentViajeData.plazas = Number(this.currentViajeData.plazas);
 
-    // Si 'plazas' no es un número válido, mostrar error
+    this.currentViajeData.plazas = Number(this.currentViajeData.plazas);
     if (isNaN(this.currentViajeData.plazas)) {
       this.openError('Error!', 'El número de plazas no es válido. Por favor, verifica los datos.');
       return;
     }
-  
-    /**
-     * Llamamos al servicio de viajes para guardar el viaje en BBDD.
-     * Si el viaje se ha guardado correctamente se muestra mensaje de info
-     */
+
+    const fechaSalida = new Date(this.currentViajeData.fecha_salida).toISOString().split('T')[0];
+    this.currentViajeData.fecha_salida = fechaSalida;
+
     this.travelService.guardarViaje(this.currentViajeData).subscribe(
       (response) => {
         const dialogRef = this.openHelp(title, message);
-        console.log('Viaje guardado correctamente:', response);
         dialogRef.afterClosed().subscribe(() => {
           this.router.navigate(['/home']);
         });
       },
       (error) => {
-        const title = 'Error!';
-        this.openError(title, 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.');
+        this.openError('Error!', 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.');
         console.error('Error al guardar el viaje:', error);
       }
     );
   }
-  
-  
+
   /**
    * Función para dar un formato específico a la fecha.
    */
@@ -162,7 +128,7 @@ export class ResumenViajeComponent implements OnInit {
    * @param title Título que se va a mostrar en la ventana
    * @param message Mensaje que se va a mostrar en la ventana
    */
-  openError(title: string, message: string){
+  openError(title: string, message: string) {
     return this.dialog.open(ModalErrorComponent, {
       data: { title, message },
       disableClose: true,

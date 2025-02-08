@@ -281,7 +281,6 @@ export class DataViajePage implements OnInit, OnDestroy {
         life: 3000
       });
     } else {
-      console.log('Datos del servicio antes de continuar:', currentViajeData);
       this.primer_paso = false;
       this.segundo_paso = true;
     }

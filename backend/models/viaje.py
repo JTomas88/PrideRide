@@ -1,5 +1,6 @@
 from datetime import datetime
 from extensions import db
+import json
 
 class Viaje(db.Model):
     __tablename__ = 'viajes'
@@ -10,7 +11,7 @@ class Viaje(db.Model):
     plazas = db.Column(db.Integer, nullable=False)
     hora_salida = db.Column(db.String(5), nullable=False)
     fecha_salida = db.Column(db.DateTime, nullable=False)
-    ruta_seleccionada = db.Column(db.JSON)
+    ruta_seleccionada = db.Column(db.JSON, nullable=True)
 
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     usuario = db.relationship('Usuario', backref='viajes')

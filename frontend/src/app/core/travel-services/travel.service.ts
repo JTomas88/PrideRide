@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,12 +32,28 @@ export class TravelService {
    * @returns 
    */
   guardarViaje(viajeData: any): Observable<any> {
-    const token = localStorage.getItem('token');  
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
-    return this.http.post(this.apiUrl + '/travel/crear_viaje', JSON.stringify(viajeData), { headers });
+    const userDataString = localStorage.getItem('userData');  
+  
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      const usuarioId = userData.usuario.id;
+  
+      viajeData.usuario_id = usuarioId;
+    }  
+    
+    return this.http.post(this.apiUrl + '/travel/crear_viaje', viajeData);
   }
+
+  /**
+   * Función para obtener los viajes que ha creado un usuario.
+   * 
+   * @param usuarioId Recibe el id del usuario a consultar.
+   * @returns Devuelve la lista de viajes de ese usuario.
+   */
+  getViajesUsuario(usuarioId: number): Observable<any> {
+    return this.http.get(this.apiUrl + '/travel/obtener_viajes_usuario', {
+      params: { usuario_id: usuarioId.toString() }
+    });
+  }
+
 }

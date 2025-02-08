@@ -9,6 +9,7 @@ import { SaldoTransferenciasComponent } from '../botonesPerfil/saldo-transferenc
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButton } from '@angular/material/button';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { TravelService } from 'src/app/core/travel-services/travel.service';
 
 @Component({
   selector: 'app-datos-usuario',
@@ -21,12 +22,14 @@ export class DatosUsuarioComponent implements OnInit {
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
+  viajes_del_usuario: any;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private travelService: TravelService) {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
+    this.obtenerViajes()
   }
 
   openInfoVisible() {
@@ -40,5 +43,15 @@ export class DatosUsuarioComponent implements OnInit {
   }
   openSaldoTransferencias() {
     this.dialog.open(SaldoTransferenciasComponent, {});
+  }
+
+  /**
+   * Función para obtener los viajes que ha creado el usuario.
+   * 
+   */
+  obtenerViajes() {
+    this.travelService.getViajesUsuario(this.userData.usuario.id).subscribe((result) => {
+      console.log('Viajes del usuario: ', result);
+    })
   }
 }
