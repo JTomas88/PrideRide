@@ -40,6 +40,27 @@ export class ResumenViajeComponent implements OnInit {
   constructor(private travelService: TravelService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.currentViajeData = this.travelService.getViajeData();
+
+    /**
+     * Validamos los datos almacenados en el servicio.
+     * Si no están correctamente almacenados, reenviamos al home para evitar errores.
+     * 
+     * Si están correctos se muestra un resumen del viaje.
+     */
+    if (
+      !this.currentViajeData ||
+      !this.currentViajeData.coche ||
+      !this.currentViajeData.destino ||
+      !this.currentViajeData.fecha_salida ||
+      !this.currentViajeData.hora_salida ||
+      !this.currentViajeData.origen ||
+      !this.currentViajeData.plazas
+    ) {
+      this.router.navigate(['/home']);
+      return;
+    }
+
     /**
      * Se valida si el usuario está logado o no
      */
@@ -72,12 +93,26 @@ export class ResumenViajeComponent implements OnInit {
       return;
     }
 
+    if (
+      !this.currentViajeData.ruta_seleccionada ||
+      !this.currentViajeData.ruta_seleccionada.routes ||
+      this.currentViajeData.ruta_seleccionada.routes.length === 0 ||
+      !this.currentViajeData.ruta_seleccionada.routes[0].overview_polyline ||
+      this.currentViajeData.ruta_seleccionada.routes[0].overview_polyline.length < 2 || 
+      !this.currentViajeData.ruta_seleccionada.routes[0].overview_path ||
+      this.currentViajeData.ruta_seleccionada.routes[0].overview_path.length < 2 
+    ) {
+      this.openError('Error', 'La polilínea de la ruta no es válida.');
+      return;
+    }
+
     const fechaSalida = new Date(this.currentViajeData.fecha_salida).toISOString().split('T')[0];
     this.currentViajeData.fecha_salida = fechaSalida;
 
     this.travelService.guardarViaje(this.currentViajeData).subscribe(
       (response) => {
         const dialogRef = this.openHelp(title, message);
+        console.log('Viaje guardado correctamente:', response);
         dialogRef.afterClosed().subscribe(() => {
           this.router.navigate(['/home']);
         });
