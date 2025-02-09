@@ -1,30 +1,54 @@
-<app-pagesnavbar [backRoute]="'/nuevo-viaje'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
+<app-pagesnavbar
+  [backRoute]="'/nuevo-viaje'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-pagesnavbar>
 
 <ion-content [fullscreen]="true">
-  <app-jumbotron [title]="'Un espacio seguro para compartir cada kilómetro.'"
-    [imageSrc]="'../../assets/folder/jumbo4.jpg'" [helpText]="'JUMBOTRON.HELP'">
+  <app-jumbotron
+    [title]="'Un espacio seguro para compartir cada kilómetro.'"
+    [imageSrc]="'../../assets/folder/jumbo4.jpg'"
+    [helpText]="'JUMBOTRON.HELP'"
+  >
   </app-jumbotron>
 
-  <!-- PRIMER PASO PARA CREAR UN VIAJE -->
+  <!-- PRIMER PASO PARA CREAR UN VIAJE
+   Pantalla de seleccion de fecha, coche seleccionado y numero de plazas ofertadas-->
   <div class="container" id="primer_paso" *ngIf="primer_paso">
     <app-primer-paso></app-primer-paso>
     <div class="d-flex justify-content-center mt-3 mb-3">
       <p-toast position="bottom-center"></p-toast>
-      <button type="button" mat-raised-button class="btn_bg" (click)="onPrimerPasoComplete()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn_bg"
+        (click)="onPrimerPasoComplete()"
+      >
         Continuar
       </button>
     </div>
   </div>
 
-  <!-- SEGUNDO PASO PARA CREAR UN VIAJE -->
+  <!-- SEGUNDO PASO PARA CREAR UN VIAJE
+   Selección de origen y destino -->
   <div class="container" id="segundo_paso" *ngIf="segundo_paso">
     <app-segundo-paso></app-segundo-paso>
     <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
       <!-- Botón Atrás -->
-      <button type="button" mat-raised-button class="btn_bg" (click)="onSegundoPasoBack()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn_bg"
+        (click)="onSegundoPasoBack()"
+      >
         Atrás
       </button>
-      <button type="button" mat-raised-button class="btn_bg" (click)="onSegundoPasoComplete()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn_bg"
+        (click)="onSegundoPasoComplete()"
+      >
         Continuar
       </button>
     </div>
@@ -42,16 +66,27 @@
           <ion-col>
             <div class="d-flex align-items-center gap-3">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="peajes" checked
-                  (change)="onPeajeOptionChange($event)" />
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="peajes"
+                  checked
+                  (change)="onPeajeOptionChange($event)"
+                />
                 <label class="form-check-label" for="peajes">
                   Con peajes
                 </label>
               </div>
 
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="sinPeajes"
-                  (change)="onPeajeOptionChange($event)" />
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="sinPeajes"
+                  (change)="onPeajeOptionChange($event)"
+                />
                 <label class="form-check-label" for="sinPeajes">
                   Sin peajes
                 </label>
@@ -59,35 +94,66 @@
             </div>
             <div *ngIf="routes.length > 0">
               <div class="route-list-container">
-                <div *ngFor="let route of routes; let i = index" (click)="selectRoute(i)" class="route-option"
-                [class.selected]="selectedRoute?.routes?.[0] === route">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h3>{{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{ destino }}</h3>
-                  <label class="toll-label" *ngIf="marcaPeajes">Incluye peajes</label>
-                  <label class="toll-label" *ngIf="!marcaPeajes">Sin peajes</label>
+                <div
+                  *ngFor="let route of routes; let i = index"
+                  (click)="selectRoute(i)"
+                  class="route-option"
+                  [class.selected]="selectedRoute?.routes?.[0] === route"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h3>
+                      {{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{
+                      destino }}
+                    </h3>
+                    <label class="toll-label" *ngIf="marcaPeajes"
+                      >Incluye peajes</label
+                    >
+                    <label class="toll-label" *ngIf="!marcaPeajes"
+                      >Sin peajes</label
+                    >
+                  </div>
+                  <p>Distancia: {{ route.legs[0].distance?.text }}</p>
+                  <p>Duración: {{ route.legs[0].duration?.text }}</p>
                 </div>
-                <p>Distancia: {{ route.legs[0].distance?.text }}</p>
-                <p>Duración: {{ route.legs[0].duration?.text }}</p>
-              </div>
               </div>
             </div>
             <div *ngIf="routes.length === 0">
               <div *ngIf="isLoadingRoutes">
-                <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#B3B5E6" type="square-jelly-box" [fullScreen]="true">
+                <ngx-spinner
+                  bdColor="rgba(0, 0, 0, 0.8)"
+                  size="medium"
+                  color="#B3B5E6"
+                  type="square-jelly-box"
+                  [fullScreen]="true"
+                >
                   <p style="color: white">Cargando rutas...</p>
                 </ngx-spinner>
               </div>
-              
+
               <div *ngIf="!isLoadingRoutes && routes.length === 0">
-                <p>No se encontraron rutas. Intenta con otros puntos de origen o destino.</p>
+                <p>
+                  No se encontraron rutas. Intenta con otros puntos de origen o
+                  destino.
+                </p>
               </div>
             </div>
           </ion-col>
 
           <ion-col>
             <div class="contenedor_mapa">
-              <google-map [center]="mapCenter" [zoom]="zoom" [options]="mapOptions" height="500px" width="100%">
-                <map-directions-renderer *ngIf="selectedRoute" [directions]="selectedRoute"></map-directions-renderer>
+              <google-map
+                [center]="mapCenter"
+                [zoom]="zoom"
+                [options]="mapOptions"
+                height="500px"
+                width="100%"
+              >
+                <map-directions-renderer
+                  *ngIf="selectedRoute"
+                  [directions]="selectedRoute"
+                ></map-directions-renderer>
               </google-map>
             </div>
           </ion-col>
@@ -97,10 +163,20 @@
 
     <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
       <!-- Botón Atrás -->
-      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoBack()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn_bg"
+        (click)="onTercerPasoBack()"
+      >
         Atrás
       </button>
-      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoComplete()">
+      <button
+        type="button"
+        mat-raised-button
+        class="btn_bg"
+        (click)="onTercerPasoComplete()"
+      >
         Finalizar viaje
       </button>
     </div>
