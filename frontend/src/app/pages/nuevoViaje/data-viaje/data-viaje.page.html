@@ -59,11 +59,12 @@
                 </label>
               </div>
               <div class="form-check" *ngIf="waypoints.length > 0">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="rutaConParadas" />
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="rutaConParadas"
+                  [checked]="rutaConParadasSeleccionada" (change)="selectRouteWithParadas()" />
                 <label class="form-check-label" for="rutaConParadas">
                   Ruta con paradas
                 </label>
-              </div>
+              </div>             
             </div>
             <div *ngIf="routes.length > 0">
               <div class="route-list-container">
@@ -87,11 +88,25 @@
               </div>
             </div>
             <div *ngIf="routes.length === 0">
-              <!-- SPINNER DE CARGA -->
+              <!-- Spinner "Cargando rutas" -->
               <div *ngIf="isLoadingRoutes" class="tercer_paso_container">
-                <ngx-spinner bdColor="rgba(0,0,0,0.2)" size="small" color="#B3B5E6" type="square-jelly-box"
+                <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="small" color="#B3B5E6" type="square-jelly-box"
                   [fullScreen]="false">
-                  <p style="color: #B3B5E6"> Cargando rutas... </p>
+                  <div class="spinner_box">
+                    <mat-spinner></mat-spinner>
+                    <p style="color: #B3B5E6" class="mt-2"> Cargando rutas... </p>
+                  </div>
+                </ngx-spinner>
+              </div>
+
+              <!-- Spinner "Actualizando ruta" -->
+              <div *ngIf="isUpdatingRoute" class="tercer_paso_container">
+                <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="small" color="#B3B5E6" type="square-jelly-box"
+                  [fullScreen]="false">
+                  <div class="spinner_box">
+                    <mat-spinner></mat-spinner>
+                    <p style="color: #B3B5E6" class="mt-2"> Actualizando ruta... </p>
+                  </div>
                 </ngx-spinner>
               </div>
               <div *ngIf="!isLoadingRoutes && routes.length === 0">
@@ -108,7 +123,7 @@
             <div class="contenedor_mapa">
               <div class="d-flex justify-content-center">
                 <label *ngIf="!clickMapaParada" class="tooltip-bubble">
-                  Haz clic en el mapa para agregar paradas intermedias.
+                  Pulsa sobre el mapa para agregar paradas intermedias.
                 </label>
               </div>
               <google-map [center]="mapCenter" [zoom]="zoom" [options]="mapOptions" height="500px" width="100%">

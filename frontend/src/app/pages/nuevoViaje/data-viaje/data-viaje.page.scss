@@ -1,5 +1,9 @@
 @import "node_modules/ngx-spinner/animations/square-jelly-box.css";
 
+.mat-mdc-progress-spinner { 
+  --mdc-circular-progress-active-indicator-color: #B3B5E6; 
+}
+
 .header-content {
   display: flex;
   align-items: center;
@@ -124,7 +128,7 @@ ion-alert {
 
 .tooltip-bubble {
   position: absolute;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 8px 12px;
   border-radius: 8px;
@@ -133,6 +137,8 @@ ion-alert {
   z-index: 1000;
   transform: translate(-50%, -120%);
   animation: fadeIn 0.3s ease-in-out;
+  right: -67px;
+  top: 43px;
 
   &::after {
     content: "";
@@ -162,6 +168,26 @@ ion-alert {
   }
 }
 
-.tercer_paso_container{
-  border-radius: 15px !important;
+.tercer_paso_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
+
+.spinner_box {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+::ng-deep .ngx-spinner-overlay {
+  border-radius: 15px !important;
+  overflow: hidden;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px; 
+}
+

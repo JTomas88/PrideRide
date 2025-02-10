@@ -21,10 +21,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-data-viaje',
@@ -50,6 +50,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatIconModule,
     NgxSpinnerModule,
     MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideNativeDateAdapter(), MessageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -92,7 +93,10 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
-  isLoadingRoutes: boolean = false;
+
+  isLoadingRoutes = false;
+  rutaConParadasSeleccionada = false;
+  isUpdatingRoute = false;
 
   constructor(
     private router: Router,
@@ -271,10 +275,6 @@ export class DataViajePage implements OnInit, OnDestroy {
     this.routes = [];
   }
 
-  rutaConParadasInput() {
-
-  }
-
   /**
    * Función que se utiliza para seleccionar una ruta
    * de la lista de rutas sugeridas previamente.
@@ -319,6 +319,9 @@ export class DataViajePage implements OnInit, OnDestroy {
       console.error("El mapa aún no está disponible.");
       return;
     }
+  
+    this.isUpdatingRoute = true;
+  
     this.googleMap.googleMap.addListener("click", (event: google.maps.MapMouseEvent) => {
       if (event.latLng) {
         const nuevaParada: google.maps.DirectionsWaypoint = {
@@ -329,11 +332,13 @@ export class DataViajePage implements OnInit, OnDestroy {
         this.actualizarRuta();
       }
     });
+  
     if (this.clickMapaParada) {
-      this.clickMapaParada = false
+      this.clickMapaParada = false;
     }
   }
-
+  
+  
   /**
    * Función para actualizar la ruta cuando se añade una parada.
    * 
@@ -344,7 +349,9 @@ export class DataViajePage implements OnInit, OnDestroy {
       console.error("El origen y destino deben estar definidos.");
       return;
     }
-
+  
+    this.isLoadingRoutes = true;
+  
     this.directionsService.route(
       {
         origin: this.origen,
@@ -354,20 +361,31 @@ export class DataViajePage implements OnInit, OnDestroy {
         optimizeWaypoints: true,
       },
       (response, status) => {
+        this.isLoadingRoutes = false;
+  
         if (status === "OK" && response) {
           this.routes = response.routes;
           this.selectedRoute = response;
           this.directionsRenderer.setDirections(response);
-          this.travelService.setViajeData({ ...this.travelService.getViajeData(), ruta_seleccionada: response });
-          if (this.clickMapaParada) {
-            this.clickMapaParada = false
-          }
+  
+          // Actualiza el estado de la ruta con paradas
+          this.rutaConParadasSeleccionada = true;
         } else {
           console.error("Error al actualizar la ruta:", status);
         }
       }
     );
   }
+  
+
+  selectRouteWithParadas() {
+    if (this.selectedRoute) {
+      // Verifica si la ruta seleccionada tiene paradas y la dibuja
+      this.directionsRenderer.setDirections(this.selectedRoute);
+      this.rutaConParadasSeleccionada = true; // Actualiza el estado
+    }
+  }
+  
 
   /**
    * Función para completar el primer paso.
