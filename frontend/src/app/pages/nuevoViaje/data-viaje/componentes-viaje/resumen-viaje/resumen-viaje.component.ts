@@ -108,20 +108,30 @@ export class ResumenViajeComponent implements OnInit {
 
     const fechaSalida = new Date(this.currentViajeData.fecha_salida).toISOString().split('T')[0];
     this.currentViajeData.fecha_salida = fechaSalida;
+    
+    /**
+     * Se informa al usuario de que se va a confirmar (Guardar) el viaje que ha creado.
+     * Si acepta, el viaje se guardará en base de datos si todo está correcto.
+     * En caso de no estar algún dato correcto, se muestra un mensaje de error.
+     * 
+     */
+    const mensajeConfirmación = this.openHelp('Confirmar viaje', 'Si continuas se va a confirmar el viaje.');
+    mensajeConfirmación.afterClosed().subscribe(() => {
+      this.travelService.guardarViaje(this.currentViajeData).subscribe(
+        (response) => {
+          const dialogRef = this.openHelp(title, message);
+          console.log('Viaje guardado correctamente:', response);
+          dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/home']);
+          });
+        },
+        (error) => {
+          this.openError('Error!', 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.');
+          console.error('Error al guardar el viaje:', error);
+        }
+      );
+    })
 
-    this.travelService.guardarViaje(this.currentViajeData).subscribe(
-      (response) => {
-        const dialogRef = this.openHelp(title, message);
-        console.log('Viaje guardado correctamente:', response);
-        dialogRef.afterClosed().subscribe(() => {
-          this.router.navigate(['/home']);
-        });
-      },
-      (error) => {
-        this.openError('Error!', 'Error al guardar el viaje. Por favor, inténtalo de nuevo más tarde.');
-        console.error('Error al guardar el viaje:', error);
-      }
-    );
   }
 
   /**

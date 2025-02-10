@@ -10,6 +10,7 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 import { importProvidersFrom } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
@@ -60,6 +61,7 @@ bootstrapApplication(AppComponent, {
         preset: Aura
       }
     }),
+    provideAnimations(),
     importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig), HttpClientModule, TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

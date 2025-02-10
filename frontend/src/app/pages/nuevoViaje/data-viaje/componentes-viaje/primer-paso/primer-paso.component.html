@@ -8,9 +8,43 @@
           <ion-datetime presentation="date" [min]="hoy" [(ngModel)]="fecha_seleccionada"
             (ionChange)="onDateChange($event)"></ion-datetime>
         </div>
-
         <p class="mt-2">Fecha seleccionada: {{ getFormattedDate() }}</p>
       </div>
+
+      <div class="contenedor_seccion">
+        <h1 class="d-flex justify-content-center">HORA DE SALIDA</h1>
+        <div class="contenedor_hora">
+          <!-- Selector de hora para escritorio -->
+          <div *ngIf="isDesktop">
+            <mat-form-field>
+              <mat-label>Selecciona la hora</mat-label>
+              <input matInput [(ngModel)]="hora_seleccionada" [matTimepicker]="minutesPicker" (ngModelChange)="onTimeChange($event)">
+              <mat-timepicker-toggle matIconSuffix [for]="minutesPicker"/>
+              <mat-timepicker interval="1min" #minutesPicker/>
+            </mat-form-field>
+                                         
+          </div>
+
+          <!-- Selector de hora para móvil -->
+          <div *ngIf="!isDesktop">
+            <ion-item lines="none">
+              <ion-datetime-button datetime="timePicker"></ion-datetime-button>
+              <ion-modal [keepContentsMounted]="true">
+                <ng-template>
+                  <ion-datetime id="timePicker" presentation="time" (ionChange)="onTimeChange($event)"
+                    class="custom-datetime"></ion-datetime>
+                </ng-template>
+              </ion-modal>
+            </ion-item>
+          </div>
+
+        </div>
+        <p class="d-flex justify-content-center">Hora seleccionada: {{ getTime() }}</p>
+      </div>
+    </ion-col>
+
+    <!-- Columna derecha: Número de plazas y coche -->
+    <ion-col size="12" size-xl="6">
       <h1 class="d-flex justify-content-center">NÚMERO DE PLAZAS</h1>
       <div class="contenedor_inputs">
         <ion-select aria-label="n_personas" placeholder="Número de plazas" [(ngModel)]="plazas"
@@ -25,25 +59,6 @@
           <ion-select-option value="3">3</ion-select-option>
           <ion-select-option value="4">4</ion-select-option>
         </ion-select>
-      </div>
-    </ion-col>
-
-    <!-- Columna derecha: Hora y coche -->
-    <ion-col size="12" size-xl="6">
-      <div class="contenedor_seccion">
-        <h1 class="d-flex justify-content-center">HORA DE SALIDA</h1>
-        <div class="contenedor_hora">
-          <ion-item lines="none">
-            <ion-datetime-button datetime="timePicker"></ion-datetime-button>
-            <ion-modal [keepContentsMounted]="true">
-              <ng-template>
-                <ion-datetime id="timePicker" presentation="time" (ionChange)="onTimeChange($event)"
-                  class="custom-datetime"></ion-datetime>
-              </ng-template>
-            </ion-modal>
-          </ion-item>
-        </div>
-        <p class="d-flex justify-content-center">Hora seleccionada: {{ getTime() }}</p>
       </div>
 
       <div class="contenedor_seccion">
