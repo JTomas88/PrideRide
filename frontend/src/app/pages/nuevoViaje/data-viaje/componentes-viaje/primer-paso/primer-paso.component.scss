@@ -62,25 +62,18 @@ ion-select {
 :host{
   --mdc-filled-text-field-container-color: white;
   --mat-sys-surface-variant: white;
+  --mat-sys-primary: #e0a667;
+  // Color componentes de ionic
+  --ion-color-success:#e0a667;
+  --ion-color-success-shade:#e0a667;
+  --ion-color-success-tint: #e0a667;
 
-  // .mat-mdc-form-field {
-  //   border-radius: 15px;
-  //   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
-  //   --mat-mdc-form-field-floating-label-scale: 0.75;
-  //   display: inline-flex;
-  //   flex-direction: column;
-  //   min-width: 0;
-  //   text-align: left;
-  //   -moz-osx-font-smoothing: grayscale;
-  //   -webkit-font-smoothing: antialiased;
-  //   font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  //   background-color: white;
-  // }
   ::ng-deep .mat-mdc-text-field-wrapper {
     border-radius: 15px !important;
-    overflow: hidden; // Para evitar que el contenido sobresalga
+    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
   }
+
 }
 
 

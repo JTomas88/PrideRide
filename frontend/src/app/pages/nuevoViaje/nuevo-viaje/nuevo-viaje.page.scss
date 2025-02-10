@@ -1,6 +1,16 @@
 /**
 *   CONFIGURACIÓN PARA EL CONTENIDO DE LA PÁGINA    *
 **/
+:host{
+  --mdc-filled-text-field-container-color: white;
+  --mat-sys-surface-variant: white;
+  --mat-sys-primary: #e0a667;
+  // Color componentes de ionic
+  --ion-color-success:#e0a667;
+  --ion-color-success-shade:#e0a667;
+  --ion-color-success-tint: #e0a667;
+}
+
 .primera-seccion {
   position: relative;
   height: 600px;
