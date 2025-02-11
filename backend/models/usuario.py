@@ -1,6 +1,9 @@
-from models.enums import PreferenciasViajeEnum, RolUsuarioEnum
+from models.enums import PreferenciasViajeEnum, RolUsuarioEnum, Genero, Orientacion
 from extensions import db
 from datetime import datetime
+from enum import Enum
+
+
 
 
 class Usuario(db.Model):
@@ -10,20 +13,19 @@ class Usuario(db.Model):
     nombre = db.Column(db.String(120), nullable=False)
     apellidos = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), unique=True, nullable=False)
+    genero = db.Column(db.Enum(Genero), nullable=False)#
+    orientacion = db.Column(db.Enum(Orientacion), nullable=False) #
     pronombre = db.Column(db.String(250), nullable=True)
     password = db.Column(db.String(250), nullable=False)
     telefono = db.Column(db.String(15))
-    biografia = db.Column(db.String(500))
+    biografia = db.Column(db.String(500)) 
     fotoPerfil = db.Column(db.String(250), nullable=True)
     preferencias = db.Column(db.String(50), nullable=False, default=PreferenciasViajeEnum.silencio.value)
-    direccion = db.Column(db.String(200))
-    rol = db.Column(db.String(50), nullable=False, default=RolUsuarioEnum.usuario.value)
-
+    rolPerfil = db.Column(db.String(50), nullable=False, default=RolUsuarioEnum.usuario.value)
     carnet_conducir_verificado = db.Column(db.Boolean, default=False)
     numero_carnet_conducir = db.Column(db.String(50))
     fecha_vencimiento_carnet = db.Column(db.Date)
     fecha_nacimiento = db.Column(db.Date)
-
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

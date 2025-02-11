@@ -10,3 +10,23 @@ class PreferenciasViajeEnum(Enum):
     escuchar = "Escuchar música"
     dormir = "Dormir"
     silencio = "Silencio"
+
+class Genero(Enum):
+    masculino = "masculino"
+    femenino = "femenino"
+    nobinario =  "no binario"
+    noresponde = "Prefiero no contestar"
+
+class Orientacion(Enum):
+    Gay = "Gay"
+    Lesbiana = "Lesbiana"
+    Bisexual = "Bisexual"
+    Pansexual = "Pansexual"
+    Asexual = "Asexual"
+    Demisexual = "Demisexual"
+    Queer = "Queer"
+    Otro = "Otro"
+
+
+
+

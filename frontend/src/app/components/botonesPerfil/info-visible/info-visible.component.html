@@ -11,6 +11,62 @@
     <p>{{ "MODAL_INFOVISIBLE.SUBTITULO" | translate }}</p>
     <form>
       <div class="mb-3">
+        <label for="nombre" class="form-label">{{
+          "DATOS_USUARIO.NOMBRE" | translate
+        }}</label>
+        <input type="text" class="form-control" id="nombre" />
+      </div>
+
+      <div class="mb-3">
+        <label for="apellidos" class="form-label">{{
+          "DATOS_USUARIO.APELLIDOS" | translate
+        }}</label>
+        <input type="text" class="form-control" id="apellidos" />
+      </div>
+
+      <div class="mb-3">
+        <label for="genero" class="form-label">Género</label>
+        <select class="form-select" id="genero" formControlName="genero">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Masculino</option>
+          <option value="2">Femenino</option>
+          <option value="3">No binario</option>
+          <option value="4">Prefiero no decirlo</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="orientacion" class="form-label"
+          >¿Cuál es tu orientación sexual?
+          <span
+            class="ms-2 text-primary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Más detalles"
+          >
+            <i class="bi-question-circle"></i>
+          </span>
+        </label>
+        <select
+          class="form-select"
+          aria-label="Selección de orientación"
+          formControlName="orientacion"
+        >
+          >
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Gay</option>
+          <option value="2">Lesbiana</option>
+          <option value="3">Bisexual</option>
+          <option value="4">Pansexual</option>
+          <option value="5">Asexual</option>
+          <option value="6">Demisexual</option>
+          <option value="7">Queer</option>
+          <option value="8">Otro</option>
+        </select>
+      </div>
+
+      <!-- Pronombre -->
+      <div class="mb-3">
         <label for="pronombre" class="form-label">{{
           "MODAL_INFOVISIBLE.SEL_PRONOMBRE.PRONOMBRE" | translate
         }}</label>
@@ -33,13 +89,7 @@
         </select>
       </div>
 
-      <div class="mb-3">
-        <label for="nombre" class="form-label">{{
-          "DATOS_USUARIO.NOMBRE" | translate
-        }}</label>
-        <input type="password" class="form-control" id="nombre" />
-      </div>
-
+      <!-- Fecha de nacimiento -->
       <div class="mb-3">
         <label for="fnacimiento" class="form-label">{{
           "DATOS_USUARIO.FECHA_NACIMIENTO" | translate
@@ -47,17 +97,81 @@
         <input type="date" class="form-control" id="fnacimiento" />
       </div>
 
+      <!-- Edad -->
       <div class="mb-3">
         <label for="edad" class="form-label"
-          >{{ "DATOS_USUARIO.EDAD" | translate }}
+          >{{ "DATOS_USUARIO.EDAD" | translate }}:
         </label>
       </div>
 
+      <!-- Mis vehículos -->
       <div class="mb-4">
         <label for="vehiculos" class="form-label"
           >{{ "DATOS_USUARIO.MIS_VEHICULOS" | translate }}
         </label>
-        <input type="date" class="form-control" id="vehiculos" />
+        <ul>
+          <li>Ford Focus Rojo</li>
+          <li>Opel Astra Blanco</li>
+        </ul>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <select
+                class="form-select"
+                [(ngModel)]="marcaSeleccionada"
+                (change)="filtrarModelos()"
+                [ngModelOptions]="{ standalone: true }"
+                aria-label="Selección de marca"
+              >
+                <option value="" disabled selected>Marca</option>
+                <option
+                  *ngFor="let coche of listadoCoches"
+                  [value]="coche.marca"
+                >
+                  {{ coche.marca }}
+                </option>
+              </select>
+            </ion-col>
+            <ion-col size="4">
+              <select
+                class="form-select"
+                [(ngModel)]="modeloSeleccionado"
+                [disabled]="!marcaSeleccionada"
+                [ngModelOptions]="{ standalone: true }"
+                aria-label="Selección de modelo"
+              >
+                <option value="" disabled selected>Modelo</option>
+                <option
+                  *ngFor="let modelo of modelosFiltrados"
+                  [value]="modelo"
+                >
+                  {{ modelo }}
+                </option>
+              </select>
+            </ion-col>
+            <ion-col size="4">
+              <select
+                class="form-select"
+                aria-label="Selección de color"
+                [(ngModel)]="colorSeleccionado"
+                [ngModelOptions]="{ standalone: true }"
+                [disabled]="!modeloSeleccionado"
+              >
+                <option value="" disabled selected>Color</option>
+                <option *ngFor="let color of listadoColores" [value]="color">
+                  {{ color }}
+                </option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <div class="container d-flex justify-content-center mt-2">
+              <button type="button" class="btn btn_bg" mat-raised-button>
+                Añadir vehículo
+              </button>
+            </div>
+          </ion-row>
+        </ion-grid>
       </div>
 
       <div class="mb-4">

@@ -70,6 +70,10 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   marcaPeajes: boolean = true;
 
+  directionsDisplay = new google.maps.DirectionsRenderer({
+    polylineOptions: { strokeColor: '#ec3a14' },
+  });
+
   private directionsService: google.maps.DirectionsService;
   private directionsRenderer: google.maps.DirectionsRenderer;
   private polyline: google.maps.Polyline | null = null;
@@ -165,51 +169,54 @@ export class DataViajePage implements OnInit, OnDestroy {
     destino: string,
     evitarPeajes: boolean = false
   ): void {
-    this.isLoadingRoutes = true;
-    const currentViajeData = this.travelService.getViajeData();
-    if (!origen || !destino) {
-      console.error('El origen y destino deben estar definidos.');
-      return;
-    }
-
-    const fechaSalida = currentViajeData.fecha_salida
-      ? new Date(currentViajeData.fecha_salida)
-      : new Date();
-
-    this.directionsService.route(
-      {
-        origin: origen,
-        destination: destino,
-        travelMode: google.maps.TravelMode.DRIVING,
-        provideRouteAlternatives: true,
-        drivingOptions: {
-          departureTime: fechaSalida,
-          trafficModel: google.maps.TrafficModel.OPTIMISTIC,
-        },
-        unitSystem: google.maps.UnitSystem.METRIC,
-        region: 'ES',
-        avoidTolls: evitarPeajes,
-      },
-      (response, status) => {
-        this.isLoadingRoutes = false;
-        if (status === google.maps.DirectionsStatus.OK && response) {
-          if (response.request.avoidTolls === false) {
-            this.marcaPeajes = true;
-          } else {
-            this.marcaPeajes = false;
-          }
-          this.routes = response.routes;
-          this.directionsRenderer.setDirections(response);
-
-          // this.dibujoLineaEnMapa(this.routes[0]);
-
-          this.selectRoute(0);
-        } else {
-          console.error('Error al calcular rutas:', status);
-          this.routes = [];
-        }
+    setTimeout(() => {
+      this.isLoadingRoutes = true;
+      const currentViajeData = this.travelService.getViajeData();
+      if (!origen || !destino) {
+        console.error('El origen y destino deben estar definidos.');
+        return;
       }
-    );
+
+      const fechaSalida = currentViajeData.fecha_salida
+        ? new Date(currentViajeData.fecha_salida)
+        : new Date();
+
+      this.directionsService.route(
+        {
+          origin: origen,
+          destination: destino,
+          travelMode: google.maps.TravelMode.DRIVING,
+          provideRouteAlternatives: true,
+
+          drivingOptions: {
+            departureTime: fechaSalida,
+            trafficModel: google.maps.TrafficModel.OPTIMISTIC,
+          },
+          unitSystem: google.maps.UnitSystem.METRIC,
+          region: 'ES',
+          avoidTolls: evitarPeajes,
+        },
+        (response, status) => {
+          this.isLoadingRoutes = false;
+          if (status === google.maps.DirectionsStatus.OK && response) {
+            if (response.request.avoidTolls === false) {
+              this.marcaPeajes = true;
+            } else {
+              this.marcaPeajes = false;
+            }
+            this.routes = response.routes;
+            // this.directionsRenderer.setDirections(response);
+
+            this.dibujoLineaEnMapa(this.routes[0]);
+
+            this.selectRoute(0);
+          } else {
+            console.error('Error al calcular rutas:', status);
+            this.routes = [];
+          }
+        }
+      );
+    }, 600);
   }
 
   /**

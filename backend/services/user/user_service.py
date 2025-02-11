@@ -102,6 +102,20 @@ def obtener_usuarios():
     return jsonify([usuario.serialize() for usuario in lista_usuarios])
 
 
+
+#
+# OBTENER USUARIO POR ID
+#
+@user_blueprint.route('/obtener_usuario_por_id', methods=['GET'])
+def obtener_usuario_por_id(id):
+    usuario = Usuario.query.get(id)
+    if usuario is None:
+        return jsonify ({"error":"no se ha encontrado al usuario"}), 404
+    
+    return jsonify(usuario.serialize());
+
+
+
 #
 # ACTUALIZAR DATOS DEL USUARIO
 #
