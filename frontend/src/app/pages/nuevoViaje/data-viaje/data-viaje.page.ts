@@ -1,4 +1,4 @@
-import { Component, OnInit, model, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, model, OnDestroy, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
@@ -21,8 +21,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { MatIcon } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-data-viaje',
@@ -44,12 +46,14 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
     PrimerPasoComponent,
     SegundoPasoComponent,
     PagesnavbarComponent,
-    PagesnavbarComponent,
     ToastModule,
-    MatIcon,
+    MatIconModule,
     NgxSpinnerModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideNativeDateAdapter(), MessageService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DataViajePage implements OnInit, OnDestroy {
   selected = model<Date | null>(null);
@@ -69,10 +73,8 @@ export class DataViajePage implements OnInit, OnDestroy {
   tercer_paso: boolean = false;
 
   marcaPeajes: boolean = true;
-
-  directionsDisplay = new google.maps.DirectionsRenderer({
-    polylineOptions: { strokeColor: '#ec3a14' },
-  });
+  waypoints: google.maps.DirectionsWaypoint[] = [];
+  clickMapaParada: boolean = true;
 
   private directionsService: google.maps.DirectionsService;
   private directionsRenderer: google.maps.DirectionsRenderer;
@@ -91,7 +93,10 @@ export class DataViajePage implements OnInit, OnDestroy {
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
-  isLoadingRoutes: boolean = false;
+
+  isLoadingRoutes = false;
+  rutaConParadasSeleccionada = false;
+  isUpdatingRoute = false;
 
   constructor(
     private router: Router,
@@ -99,6 +104,7 @@ export class DataViajePage implements OnInit, OnDestroy {
     private messageService: MessageService,
     private spinner: NgxSpinnerService
   ) {
+
     this.directionsService = new google.maps.DirectionsService();
     // Escucha los eventos de navegación
     this.router.events.subscribe((event) => {
@@ -146,11 +152,13 @@ export class DataViajePage implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if (this.googleMap?.googleMap) {
-      this.directionsRenderer.setMap(this.googleMap.googleMap);
-    } else {
-      console.error('El mapa aún no está disponible.');
-    }
+    setTimeout(() => {
+      if (this.googleMap?.googleMap) {
+        this.directionsRenderer.setMap(this.googleMap.googleMap);
+      } else {
+        console.error('El mapa aún no está disponible.');
+      }
+    }, 500);
   }
 
   /**
@@ -169,11 +177,17 @@ export class DataViajePage implements OnInit, OnDestroy {
     destino: string,
     evitarPeajes: boolean = false
   ): void {
+    this.isLoadingRoutes = true;
+    this.spinner.show();
     setTimeout(() => {
-      this.isLoadingRoutes = true;
       const currentViajeData = this.travelService.getViajeData();
       if (!origen || !destino) {
         console.error('El origen y destino deben estar definidos.');
+        return;
+      }
+
+      if (!this.googleMap?.googleMap) {
+        console.error("El mapa aún no está disponible.");
         return;
       }
 
@@ -187,7 +201,6 @@ export class DataViajePage implements OnInit, OnDestroy {
           destination: destino,
           travelMode: google.maps.TravelMode.DRIVING,
           provideRouteAlternatives: true,
-
           drivingOptions: {
             departureTime: fechaSalida,
             trafficModel: google.maps.TrafficModel.OPTIMISTIC,
@@ -198,14 +211,15 @@ export class DataViajePage implements OnInit, OnDestroy {
         },
         (response, status) => {
           this.isLoadingRoutes = false;
-          if (status === google.maps.DirectionsStatus.OK && response) {
+          this.spinner.hide();
+          if (status === 'OK' && response) {
             if (response.request.avoidTolls === false) {
               this.marcaPeajes = true;
             } else {
               this.marcaPeajes = false;
             }
             this.routes = response.routes;
-            // this.directionsRenderer.setDirections(response);
+            this.directionsRenderer.setDirections(response);
 
             this.dibujoLineaEnMapa(this.routes[0]);
 
@@ -216,7 +230,7 @@ export class DataViajePage implements OnInit, OnDestroy {
           }
         }
       );
-    }, 600);
+    }, 2000)
   }
 
   /**
@@ -277,6 +291,7 @@ export class DataViajePage implements OnInit, OnDestroy {
       routes: [this.routes[index]],
       request: {} as google.maps.DirectionsRequest,
     } as google.maps.DirectionsResult;
+
     this.directionsRenderer.setDirections(this.selectedRoute);
 
     /**
@@ -293,6 +308,84 @@ export class DataViajePage implements OnInit, OnDestroy {
     };
     this.travelService.setViajeData(viajeData);
   }
+
+  /**
+   * Función para añadir paradas a una ruta
+   * 
+   * @returns Ruta actualizada con las paradas añadidas.
+   */
+  nuevasParadas() {
+    if (!this.googleMap?.googleMap) {
+      console.error("El mapa aún no está disponible.");
+      return;
+    }
+  
+    this.isUpdatingRoute = true;
+  
+    this.googleMap.googleMap.addListener("click", (event: google.maps.MapMouseEvent) => {
+      if (event.latLng) {
+        const nuevaParada: google.maps.DirectionsWaypoint = {
+          location: event.latLng,
+          stopover: true,
+        };
+        this.waypoints.push(nuevaParada);
+        this.actualizarRuta();
+      }
+    });
+  
+    if (this.clickMapaParada) {
+      this.clickMapaParada = false;
+    }
+  }
+  
+  
+  /**
+   * Función para actualizar la ruta cuando se añade una parada.
+   * 
+   * @returns Devuelve la ruta personalizada
+   */
+  actualizarRuta() {
+    if (!this.origen || !this.destino) {
+      console.error("El origen y destino deben estar definidos.");
+      return;
+    }
+  
+    this.isLoadingRoutes = true;
+  
+    this.directionsService.route(
+      {
+        origin: this.origen,
+        destination: this.destino,
+        waypoints: this.waypoints,
+        travelMode: google.maps.TravelMode.DRIVING,
+        optimizeWaypoints: true,
+      },
+      (response, status) => {
+        this.isLoadingRoutes = false;
+  
+        if (status === "OK" && response) {
+          this.routes = response.routes;
+          this.selectedRoute = response;
+          this.directionsRenderer.setDirections(response);
+  
+          // Actualiza el estado de la ruta con paradas
+          this.rutaConParadasSeleccionada = true;
+        } else {
+          console.error("Error al actualizar la ruta:", status);
+        }
+      }
+    );
+  }
+  
+
+  selectRouteWithParadas() {
+    if (this.selectedRoute) {
+      // Verifica si la ruta seleccionada tiene paradas y la dibuja
+      this.directionsRenderer.setDirections(this.selectedRoute);
+      this.rutaConParadasSeleccionada = true; // Actualiza el estado
+    }
+  }
+  
 
   /**
    * Función para completar el primer paso.
@@ -364,13 +457,14 @@ export class DataViajePage implements OnInit, OnDestroy {
         severity: 'error',
         summary: 'Faltan datos',
         detail: 'Por favor, selecciona una ruta para poder continuar.',
-        life: 3000,
+        life: 3000
       });
     } else {
       this.router.navigate(['/resumen-viaje'], {
-        queryParams: currentViajeData,
+        queryParams: currentViajeData
       });
     }
+    this.tercer_paso = false;
   }
 
   /**

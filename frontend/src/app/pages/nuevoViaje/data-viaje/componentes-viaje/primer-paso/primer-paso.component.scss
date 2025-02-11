@@ -1,3 +1,6 @@
+/* Importa Angular Material */
+@use "@angular/material" as mat;
+
 .contenedor_calendario,
 .contenedor_inputs {
   width: 60%;
@@ -16,7 +19,7 @@
 * Configuración para el botón de selección de la hora
 * ---------------------------------------------------
 */
-ion-datetime-button{
+ion-datetime-button {
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
 }
@@ -44,7 +47,7 @@ ion-item {
   border: none;
 }
 
-ion-select{
+ion-select {
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
 }
@@ -52,6 +55,27 @@ ion-select{
 .line {
   border-right: 2px solid #e0a667;
 }
+
+/*
+* AJUSTES PARA MODIFICAR SELECTOR DE HORA
+*/
+:host{
+  --mdc-filled-text-field-container-color: white;
+  --mat-sys-surface-variant: white;
+  --mat-sys-primary: #e0a667;
+  // Color componentes de ionic
+  --ion-color-success:#e0a667;
+  --ion-color-success-shade:#e0a667;
+  --ion-color-success-tint: #e0a667;
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  }
+
+}
+
 
 @media (max-width: 768px) {
   .contenedor_calendario,
@@ -84,13 +108,13 @@ ion-datetime {
 */
 ion-datetime.md::part(calendar-day active),
 ion-datetime.md::part(calendar-day active):focus {
-  background-color: #B3B5E6;
-  border-color: #B3B5E6;
+  background-color: #b3b5e6;
+  border-color: #b3b5e6;
   color: #fff;
 }
 
 ion-datetime.md::part(calendar-day today) {
-  border-color: #B3B5E6;
+  border-color: #b3b5e6;
 }
 
 /*
@@ -100,5 +124,5 @@ ion-datetime.md::part(calendar-day today) {
 ion-datetime.ios::part(calendar-day active),
 ion-datetime.ios::part(calendar-day active):focus {
   background-color: rgb(154 209 98 / 0.2);
-  color: #B3B5E6;
+  color: #b3b5e6;
 }

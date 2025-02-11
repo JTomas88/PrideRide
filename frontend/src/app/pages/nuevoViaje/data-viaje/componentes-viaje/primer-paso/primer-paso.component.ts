@@ -1,23 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIcon } from '@angular/material/icon';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, Platform } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TravelService } from 'src/app/core/travel-services/travel.service';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 registerLocaleData(localeEs);
 
 @Component({
   selector: 'app-primer-paso',
   standalone: true,
-  imports: [IonicModule, MatIcon, MatCardModule, MatDatepickerModule, FormsModule],
+  imports: [IonicModule, 
+    MatIcon, 
+    MatCardModule, 
+    MatDatepickerModule, 
+    FormsModule, 
+    MatTimepickerModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    CommonModule,
+  ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
@@ -26,6 +37,7 @@ registerLocaleData(localeEs);
   styleUrls: ['./primer-paso.component.scss'],
 })
 export class PrimerPasoComponent implements OnInit {
+  private readonly _adapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);;
   fecha_seleccionada: string | null = null;
   hora_seleccionada: string | null = null;
 
@@ -36,11 +48,20 @@ export class PrimerPasoComponent implements OnInit {
   plazas: string = '';
   cocheSeleccionado: string = '';
 
+  isMobileWeb: boolean = false;
+  isDesktop: boolean = true;
+
   hoy: string = new Date().toISOString();
 
-  constructor(private travelService: TravelService) { }
+  constructor(private travelService: TravelService, private platform: Platform) { 
+    this._adapter.setLocale('es-ES');
+  }
 
   ngOnInit() {
+
+    this.isMobileWeb = this.platform.is('mobileweb');
+    this.isDesktop = this.platform.is('desktop');
+
     const date = new Date();
 
     this.fecha_seleccionada = date.toISOString();
@@ -56,6 +77,8 @@ export class PrimerPasoComponent implements OnInit {
       this.cocheSeleccionado = viajeData.coche || '';
     }
   }
+
+
 
   /**
    * Función para guardar los datos temporalmente en el servicio de los viajes.
@@ -116,8 +139,15 @@ export class PrimerPasoComponent implements OnInit {
    * @param event -> Recibe la información del evento en el input de la selección de hora.
    */
   onTimeChange(event: any) {
-    const timeValue = new Date(event.detail.value);
+    let timeValue: Date;
+  
+    if (this.isDesktop) {
+      timeValue = new Date(event);
+    } else {
+      timeValue = new Date(event.detail.value);
+    }
     this.hora_seleccionada = timeValue.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     this.guardaDatosDelViajeEnServicio('hora_salida', this.hora_seleccionada);
   }
+  
 }
