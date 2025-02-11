@@ -1,5 +1,7 @@
 @import "node_modules/ngx-spinner/animations/square-jelly-box.css";
 
+
+
 .mat-mdc-progress-spinner { 
   --mdc-circular-progress-active-indicator-color: #B3B5E6; 
 }
@@ -191,3 +193,7 @@ ion-alert {
   padding: 20px; 
 }
 
+.sugerencia_paradas{
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}

@@ -24,7 +24,8 @@ import { MessageService } from 'primeng/api';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ResumenDinamicoComponent } from './componentes-viaje/resumen-dinamico/resumen-dinamico.component';
 
 @Component({
   selector: 'app-data-viaje',
@@ -46,6 +47,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     PrimerPasoComponent,
     SegundoPasoComponent,
     PagesnavbarComponent,
+    ResumenDinamicoComponent,
     ToastModule,
     MatIconModule,
     NgxSpinnerModule,
@@ -79,7 +81,11 @@ export class DataViajePage implements OnInit, OnDestroy {
   private directionsService: google.maps.DirectionsService;
   private directionsRenderer: google.maps.DirectionsRenderer;
   private polyline: google.maps.Polyline | null = null;
+  private destroy$ = new Subject<void>();
+
   @ViewChild(GoogleMap) googleMap!: GoogleMap;
+
+  currentViajeData: any;
 
   /**
    * Configuración para mostrar diferentes opciones en el mapa.
@@ -89,7 +95,6 @@ export class DataViajePage implements OnInit, OnDestroy {
     streetViewControl: false,
     fullscreenControl: false,
   };
-  private destroy$ = new Subject<void>();
 
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
@@ -97,6 +102,7 @@ export class DataViajePage implements OnInit, OnDestroy {
   isLoadingRoutes = false;
   rutaConParadasSeleccionada = false;
   isUpdatingRoute = false;
+  sugerenciasParadas: any[] = [];
 
   constructor(
     private router: Router,
@@ -130,7 +136,7 @@ export class DataViajePage implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$)) // Elimina la suscripción al salir del componente.
       .subscribe((viajeData) => {
         this.selectedRoute = viajeData?.ruta_seleccionada || null;
-
+        this.currentViajeData = viajeData;
         const nuevoOrigen = viajeData?.origen || 'Sin especificar';
         const nuevoDestino = viajeData?.destino || 'Sin especificar';
 
@@ -220,10 +226,9 @@ export class DataViajePage implements OnInit, OnDestroy {
             }
             this.routes = response.routes;
             this.directionsRenderer.setDirections(response);
+            this.sugerenciasParadas = [];
 
             this.dibujoLineaEnMapa(this.routes[0]);
-
-            this.selectRoute(0);
           } else {
             console.error('Error al calcular rutas:', status);
             this.routes = [];
@@ -262,6 +267,20 @@ export class DataViajePage implements OnInit, OnDestroy {
     }, 300);
   }
 
+
+  obtenerSugerenciasParadas() {
+    // Simulación de sugerencias basadas en la ruta seleccionada
+    this.sugerenciasParadas = [
+      { nombre: 'Área de Servicio A', distancia: '20km' },
+      { nombre: 'Gasolinera B', distancia: '45km' },
+      { nombre: 'Restaurante C', distancia: '75km' }
+    ];
+  }
+
+  seleccionarParada(parada: any) {
+    console.log('Parada seleccionada:', parada);
+  }
+
   /**
    * Función para saber si se está marcando la opción "Con peajes" o "Sin peajes"
    * Cada vez que se cambia la opción se vuelven a buscar las rutas,
@@ -293,13 +312,13 @@ export class DataViajePage implements OnInit, OnDestroy {
     } as google.maps.DirectionsResult;
 
     this.directionsRenderer.setDirections(this.selectedRoute);
-
+    this.rutaConParadasSeleccionada = true;
     /**
      * Llamamos a la función "dibujoLineaEnMapa" para volver a
      * construir la línea de la ruta seleccionada.
      *
      */
-    // this.dibujoLineaEnMapa(this.routes[index]);
+    this.dibujoLineaEnMapa(this.routes[index]);
 
     // Guardar la ruta seleccionada en el servicio
     const viajeData = {
@@ -307,6 +326,17 @@ export class DataViajePage implements OnInit, OnDestroy {
       ruta_seleccionada: this.selectedRoute,
     };
     this.travelService.setViajeData(viajeData);
+    this.isLoadingRoutes = true;
+    this.actualizarRuta();
+    this.obtenerSugerenciasParadas()
+  }
+
+  getFormattedDate(): string {
+    if (this.currentViajeData?.fecha_salida) {
+      const date = new Date(this.currentViajeData?.fecha_salida);
+      return date.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
+    return 'Ninguna fecha seleccionada.';
   }
 
   /**
@@ -319,9 +349,9 @@ export class DataViajePage implements OnInit, OnDestroy {
       console.error("El mapa aún no está disponible.");
       return;
     }
-  
+
     this.isUpdatingRoute = true;
-  
+
     this.googleMap.googleMap.addListener("click", (event: google.maps.MapMouseEvent) => {
       if (event.latLng) {
         const nuevaParada: google.maps.DirectionsWaypoint = {
@@ -332,13 +362,13 @@ export class DataViajePage implements OnInit, OnDestroy {
         this.actualizarRuta();
       }
     });
-  
+
     if (this.clickMapaParada) {
       this.clickMapaParada = false;
     }
   }
-  
-  
+
+
   /**
    * Función para actualizar la ruta cuando se añade una parada.
    * 
@@ -349,9 +379,9 @@ export class DataViajePage implements OnInit, OnDestroy {
       console.error("El origen y destino deben estar definidos.");
       return;
     }
-  
+
     this.isLoadingRoutes = true;
-  
+
     this.directionsService.route(
       {
         origin: this.origen,
@@ -362,30 +392,28 @@ export class DataViajePage implements OnInit, OnDestroy {
       },
       (response, status) => {
         this.isLoadingRoutes = false;
-  
+
         if (status === "OK" && response) {
           this.routes = response.routes;
           this.selectedRoute = response;
           this.directionsRenderer.setDirections(response);
-  
-          // Actualiza el estado de la ruta con paradas
+
           this.rutaConParadasSeleccionada = true;
+          this.obtenerSugerenciasParadas();
+          this.dibujoLineaEnMapa(this.routes[0]);
+          // Guardar solo la ruta con paradas
+          localStorage.setItem('rutaConParadas', JSON.stringify({
+            origen: this.origen,
+            destino: this.destino,
+            waypoints: this.waypoints,
+            selectedRoute: response
+          }));
         } else {
           console.error("Error al actualizar la ruta:", status);
         }
       }
     );
   }
-  
-
-  selectRouteWithParadas() {
-    if (this.selectedRoute) {
-      // Verifica si la ruta seleccionada tiene paradas y la dibuja
-      this.directionsRenderer.setDirections(this.selectedRoute);
-      this.rutaConParadasSeleccionada = true; // Actualiza el estado
-    }
-  }
-  
 
   /**
    * Función para completar el primer paso.
