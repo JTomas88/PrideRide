@@ -61,14 +61,13 @@ export const routes: Routes = [
       import('./pages/nuevoViaje/data-viaje/data-viaje.page').then(
         (m) => m.DataViajePage
       ),
-
   },
   {
     path: 'resumen-viaje',
     loadComponent: () =>
-      import('./pages/nuevoViaje/data-viaje/componentes-viaje/resumen-viaje/resumen-viaje.component').then(
-        (m) => m.ResumenViajeComponent
-      ),
+      import(
+        './pages/nuevoViaje/data-viaje/componentes-viaje/resumen-viaje/resumen-viaje.component'
+      ).then((m) => m.ResumenViajeComponent),
   },
   {
     path: 'centro-ayuda',
@@ -83,7 +82,7 @@ export const routes: Routes = [
       import('./pages/faqs/faqs.page').then((m) => m.FaqsPage),
   },
   {
-    path: 'mi-perfil',
+    path: 'info-visible',
     loadComponent: () =>
       import(
         './pages/perfil-usuario/componentesPerfil/mi-perfil/mi-perfil.page'
@@ -98,15 +97,19 @@ export const routes: Routes = [
   },
   {
     path: 'terminos',
-    loadComponent: () => import('./pages/terminos/terminos.page').then( m => m.TerminosPage)
+    loadComponent: () =>
+      import('./pages/terminos/terminos.page').then((m) => m.TerminosPage),
   },
   {
     path: 'saldo-transferencias',
-    loadComponent: () => import('./pages/perfil-usuario/componentesPerfil/saldo-transferencias/saldo-transferencias.page').then( m => m.SaldoTransferenciasPage)
+    loadComponent: () =>
+      import(
+        './pages/perfil-usuario/componentesPerfil/saldo-transferencias/saldo-transferencias.page'
+      ).then((m) => m.SaldoTransferenciasPage),
   },
   {
     path: 'decalogo',
-    loadComponent: () => import('./pages/decalogo/decalogo.page').then( m => m.DecalogoPage)
+    loadComponent: () =>
+      import('./pages/decalogo/decalogo.page').then((m) => m.DecalogoPage),
   },
-
 ];

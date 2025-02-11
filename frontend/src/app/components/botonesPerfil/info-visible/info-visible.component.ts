@@ -12,10 +12,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   CARS,
   COLORES,
+  COLOURS,
 } from './../../../models/vehiculos/marcas_modelos.model';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-info-visible',
@@ -42,11 +44,23 @@ export class InfoVisibleComponent implements OnInit {
   colorSeleccionado: string = '';
   modelosFiltrados: string[] = [];
   listadoColores: string[] = COLORES;
+  listColours: string[] = COLOURS;
+  validacionIdioma: boolean = true;
 
-  constructor(private dialogRef: MatDialogRef<InfoVisibleComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<InfoVisibleComponent>,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     console.log(this.listadoCoches);
+    const idioma = localStorage.getItem('language');
+
+    if (idioma === 'es') {
+      this.validacionIdioma = true;
+    } else {
+      this.validacionIdioma = false;
+    }
   }
 
   closeDialog() {
@@ -59,5 +73,10 @@ export class InfoVisibleComponent implements OnInit {
     );
     this.modelosFiltrados = coche ? coche.modelos : []; //si "coche" viene con algún dato, saca los modelos y los guarda en "modelosFiltrados". Si no (:), guarda un array vacio
     this.modeloSeleccionado = '';
+  }
+
+  openInfoVisible() {
+    this.router.navigate(['/info-visible'], {});
+    this.closeDialog();
   }
 }
