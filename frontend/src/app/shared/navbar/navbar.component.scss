@@ -2,6 +2,10 @@
   background-color: #F0D7B4;
 }
 
+ion-button {
+  color: #000000 !important;
+}
+
 .logo {
   width: 75px;
   border-radius: 50%;
@@ -86,3 +90,5 @@
 .navbar .dropdown-menu li:hover {
   transform: translateX(5px);
 }
+
+
