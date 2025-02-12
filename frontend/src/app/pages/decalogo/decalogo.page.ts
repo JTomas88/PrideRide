@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonAccordionGroup,
-  IonAccordion,
-  IonItem,
-  IonLabel,
-} from '@ionic/angular/standalone';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { IonicModule } from '@ionic/angular';
+import { Usuario } from 'src/app/models/user/usuario.model';
 
 @Component({
   selector: 'app-decalogo',
@@ -18,21 +11,26 @@ import {
   styleUrls: ['./decalogo.page.scss'],
   standalone: true,
   imports: [
-    IonLabel,
-    IonItem,
-    IonAccordion,
-    IonAccordionGroup,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
+    IonicModule,
     CommonModule,
     FormsModule,
-    IonAccordion,
+    NavbarComponent
   ],
 })
 export class DecalogoPage implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+
+    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.usuario.email) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
+  }
 }

@@ -8,9 +8,9 @@ import { BuscadorComponent } from '../../components/buscador/buscador.component'
 import { MatIconModule } from '@angular/material/icon';
 import { ResultadosBusquedaComponent } from 'src/app/components/resultados-busqueda/resultados-busqueda.component';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { ActivatedRoute } from '@angular/router';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-busqueda-viajes',
@@ -25,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
     MatIconModule,
     ResultadosBusquedaComponent,
     JumbotronComponent,
-    PagesnavbarComponent
+    NavbarComponent
   ],
 })
 export class BusquedaViajesPage implements OnInit {

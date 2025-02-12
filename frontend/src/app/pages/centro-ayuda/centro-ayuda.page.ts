@@ -6,15 +6,15 @@ import { IonicModule } from '@ionic/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
-import { PagesnavbarComponent } from "../../shared/pagesnavbar/pagesnavbar.component";
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-centro-ayuda',
   templateUrl: './centro-ayuda.page.html',
   styleUrls: ['./centro-ayuda.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule, IonicModule, MatButtonModule, RouterModule, MatDivider, PagesnavbarComponent]
+  imports: [CommonModule, FormsModule, MatIconModule, IonicModule, MatButtonModule, RouterModule, MatDivider, NavbarComponent]
 })
 export class CentroAyudaPage implements OnInit {
   

@@ -1,5 +1,8 @@
-<app-pagesnavbar [backRoute]="'/home'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
-
+<app-navbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-navbar>
 <ion-content [fullscreen]="true">
   <app-jumbotron [title]="'Tu camino, tu comunidad.'" [imageSrc]="'../../assets/folder/jumbo2.jpg'"
     [helpText]="'JUMBOTRON.HELP'">

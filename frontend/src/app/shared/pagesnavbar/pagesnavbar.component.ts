@@ -4,7 +4,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { IonicModule, Platform } from '@ionic/angular'; // Importamos Platform
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Usuario } from 'src/app/models/user/usuario.model';
 
 @Component({
@@ -34,10 +34,13 @@ export class PagesnavbarComponent implements OnInit {
   dynamicTitle: string = 'Buscar viaje';
   dynamicIcon: string = 'search';
 
+  validacionHomePage: boolean = true;
+  menuOpen = false;
+
   isMobileWeb: boolean = false;
   isDesktop: boolean = false;
 
-  constructor(private router: Router, private platform: Platform) { }
+  constructor(private router: Router, private platform: Platform, private translate: TranslateService) { }
 
   ngOnInit() {
     /**
@@ -54,6 +57,12 @@ export class PagesnavbarComponent implements OnInit {
       this.searchRoute = '/nuevo-viaje';
       this.dynamicTitle = 'Publicar viaje';
       this.dynamicIcon = 'add';
+    } 
+    
+    if (this.searchRoute === '/home') {
+      this.validacionHomePage = true;
+    } else {
+      this.validacionHomePage = false;
     }
 
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -67,6 +76,15 @@ export class PagesnavbarComponent implements OnInit {
     if (this.backRoute) {
       this.router.navigate([this.backRoute]);
     }
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  changeLanguage(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('language', lang);
   }
 
   /**

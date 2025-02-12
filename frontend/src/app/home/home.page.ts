@@ -11,6 +11,7 @@ import { TrayectosPopularesComponent } from '../components/trayectos-populares/t
 import { VentanaDudasComponent } from '../components/ventana-dudas/ventana-dudas.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+import { Usuario } from '../models/user/usuario.model';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,6 @@ import { AnimateOnScrollModule } from 'primeng/animateonscroll';
   styleUrls: ['home.page.scss'],
   imports: [
     IonContent,
-    NavbarComponent,
     FooterComponent,
     JumbotronComponent,
     BuscadorComponent,
@@ -29,14 +29,36 @@ import { AnimateOnScrollModule } from 'primeng/animateonscroll';
     TrayectosPopularesComponent,
     VentanaDudasComponent,
     TranslateModule,
-    AnimateOnScrollModule
-  ]
+    AnimateOnScrollModule,
+    NavbarComponent
+]
 })
 export class HomePage implements OnInit, AfterViewInit {
 
+  userLoggedIn: boolean = false;
+  userData: Usuario = {} as Usuario;
+
   constructor(private translate: TranslateService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+        /**
+     * Se recoge la información del usuario de la caché si la hay,
+     * en caso de no haber información, userData sería un objeto vacío {}.
+     */
+        this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        /**
+         * Se comprueba el contenido de "userData", si contiene información y adeás hay datos
+         * en el atributo "email" de "userData" entonces "userLoggedIn" pasaría a tener el valor "true".
+         * 
+         * Si "userLoggedIn" tiene el valor "true" esto significa que el usuario está logado correctamente.
+         * En el caso contrario, su valor sería "false".
+         */
+        if (this.userData && Object.keys(this.userData).length > 0 && this.userData.usuario.email) {
+          this.userLoggedIn = true;
+        } else {
+          this.userLoggedIn = false;
+        }
+  }
 
   ngAfterViewInit(): void {
     // Crear el observer cuando la vista se haya inicializado

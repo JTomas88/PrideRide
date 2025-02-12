@@ -1,5 +1,8 @@
-<app-pagesnavbar [backRoute]="'/nuevo-viaje'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
-
+<app-navbar
+  [backRoute]="'/nuevo-viaje'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-navbar>
 <ion-content [fullscreen]="true">
   <app-jumbotron [title]="'Un espacio seguro para compartir cada kilómetro.'"
     [imageSrc]="'../../assets/folder/jumbo4.jpg'" [helpText]="'JUMBOTRON.HELP'">

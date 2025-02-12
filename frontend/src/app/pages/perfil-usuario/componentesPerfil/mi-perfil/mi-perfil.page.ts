@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { MatDivider } from '@angular/material/divider';
 import { Usuario } from 'src/app/models/user/usuario.model';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -20,7 +20,7 @@ import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.com
     MatIcon,
     TranslateModule,
     MatDivider,
-    PagesnavbarComponent
+    NavbarComponent
   ],
 })
 export class MiPerfilPage implements OnInit {

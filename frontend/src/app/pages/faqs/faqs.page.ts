@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-faqs',
@@ -22,7 +22,7 @@ import { Usuario } from 'src/app/models/user/usuario.model';
     MatButtonModule,
     RouterModule,
     JumbotronComponent,
-    PagesnavbarComponent,
+    NavbarComponent,
   ],
 })
 export class FaqsPage implements OnInit {

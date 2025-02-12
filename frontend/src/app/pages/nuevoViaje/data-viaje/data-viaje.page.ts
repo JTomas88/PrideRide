@@ -10,12 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { PrimerPasoComponent } from './componentes-viaje/primer-paso/primer-paso.component';
 import { SegundoPasoComponent } from './componentes-viaje/segundo-paso/segundo-paso.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { TravelService } from '../../../core/travel-services/travel.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ResumenDinamicoComponent } from './componentes-viaje/resumen-dinamico/resumen-dinamico.component';
 import { TercerPasoComponent } from "./componentes-viaje/tercer-paso/tercer-paso.component";
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-data-viaje',
@@ -32,7 +32,7 @@ import { TercerPasoComponent } from "./componentes-viaje/tercer-paso/tercer-paso
     JumbotronComponent,
     PrimerPasoComponent,
     SegundoPasoComponent,
-    PagesnavbarComponent,
+    NavbarComponent,
     ResumenDinamicoComponent,
     TercerPasoComponent
 ],

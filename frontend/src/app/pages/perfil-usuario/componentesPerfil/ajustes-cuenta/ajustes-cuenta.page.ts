@@ -8,10 +8,9 @@ import {
   IonCol,
 } from '@ionic/angular/standalone';
 import { MatIcon } from '@angular/material/icon';
-import { MatDivider } from '@angular/material/divider';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-ajustes-cuenta',
@@ -25,7 +24,7 @@ import { Usuario } from 'src/app/models/user/usuario.model';
     CommonModule,
     FormsModule,
     TranslateModule,
-    PagesnavbarComponent,
+    NavbarComponent,
     MatIcon
   ],
 })
