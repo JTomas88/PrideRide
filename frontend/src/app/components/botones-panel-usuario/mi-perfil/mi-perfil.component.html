@@ -1,0 +1,287 @@
+<div class="container modal-infovisible">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>{{ "MODAL_INFOVISIBLE.TITULO" | translate }}</h2>
+    <button
+      mat-icon-button
+      (click)="openInfoVisible()"
+      aria-label="Abrir ventana"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      (click)="closeDialog()"
+      aria-label="Cerrar ventana de dialogo"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>{{ "MODAL_INFOVISIBLE.SUBTITULO" | translate }}</p>
+    <form>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">{{
+          "DATOS_USUARIO.NOMBRE" | translate
+        }}</label>
+        <input type="text" class="form-control" id="nombre" />
+      </div>
+
+      <div class="mb-3">
+        <label for="apellidos" class="form-label">{{
+          "DATOS_USUARIO.APELLIDOS" | translate
+        }}</label>
+        <input type="text" class="form-control" id="apellidos" />
+      </div>
+
+      <div class="mb-3">
+        <label for="pronombre" class="form-label">{{
+          "MODAL_INFOVISIBLE.SEL_PRONOMBRE.PRONOMBRE" | translate
+        }}</label>
+        <select class="form-select" aria-label="Selección de pronombre">
+          <option selected>
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.SELECCIONA" | translate }}
+          </option>
+          <option value="1">Él / He / Him</option>
+          <option value="2">Ella / She / Her</option>
+          <option value="3">Elle / They / Them</option>
+          <option value="4">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.OTROS" | translate }}
+          </option>
+          <option value="5">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.NINGUNO" | translate }}
+          </option>
+          <option value="6">
+            {{ "MODAL_INFOVISIBLE.SEL_PRONOMBRE.NO_RESPONDE" | translate }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="genero" class="form-label">{{
+          "MI_PERFIL.SELECTOR_GENERO.TITLE" | translate
+        }}</label>
+        <select class="form-select" id="genero" formControlName="genero">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Masculino</option>
+          <option value="2">Femenino</option>
+          <option value="3">No binario</option>
+          <option value="4">Prefiero no decirlo</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="orientacion" class="form-label"
+          >{{ "MI_PERFIL.SELECTOR_ORIENTACION.TITLE" | translate }}
+          <span
+            class="ms-2 text-primary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Más detalles"
+          >
+            <i class="bi-question-circle"></i>
+          </span>
+        </label>
+        <select
+          class="form-select"
+          aria-label="Selección de orientación"
+          formControlName="orientacion"
+        >
+          >
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Gay</option>
+          <option value="2">Lesbiana</option>
+          <option value="3">Bisexual</option>
+          <option value="4">Pansexual</option>
+          <option value="5">Asexual</option>
+          <option value="6">Demisexual</option>
+          <option value="7">Queer</option>
+          <option value="8">Otro</option>
+        </select>
+      </div>
+
+      <!-- Pronombre -->
+
+      <!-- Fecha de nacimiento -->
+      <div class="mb-3">
+        <label for="fnacimiento" class="form-label">{{
+          "DATOS_USUARIO.FECHA_NACIMIENTO" | translate
+        }}</label>
+        <input type="date" class="form-control" id="fnacimiento" />
+      </div>
+
+      <!-- Edad -->
+      <div class="mb-3">
+        <label for="edad" class="form-label"
+          >{{ "DATOS_USUARIO.EDAD" | translate }}:
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="bio" class="form-label">{{
+          "MI_PERFIL.SOBRE_TI" | translate
+        }}</label>
+        <textarea
+          class="form-control"
+          id="bio"
+          rows="5"
+          placeholder="{{ 'MI_PERFIL.PLACE_SOBRETI' | translate }}"
+        ></textarea>
+      </div>
+
+      <!-- Mis vehículos -->
+      <div class="mb-4">
+        <label for="vehiculos" class="form-label"
+          >{{ "DATOS_USUARIO.MIS_VEHICULOS" | translate }}
+        </label>
+        <ul>
+          <li>Ford Focus Rojo</li>
+          <li>Opel Astra Blanco</li>
+        </ul>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <select
+                class="form-select"
+                [(ngModel)]="marcaSeleccionada"
+                (change)="filtrarModelos()"
+                [ngModelOptions]="{ standalone: true }"
+                aria-label="Selección de marca"
+              >
+                <option value="" disabled selected>
+                  {{ "VEHICULOS.MARCA" | translate }}
+                </option>
+                <option
+                  *ngFor="let coche of listadoCoches"
+                  [value]="coche.marca"
+                >
+                  {{ coche.marca }}
+                </option>
+              </select>
+            </ion-col>
+            <ion-col size="4">
+              <select
+                class="form-select"
+                [(ngModel)]="modeloSeleccionado"
+                [disabled]="!marcaSeleccionada"
+                [ngModelOptions]="{ standalone: true }"
+                aria-label="Selección de modelo"
+              >
+                <option value="" disabled selected>
+                  {{ "VEHICULOS.MODELO" | translate }}
+                </option>
+                <option
+                  *ngFor="let modelo of modelosFiltrados"
+                  [value]="modelo"
+                >
+                  {{ modelo }}
+                </option>
+              </select>
+            </ion-col>
+            <ion-col size="4">
+              <div *ngIf="validacionIdioma">
+                <select
+                  class="form-select"
+                  aria-label="Selección de color"
+                  [(ngModel)]="colorSeleccionado"
+                  [ngModelOptions]="{ standalone: true }"
+                  [disabled]="!modeloSeleccionado"
+                >
+                  <option value="" disabled selected>
+                    {{ "VEHICULOS.COLOR" | translate }}
+                  </option>
+                  <option *ngFor="let color of listadoColores" [value]="color">
+                    {{ color }}
+                  </option>
+                </select>
+              </div>
+
+              <div *ngIf="!validacionIdioma">
+                <select
+                  class="form-select"
+                  aria-label="Selección de color"
+                  [(ngModel)]="colorSeleccionado"
+                  [ngModelOptions]="{ standalone: true }"
+                  [disabled]="!modeloSeleccionado"
+                >
+                  <option value="" disabled selected>
+                    {{ "VEHICULOS.COLOR" | translate }}
+                  </option>
+                  <option *ngFor="let color of listColours" [value]="color">
+                    {{ color }}
+                  </option>
+                </select>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <div class="container d-flex justify-content-center mt-2">
+              <button type="button" class="btn btn_bg" mat-raised-button>
+                {{ "PREF_VIAJE.ANADIR_VEHICULO" | translate }}
+              </button>
+            </div>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div class="mb-4">
+        <label for="preferencias" class="form-label">{{
+          "MI_PERFIL.PREF_VIAJE.CUANDO_VIAJO" | translate
+        }}</label>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            {{ "MI_PERFIL.PREF_VIAJE.HABLAR" | translate }}
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            {{ "MI_PERFIL.PREF_VIAJE.MUSICA" | translate }}
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            {{ "MI_PERFIL.PREF_VIAJE.DORMIR" | translate }}
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            {{ "MI_PERFIL.PREF_VIAJE.SILENCIO" | translate }}
+          </label>
+        </div>
+      </div>
+
+      <div class="btn d-flex justify-content-center">
+        <button type="submit" class="btn btn_bg" mat-raised-button>
+          {{ "GUARDAR" | translate }}
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

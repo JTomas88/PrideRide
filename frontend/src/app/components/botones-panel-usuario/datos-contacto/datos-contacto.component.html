@@ -1,0 +1,98 @@
+<div class="container modal-datoscontacto">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Datos de contacto</h2>
+    <button
+      mat-icon-button
+      (click)="openDatosContacto()"
+      aria-label="Abrir ventana"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      (click)="closeDialog()"
+      aria-label="Cerrar ventana de dialogo"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      Desde este apartado puedes modificar tu correo electrónico y tu teléfono
+      de contacto (Recuerda que son datos importante a la hora de realizar un
+      viaje)
+    </p>
+    <p>
+      Recuerda que si quieres ser un perfil verificado debes hacerlo en la
+      sección "Verificaciones"
+    </p>
+    <mat-divider></mat-divider>
+
+    <ion-row>
+      <ion-col>
+        <div class="mb-3">
+          <div>
+            <h5>Mi correo electrónico</h5>
+          </div>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <div>
+            <h5>Mi teléfono</h5>
+          </div>
+          <input
+            type="telefono"
+            class="form-control"
+            id="text"
+            aria-describedby="emailHelp"
+          />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <mat-divider class="mb-3"></mat-divider>
+
+    <p class="d-flex justify-content-center mb-0">
+      <strong>{{ "MODAL_AJCUENTA.PREFCOM_TITULO" | translate }}</strong>
+    </p>
+    <ion-row class="mb-4">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          {{ "MODAL_AJCUENTA.PREFCOM_COMERCIALES" | translate }}
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+          {{ "MODAL_AJCUENTA.PREFCOM_TERCEROS" | translate }}
+        </label>
+      </div>
+    </ion-row>
+    <ion-row class="d-flex justify-content-center mb-3">
+      <div>
+        <button type="button" mat-raised-button class="btn btn_bg btn_opciones">
+          Guardar
+        </button>
+      </div>
+    </ion-row>
+  </mat-dialog-content>
+</div>

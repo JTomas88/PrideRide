@@ -1,0 +1,274 @@
+<app-navbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <h1>Mi perfil</h1>
+    </div>
+    <ion-row>
+      <!-- Información personal -->
+      <ion-col size="6" class="mr-3">
+        <h2 class="text-center">Información personal</h2>
+        <p class="text-center">Aquí podrás ver y editar tus datos personales</p>
+        <ion-row>
+          <ion-col>
+            <div class="mb-3">
+              <label for="nombre" class="form-label"
+                >{{'DATOS_USUARIO.NOMBRE' | translate}}</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="mb-3">
+              <label for="apellidos" class="form-label"
+                >{{'DATOS_USUARIO.APELLIDOS' | translate}}</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="apellidos"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="mb-3">
+              <label for="pronombre" class="form-label"
+                >{{'MI_PERFIL.PRONOMBRE' | translate}}</label
+              >
+              <select class="form-select" aria-label="Selección de pronombre">
+                <option selected>Selecciona una opcion</option>
+                <option value="1">Él / He / Him</option>
+                <option value="2">Ella / She / Her</option>
+                <option value="3">Elle / They / Them</option>
+                <option value="4">Otros</option>
+                <option value="5">No uso ninguno concreto</option>
+                <option value="6">Prefiero no responder</option>
+              </select>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="mb-3">
+              <label for="genero" class="form-label">
+                {{'MI_PERFIL.SELECTOR_GENERO.TITLE' | translate}}
+                <span
+                  class="ms-2 text-primary"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Más detalles"
+                >
+                  <i class="bi-question-circle"></i>
+                </span>
+              </label>
+
+              <select class="form-select" aria-label="Selección de género">
+                >
+                <option selected>
+                  {{'MI_PERFIL.SELECTOR_GENERO.SELECTOR_OPCION' | translate}}
+                </option>
+                <option value="1">
+                  {{'MI_PERFIL.SELECTOR_GENERO.HOMBRE_CIS' | translate}}
+                </option>
+                <option value="2">
+                  {{'MI_PERFIL.SELECTOR_GENERO.MUJER_CIS' | translate}}
+                </option>
+                <option value="3">
+                  {{'MI_PERFIL.SELECTOR_GENERO.TRANSGENERO' | translate}}
+                </option>
+                <option value="4">
+                  {{"MI_PERFIL.SELECTOR_GENERO.NO_BINARIO" | translate}}
+                </option>
+                <option value="5">
+                  {{'MI_PERFIL.SELECTOR_GENERO.INTERGENERO' | translate}}
+                </option>
+                <option value="6">
+                  {{'MI_PERFIL.SELECTOR_GENERO.NO_FLUIDO' | translate}}
+                </option>
+                <option value="7">
+                  {{'MI_PERFIL.SELECTOR_GENERO.OTRO' | translate}}
+                </option>
+              </select>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="mb-3">
+              <label for="orientacion" class="form-label"
+                >{{'MI_PERFIL.SELECTOR_ORIENTACION.TITLE' | translate}}
+                <span
+                  class="ms-2 text-primary"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Más detalles"
+                >
+                  <i class="bi-question-circle"></i>
+                </span>
+              </label>
+              <select class="form-select" aria-label="Selección de orientación">
+                >
+                <option selected>
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.SELECTOR_OPCION' |
+                  translate}}
+                </option>
+                <option value="1">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.GAY' | translate}}
+                </option>
+                <option value="2">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.LESBIANA' | translate}}
+                </option>
+                <option value="3">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.BISEXUAL' | translate}}
+                </option>
+                <option value="4">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.PANSEXUAL' | translate}}
+                </option>
+                <option value="5">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.ASEXUAL' | translate}}
+                </option>
+                <option value="6">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.DEMISEXUAL' | translate}}
+                </option>
+                <option value="7">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.QUEER' | translate}}
+                </option>
+                <option value="8">
+                  {{'MI_PERFIL.SELECTOR_ORIENTACION.OTRO' | translate}}
+                </option>
+              </select>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="mb-3">
+              <label for="fnacimiento" class="form-label"
+                >{{'DATOS_USUARIO.FECHA_NACIMIENTO' | translate}}</label
+              >
+              <input type="date" class="form-control" id="fnacimiento" />
+            </div>
+          </ion-col>
+          <ion-col>Edad</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="mb-3">
+              <label for="bio" class="form-label"
+                >{{"MI_PERFIL.SOBRE_TI" | translate}}</label
+              >
+              <textarea
+                class="form-control"
+                id="bio"
+                rows="5"
+                placeholder="{{'MI_PERFIL.PLACE_SOBRETI' | translate}}"
+              ></textarea>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- Mis vehículos y preferencias de viaje -->
+      <ion-col class="col-separator">
+        <h2 class="text-center">Mis vehículos / Preferencias</h2>
+        <p class="text-center">
+          Añade tus vehículos y establece preferencias de viaje
+        </p>
+
+        <ion-row class="d-flex justify-content-center mb-0">
+          <ion-row>
+            <ion-col>
+              <div class="mb-5">
+                <h4 class="text-center mb-0 mt-0">
+                  {{'MI_PERFIL.PREF_VIAJE.MIS_VEHICULOS' | translate}}
+                </h4>
+                <ul>
+                  <li>Ford Mondeo verde</li>
+                  <li>Seat Ibiza Rojo</li>
+                </ul>
+                <button type="button" class="btn btn_bg" style="height: 33px">
+                  {{'MI_PERFIL.PREF_VIAJE.ANADIR_VEHICULO' | translate}}
+                </button>
+              </div>
+              <div class="mb-0 mt-3">
+                <h4>Preferencias</h4>
+                <ion-row class="d-flex justify-content-center">
+                  <div class="mb-4 mt-4">
+                    <label for="preferencias" class="form-label"
+                      >{{'MI_PERFIL.PREF_VIAJE.CUANDO_VIAJO' |
+                      translate}}</label
+                    >
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        {{'MI_PERFIL.PREF_VIAJE.HABLAR' | translate}}
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckChecked"
+                      />
+                      <label class="form-check-label" for="flexCheckChecked">
+                        {{'MI_PERFIL.PREF_VIAJE.MUSICA' | translate}}
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckChecked"
+                      />
+                      <label class="form-check-label" for="flexCheckChecked">
+                        {{'MI_PERFIL.PREF_VIAJE.DORMIR' | translate}}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckChecked"
+                      />
+                      <label class="form-check-label" for="flexCheckChecked">
+                        {{'MI_PERFIL.PREF_VIAJE.SILENCIO' | translate}}
+                      </label>
+                    </div>
+                  </div>
+                </ion-row>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="d-flex justify-content-center">
+      <div>
+        <button type="button" class="btn btn_bg" mat-raised-button>
+          Guardar cambios
+        </button>
+      </div>
+    </ion-row>
+  </div>
+</ion-content>

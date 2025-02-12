@@ -13,8 +13,8 @@ class Usuario(db.Model):
     nombre = db.Column(db.String(120), nullable=False)
     apellidos = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), unique=True, nullable=False)
-    genero = db.Column(db.Enum(Genero), nullable=False)#
-    orientacion = db.Column(db.Enum(Orientacion), nullable=False) #
+    genero = db.Column(db.String(50), nullable=False, default=Genero.defecto.value)#
+    orientacion = db.Column(db.String(50), nullable=False, default=Orientacion.defecto.value) #
     pronombre = db.Column(db.String(250), nullable=True)
     password = db.Column(db.String(250), nullable=False)
     telefono = db.Column(db.String(15))
@@ -66,10 +66,9 @@ class Usuario(db.Model):
             "pronombre": self.pronombre,
             "telefono": self.telefono,
             "biografia": self.biografia,
-            "direccion": self.direccion,
             "preferencias": self.preferencias,
             "fotoPerfil": self.fotoPerfil,
-            "rol": self.rol,
+            "rolPerfil": self.rolPerfil,
             "carnet_conducir_verificado": self.carnet_conducir_verificado,
             "numero_carnet_conducir": self.numero_carnet_conducir,
             "fecha_vencimiento_carnet": self.fecha_vencimiento_carnet.isoformat() if self.fecha_vencimiento_carnet else None,

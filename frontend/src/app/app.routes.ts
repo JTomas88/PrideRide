@@ -42,10 +42,10 @@ export const routes: Routes = [
       import('./pages/login/login.page').then((m) => m.LoginPage),
   },
   {
-    path: 'perfil-usuario',
+    path: 'panel-usuario',
     loadComponent: () =>
-      import('./pages/perfil-usuario/perfil-usuario.page').then(
-        (m) => m.PerfilUsuarioPage
+      import('./pages/panel-usuario/panel-usuario.page').then(
+        (m) => m.PanelUsuarioPage
       ),
   },
   {
@@ -82,18 +82,18 @@ export const routes: Routes = [
       import('./pages/faqs/faqs.page').then((m) => m.FaqsPage),
   },
   {
-    path: 'info-visible',
+    path: 'mi-perfil',
     loadComponent: () =>
-      import(
-        './pages/perfil-usuario/componentesPerfil/mi-perfil/mi-perfil.page'
-      ).then((m) => m.MiPerfilPage),
+      import('./pages/paginas-panel-usuario/mi-perfil/mi-perfil.page').then(
+        (m) => m.MiPerfilPage
+      ),
   },
   {
-    path: 'ajustes-cuenta',
+    path: 'datos-contacto',
     loadComponent: () =>
       import(
-        './pages/perfil-usuario/componentesPerfil/ajustes-cuenta/ajustes-cuenta.page'
-      ).then((m) => m.AjustesCuentaPage),
+        './pages/paginas-panel-usuario/datos-contacto/datos-contacto.page'
+      ).then((m) => m.DatosContactoPage),
   },
   {
     path: 'terminos',
@@ -104,7 +104,7 @@ export const routes: Routes = [
     path: 'saldo-transferencias',
     loadComponent: () =>
       import(
-        './pages/perfil-usuario/componentesPerfil/saldo-transferencias/saldo-transferencias.page'
+        './pages/paginas-panel-usuario/saldo-transferencias/saldo-transferencias.page'
       ).then((m) => m.SaldoTransferenciasPage),
   },
   {
