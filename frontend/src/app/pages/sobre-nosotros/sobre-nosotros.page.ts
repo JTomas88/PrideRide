@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { IonicModule } from '@ionic/angular';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -25,7 +25,7 @@ import { MatIcon } from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     JumbotronComponent,
-    PagesnavbarComponent,
+    NavbarComponent,
     MatIcon
   ]
 })

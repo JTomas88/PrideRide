@@ -1,9 +1,15 @@
-<app-pagesnavbar [backRoute]="'/nuevo-viaje'" [searchRoute]="'search'" [isLoggedIn]="userLoggedIn"></app-pagesnavbar>
-
+<app-navbar
+  [backRoute]="'/nuevo-viaje'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-navbar>
 <ion-content [fullscreen]="true">
   <app-jumbotron [title]="'Un espacio seguro para compartir cada kilómetro.'"
     [imageSrc]="'../../assets/folder/jumbo4.jpg'" [helpText]="'JUMBOTRON.HELP'">
   </app-jumbotron>
+
+  <!-- RESUMEN DEL VIAJE -->
+  <app-resumen-dinamico></app-resumen-dinamico>
 
   <!-- PRIMER PASO PARA CREAR UN VIAJE
    Pantalla de seleccion de fecha, coche seleccionado y numero de plazas ofertadas-->
@@ -33,116 +39,8 @@
   </div>
 
   <!-- TERCER PASO PARA CREAR UN VIAJE -->
-  <div id="tercer_paso" *ngIf="tercer_paso">
-    <div class="container">
-      <h1>SELECCIONA UNA RUTA</h1>
-    </div>
-
-    <div class="container">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div class="tercer_paso_container d-flex align-items-center gap-3">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="peajes" checked
-                  (change)="onPeajeOptionChange($event)" />
-                <label class="form-check-label" for="peajes">
-                  Con peajes
-                </label>
-              </div>
-
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="sinPeajes"
-                  (change)="onPeajeOptionChange($event)" />
-                <label class="form-check-label" for="sinPeajes">
-                  Sin peajes
-                </label>
-              </div>
-              <div class="form-check" *ngIf="waypoints.length > 0">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="rutaConParadas"
-                  [checked]="rutaConParadasSeleccionada" (change)="selectRouteWithParadas()" />
-                <label class="form-check-label" for="rutaConParadas">
-                  Ruta con paradas
-                </label>
-              </div>             
-            </div>
-            <div *ngIf="routes.length > 0">
-              <div class="route-list-container">
-                <div *ngFor="let route of routes; let i = index" (click)="selectRoute(i)" class="route-option"
-                  [class.selected]="selectedRoute?.routes?.[0] === route">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h3>
-                      {{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{
-                      destino }}
-                    </h3>
-                    <label class="toll-label" *ngIf="marcaPeajes">Incluye peajes</label>
-                    <label class="toll-label" *ngIf="!marcaPeajes">Sin peajes</label>
-                    <button type="button" class="btn_bg btn_paradas" (click)="nuevasParadas()">
-                      <mat-icon title="Añadir paradas"
-                        matTooltip="Añadir paradas a la ruta seleccionada">add_location_alt</mat-icon>
-                    </button>
-                  </div>
-                  <p>Distancia: {{ route.legs[0].distance?.text }}</p>
-                  <p>Duración: {{ route.legs[0].duration?.text }}</p>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="routes.length === 0">
-              <!-- Spinner "Cargando rutas" -->
-              <div *ngIf="isLoadingRoutes" class="tercer_paso_container">
-                <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="small" color="#B3B5E6" type="square-jelly-box"
-                  [fullScreen]="false">
-                  <div class="spinner_box">
-                    <mat-spinner></mat-spinner>
-                    <p style="color: #B3B5E6" class="mt-2"> Cargando rutas... </p>
-                  </div>
-                </ngx-spinner>
-              </div>
-
-              <!-- Spinner "Actualizando ruta" -->
-              <div *ngIf="isUpdatingRoute" class="tercer_paso_container">
-                <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="small" color="#B3B5E6" type="square-jelly-box"
-                  [fullScreen]="false">
-                  <div class="spinner_box">
-                    <mat-spinner></mat-spinner>
-                    <p style="color: #B3B5E6" class="mt-2"> Actualizando ruta... </p>
-                  </div>
-                </ngx-spinner>
-              </div>
-              <div *ngIf="!isLoadingRoutes && routes.length === 0">
-                <p>
-                  No se encontraron rutas. Intenta con otros puntos de origen o
-                  destino.
-                </p>
-              </div>
-            </div>
-          </ion-col>
-
-          <!-- MAPA -->
-          <ion-col>
-            <div class="contenedor_mapa">
-              <div class="d-flex justify-content-center">
-                <label *ngIf="!clickMapaParada" class="tooltip-bubble">
-                  Pulsa sobre el mapa para agregar paradas intermedias.
-                </label>
-              </div>
-              <google-map [center]="mapCenter" [zoom]="zoom" [options]="mapOptions" height="500px" width="100%">
-                <map-directions-renderer *ngIf="selectedRoute" [directions]="selectedRoute"></map-directions-renderer>
-              </google-map>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-
-    <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
-      <!-- Botón Atrás -->
-      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoBack()">
-        Atrás
-      </button>
-      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoComplete()">
-        Finalizar viaje
-      </button>
-    </div>
-  </div>
+   <div *ngIf="tercer_paso">
+    <app-tercer-paso></app-tercer-paso>
+   </div>
+  
 </ion-content>

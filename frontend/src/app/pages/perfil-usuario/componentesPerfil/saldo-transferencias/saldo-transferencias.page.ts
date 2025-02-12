@@ -10,9 +10,9 @@ import {
   IonCol,
   IonGrid,
 } from '@ionic/angular/standalone';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-saldo-transferencias',
@@ -26,7 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     IonContent,
     CommonModule,
     FormsModule,
-    PagesnavbarComponent,
+    NavbarComponent,
     TranslateModule,
   ],
 })

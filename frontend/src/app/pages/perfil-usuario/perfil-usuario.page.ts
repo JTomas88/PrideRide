@@ -5,8 +5,8 @@ import {
   IonContent,
 } from '@ionic/angular/standalone';
 import { DatosUsuarioComponent } from '../../components/datos-usuario/datos-usuario.component';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -18,7 +18,7 @@ import { Usuario } from 'src/app/models/user/usuario.model';
     CommonModule,
     FormsModule,
     DatosUsuarioComponent,
-    PagesnavbarComponent
+    NavbarComponent
   ],
 })
 export class PerfilUsuarioPage implements OnInit {

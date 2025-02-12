@@ -8,12 +8,12 @@ import { MatIcon } from '@angular/material/icon';
 import { IonicModule } from '@ionic/angular';
 import { TravelService } from 'src/app/core/travel-services/travel.service';
 import { Usuario } from 'src/app/models/user/usuario.model';
-import { PagesnavbarComponent } from 'src/app/shared/pagesnavbar/pagesnavbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalErrorComponent } from 'src/app/components/modal-error/modal-error.component';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-resumen-viaje',
@@ -23,7 +23,7 @@ import { ModalErrorComponent } from 'src/app/components/modal-error/modal-error.
     MatCardModule,
     MatDatepickerModule,
     FormsModule,
-    PagesnavbarComponent,
+    NavbarComponent,
     MatDivider,
     MatButtonModule,
     CommonModule

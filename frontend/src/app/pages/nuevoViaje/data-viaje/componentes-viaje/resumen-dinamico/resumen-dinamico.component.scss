@@ -1,0 +1,56 @@
+#resumen_viaje {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}
+
+.white-header {
+  background-color: #e9edd5 !important;
+  color: black !important;
+  --background: #e9edd5;
+  --ion-text-color: black !important;
+}
+
+div[slot="content"] {
+  background-color: #e9edd5 !important;
+}
+
+/**
+* CONFIGURACIÓN PARA LA LISTA DE SUGERENCIAS
+*/
+.container {
+  position: relative;
+}
+
+.lista_sugerencias {
+  position: absolute;
+  left: 60px;
+  width: 44%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+  z-index: 9999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.lista_sugerencias li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.lista_sugerencias li:hover {
+  background-color: #f0f0f0;
+}
+
+button{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}
+
+input {
+  margin-bottom: 1%;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+}
