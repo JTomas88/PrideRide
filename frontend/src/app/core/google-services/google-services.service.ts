@@ -7,6 +7,8 @@ import { catchError, Observable } from 'rxjs';
 })
 export class GoogleServices {
   private apiUrl = 'http://127.0.0.1:5000';
+  private geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+  private apiKey = 'AIzaSyD2GJTw7EJR95V_4UQj_zIOTHw_RVGvkOM';
 
   constructor(private http: HttpClient) {}
 
@@ -19,5 +21,10 @@ export class GoogleServices {
           throw error;
         })
       );
+  }
+
+  reverseGeocode(lat: number, lng: number): Observable<any> {
+    const url = `${this.geocodeUrl}?latlng=${lat},${lng}&key=${this.apiKey}`;
+    return this.http.get<any>(url);
   }
 }

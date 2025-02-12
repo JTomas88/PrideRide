@@ -31,17 +31,28 @@
                 Ruta seleccionada
               </label>
             </div>
+            <div class="form-check" *ngIf="rutaConParadasSeleccionada">
+              <button type="button" class="trashBtn" (click)="eliminarRutaSeleccionada()"><mat-icon class="trahsIcon">delete</mat-icon></button>
+            </div>
           </div>
           <div *ngIf="routes.length > 0">
             <!-- Lista de sugerencias de paradas -->
-             <div class="container " *ngIf="sugerenciasParadas.length > 0">
+            <div class="spinner_box" *ngIf="cargandoSugerencias">
+              <mat-spinner></mat-spinner>
+              <p style="color: #B3B5E6" class="mt-2"> Cargando posibles paradas... </p>
+            </div>
+             <div class="container" *ngIf="sugerenciasParadas.length > 0">
               <span>Sugerencias de paradas</span>
-              <ul  class="list-group sugerencia_paradas">
-                <li *ngFor="let parada of sugerenciasParadas" class="list-group-item"
+              <ul class="list-group sugerencia_paradas">
+                <li 
+                  *ngFor="let parada of sugerenciasParadas" 
+                  class="list-group-item d-flex justify-content-between align-items-center"
                   (click)="seleccionarParada(parada)">
                   {{ parada.nombre }} - {{ parada.distancia }}
+                  <span *ngIf="paradasSeleccionadas.has(parada.nombre)"><mat-icon class="checkRutaSeleccionada">check</mat-icon></span>
                 </li>
               </ul>
+              
              </div>
 
             <div class="route-list-container">
@@ -94,11 +105,6 @@
         <!-- MAPA -->
         <ion-col>
           <div class="contenedor_mapa">
-            <div class="d-flex justify-content-center">
-              <label *ngIf="!clickMapaParada" class="tooltip-bubble">
-                Pulsa sobre el mapa para agregar paradas intermedias.
-              </label>
-            </div>
             <google-map [center]="mapCenter" [zoom]="zoom" [options]="mapOptions" height="500px" width="100%">
               <map-directions-renderer *ngIf="selectedRoute" [directions]="selectedRoute"></map-directions-renderer>
             </google-map>

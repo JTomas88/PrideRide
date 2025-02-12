@@ -197,3 +197,26 @@ ion-alert {
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
 }
+
+.sugerencia_paradas li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sugerencia_paradas li:hover {
+  background-color: #f0f0f0;
+}
+
+.checkRutaSeleccionada {
+  color: #B3B5E6;
+}
+
+.trahsIcon {
+  color: #E0B6B6;
+}
+
+.trashBtn{
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}

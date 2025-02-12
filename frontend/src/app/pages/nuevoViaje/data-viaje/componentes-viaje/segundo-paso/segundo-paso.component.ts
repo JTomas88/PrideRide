@@ -4,11 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { GoogleServices } from 'src/app/core/google-services/google-services.service';
 import { TravelService } from 'src/app/core/travel-services/travel.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-segundo-paso',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, MatIcon, MatButtonModule],
   templateUrl: './segundo-paso.component.html',
   styleUrls: ['./segundo-paso.component.scss'],
 })
@@ -22,9 +25,14 @@ export class SegundoPasoComponent implements OnInit {
   sugerenciasOrigen: any[] = [];
   sugerenciasDestino: any[] = [];
 
+  currentLocation: { lat: number; lng: number } | null = null;
+
+  mapCenter: { lat: number; lng: number } = { lat: 40.4168, lng: -3.7038 };
+
+
   currentViajeData: any;
 
-  constructor(private travelService: TravelService, private googleService: GoogleServices) { }
+  constructor(private travelService: TravelService, private googleService: GoogleServices, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     const currentViajeData = this.travelService.getViajeData();
@@ -94,4 +102,70 @@ export class SegundoPasoComponent implements OnInit {
     this.travelService.setViajeData(viajeData);
     this.sugerenciasDestino = [];
   }
+
+  /**
+   *    Función para obtener la ubicación del usuario.
+   * 
+   * -> Esta función solicita permisos al usuario para poder acceder a su localización,
+   *    una vez se obtienen, a través de los servicios de Google se obtiene su ubicación.
+   * 
+   * -> Extraemos la información del resultado, recorriendo la lista de resultados
+   *    para obtener el nombre de la población donde se encuentra.
+   */
+  getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          this.mapCenter = { lat, lng };
+          this.googleService.reverseGeocode(lat, lng).subscribe(
+            (results) => {
+
+              if (results && results.results.length > 0) {
+                let city = '';
+
+                for (const result of results.results) {
+                  const addressComponents = result.address_components;
+                  for (const component of addressComponents) {
+                    if (component.types.includes('locality') || component.types.includes('administrative_area_level_2')) {
+                      city = component.long_name;
+                      break;
+                    }
+                  }
+                  if (city) break;
+                }
+
+                if (city) {
+                  this.origen = city;
+                  const viajeData = {
+                    ...this.travelService.getViajeData(),
+                    origen: this.origen,
+                  };
+                  this.travelService.setViajeData(viajeData);
+                  this.cdr.detectChanges();
+                } else {
+                  console.log('No se encontró la ciudad en los resultados.');
+                }
+              } else {
+                console.log('No se encontraron resultados para la geolocalización.');
+              }
+            },
+            (error) => {
+              console.error('Error al obtener la dirección:', error);
+            }
+          );
+        },
+        (error) => {
+          console.error('Error de geolocalización:', error.message);
+        }
+      );
+
+    } else {
+      console.error("La geolocalización no está soportada por este navegador.");
+    }
+  }
+
+
+
 }
