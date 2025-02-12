@@ -1,4 +1,5 @@
 <ion-header>
+  <!-- Se muestra sólo en el Home -->
   <nav class="navbar navbar-expand-lg navbar-diseno" *ngIf="validacionHomePage">
     <div class="container">
       <button
@@ -142,31 +143,60 @@
                 account_circle
               </mat-icon>
             </a>
-            <ul class="dropdown-menu">
-              <li class="perfil">
-                <a class="dropdown-item" href="/perfil-usuario">Mi Perfil</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+              data-bs-auto-close="false"
+            >
+              <li class="perfil nav-item dropdown">
+                <a class="dropdown-item nav-link" href="/panel-usuario"
+                  >PANEL USUARIO</a
+                >
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3" href="/mi-perfil">Mi perfil</a>
+                  <a class="nav-link ms-3" href="/datos-contacto"
+                    >Datos de contacto
+                  </a>
+                  <a class="nav-link ms-3" href="/verificion-perfil"
+                    >Verificación/ Password
+                  </a>
+                  <a class="nav-link ms-3" href="/saldo-transferencias"
+                    >Saldo y transferencias
+                  </a>
+                </nav>
               </li>
-              <li class="saldo">
-                <a class="dropdown-item" href="/saldo-transferencias">Saldo y transferencias</a>
-              </li>
+
               <li class="ajustes">
-                <a class="dropdown-item" href="/ajustes-cuenta">Ajustes de la cuenta</a>
+                <a class="dropdown-item" href="/datos-contacto"
+                  >Ajustes de la cuenta</a
+                >
               </li>
+
               <mat-divider></mat-divider>
-              <li class="logout d-flex align-items-center justify-content-center">
-                <a class="dropdown-item d-flex align-items-center" (click)="logout()" type="button">
+              <li
+                class="logout d-flex align-items-center justify-content-center"
+              >
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  (click)="logout()"
+                  type="button"
+                >
                   <mat-icon class="me-2">power_settings_new</mat-icon> Salir
                 </a>
               </li>
-            </ul>  
+            </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <nav class="navbar bg-body-tertiary diseno" *ngIf="!validacionHomePage">
-    <div class="container-fluid">
+  <!-- Se muestra en cualquier pagina menos el Home -->
+  <nav
+    class="navbar navbar-expand-lg navbar-diseno"
+    *ngIf="!validacionHomePage"
+  >
+    <div class="container">
       <ul>
         <li class="nav-item d-flex flex-column align-items-center">
           <ion-button fill="clear" (click)="navigateBack()">
@@ -224,23 +254,45 @@
                 >account_circle</mat-icon
               >
             </a>
-            <ul class="dropdown-menu">
-              <li class="perfil">
-                <a class="dropdown-item" href="/perfil-usuario">Mi Perfil</a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+              data-bs-auto-close="false"
+            >
+              <li class="perfil nav-item dropdown">
+                <a class="dropdown-item nav-link" href="/panel-usuario"
+                  >Panel de usuario</a
+                >
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3" href="/mi-perfil"
+                    >Mi información visible</a
+                  >
+                  <a class="nav-link ms-3" href="#item-1-2">Item 1-2</a>
+                </nav>
               </li>
               <li class="saldo">
-                <a class="dropdown-item" href="/saldo-transferencias">Saldo y transferencias</a>
+                <a class="dropdown-item" href="/saldo-transferencias"
+                  >Saldo y transferencias</a
+                >
               </li>
               <li class="ajustes">
-                <a class="dropdown-item" href="/ajustes-cuenta">Ajustes de la cuenta</a>
+                <a class="dropdown-item" href="/datos-contacto"
+                  >Ajustes de la cuenta</a
+                >
               </li>
               <mat-divider></mat-divider>
-              <li class="logout d-flex align-items-center justify-content-center">
-                <a class="dropdown-item d-flex align-items-center" (click)="logout()" type="button">
+              <li
+                class="logout d-flex align-items-center justify-content-center"
+              >
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  (click)="logout()"
+                  type="button"
+                >
                   <mat-icon class="me-2">power_settings_new</mat-icon> Salir
                 </a>
               </li>
-            </ul>            
+            </ul>
           </li>
         </ul>
       </div>

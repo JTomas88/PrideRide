@@ -1,0 +1,203 @@
+<div class="container modal-ajcuenta">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Verificar perfil / Cambiar la contraseña</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      Desde aquí podrás hacer la verificación de tu perfil. Debes confirmar:
+    </p>
+    <ul>
+      <li>Correo electrónico</li>
+      <li>Teléfono</li>
+      <li>Subir foto DNI (ambas caras)</li>
+    </ul>
+
+    <p>
+      Si eres conductor (o planeas hacer algún viaje como conductor) debes subir
+      la foto de tu carnet de conducir por ambas caras
+    </p>
+    <p>
+      Además, en esta sección, puedes cambiar la contraseña para entrar a la
+      web-app
+    </p>
+
+    <mat-divider></mat-divider>
+
+    <!-- Verificación correo electrónico -->
+    <div class="mt-2">
+      <p class="d-flex justify-content-center">
+        <strong>{{ "MODAL_VERIFICACIONES.CORREO_TITULO" | translate }}</strong>
+      </p>
+      <ion-row class="mb-4">
+        <ion-col>
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="btn" class="btn_bg" mat-raised-button>
+              micorreo
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <p>
+            {{ "MODAL_VERIFICACIONES.CORREO_SUBTITULO" | translate }}
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Verificación teléfono -->
+    <div class="mt-2">
+      <p class="d-flex justify-content-center mb-0">
+        <strong>{{ "MODAL_VERIFICACIONES.TFNO_TITULO" | translate }}</strong>
+      </p>
+      <ion-row class="mb-4">
+        <ion-col class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn_bg" mat-raised-button type="btn">
+              66666666666
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <p>{{ "MODAL_VERIFICACIONES.TFNO_SUBTITULO" | translate }}</p>
+          <div class="input-container">
+            <input type="text" maxlength="1" class="digit-input" />
+            <input type="text" maxlength="1" class="digit-input" />
+            <input type="text" maxlength="1" class="digit-input" />
+            <input type="text" maxlength="1" class="digit-input" />
+          </div>
+          <div>
+            <button
+              type="button"
+              class="btn mt-2 btn_bg"
+              mat-raised-button
+              style="
+                background-color: #a758e8;
+                width: 200px;
+                height: 30px;
+                font-size: 12px;
+              "
+            >
+              {{ "MODAL_VERIFICACIONES.TFNO_BOTON" | translate }}
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Verificación DNI -->
+    <div class="mt-2">
+      <p class="d-flex justify-content-center">
+        <strong>{{
+          "MODAL_VERIFICACIONES.IDENTIDAD_TITULO" | translate
+        }}</strong>
+      </p>
+      <ion-row>
+        <ion-col class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center">
+            <div class="file-upload">
+              <label for="identidad" class="upload-button">+</label>
+              <input
+                type="file"
+                id="identidad"
+                class="file-input"
+                accept="image/*"
+                multiple
+              />
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <p>
+            {{ "MODAL_VERIFICACIONES.IDENTIDAD_SUBTITULO" | translate }}
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <mat-divider style="height: 4px; background-color: black"></mat-divider>
+
+    <!-- Verificación carnet de conducir -->
+    <div class="mt-2 mb-2">
+      <h4>{{ "MODAL_VERIFICACIONES.CCONDUCIR_TITULO" | translate }}</h4>
+      <p style="color: #ff4040">
+        {{ "MODAL_VERIFICACIONES.CCONDUCIR_SUBTITULO" | translate }}
+      </p>
+      <div class="file-upload d-flex justify-content-center">
+        <label for="carnetconducir" class="upload-button">+</label>
+        <input
+          type="file"
+          id="carnetconducir"
+          class="file-input"
+          accept="image/*"
+          multiple
+        />
+      </div>
+    </div>
+
+    <mat-divider style="height: 4px; background-color: black"></mat-divider>
+
+    <div class="mt-2">
+      <p class="d-flex justify-content-center">
+        <strong>{{ "MODAL_AJCUENTA.CCONTRASENA_TITULO" | translate }}</strong>
+      </p>
+      <ion-row class="mb-4">
+        <ion-col>
+          <div class="mb-3">
+            <label for="cActual" class="form-label">{{
+              "MODAL_AJCUENTA.CONTRASENA_ACTUAL" | translate
+            }}</label>
+            <input type="password" class="form-control" id="cActual" />
+          </div>
+          <div class="mb-1">
+            <label for="pNueva" class="form-label">{{
+              "MODAL_AJCUENTA.CONTRASENA_NUEVA" | translate
+            }}</label>
+            <input type="password" class="form-control" id="pNueva" />
+          </div>
+          <div class="mb-1">
+            <label for="pNuevaConf" class="form-label">{{
+              "MODAL_AJCUENTA.CONTRASENA_CONF" | translate
+            }}</label>
+            <input type="password" class="form-control" id="pNuevaConf" />
+          </div>
+        </ion-col>
+        <ion-col class="d-flex justify-content-center align-items-center">
+          <div>
+            <button type="button" class="btn btn_bg" mat-raised-button>
+              {{ "MODAL_AJCUENTA.CONTRASENA_BOTON" | translate }}
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="mt-2">
+      <p class="d-flex justify-content-center mb-0">
+        <strong>{{ "MODAL_AJCUENTA.BORRARCUENTA_TITULO" | translate }}</strong>
+      </p>
+      <div>
+        <p style="color: red; font-weight: bold; text-align: justify">
+          {{ "MODAL_AJCUENTA.BORRARCUENTA_SUBTITULO" | translate }}
+        </p>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn_bg" mat-raised-button>
+            {{ "MODAL_AJCUENTA.BORRARCUENTA_BOTON" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

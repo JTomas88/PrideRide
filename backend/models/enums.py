@@ -12,12 +12,14 @@ class PreferenciasViajeEnum(Enum):
     silencio = "Silencio"
 
 class Genero(Enum):
+    defecto = ""
     masculino = "masculino"
     femenino = "femenino"
     nobinario =  "no binario"
     noresponde = "Prefiero no contestar"
 
 class Orientacion(Enum):
+    defecto = ""
     Gay = "Gay"
     Lesbiana = "Lesbiana"
     Bisexual = "Bisexual"

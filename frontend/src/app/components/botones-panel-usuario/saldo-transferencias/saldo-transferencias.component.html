@@ -1,0 +1,200 @@
+<div class="container modal-saldo">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>{{ "MODAL_SALDO.TITULO" | translate }}</h2>
+    <button mat-icon-button (click)="closeDialog()" aria-label="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <p>
+      {{ "MODAL_SALDO.SUBTITULO1" | translate }}
+    </p>
+    <p>{{ "MODAL_SALDO.SUBTITULO2" | translate }}</p>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center">
+      <strong>{{ "MODAL_SALDO.SALDO_TITULO" | translate }}</strong>
+    </p>
+    <ion-row class="mb-2 d-flex justify-content-center">
+      <p>
+        <strong style="font-size: 40px">83€</strong>
+      </p>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center mb-4">
+      <strong>{{ "MODAL_SALDO.MOV_TITULO" | translate }}</strong>
+    </p>
+
+    <ion-row class="mb-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">{{ "MODAL_SALDO.MOV_FECHA" | translate }}</th>
+            <th scope="col">{{ "MODAL_SALDO.MOV_CONCEPTO" | translate }}</th>
+            <th scope="col">{{ "MODAL_SALDO.MOV_ABONO_GASTO" | translate }}</th>
+            <th scope="col">{{ "MODAL_SALDO.MOV_SALDO_FINAL" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">12/12/2024</th>
+            <td>{{ "MODAL_SALDO.CONCEPTO_VIAJE" | translate }}</td>
+            <td>-25 €</td>
+            <td>80 €</td>
+          </tr>
+          <tr>
+            <th scope="row">10/12/2024</th>
+            <td>{{ "MODAL_SALDO.CONCEPTO_RECARGA" | translate }}</td>
+            <td>+25 €</td>
+            <td>105 €</td>
+          </tr>
+          <tr>
+            <th scope="row">01/12/2024</th>
+            <td>{{ "MODAL_SALDO.CONCEPTO_PASAJERO" | translate }}</td>
+            <td>+25 €</td>
+            <td>100 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center">
+      <strong>{{ "MODAL_SALDO.METODOS_TITULO" | translate }}</strong>
+    </p>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <p>{{ "MODAL_SALDO.MIS_TARJETAS" | translate }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ul>
+        <li>{{ "MODAL_SALDO.TARJETA" | translate }}</li>
+        <div
+          class="card"
+          style="width: 10rem; height: 3rem; background-color: red"
+        >
+          <div class="d-flex align-items-center">
+            <p>XXXX-XXXX-XXXX-5201</p>
+          </div>
+        </div>
+      </ul>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="d-flex align-content-center justify-content-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn_bg" mat-raised-button>
+            {{ "MODAL_SALDO.ANADIRTARJETA_BOTON" | translate }}
+          </button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <form>
+            <input
+              style="width: 200px"
+              class="form-input"
+              id="disabledFieldsetCheck"
+              placeholder="{{ 'MODAL_SALDO.ALIAS_TARJETA' | translate }}"
+            />
+            <input
+              style="width: 200px"
+              class="form-input"
+              id="disabledFieldsetCheck"
+              placeholder="{{ 'MODAL_SALDO.NUM_TARJETA' | translate }}"
+            />
+
+            <ion-row>
+              <input
+                style="width: 50px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="MM"
+              />
+              <input
+                style="width: 50px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="AA"
+              />
+            </ion-row>
+            <ion-row>
+              <input
+                style="width: 80px"
+                class="form-input"
+                id="disabledFieldsetCheck"
+                placeholder="CVV"
+              />
+            </ion-row>
+            <ion-row>
+              <button type="submit" class="btn btn_bg mt-2" mat-raised-button>
+                {{ "GUARDAR" | translate }}
+              </button>
+            </ion-row>
+          </form>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="mt-2">
+      <ion-col>
+        <div>
+          <p>{{ "MODAL_SALDO.PAGO_PAYPAL" | translate }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div class="d-flex justify-content-center align-items-center mb-4">
+        <button type="button" class="btn btn_bg" mat-raised-button>
+          {{ "MODAL_SALDO.PAYPAL_BOTON" | translate }}
+        </button>
+      </div>
+    </ion-row>
+
+    <mat-divider></mat-divider>
+
+    <p class="d-flex justify-content-center mb-4">
+      <strong>{{ "MODAL_SALDO.TRANSF_TITULO" | translate }}</strong>
+    </p>
+    <ion-row class="mb-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">{{ "MODAL_SALDO.MOV_FECHA" | translate }}</th>
+            <th scope="col">{{ "MODAL_SALDO.MOV_CONCEPTO" | translate }}</th>
+            <th scope="col">{{ "MODAL_SALDO.TRANSF_IMPORTE" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">12/12/2024</th>
+            <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+            <td>-25 €</td>
+          </tr>
+          <tr>
+            <th scope="row">10/12/2024</th>
+            <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+            <td>-25 €</td>
+          </tr>
+          <tr>
+            <th scope="row">01/12/2024</th>
+            <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+            <td>-25 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-row>
+  </mat-dialog-content>
+</div>
