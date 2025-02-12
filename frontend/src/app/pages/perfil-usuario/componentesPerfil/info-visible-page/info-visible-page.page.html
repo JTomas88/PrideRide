@@ -1,0 +1,55 @@
+<app-pagesnavbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-pagesnavbar>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <h1>{{'MODAL_INFOVISIBLE.TITULO' | translate}}</h1>
+    </div>
+    <p class="d-flex justify-content-center">
+      {{'MODAL_INFOVISIBLE.SUBTITULO' | translate}}
+    </p>
+    <ion-grid>
+      <form>
+        <ion-row>
+          <ion-col>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">
+                {{ "DATOS_USUARIO.NOMBRE" | translate }}
+              </label>
+              <input type="text" class="form-control" id="nombre" />
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="mb-3">
+              <label for="apellidos" class="form-label">
+                {{ "DATOS_USUARIO.APELLIDOS" | translate }}
+              </label>
+              <input type="text" class="form-control" id="apellidos" />
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="mb-3">
+              <label for="genero" class="form-label">
+                {{ "MI_PERFIL.SELECTOR_GENERO.TITLE" | translate }}
+              </label>
+              <select class="form-select" id="genero">
+                <option value="" disabled selected>
+                  Selecciona una opción
+                </option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+                <option value="3">No binario</option>
+                <option value="4">Prefiero no decirlo</option>
+              </select>
+            </div>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -188,6 +188,7 @@
         </a>
 
         <ul class="navbar-nav me-auto">
+          <!-- Si el usuario NO está logueado -->
           <li class="nav-item dropdown" *ngIf="!isLoggedIn">
             <a
               class="nav-link dropdown-toggle"
@@ -200,18 +201,19 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="/login">{{
-                  "HEADER.LOGIN" | translate
-                }}</a>
+                <a class="dropdown-item" href="/login">
+                  {{ "HEADER.LOGIN" | translate }}
+                </a>
               </li>
               <li>
-                <a class="dropdown-item" href="/registro">{{
-                  "HEADER.REGISTER" | translate
-                }}</a>
+                <a class="dropdown-item" href="/registro">
+                  {{ "HEADER.REGISTER" | translate }}
+                </a>
               </li>
             </ul>
           </li>
 
+          <!-- Si el usuario está logueado -->
           <li class="nav-item dropdown" *ngIf="isLoggedIn">
             <a
               class="nav-link dropdown-toggle"
@@ -225,22 +227,61 @@
               >
             </a>
             <ul class="dropdown-menu">
-              <li class="perfil">
-                <a class="dropdown-item" href="/perfil-usuario">Mi Perfil</a>
+              <!-- Mi Perfil (con submenú) -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="menuPerfil"
+                >
+                  Mi Perfil
+                </a>
+                <ul class="dropdown-menu" id="menuPerfil">
+                  <li>
+                    <a class="dropdown-item" href="/perfil-usuario">
+                      Ver perfil
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/info-visible">
+                      Tu información visible
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/editar-perfil">
+                      Editar perfil
+                    </a>
+                  </li>
+                </ul>
               </li>
-              <li class="saldo">
-                <a class="dropdown-item" href="/saldo-transferencias">Saldo y transferencias</a>
+
+              <!-- Otras opciones -->
+              <li>
+                <a class="dropdown-item" href="/saldo-transferencias">
+                  Saldo y transferencias
+                </a>
               </li>
-              <li class="ajustes">
-                <a class="dropdown-item" href="/ajustes-cuenta">Ajustes de la cuenta</a>
+              <li>
+                <a class="dropdown-item" href="/ajustes-cuenta">
+                  Ajustes de la cuenta
+                </a>
               </li>
+
               <mat-divider></mat-divider>
-              <li class="logout d-flex align-items-center justify-content-center">
-                <a class="dropdown-item d-flex align-items-center" (click)="logout()" type="button">
+
+              <!-- Logout -->
+              <li
+                class="logout d-flex align-items-center justify-content-center"
+              >
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  (click)="logout()"
+                  type="button"
+                >
                   <mat-icon class="me-2">power_settings_new</mat-icon> Salir
                 </a>
               </li>
-            </ul>            
+            </ul>
           </li>
         </ul>
       </div>

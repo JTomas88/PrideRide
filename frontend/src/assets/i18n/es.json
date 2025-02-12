@@ -217,5 +217,22 @@
     "SUBTITLE1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
     "SUBTITLE2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
     "TU_SALDO": "TU SALDO"
+  },
+  "VEHICULOS": {
+    "MARCA": "Marca",
+    "MODELO": "Modelo",
+    "COLOR": "Color",
+    "blanco": "Blanco",
+    "negro": "Negro",
+    "rojo": "Rojo",
+    "amarillo": "Amarillo",
+    "verde": "Verde",
+    "gris": "Gris",
+    "dorado": "Dorado",
+    "marron": "Marrón",
+    "morado": "Purple",
+    "beige": "Beige",
+    "perla": "Perla",
+    "otro": "Otro"
   }
 }

@@ -219,5 +219,22 @@
     "SUBTITLE1": "In this section, you can check your available balance, view recent transactions, set up your top-up methods, and make top-ups.",
     "SUBTITLE2": "If you have balance, you can transfer it to your bank account.",
     "TU_SALDO": "YOUR BALANCE"
+  },
+  "VEHICULOS": {
+    "MARCA": "Brand",
+    "MODELO": "Model",
+    "COLOR": "Color",
+    "blanco": "White",
+    "negro": "Black",
+    "rojo": "Red",
+    "amarillo": "Yellow",
+    "verde": "Green",
+    "gris": "Gray",
+    "dorado": "Gold",
+    "marron": "Brown",
+    "morado": "Purple",
+    "beige": "Beige",
+    "perla": "Pearl",
+    "otro": "Other"
   }
 }

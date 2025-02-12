@@ -18,6 +18,22 @@ export const COLORES = [
   'otro',
 ];
 
+export const COLOURS = [
+  'white',
+  'black',
+  'red',
+  'yellow',
+  'green',
+  'gray',
+  'gold',
+  'brown',
+  'purple',
+  'beige',
+  'pearl',
+  'perla',
+  'other',
+];
+
 export const CARS: Coches[] = [
   {
     marca: 'Alfa-Romeo',
