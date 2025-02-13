@@ -47,3 +47,37 @@
   display: block;
   margin-bottom: 10px;
 }
+
+.botonEditarImgPerfil,
+.botonEditarImgCabecera {
+    position: absolute;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+    background-color: #F0D7B4;
+}
+
+.botonEditarImgPerfil {
+    bottom: 250px;
+    left: 52%;
+}
+
+.botonEditarImgCabecera {
+    bottom: 279px;
+    left: 98%; 
+    transform: translateX(-100%);
+}
+
+.botonEditarImgPerfil mat-icon,
+.botonEditarImgCabecera mat-icon {
+    font-size: 20px; 
+}
+button{
+    background-color: #F0D7B4;
+}

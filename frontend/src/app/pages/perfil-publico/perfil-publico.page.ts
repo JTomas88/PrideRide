@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 import { ActivatedRoute } from '@angular/router';
 import { UserServicesService } from 'src/app/core/user-services/user-services.service';
+import { Usuario } from 'src/app/models/user/usuario.model';
+
 
 @Component({
   selector: 'app-perfil-publico',
@@ -19,6 +21,8 @@ export class PerfilPublicoPage implements OnInit {
   userLoggedIn: boolean = false;
   usuarioParams: any = {};
   usuario: any;
+  editar_perfil: boolean = false;
+  userData: Usuario = {} as Usuario;
 
   constructor(private route: ActivatedRoute, private funcionesComunes: FuncionesComunes, private userService: UserServicesService) { }
 
@@ -28,9 +32,19 @@ export class PerfilPublicoPage implements OnInit {
       this.usuarioParams = params;  
       const userId = parseInt(this.usuarioParams.id, 10);
       this.obtenerUsuarioPorID(userId);
+      this.validacionPerilLogeado(userId);
     });
   }
 
+
+  validacionPerilLogeado(id_usuario: number){
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if(id_usuario === this.userData.usuario.id) {
+      this.editar_perfil = true;
+    } else {
+      this.editar_perfil = false;
+    }
+  }
 
   /**
    * Función para obtener los datos de un usuario.

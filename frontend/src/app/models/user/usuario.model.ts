@@ -11,7 +11,7 @@ export interface Usuario {
         biografia?: string;
         vehiculos?: string;
         direccion?: string;
-        rol: 'usuario' | 'admin' | 'moderador';
+        rolPerfil: 'usuario' | 'admin' | 'moderador';
         token?: string;
     }
 

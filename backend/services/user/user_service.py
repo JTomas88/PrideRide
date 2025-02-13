@@ -38,7 +38,7 @@ def crear_usuario():
         password=codificar_password,
         telefono=data.get('telefono'),
         biografia=data.get('biografia'),
-        rol=data.get('rolPerfil', RolUsuarioEnum.usuario.value),
+        rolPerfil=data.get('rolPerfil', RolUsuarioEnum.usuario.value),
         carnet_conducir_verificado=data.get('carnet_conducir_verificado', False),
         numero_carnet_conducir=data.get('numero_carnet_conducir'),
         fecha_vencimiento_carnet=datetime.strptime(data['fecha_vencimiento_carnet'], '%Y-%m-%d') 

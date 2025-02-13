@@ -21,7 +21,7 @@ class Usuario(db.Model):
     biografia = db.Column(db.String(500)) 
     fotoPerfil = db.Column(db.String(250), nullable=True)
     preferencias = db.Column(db.String(50), nullable=False, default=PreferenciasViajeEnum.silencio.value)
-    rolPerfil = db.Column(db.String(50), nullable=False, default=RolUsuarioEnum.usuario.value)
+    rolPerfil = db.Column(db.String(50), nullable=True, default=RolUsuarioEnum.usuario.value)
     carnet_conducir_verificado = db.Column(db.Boolean, default=False)
     numero_carnet_conducir = db.Column(db.String(50))
     fecha_vencimiento_carnet = db.Column(db.Date)
