@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Usuario } from 'src/app/models/user/usuario.model';
 import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TravelService } from 'src/app/core/travel-services/travel.service';
@@ -14,6 +13,7 @@ import { GoogleServices } from 'src/app/core/google-services/google-services.ser
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ToastModule } from 'primeng/toast';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { FuncionesComunes } from 'src/app/core/funciones-comunes/funciones-comunes.service';
 
 
 @Component({
@@ -36,8 +36,8 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
   ],
 })
 export class NuevoViajePage implements OnInit {
+
   userLoggedIn: boolean = false;
-  userData: Usuario = {} as Usuario;
 
   origen: string = '';
   destino: string = '';
@@ -57,26 +57,12 @@ export class NuevoViajePage implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private viajesService: TravelService,
-    private googleService: GoogleServices
+    private googleService: GoogleServices,
+    private funcionesComunes: FuncionesComunes
   ) { }
 
   ngOnInit() {
-    /**
-     * Recoge de la memoria cache el atributo userData y lo comprueba.
-     * Si tiene datos y sus atributos son mayores que 0 y además tiene un atributo email
-     * con dato, pasa la variaeble userLoggedIn (declarada arriba en false) a true.
-     * De lo contrario la deja en false
-     */
-    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (
-      this.userData &&
-      Object.keys(this.userData).length > 0 &&
-      this.userData.usuario.email
-    ) {
-      this.userLoggedIn = true;
-    } else {
-      this.userLoggedIn = false;
-    }
+    this.userLoggedIn = this.funcionesComunes.isUserLoggedIn()
   }
 
   /**

@@ -6,6 +6,7 @@ from flask import Blueprint, jsonify, request
 from datetime import datetime
 from models import Viaje
 from extensions import db
+from sqlalchemy.orm import joinedload 
 
 travel_blueprint = Blueprint('travel', __name__)
 
@@ -87,3 +88,14 @@ def obtener_viajes_usuario():
     return jsonify({
         "viajes": [viaje.serialize() for viaje in viajes]
     }), 200
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   SERVICIO PARA OBTENER LA LISTA DE VIAJES EN GENERAL
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+@travel_blueprint.route('/obtener_viajes', methods=['GET'])
+def obtener_viajes():
+    lista_viajes = Viaje.query.options(
+        joinedload(Viaje.usuario)
+    ).all()
+    return jsonify([viaje.serialize() for viaje in lista_viajes]), 200

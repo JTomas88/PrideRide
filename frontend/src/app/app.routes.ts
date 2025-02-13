@@ -113,7 +113,18 @@ export const routes: Routes = [
       import('./pages/decalogo/decalogo.page').then((m) => m.DecalogoPage),
   },
   {
+    path: 'perfil-publico',
+    loadComponent: () =>
+      import('./pages/perfil-publico/perfil-publico.page').then(
+        (m) => m.PerfilPublicoPage
+      ),
+  },
+
+  {
     path: 'verificaciones-perfil',
-    loadComponent: () => import('./pages/paginas-panel-usuario/verificaciones-perfil/verificaciones-perfil.page').then( m => m.VerificacionesPerfilPage)
+    loadComponent: () =>
+      import(
+        './pages/paginas-panel-usuario/verificaciones-perfil/verificaciones-perfil.page'
+      ).then((m) => m.VerificacionesPerfilPage),
   },
 ];
