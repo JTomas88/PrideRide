@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -25,7 +26,8 @@ export class ResultadosBusquedaComponent implements OnInit {
   usuarioPorID: Usuario | undefined;
 
   constructor(private travelService: TravelService, 
-    private funcionesComunes: FuncionesComunes, private userService: UserServicesService) {}
+    private funcionesComunes: FuncionesComunes, private userService: UserServicesService, 
+    private router: Router) {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -63,5 +65,14 @@ export class ResultadosBusquedaComponent implements OnInit {
    */
   obtenerUsuarioPorID(id_usuario: number): Observable<any> {
     return this.userService.obtenerUsuarioPorID(id_usuario); // Aquí retornamos el Observable del servicio directamente
+  }
+
+  openPerfilPublico(id_usuario: number) {
+    const usuario = {
+      id: id_usuario
+    }
+    this.router.navigate(['/perfil-publico'], {
+      queryParams: usuario,
+    });
   }
 }

@@ -1,29 +1,29 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-@use './animations.scss' as *;
-@import './animations.scss';
+@use "@angular/material" as mat;
+@use "./animations.scss" as *;
+@import "./animations.scss";
 
 html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
 @font-face {
   font-family: "Offside";
-  src: url('./assets/fonts/Offside-Regular.ttf') format('truetype');
+  src: url("./assets/fonts/Offside-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-
 
 /*
  * App Global CSS
@@ -61,16 +61,34 @@ html {
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
 
-html, body { height: 100%; background-color: #e9edd5;}
+html,
+body {
+  height: 100%;
+  background-color: #e9edd5;
+}
 body {
   margin: 0;
   font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #e9edd5;
 }
 
-h1, h2, h3, h4, h5, h6, p, button, input, ion-title, ion-label, ion-input, ion-select {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+input,
+ion-title,
+ion-label,
+ion-input,
+ion-select,
+span,
+label {
   font-family: "Offside", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -94,7 +112,7 @@ ion-content {
   position: relative;
 }
 
-.btn_bg{
+.btn_bg {
   background-color: #b3b5e6 !important;
   color: black !important;
 }
@@ -105,15 +123,15 @@ ion-content {
   padding: 1%;
 }
 
-button:hover{
-  background-color: #F0D7B4 !important;
+button:hover {
+  background-color: #f0d7b4 !important;
 }
 
 /**
 *   CONFIGURACIÓN PARA EL HEADER DE LA PÁGINA    *
 **/
 .diseno {
-  background-color: #F0D7B4 !important;
+  background-color: #f0d7b4 !important;
 }
 
 .buscar-viaje {
@@ -147,13 +165,11 @@ button:hover{
 }
 
 .white-header {
-  background-color: #b7e0b4!important;
+  background-color: #b7e0b4 !important;
   color: black !important;
   --background: #b7e0b4;
   --ion-text-color: black !important;
 }
-
-
 
 /* CONFIGURACIÓN PARA EVITAR SCROLL INNECESARIO CUANDO SE LEVANTA UNA VENTANA MODAL */
 html.cdk-global-scrollblock {

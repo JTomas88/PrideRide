@@ -111,5 +111,9 @@ export const routes: Routes = [
     path: 'decalogo',
     loadComponent: () =>
       import('./pages/decalogo/decalogo.page').then((m) => m.DecalogoPage),
+  },  {
+    path: 'perfil-publico',
+    loadComponent: () => import('./pages/perfil-publico/perfil-publico.page').then( m => m.PerfilPublicoPage)
   },
+
 ];

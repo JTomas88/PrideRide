@@ -1,0 +1,49 @@
+.caja_perfil {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+  position: relative;
+//   background-color: #F0D7B4;
+}
+
+.espacio_cabecera {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-cabecera {
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagen-perfil {
+  position: absolute;
+  bottom: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #f0d7b4;
+  border-radius: 50%;
+  padding: 2px;
+  background-color: #f0d7b4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}
+
+.perfil-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.informacion-usuario {
+  text-align: start;
+  margin-top: 40px;
+}
+
+.info-item {
+  display: block;
+  margin-bottom: 10px;
+}

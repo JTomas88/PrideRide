@@ -68,12 +68,12 @@
                     </ion-col>
                   </ion-row>
                 </ion-col>
-                <ion-col>
+                <ion-col (click)="openPerfilPublico(resultado_del_viaje.usuario?.id)" type="button">
                   <ion-row class="d-flex justify-content-center">
                     <p>{{ resultado_del_viaje.usuario?.nombre }}</p>
                   </ion-row>
                   <ion-row class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center" >
                       <img class="user" *ngIf="resultado_del_viaje.usuario?.foto" [src]="resultado_del_viaje.usuario?.foto" />
                       <img class="user" *ngIf="!resultado_del_viaje.usuario?.foto" src="../../../assets/User-Profile-PNG-Image.png" />
                     </div>
