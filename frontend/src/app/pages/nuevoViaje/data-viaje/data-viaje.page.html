@@ -41,6 +41,20 @@
   <!-- TERCER PASO PARA CREAR UN VIAJE -->
    <div *ngIf="tercer_paso">
     <app-tercer-paso></app-tercer-paso>
+    <div class="d-flex justify-content-center mt-3 mb-3 btn-banner">
+      <!-- Botón Atrás -->
+      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoBack()">
+        Atrás
+      </button>
+      <button type="button" mat-raised-button class="btn_bg" (click)="onTercerPasoComplete()">
+        Continuar
+      </button>
+    </div>
+   </div>
+
+   <div *ngIf="cuarto_paso">
+    <app-cuarto-paso></app-cuarto-paso>
+
    </div>
   
 </ion-content>

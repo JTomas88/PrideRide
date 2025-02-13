@@ -7,6 +7,7 @@ export interface Viaje {
   plazas: number;
   hora_salida: string;
   fecha_salida: string;
+  precio_viaje?: number;
   ruta_seleccionada?: any;
   usuario_id: number;
   created_at: string;
