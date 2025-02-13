@@ -1,4 +1,28 @@
 {
+  "__MiPerfil": "My Profile Modal and My Profile Component",
+  "MI_PERFIL": {
+    "TITULO": "My Profile",
+    "DESCRIPCION_SECCION": "In this section, you can view and edit your personal information, as well as add your vehicles and travel preferences.",
+    "INFO_PERSONAL": "Personal Information",
+    "NOMBRE": "First Name",
+    "APELLIDOS": "Last Name",
+    "PRONOMBRE": "Pronoun",
+    "GENERO": "Gender",
+    "ORIENTACION": "Orientation",
+    "FECHA_NACIMIENTO": "Date of Birth",
+    "EDAD": "Age",
+    "SOBRE_TI": "About you",
+    "CUENTANOS": "You can tell everything you want about yourself!",
+    "VEHÍCULOS_PREF": "My Vehicles / Travel Preferences",
+    "MIS_VEHICULOS": "My Vehicles",
+    "PREF_VIAJE": "Travel Preferences",
+    "CUANDO_VIAJO_PREFIERO": "When I travel, I prefer...",
+    "HABLAR": "Talking",
+    "ESCUCHAR_MUSICA": "Listening to Music",
+    "DORMIR": "Sleeping",
+    "SILENCIO": "Silence"
+  },
+
   "DATOS_USUARIO": {
     "NOMBRE": "Name",
     "APELLIDOS": "Surname",
@@ -49,7 +73,7 @@
     "TRAVELERS": "No. of passengers",
     "SEARCH": "Search"
   },
-  "MI_PERFIL": {
+  "MI_PERFIL2": {
     "TITLE": "My Details",
     "SUBTITLE": "In this section, you can modify the personal details displayed to others as well as your travel preferences. You will also have the option to verify your details.",
     "PRONOMBRE": "Pronoun",

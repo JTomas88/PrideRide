@@ -3,92 +3,93 @@
   [searchRoute]="'search'"
   [isLoggedIn]="userLoggedIn"
 ></app-navbar>
+
 <ion-content [fullscreen]="true">
   <div class="container">
     <div class="d-flex justify-content-center">
-      <h1>{{'MODAL_AJCUENTA.TITULO' | translate}}</h1>
+      <h1>{{'DATOS_CONTACTO.TITULO' | translate}}</h1>
     </div>
     <p class="d-flex justify-content-center">
-      {{'MODAL_AJCUENTA.SUBTITULO' | translate}}
+      {{'DATOS_CONTACTO.DESCRIPCION_SECCION' | translate}}
     </p>
-    <ion-row>
-      <ion-col class="mb-3 col-separator">
-        <h1 class="d-flex justify-content-center">
-          {{'MODAL_AJCUENTA.CCONTRASENA_TITULO' | translate}}
-        </h1>
-        <div class="mb-3">
-          <label for="cActual" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_ACTUAL' | translate}}</label>
-          <input type="password" class="form-control input-contras" id="cActual" />
-        </div>
-        <div class="mb-1">
-          <label for="pNueva" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_NUEVA' | translate}}</label>
-          <input type="password" class="form-control input-contras" id="pNueva" />
-        </div>
-        <div class="mb-1">
-          <label for="pNuevaConf" class="form-label">{{'MODAL_AJCUENTA.CONTRASENA_CONF' | translate}}</label>
-          <input type="password" class="form-control input-contras" id="pNuevaConf" />
-        </div>
-        <ion-col class="d-flex justify-content-center align-items-center">
-          <div>
-            <button type="button" class="btn btn_bg">
-              {{'MODAL_AJCUENTA.CONTRASENA_BOTON' | translate}}
-            </button>
-          </div>
-        </ion-col>
-      </ion-col>
+    <p>{{'DATOS_CONTACTO.DESCRIPCION_SECCION_2' | translate}}</p>
 
-      <ion-col class="col-separator">
-        <h1 class="d-flex justify-content-center mb-4">
-          {{'MODAL_AJCUENTA.PREFCOM_TITULO' | translate}}
-        </h1>
-        <ion-row class="mb-4">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-            <label class="form-check-label" for="flexCheckDefault">
-              {{'MODAL_AJCUENTA.PREFCOM_COMERCIALES' | translate}}
-            </label>
-          </div>
-        </ion-row>
-        <ion-row>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-            <label class="form-check-label" for="flexCheckChecked">
-              {{'MODAL_AJCUENTA.PREFCOM_TERCEROS' | translate}}
-            </label>
-          </div>
-          <div class="mt-3">
-            <a class="nav-link active dropdown-toggle d-flex align-items-center" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" aria-current="page">
-              {{'MODAL_AJCUENTA.CAMBIO_IDIOMA' | translate}} <mat-icon class="ms-2">language</mat-icon>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a type="button" class="dropdown-item" (click)="changeLanguage('es')"><img
-                    src="../../../assets/flags/espana.png" class="flag-icon" />
-                  Español</a>
-              </li>
-              <li>
-                <a type="button" class="dropdown-item" (click)="changeLanguage('en')"><img
-                    src="../../../assets/flags/reino-unido.png" class="flag-icon" />
-                  Inglés</a>
-              </li>
-            </ul>
-          </div>
-        </ion-row>
-      </ion-col>
-      <ion-col>
-        <h1 class="d-flex justify-content-center">
-          {{'MODAL_AJCUENTA.BORRARCUENTA_TITULO' | translate}}
-        </h1>
-        <p class="mt-3">
-          {{'MODAL_AJCUENTA.BORRARCUENTA_SUBTITULO' | translate}}
-        </p>
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn_bg">
-            {{'MODAL_AJCUENTA.BORRARCUENTA_BOTON' | translate}}
-          </button>
-        </div>
-      </ion-col>
-    </ion-row>
+    <div class="container">
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <h6>{{'DATOS_CONTACTO.MODIF_CORREO_TFNO' | translate}}</h6>
+          </ion-row>
+          <ion-row>
+            <div class="mb-3">
+              <div>
+                <div>
+                  <label for="email" class="form-label"
+                    >{{'DATOS_CONTACTO.MI_CORREO' | translate}}</label
+                  >
+                </div>
+              </div>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </ion-row>
+          <ion-row>
+            <div class="mb-3">
+              <div>
+                <label for="telefono" class="form-label"
+                  >{{'DATOS_CONTACTO.MI_TFNO' | translate}}</label
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                id="telefono"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </ion-row>
+        </ion-col>
+
+        <mat-divider vertical=""></mat-divider>
+        <ion-col class="ms-5">
+          <ion-row>
+            <h6>{{'DATOS_CONTACTO.COM_COMERCIALES' | translate}}</h6>
+          </ion-row>
+          <ion-row class="mb-4">
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                {{ "DATOS_CONTACTO.CHECK_POR_EMAIL" | translate }}
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                {{ "DATOS_CONTACTO.CHECK_TERCEROS" | translate }}
+              </label>
+            </div>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <div class="d-flex justify-content-center me-5 mt-5">
+        <button type="button" class="btn btn_bg">
+          {{ "BOTON.GUARDAR" | translate }}
+        </button>
+      </div>
+    </div>
   </div>
 </ion-content>

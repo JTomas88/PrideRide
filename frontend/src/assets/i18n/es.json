@@ -1,14 +1,133 @@
 {
-  "DATOS_USUARIO": {
+  "__MiPerfil": "Modal de Mi perfil y componente mi perfil",
+  "MI_PERFIL": {
+    "TITULO": "Mi perfil",
+    "DESCRIPCION_SECCION": "En esta sección podrás consultar y modificar tu información personal, así como añadir tus vehículos y preferencias en el viaje",
+    "INFO_PERSONAL": "Información personal",
     "NOMBRE": "Nombre",
     "APELLIDOS": "Apellidos",
+    "PRONOMBRE": "Pronombre",
+    "GENERO": "Género",
+    "ORIENTACION": "Orientación",
     "FECHA_NACIMIENTO": "Fecha de nacimiento",
     "EDAD": "Edad",
-    "EMAIL": "Email",
-    "TELEFONO": "Teléfono",
-    "MIS_VEHICULOS": "Mis vehículos"
+    "SOBRE_TI": "Sobre ti",
+    "CUENTANOS": "¡Puedes contar todo lo que quieras sobre ti!",
+    "VEHÍCULOS_PREF": "Mis vehículos / Preferencias de viaje",
+    "MIS_VEHICULOS": "Mis vehículos",
+    "PREF_VIAJE": "Preferencias de viaje",
+    "CUANDO_VIAJO_PREFIERO": "Cuando viajo prefiero...",
+    "HABLAR": "Hablar",
+    "ESCUCHAR_MUSICA": "Escuchar música",
+    "DORMIR": "Dormir",
+    "SILENCIO": "Silencio"
   },
-  "GUARDAR": "Guardar",
+
+  "__DatosContacto": "Modal y página de contacto",
+  "DATOS_CONTACTO": {
+    "TITULO": "Datos de contacto",
+    "DESCRIPCION_SECCION": "Desde este apartado puedes modificar tu correo electrónico y tu teléfono de contacto (Recuerda que son datos importante a la hora de realizar un viaje)",
+    "DESCRIPCION_SECCION_2": "Recuerda que si quieres ser un perfil verificado debes hacerlo en la sección Verificaciones",
+    "MODIF_CORREO_TFNO": "Modificación correo electrónico / Teléfono",
+    "MI_CORREO": "Mi correo electrónico",
+    "MI_TFNO": "Mi teléfono",
+    "COM_COMERCIALES": "Comunicaciones comerciales",
+    "CHECK_POR_EMAIL": "Acepto recibir comunicaciones comerciales por email",
+    "CHECK_TERCEROS": "Acepto que mis datos puedan ser usados con fines comerciales a terceros"
+  },
+
+  "__VerificacionesPerfil": "Modal y pagina verificar-perfil",
+  "VERIF_PERFIL": {
+    "TITULO": "Verificar perfil / Cambiar la contraseña",
+    "DESCRIPCION_SECCION": "Desde aquí podrás hacer la verificación de tu perfil. Debes confirmar:",
+    "LI_CORREO": "Correo electrónico",
+    "LI_TELÉFONO": "Teléfono",
+    "LI_DNI": "Subir foto del DNI (ambas caras)",
+    "DESCRIPCION_SECCION_2": "Si eres conductor (o planeas hacer algún viaje como conductor) debes subir la foto de tu carnet de conducir por ambas caras",
+    "DESCRIPCION_SECCION_3": "Además, en esta sección, puedes cambiar la contraseña para entrar a la web-app",
+    "VERIFICA_TU_CORREO": "Verifica tu correo electrónico:",
+    "INFO_VERIF_CORREO": "Se enviará un correo a tu dirección, solo tienes que confirmar en el enlace que aparecerá.",
+    "VERIFICA_TU_TFNO": "Verifica tu teléfono:",
+    "INFO_VERIF_TFNO": "Introduce aquí los 4 dígitos que has recibido:",
+    "VERIF_TU_IDENTIDAD": "Verifica tu identidad:",
+    "INFO_VERIFIDENTIDAD": "Mediante el botón de la izquierda puedes subir una foto de tu documento de identidad, por ambas caras.",
+    "NINGUN_ARCHIVO": "Ningún archivo seleccionado",
+    "VERIF_ADIC_CONDUCIR": "VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR",
+    "INFO_VERIFCONDUCIR": "Si tienes previsto publicar un viaje en algún momento, debemos tener verificado tu carnet de conducir.",
+    "CAMBIO_CONTRAS": "Cambio de contraseña:",
+    "CONTRAS_ACTUAL": "Contraseña actual:",
+    "NUEVA_CONTRAS": "Nueva contraseña:",
+    "CONF_NUEVA_CONTRAS": "Confirmar la nueva contraseña:",
+    "ELIMINAR_CTA": "Eliminar la cuenta",
+    "INFO_ELIMINAR_CTA": "Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo, recuerda realizar primero la transferencia a tu cuenta bancaria para no perder ese dinero."
+  },
+
+  "__Pronombres": "Selectores de pronombre",
+  "SELEC_PRONOMBRE": {
+    "SELECCIONA": "Selecciona tu pronombre",
+    "NINGUNO": "No uso ninguno en concreto",
+    "OTROS": "Otros",
+    "NO_RESPONDE": "Prefiero no responder"
+  },
+
+  "__Género": "Selectores de género",
+  "SELEC_GENERO": {
+    "SELECCIONA": "Selecciona tu género",
+    "HOMBRE_CIS": "Hombre Cis",
+    "MUJER_CIS": "Mujer Cis",
+    "TRANSEXUAL": "Transexual",
+    "NO_BINARIO": "No binario",
+    "INTERGENERO": "Intergénero",
+    "NO_FLUIDO": "No fluido",
+    "OTRO": "Otro",
+    "NO_RESPONDE": "Prefiero no responder"
+  },
+
+  "__Orientación": "Selectores de orientación",
+  "ORIENTACION": {
+    "SELECCIONA": "Selecciona tu orientación",
+    "GAY": "Gay",
+    "LESBIANA": "Lesbiana",
+    "BISEXUAL": "Bisexual",
+    "PANSEXUAL": "Pansexual",
+    "ASEXUAL": "Asexual",
+    "DEMISEXUAL": "Demisexual",
+    "QUEER": "Queer",
+    "OTRO": "Otro",
+    "NO_RESPONDE": "Prefiero no responder"
+  },
+
+  "__Vehículos": "Marca, modelo y colores",
+  "VEHICULOS": {
+    "MARCA": "Marca",
+    "MODELO": "Modelo",
+    "COLOR": "Color",
+    "blanco": "Blanco",
+    "negro": "Negro",
+    "rojo": "Rojo",
+    "amarillo": "Amarillo",
+    "verde": "Verde",
+    "gris": "Gris",
+    "dorado": "Dorado",
+    "marron": "Marrón",
+    "morado": "Purple",
+    "beige": "Beige",
+    "perla": "Perla",
+    "otro": "Otro"
+  },
+
+  "__Botones": "Modal de Mi perfil y componente mi perfil",
+  "BOTON": {
+    "ANADIR_VEHICULO": "Añadir vehículo",
+    "GUARDAR": "Guardar",
+    "CONFIRMAR_CODIGO_TFNO": "Confirmar código",
+    "ELEGIR_ARCHIVOS": "Elegir archivos",
+    "CAMBIAR": "Cambiar!",
+    "ELIMINAR_CTA": "Eliminar mi cuenta"
+  },
+
+  "ANTIGUO DEBAJO": "",
+
   "HOME": {
     "NEW_TRAVEL_TITLE": "¿Quieres compartir tu próximo viaje?",
     "NEW_TRAVEL_BUTTON": "Publica tu próximo viaje aquí",
@@ -49,7 +168,7 @@
     "TRAVELERS": "Nº pasajeros",
     "SEARCH": "Buscar"
   },
-  "MI_PERFIL": {
+  "MI_PERFIL2": {
     "TITLE": "Mis datos",
     "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
     "PRONOMBRE": "Pronombre",
@@ -217,22 +336,5 @@
     "SUBTITLE1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
     "SUBTITLE2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
     "TU_SALDO": "TU SALDO"
-  },
-  "VEHICULOS": {
-    "MARCA": "Marca",
-    "MODELO": "Modelo",
-    "COLOR": "Color",
-    "blanco": "Blanco",
-    "negro": "Negro",
-    "rojo": "Rojo",
-    "amarillo": "Amarillo",
-    "verde": "Verde",
-    "gris": "Gris",
-    "dorado": "Dorado",
-    "marron": "Marrón",
-    "morado": "Purple",
-    "beige": "Beige",
-    "perla": "Perla",
-    "otro": "Otro"
   }
 }

@@ -24,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIcon,
     TranslateModule,
     MatButtonModule,
+    MatDividerModule,
   ],
   templateUrl: './datos-contacto.component.html',
   styleUrls: ['./datos-contacto.component.scss'],

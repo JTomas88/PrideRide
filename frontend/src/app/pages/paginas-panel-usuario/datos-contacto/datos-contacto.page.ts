@@ -11,6 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Usuario } from 'src/app/models/user/usuario.model';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-datos-contacto',
@@ -25,7 +26,7 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
     FormsModule,
     TranslateModule,
     NavbarComponent,
-    MatIcon,
+    MatDivider,
   ],
 })
 export class DatosContactoPage implements OnInit {

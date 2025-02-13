@@ -112,4 +112,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/decalogo/decalogo.page').then((m) => m.DecalogoPage),
   },
+  {
+    path: 'verificaciones-perfil',
+    loadComponent: () => import('./pages/paginas-panel-usuario/verificaciones-perfil/verificaciones-perfil.page').then( m => m.VerificacionesPerfilPage)
+  },
 ];

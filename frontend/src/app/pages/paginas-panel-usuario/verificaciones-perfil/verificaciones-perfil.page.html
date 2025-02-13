@@ -1,0 +1,26 @@
+<app-navbar
+  [backRoute]="'/home'"
+  [searchRoute]="'search'"
+  [isLoggedIn]="userLoggedIn"
+></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-row>
+      <ion-col>
+        <div>
+          <h4>Verificación básica</h4>
+        </div>
+        <ion-row>
+          <ion-col>Verificar email</ion-col>
+          <ion-col>Verificar teléfono</ion-col>
+          <ion-row>
+            <ion-row>
+              <ion-col> Verificar DNI </ion-col>
+            </ion-row>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

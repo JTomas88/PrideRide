@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { MatDivider } from '@angular/material/divider';
@@ -17,19 +16,16 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
     IonicModule,
     CommonModule,
     FormsModule,
-    MatIcon,
     TranslateModule,
     MatDivider,
-    NavbarComponent
+    NavbarComponent,
   ],
 })
 export class MiPerfilPage implements OnInit {
-
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');

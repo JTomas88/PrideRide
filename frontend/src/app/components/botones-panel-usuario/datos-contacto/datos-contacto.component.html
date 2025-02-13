@@ -1,6 +1,6 @@
 <div class="container modal-datoscontacto">
   <div class="dialog-header">
-    <h2 mat-dialog-title>Datos de contacto</h2>
+    <h2 mat-dialog-title>{{ "DATOS_CONTACTO.TITULO" | translate }}</h2>
     <button
       mat-icon-button
       (click)="openDatosContacto()"
@@ -20,22 +20,20 @@
   <mat-divider></mat-divider>
 
   <mat-dialog-content>
-    <p>
-      Desde este apartado puedes modificar tu correo electrónico y tu teléfono
-      de contacto (Recuerda que son datos importante a la hora de realizar un
-      viaje)
-    </p>
-    <p>
-      Recuerda que si quieres ser un perfil verificado debes hacerlo en la
-      sección "Verificaciones"
-    </p>
+    <p>{{ "DATOS_CONTACTO.DESCRIPCION_SECCION" | translate }}</p>
+    <p>{{ "DATOS_CONTACTO.DESCRIPCION_SECCION_2" | translate }}</p>
     <mat-divider></mat-divider>
 
     <ion-row>
       <ion-col>
+        <ion-row class="d-flex justify-content-center">
+          <h6>{{ "DATOS_CONTACTO.MODIF_CORREO_TFNO" | translate }}</h6>
+        </ion-row>
         <div class="mb-3">
           <div>
-            <h5>Mi correo electrónico</h5>
+            <label for="email" class="form-label"
+              >{{ "DATOS_CONTACTO.MI_CORREO" | translate }}:</label
+            >
           </div>
           <input
             type="email"
@@ -46,7 +44,9 @@
         </div>
         <div class="mb-3">
           <div>
-            <h5>Mi teléfono</h5>
+            <label for="telefono" class="form-label">{{
+              "DATOS_CONTACTO.MI_TFNO" | translate
+            }}</label>
           </div>
           <input
             type="telefono"
@@ -60,9 +60,9 @@
 
     <mat-divider class="mb-3"></mat-divider>
 
-    <p class="d-flex justify-content-center mb-0">
-      <strong>{{ "MODAL_AJCUENTA.PREFCOM_TITULO" | translate }}</strong>
-    </p>
+    <ion-row class="d-flex justify-content-center">
+      <h6>{{ "DATOS_CONTACTO.COM_COMERCIALES" | translate }}</h6>
+    </ion-row>
     <ion-row class="mb-4">
       <div class="form-check">
         <input
@@ -72,7 +72,7 @@
           id="flexCheckDefault"
         />
         <label class="form-check-label" for="flexCheckDefault">
-          {{ "MODAL_AJCUENTA.PREFCOM_COMERCIALES" | translate }}
+          {{ "DATOS_CONTACTO.CHECK_POR_EMAIL" | translate }}
         </label>
       </div>
       <div class="form-check">
@@ -83,14 +83,14 @@
           id="flexCheckChecked"
         />
         <label class="form-check-label" for="flexCheckChecked">
-          {{ "MODAL_AJCUENTA.PREFCOM_TERCEROS" | translate }}
+          {{ "DATOS_CONTACTO.CHECK_TERCEROS" | translate }}
         </label>
       </div>
     </ion-row>
     <ion-row class="d-flex justify-content-center mb-3">
       <div>
         <button type="button" mat-raised-button class="btn btn_bg btn_opciones">
-          Guardar
+          {{ "BOTON.GUARDAR" | translate }}
         </button>
       </div>
     </ion-row>
