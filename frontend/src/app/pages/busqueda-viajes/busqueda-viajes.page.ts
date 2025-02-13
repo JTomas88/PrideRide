@@ -8,9 +8,11 @@ import { BuscadorComponent } from '../../components/buscador/buscador.component'
 import { MatIconModule } from '@angular/material/icon';
 import { ResultadosBusquedaComponent } from 'src/app/components/resultados-busqueda/resultados-busqueda.component';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
-import { Usuario } from 'src/app/models/user/usuario.model';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { FuncionesComunes } from 'src/app/core/funciones-comunes/funciones-comunes.service';
+import { TravelService } from 'src/app/core/travel-services/travel.service';
+import { Viaje } from 'src/app/models/travel/viaje.model';
 
 @Component({
   selector: 'app-busqueda-viajes',
@@ -29,21 +31,17 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
   ],
 })
 export class BusquedaViajesPage implements OnInit {
+
   userLoggedIn: boolean = false;
-  userData: Usuario = {} as Usuario;
+  
 
   /** Objeto para guardar los parámetros que vienen en la URL */
   busquedaParams: any = {};
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private funcionesComunes: FuncionesComunes) {}
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (this.userData && Object.keys(this.userData).length > 0 && this.userData.usuario.email) {
-      this.userLoggedIn = true;
-    } else {
-      this.userLoggedIn = false;
-    }
+    this.userLoggedIn = this.funcionesComunes.isUserLoggedIn();
 
     /**
      * Aquí se obtienen los datos de los parámetros de la URL.

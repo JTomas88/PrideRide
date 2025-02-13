@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { Viaje } from 'src/app/models/travel/viaje.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +34,7 @@ export class TravelService {
    */
   guardarViaje(viajeData: any): Observable<any> {
     const userDataString = localStorage.getItem('userData');  
-  
+    
     if (userDataString) {
       const userData = JSON.parse(userDataString);
       const usuarioId = userData.usuario.id;
@@ -54,6 +55,20 @@ export class TravelService {
     return this.http.get(this.apiUrl + '/travel/obtener_viajes_usuario', {
       params: { usuario_id: usuarioId.toString() }
     });
+  }
+
+  /**
+   * Función para obtener la lista de viajes publicados.
+   * 
+   * @returns Devuelve la lista de viajes que se han publicado.
+   */
+  obtenerTodosLosViajes(): Observable<Viaje[]> {
+    return this.http.get<Viaje[]>(`${this.apiUrl}/travel/obtener_viajes`).pipe(
+      catchError((error) => {
+        console.error('Error al obtener la lista de viajes: ', error);
+        throw error;
+      })
+    )
   }
 
 }

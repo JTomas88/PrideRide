@@ -30,6 +30,17 @@ export class UserServicesService {
       })
     )
   }
+
+  /**
+   * Función para obtener un usuario por su ID.
+   * 
+   * @param usuarioId Recibe el id del usuario seleccionado.
+   * @returns Devuelve el objeto de Usuario al que pertenece su ID.
+   */
+  obtenerUsuarioPorID(usuarioId: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.apiUrl}/user/obtener_usuario_por_id/${usuarioId}`);
+  }
+
   
   /**
    * 
