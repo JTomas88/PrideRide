@@ -22,7 +22,8 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-tercer-paso',
   standalone: true,
-  imports: [IonicModule,
+  imports: [
+    IonicModule,
     CommonModule,
     FormsModule,
     RouterModule,
@@ -43,7 +44,7 @@ import { MessageService } from 'primeng/api';
 })
 export class TercerPasoComponent implements OnInit {
 
-  
+
   mapCenter = { lat: 40.4168, lng: -3.7038 };
   zoom = 12;
   routes: google.maps.DirectionsRoute[] = [];
@@ -68,6 +69,7 @@ export class TercerPasoComponent implements OnInit {
   cargandoSugerencias: boolean = false;
   segundo_paso: boolean = false;
   tercer_paso: boolean = false;
+  cuarto_paso: boolean = false;
   isLoadingRoutes: boolean = false;
   rutaConParadasSeleccionada: boolean = false;
   isUpdatingRoute: boolean = false;
@@ -141,32 +143,6 @@ export class TercerPasoComponent implements OnInit {
         console.error('El mapa aún no está disponible.');
       }
     }, 500);
-  }
-
-  /**
-   * Permite volver al segundo paso.
-   */
-  onTercerPasoBack() {
-    this.tercer_paso = false;
-    this.segundo_paso = true;
-  }
-
-  onTercerPasoComplete() {
-    const currentViajeData = this.travelService.getViajeData();
-
-    if (!currentViajeData?.origen || !currentViajeData?.destino) {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Faltan datos',
-        detail: 'Por favor, selecciona una ruta para poder continuar.',
-        life: 3000
-      });
-    } else {
-      this.router.navigate(['/resumen-viaje'], {
-        queryParams: currentViajeData
-      });
-    }
-    this.tercer_paso = false;
   }
 
   /**
@@ -264,9 +240,9 @@ export class TercerPasoComponent implements OnInit {
       console.error("El origen y destino deben estar definidos.");
       return;
     }
-  
+
     this.isLoadingRoutes = true;
-  
+
     this.directionsService.route(
       {
         origin: this.origen,
@@ -277,58 +253,62 @@ export class TercerPasoComponent implements OnInit {
       },
       (response, status) => {
         this.isLoadingRoutes = false;
-  
+
         if (status === "OK" && response) {
           this.routes = response.routes;
           this.selectedRoute = response;
           this.directionsRenderer.setDirections(response);
-  
+
           this.rutaConParadasSeleccionada = true;
-  
-          // Calcular la distancia total y el tiempo total
+
+          // Calcula la distancia total y el tiempo total
           let distanciaTotal = 0;
           let tiempoTotal = 0;
-  
+
           // Recorre cada tramo de la ruta (legs)
           for (let i = 0; i < response.routes[0].legs.length; i++) {
             const leg = response.routes[0].legs[i];
-  
-            // Verificar si 'leg.distance' está definido antes de acceder a su valor
+
+            // Verifica si 'leg.distance' está definido antes de acceder a su valor
             if (leg.distance && leg.distance.value) {
               distanciaTotal += leg.distance.value; // La distancia está en metros
             }
-  
-            // Verificar si 'leg.duration' está definido antes de acceder a su valor
+
+            // Verifica si 'leg.duration' está definido antes de acceder a su valor
             if (leg.duration && leg.duration.value) {
               tiempoTotal += leg.duration.value; // El tiempo está en segundos
             }
           }
-  
-          // Convertir la distancia a kilómetros y el tiempo a minutos
-          distanciaTotal = distanciaTotal / 1000; // km
-          tiempoTotal = tiempoTotal / 3600; // minutos
-  
-          // Mostrar o guardar el resumen de la ruta
-          console.log(`Distancia total: ${distanciaTotal} km`);
-          console.log(`Tiempo total: ${tiempoTotal} minutos`);
-  
-          // Guardar la ruta actualizada con los datos de distancia y tiempo
+          // Asegurar que la distancia se muestra sin decimales
+          const distancia = Math.round(distanciaTotal / 1000); // Convertimos metros a km y redondeamos
+
+          // Convertimos el tiempo total en horas y minutos
+          const horas = Math.floor(tiempoTotal); // Parte entera de las horas
+          const minutos = Math.round((tiempoTotal - horas) * 60); // Convertimos la parte decimal en minutos
+
+          // Formateamos el tiempo en HH:mm
+          const tiempoTotalFormato = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+
+          console.log(`Distancia total: ${distancia} km`);
+          console.log(`Tiempo total: ${tiempoTotalFormato} horas`);
+
+          // Guarda la ruta actualizada con los datos de distancia y tiempo
           localStorage.setItem('rutaConParadas', JSON.stringify({
             origen: this.origen,
             destino: this.destino,
             waypoints: this.waypoints,
             selectedRoute: response,
-            distanciaTotal: distanciaTotal,
-            tiempoTotal: tiempoTotal
+            distanciaTotal: distancia,
+            tiempoTotal: tiempoTotalFormato
           }));
-  
+
         } else {
           console.error("Error al actualizar la ruta:", status);
         }
       }
     );
   }
-  
+
   /**
    * Función para obtener un listado de ciudades que estén en el 
    * paso de una ruta seleccionada previamente.
@@ -378,7 +358,7 @@ export class TercerPasoComponent implements OnInit {
       return;
     }
     const puntosRuta: google.maps.LatLng[] = [];
-    // Recorrer todos los segmentos de la ruta
+    // Recorre todos los segmentos de la ruta
     this.selectedRoute.routes[0].legs.forEach((leg) => {
       leg.steps.forEach((step) => {
         puntosRuta.push(step.start_location);
@@ -401,7 +381,7 @@ export class TercerPasoComponent implements OnInit {
    */
   seleccionarParada(parada: any) {
     console.log('Parada seleccionada:', parada);
-  
+
     // Alternar la selección de la parada
     if (this.paradasSeleccionadas.has(parada.nombre)) {
       // Si la parada ya está seleccionada, la deseleccionamos
@@ -413,16 +393,14 @@ export class TercerPasoComponent implements OnInit {
         location: parada.nombre,
         stopover: true,
       };
-  
+
       this.waypoints.push(nuevoWaypoint);
       this.paradasSeleccionadas.add(parada.nombre);
     }
-  
+
     // Actualizar la ruta con las nuevas paradas
     this.actualizarRuta();
   }
-  
-  
 
   /**
    * Función que se utiliza para seleccionar una ruta
@@ -444,16 +422,48 @@ export class TercerPasoComponent implements OnInit {
     this.directionsRenderer.setDirections(this.selectedRoute);
     this.rutaConParadasSeleccionada = true;
     this.cargandoSugerencias = false;
+
+    // Calcular distancia y tiempo total
+    let distanciaTotal = 0;
+    let tiempoTotal = 0;
+
+    if (this.selectedRoute.routes[0].legs) {
+      this.selectedRoute.routes[0].legs.forEach((leg) => {
+        distanciaTotal += leg.distance?.value || 0; // metros
+        tiempoTotal += leg.duration?.value || 0; // segundos
+      });
+    }
+
+
+    // Asegurar que la distancia se muestra sin decimales
+    const distancia = Math.round(distanciaTotal / 1000); // Convertimos metros a km y redondeamos
+
+    // Convertimos el tiempo total en horas y minutos
+    const horas = Math.floor(tiempoTotal); // Parte entera de las horas
+    const minutos = Math.round((tiempoTotal - horas) * 60); // Convertimos la parte decimal en minutos
+
+    // Formateamos el tiempo en HH:mm
+    const tiempoTotalFormato = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+
+    console.log(`Distancia total: ${distancia} km`);
+    console.log(`Tiempo total: ${tiempoTotalFormato} horas`);
+
     // Guardar la ruta en el servicio
     const viajeData = {
       ...this.travelService.getViajeData(),
       ruta_seleccionada: this.selectedRoute,
+      distanciaTotal: distancia,
+      tiempoTotal: tiempoTotalFormato
     };
+
     this.travelService.setViajeData(viajeData);
 
-    this.actualizarRuta();
-    this.obtenerCiudadesEnRuta(); // Llamamos la función para obtener ciudades
+    // Guardar en localStorage
+    localStorage.setItem('rutaSeleccionada', JSON.stringify(viajeData));
+
+    this.obtenerCiudadesEnRuta();
   }
+
 
   /**
    * Función para eliminar la ruta que se ha seleccionado
@@ -464,24 +474,24 @@ export class TercerPasoComponent implements OnInit {
     this.selectedRoute = null;
     this.waypoints = [];
     this.paradasSeleccionadas.clear();
-  
+
     // Limpiar la vista del mapa
     this.directionsRenderer.setDirections(this.selectedRoute);
-    
+
     // Eliminar la ruta de la memoria o del servicio
     localStorage.removeItem('rutaConParadas');
     this.travelService.setViajeData({
       ...this.travelService.getViajeData(),
       ruta_seleccionada: null,
     });
-  
+
     // Resetear cualquier estado adicional necesario
     this.rutaConParadasSeleccionada = false;
     this.sugerenciasParadas = [];
     this.cargandoSugerencias = false;
-    
+
     this.buscarRutas(this.origen, this.destino);
   }
-  
+
 
 }

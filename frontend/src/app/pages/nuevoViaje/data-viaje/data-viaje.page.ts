@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
 import { ResumenDinamicoComponent } from './componentes-viaje/resumen-dinamico/resumen-dinamico.component';
 import { TercerPasoComponent } from "./componentes-viaje/tercer-paso/tercer-paso.component";
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { CuartoPasoComponent } from "./componentes-viaje/cuarto-paso/cuarto-paso.component";
 
 @Component({
   selector: 'app-data-viaje',
@@ -34,7 +35,8 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
     SegundoPasoComponent,
     NavbarComponent,
     ResumenDinamicoComponent,
-    TercerPasoComponent
+    TercerPasoComponent,
+    CuartoPasoComponent
 ],
   providers: [provideNativeDateAdapter(), MessageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -51,6 +53,7 @@ export class DataViajePage implements OnInit {
   primer_paso: boolean = true;
   segundo_paso: boolean = false;
   tercer_paso: boolean = false;
+  cuarto_paso: boolean = false;
 
 
   userLoggedIn: boolean = false;
@@ -147,15 +150,14 @@ export class DataViajePage implements OnInit {
       this.messageService.add({
         severity: 'error',
         summary: 'Faltan datos',
-        detail: 'Por favor, selecciona una ruta para poder continuar.',
-        life: 3000
+        detail:
+          'Por favor, elige un punto de partida y de llegada para poder continuar.',
+        life: 3000,
       });
     } else {
-      this.router.navigate(['/resumen-viaje'], {
-        queryParams: currentViajeData
-      });
+      this.tercer_paso = false;
+      this.cuarto_paso = true;
     }
-    this.tercer_paso = false;
   }
 
   /**
@@ -164,6 +166,29 @@ export class DataViajePage implements OnInit {
   onTercerPasoBack() {
     this.tercer_paso = false;
     this.segundo_paso = true;
+  }
+
+  onCuartoPasoBack(){
+    this.cuarto_paso = false;
+    this.tercer_paso = true;
+  }
+
+  onCuartoPasoComplete(){
+    const currentViajeData = this.travelService.getViajeData();
+
+    if (!currentViajeData?.origen || !currentViajeData?.destino) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Faltan datos',
+        detail: 'Por favor, selecciona una ruta para poder continuar.',
+        life: 3000
+      });
+    } else {
+      this.router.navigate(['/resumen-viaje'], {
+        queryParams: currentViajeData
+      });
+    }
+    this.cuarto_paso = false;
   }
 
   /**

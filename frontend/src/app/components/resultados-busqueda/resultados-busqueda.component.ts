@@ -10,6 +10,9 @@ import { TravelService } from 'src/app/core/travel-services/travel.service';
 import { UserServicesService } from 'src/app/core/user-services/user-services.service';
 import { Viaje } from 'src/app/models/travel/viaje.model';
 import { Usuario } from 'src/app/models/user/usuario.model';
+import { ViajeSeleccionadoComponent } from '../viaje-seleccionado/viaje-seleccionado.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-resultados-busqueda',
@@ -19,15 +22,16 @@ import { Usuario } from 'src/app/models/user/usuario.model';
   styleUrls: ['./resultados-busqueda.component.scss'],
 })
 export class ResultadosBusquedaComponent implements OnInit {
-  
+
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
   listado_viajes: Viaje[] = [];
   usuarioPorID: Usuario | undefined;
 
-  constructor(private travelService: TravelService, 
-    private funcionesComunes: FuncionesComunes, private userService: UserServicesService, 
-    private router: Router) {}
+  constructor(private travelService: TravelService,
+    private funcionesComunes: FuncionesComunes, private userService: UserServicesService,
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -35,7 +39,7 @@ export class ResultadosBusquedaComponent implements OnInit {
     this.obtenerListaViajes();
   }
 
-  
+
   /**
    * Función para obtener la lista de viajes
    * que se han publicado.
@@ -44,19 +48,19 @@ export class ResultadosBusquedaComponent implements OnInit {
   obtenerListaViajes() {
     this.travelService.obtenerTodosLosViajes().subscribe((viajes) => {
       this.listado_viajes = viajes;
-  
+
       this.listado_viajes.forEach((viaje) => {
         this.obtenerUsuarioPorID(viaje.usuario_id).subscribe((usuario: any) => {
           viaje.usuario = usuario;
           console.log(viaje);
-          
+
         });
       });
-  
+
       console.log('Listado de viajes con usuario:', this.listado_viajes);
     });
   }
-  
+
 
   /**
    * Función para obtener un usuario por su ID.
@@ -75,4 +79,15 @@ export class ResultadosBusquedaComponent implements OnInit {
       queryParams: usuario,
     });
   }
+
+
+  /**
+   * Función para abrir un viaje y obtener mas detalles
+   */
+  openDetalleViaje(viaje: Viaje) {
+    this.dialog.open(ViajeSeleccionadoComponent, {
+      data: { viaje }
+    });
+  }
+  
 }

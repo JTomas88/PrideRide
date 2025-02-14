@@ -1,0 +1,106 @@
+.input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.digit-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.file-upload {
+  display: inline-block;
+  position: relative;
+}
+
+.file-input {
+  display: none;
+}
+
+/* Botón personalizado con el símbolo "+" */
+.upload-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  line-height: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.28);
+}
+
+.floating-plus {
+  position: absolute;
+  top: -10px; /* Ajusta según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  background-color: #B3B5E6;
+  color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: #E0A667;
+}
+
+.btn_bg{
+  box-shadow: 0 4px 6px rgba(0 0 0 / 28%);
+  top: 10%;
+}
+
+.texto{
+  margin-top: 10%;
+}
+
+.mat-divider{
+  display: block;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.12);
+  margin: 8px 0;
+}
+
+.divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-divider[vertical] {
+  height: 100%;
+  width: 2px;
+  background-color: rgba(0, 0, 0, 0.12); /* Ajusta el color según necesites */
+}
+
+.mat-divider-2 {
+  height: 100%;
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.content-box {
+  max-width: 500px; /* Ajusta el ancho según lo necesites */
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}

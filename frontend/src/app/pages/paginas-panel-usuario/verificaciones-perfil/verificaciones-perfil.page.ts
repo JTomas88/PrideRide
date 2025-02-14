@@ -14,9 +14,6 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./verificaciones-perfil.page.scss'],
   standalone: true,
   imports: [
-    IonCol,
-    IonRow,
-    IonContent,
     IonicModule,
     CommonModule,
     FormsModule,
