@@ -26,7 +26,7 @@ export class ResumenDinamicoComponent implements OnInit {
   destino: string = '';
   hora_seleccionada: string = '';
   plazas: string = '';
-  selectedRoute: google.maps.DirectionsResult | null = null;
+  // selectedRoute: google.maps.DirectionsResult | null = null;
 
   copiaViajeData: any = {};
 
@@ -48,7 +48,7 @@ export class ResumenDinamicoComponent implements OnInit {
       .subscribe((viajeData) => {
         this.currentViajeData = viajeData ?? {};
         this.origen = this.currentViajeData?.origen || '';
-        this.selectedRoute = this.currentViajeData?.ruta_seleccionada || null;
+        // this.selectedRoute = this.currentViajeData?.ruta_seleccionada || null;
       });
   }
 
