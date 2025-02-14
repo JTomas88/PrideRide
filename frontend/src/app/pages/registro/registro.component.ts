@@ -132,4 +132,8 @@ export class RegistroComponent implements OnInit {
       panelClass: 'dialog-animate'
     });
   }
+
+  volverAlHome() {
+    this.router.navigate(['/home'], {});
+  }
 }
