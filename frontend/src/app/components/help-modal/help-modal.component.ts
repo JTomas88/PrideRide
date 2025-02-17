@@ -7,6 +7,7 @@ import { MatIcon } from '@angular/material/icon';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-help-modal',
@@ -26,7 +27,7 @@ import { CommonModule } from '@angular/common';
     ])
   ]
 })
-export class HelpModalComponent implements OnInit  {
+export class HelpModalComponent implements OnInit {
   /**
    * En la variable "message" utilizamos el tipado de objetos SafeHtml
    * para incrustar de forma segura código HTML en dicha variable
@@ -35,9 +36,10 @@ export class HelpModalComponent implements OnInit  {
   message: SafeHtml;
   title: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string; message: string; showAcceptButton: boolean },
-  private sanitizer: DomSanitizer,
-  private dialogRef: MatDialogRef<HelpModalComponent>) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string; message: string; showAcceptButton: boolean; showMoreInfoButton: boolean },
+    private sanitizer: DomSanitizer,
+    private dialogRef: MatDialogRef<HelpModalComponent>,
+    private router: Router) {
     this.title = data.title;
     this.message = this.sanitizer.bypassSecurityTrustHtml(data.message);
   }
@@ -49,8 +51,16 @@ export class HelpModalComponent implements OnInit  {
     this.dialogRef.close();
   }
 
-  aceptarCondiciones(accepted: boolean) {
+  aceptarCondiciones(accepted: string) {
     this.dialogRef.close(accepted);
   }
-  abrirMasDetalles(){}
+
+  abrirMasDetalles() {
+    this.dialogRef.close();
+    this.router.navigate(['/decalogo']);
+  }
+
+  cerrarParaMasInfo(accepted: string) {
+    this.dialogRef.close(accepted);
+  }
 }
