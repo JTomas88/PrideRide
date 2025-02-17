@@ -1,6 +1,25 @@
 {
-  "__MiPerfil": "My Profile Modal and My Profile Component",
-  "MI_PERFIL": {
+  "User Panel": "User Panel Page",
+  "USERPANEL": {
+    "USERPANEL": "User Panel",
+    "INFOPERSONAL": "PERSONAL INFORMATION",
+    "ANADIR_EDITAR_FOTO": "Add/Edit Photo",
+    "MIPERFIL": "My Profile",
+    "MIPERFIL_TOOL_TITULO": "My Profile Content",
+    "MIPERFIL_TOOL_MODAL": "In this section, you can view and edit your personal information, as well as add your vehicles and travel preferences.",
+    "DATOSCONTACTO": "Contact Information",
+    "DATOSCONT_TOOL_TITULO": "Contact Information Content",
+    "DATOSCONT_TOOL_MODAL": "You can update your phone number and email, as well as set your communication preferences.",
+    "VERIFPERFIL": "Verify Profile / Password",
+    "VERIFPERFIL_TOOL_TITULO": "Content on profile verification and password change",
+    "VERIFPERFIL_TOOL_MODAL": "You can become a verified user, upload a photo of your driver's license to post trips, and change your access password.",
+    "SALDO_TRANSF": "Balance and Transfers",
+    "SALDO_TOOL_TITULO": "Content on Balance and Transfers",
+    "SALDO_TOOL_MODAL": "You can check your available balance, top-up methods, recent transactions, and transfer available balance to your bank account."
+  },
+
+  "__MyProfile": "My Profile Modal and Component",
+  "MY_PROFILE": {
     "TITULO": "My Profile",
     "DESCRIPCION_SECCION": "In this section, you can view and edit your personal information, as well as add your vehicles and travel preferences.",
     "INFO_PERSONAL": "Personal Information",
@@ -11,8 +30,8 @@
     "ORIENTACION": "Orientation",
     "FECHA_NACIMIENTO": "Date of Birth",
     "EDAD": "Age",
-    "SOBRE_TI": "About you",
-    "CUENTANOS": "You can tell everything you want about yourself!",
+    "SOBRE_TI": "About You",
+    "CUENTANOS": "Feel free to share anything about yourself!",
     "VEHÍCULOS_PREF": "My Vehicles / Travel Preferences",
     "MIS_VEHICULOS": "My Vehicles",
     "PREF_VIAJE": "Travel Preferences",
@@ -23,27 +42,27 @@
     "SILENCIO": "Silence"
   },
 
-  "__DatosContacto": "Modal and Contact Page",
-  "DATOS_CONTACTO": {
+  "__ContactInfo": "Contact Modal and Page",
+  "CONTACT_INFO": {
     "TITULO": "Contact Information",
-    "DESCRIPCION_SECCION": "From this section, you can update your email and contact phone number (Remember, these are important details when planning a trip).",
-    "DESCRIPCION_SECCION_2": "Remember that if you want to be a verified profile, you must do so in the Verifications section.",
-    "MODIF_CORREO_TFNO": "Email / Phone Modification",
+    "DESCRIPCION_SECCION": "From this section, you can update your email and phone number. (Remember that these are important details when making a trip.)",
+    "DESCRIPCION_SECCION_2": "Remember that if you want to be a verified profile, you must do so in the Verification section.",
+    "MODIF_CORREO_TFNO": "Email / Phone Update",
     "MI_CORREO": "My Email",
-    "MI_TFNO": "My Phone",
+    "MI_TFNO": "My Phone Number",
     "COM_COMERCIALES": "Commercial Communications",
-    "CHECK_POR_EMAIL": "I agree to receive commercial communications via email.",
-    "CHECK_TERCEROS": "I agree that my data may be used for commercial purposes by third parties."
+    "CHECK_POR_EMAIL": "I agree to receive commercial communications via email",
+    "CHECK_TERCEROS": "I agree that my data may be used for commercial purposes by third parties"
   },
 
-  "__VerificacionesPerfil": "Modal and Verify Profile Page",
-  "VERIF_PERFIL": {
+  "__ProfileVerifications": "Modal and Page Verify Profile",
+  "PROFILE_VERIFICATION": {
     "TITULO": "Verify Profile / Change Password",
     "TITULO_VERIF_BASICA": "Basic Verification",
     "SUBTIT_VERIF_BASICA": "To become a verified user, you must confirm your email and phone number and upload a photo of your identity document (both sides).",
-    "DESCRIPCION_SECCION": "From here, you can verify your profile. You must confirm:",
+    "DESCRIPCION_SECCION": "From here, you can verify your profile. You need to confirm:",
     "LI_CORREO": "Email",
-    "LI_TELÉFONO": "Phone Number",
+    "LI_TELÉFONO": "Phone",
     "LI_DNI": "Upload a photo of your ID (both sides)",
     "DESCRIPCION_SECCION_2": "If you are a driver (or plan to take a trip as a driver), you must upload a photo of your driver's license (both sides).",
     "DESCRIPCION_SECCION_3": "Additionally, in this section, you can change your password to access the web app.",
@@ -55,14 +74,44 @@
     "INFO_VERIFIDENTIDAD": "Use the button on the left to upload a photo of your identity document (both sides).",
     "INFO_VERIFIDENTIDAD2": "Use the button above to upload a photo of your identity document (both sides).",
     "NINGUN_ARCHIVO": "No file selected",
-    "VERIF_ADIC_CONDUCIR": "Additional Verification: Driver’s License",
-    "INFO_VERIFCONDUCIR": "If you plan to publish a trip at any time, we must verify your driver's license.",
-    "CAMBIO_CONTRAS": "Password Change:",
+    "VERIF_ADIC_CONDUCIR": "Additional Verification: Driver's License",
+    "INFO_VERIFCONDUCIR": "If you plan to publish a trip at any point, we need to verify your driver's license.",
+    "CAMBIO_CONTRAS": "Change Password:",
     "CONTRAS_ACTUAL": "Current Password:",
     "NUEVA_CONTRAS": "New Password:",
     "CONF_NUEVA_CONTRAS": "Confirm New Password:",
     "ELIMINAR_CTA": "Delete Account",
-    "INFO_ELIMINAR_CTA": "This action will permanently delete your account. If you have any balance, remember to transfer it to your bank account first to avoid losing the money."
+    "INFO_ELIMINAR_CTA": "This action will permanently delete your account. If you have a balance, remember to transfer it to your bank account first to avoid losing your money."
+  },
+
+  "BalanceAndTransfers": "Modal and Page for Balance and Transfers",
+  "BALANCE": {
+    "SALDOTRANSF": "Balance and Transfers",
+    "TITULO": "Balance and Transfers",
+    "SUBTITULO1": "In this section, you can check your available balance, view recent transactions, set up your top-up methods, and make deposits.",
+    "SUBTITULO2": "If you have a balance, you can transfer it to your bank account.",
+    "TU_SALDO": "Your Balance",
+    "SALDO_TITULO": "Current Balance:",
+    "MOV_TITULO": "Recent Transactions:",
+    "MOV_FECHA": "Date",
+    "MOV_CONCEPTO": "Concept",
+    "MOV_ABONO_GASTO": "Credit/Debit",
+    "MOV_SALDO_FINAL": "Final Balance",
+    "CONCEPTO_VIAJE": "Trip",
+    "CONCEPTO_RECARGA": "Top-up",
+    "CONCEPTO_PASAJERO": "Passenger",
+    "METODOS_TITULO": "Your Top-up Methods:",
+    "MIS_TARJETAS": "My Linked Cards",
+    "TARJETA": "Card",
+    "ANADIRTARJETA_BOTON": "Add Credit Card",
+    "ALIAS_TARJETA": "Card Alias",
+    "NUM_TARJETA": "Card Number",
+    "PAGO_PAYPAL": "Pay with PayPal",
+    "PAYPAL_BOTON": "Go to PayPal!",
+    "TRANSF_TITULO": "Transfers to Your Bank Account:",
+    "TRANSF_IMPORTE": "Transferred Amount",
+    "TRANS_CONCEPTO": "Transfer to Account",
+    "SALDO": "Balance"
   },
 
   "__Pronombres": "Pronoun Selectors",
@@ -129,17 +178,30 @@
     "ELIMINAR_CTA": "Delete My Account"
   },
 
+  "NavBar Home": "Navbar options displayed on the Home page",
+  "NAVBAR": {
+    "QUIENES": "Who We Are",
+    "DECALOGO": "Decalogue",
+    "BUSCAR_VIAJE": "Search Trip",
+    "PUBLICAR_VIAJE": "Publish Trip",
+    "PANEL": "USER PANEL",
+    "MIPERFIL": "My Profile",
+    "DATOSCONTACTO": "Contact Information",
+    "VERIFICACION": "Verification / Password",
+    "SALDO": "Balance and Transfers",
+    "LOGIN": "Login",
+    "REGISTRO": "Register",
+    "SALIR": "Logout"
+  },
+
+  "_Footer": "Footer links",
+  "FOOTER": {
+    "TERMS": "Terms and Conditions",
+    "COOKIES": "Cookies"
+  },
+
   "antiguo": "debajo",
 
-  "DATOS_USUARIO": {
-    "NOMBRE": "Name",
-    "APELLIDOS": "Surname",
-    "FECHA_NACIMIENTO": "Date of birth",
-    "EDAD": "Age",
-    "EMAIL": "Email",
-    "TELEFONO": "Phone",
-    "MIS_VEHICULOS": "My vehicles"
-  },
   "GUARDAR": "Save",
   "HOME": {
     "NEW_TRAVEL_TITLE": "Do you want to share your next trip?",
@@ -148,12 +210,7 @@
     "QUESTIONS_TITLE": "DO YOU HAVE QUESTIONS?",
     "CHECK_HERE": "Check here"
   },
-  "TITLE": "PrideRide",
-  "TITLE_YEAR": "PrideRide, 2025",
-  "FOOTER": {
-    "TERMS": "Terms and conditions",
-    "COOKIES": "Cookies"
-  },
+
   "HEADER": {
     "ABOUT": "About us",
     "FAQS": "FAQs",
