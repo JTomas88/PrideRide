@@ -52,6 +52,18 @@
         >
           Mi perfil
         </button>
+        <div class="alert" *ngIf="userLoggedIn">
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="help_btn d-flex justify-content-center"
+              title="Contenido de la sección Mi perfil"
+              (click)="openHelpMiPerfil()"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+          </div>
+        </div>
       </ion-col>
 
       <ion-col size="auto">
@@ -59,10 +71,22 @@
           type="button"
           mat-raised-button
           class="btn btn_bg btn_opciones"
-          (click)="openDatosContacto()"
+          (click)="openHelpDatosContacto()"
         >
           Datos de contacto
         </button>
+        <div class="alert" *ngIf="userLoggedIn">
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="help_btn d-flex justify-content-center"
+              title="Contenido de la sección Mi perfil"
+              (click)="OpenHelpVerificaciones()"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+          </div>
+        </div>
       </ion-col>
 
       <ion-col size="auto">
@@ -74,6 +98,18 @@
         >
           Verificar Perfil / Password
         </button>
+        <div class="alert" *ngIf="userLoggedIn">
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="help_btn d-flex justify-content-center"
+              title="Contenido de la sección Mi perfil"
+              (click)="OpenHelpVerificaciones()"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+          </div>
+        </div>
       </ion-col>
 
       <ion-col size="auto">
@@ -85,6 +121,18 @@
         >
           {{ "PERFIL_USUARIO.BT_SALDO" | translate }}
         </button>
+        <div class="alert" *ngIf="userLoggedIn">
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="help_btn d-flex justify-content-center"
+              title="Contenido de la sección Mi perfil"
+              (click)="OpenHelpSaldo()"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
   </div>
