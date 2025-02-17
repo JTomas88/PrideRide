@@ -11,14 +11,15 @@
   <mat-divider></mat-divider>
   <div class="modal-body">
     <p [innerHTML]="message"></p>
-    <div class="button-container" *ngIf="data.showAcceptButton">
+    <div class="button-container" *ngIf="data.showMoreInfoButton">
       <button mat-raised-button class="btn_bg" (click)="abrirMasDetalles()">
         Ver más detalles <mat-icon>info</mat-icon>
       </button>
     </div>
   </div>
   <div class="modal-footer">
-    <button mat-button (click)="close()">Cerrar</button>
-    <button mat-button class="btn_bg" (click)="aceptarCondiciones(true)" *ngIf="data.showAcceptButton">Aceptar</button>
+    <button mat-button (click)="close()" *ngIf="!data.showMoreInfoButton">Cerrar</button>
+    <button mat-button (click)="cerrarParaMasInfo('home')" *ngIf="data.showMoreInfoButton">Cerrar</button>
+    <button mat-button class="btn_bg" (click)="aceptarCondiciones('registro')" *ngIf="data.showAcceptButton">Aceptar</button>
   </div>
 </div>

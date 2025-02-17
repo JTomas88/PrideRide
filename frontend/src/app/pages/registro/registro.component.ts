@@ -90,14 +90,15 @@ export class RegistroComponent implements OnInit {
           <p>Para conocer más detalles sobre nuestro código de conducta, haz clic en el siguiente botón:</p>
         `,
         showAcceptButton: true,
+        showMoreInfoButton: true
       },
       panelClass: 'dialog-animate'
     });
   
-    contratoDialog.afterClosed().subscribe((accepted: boolean) => {
-      if (accepted) {
+    contratoDialog.afterClosed().subscribe((accepted: string) => {
+      if (accepted === 'registro') {
         this.registrar();
-      } else {
+      } else if (accepted === 'home') {
         this.volverAlHome();
       }
     });
