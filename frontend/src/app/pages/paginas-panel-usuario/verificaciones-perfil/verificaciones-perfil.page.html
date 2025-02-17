@@ -8,18 +8,19 @@
   <div class="container">
     <ion-row>
       <ion-col class="d-flex flex-column align-items-center">
-        <div>
-          <h4>Verificación básica</h4>
+        <div class="text-center">
+          <h4>{{'VERIF_PERFIL.TITULO_VERIF_BASICA' | translate}}</h4>
+          <p>{{'VERIF_PERFIL.SUBTIT_VERIF_BASICA' | translate}}</p>
         </div>
       </ion-col>
     </ion-row>
 
-    <ion-row class="justify-content-between mb-5">
+    <ion-row class="justify-content-between fila_superior">
       <ion-col size="3">
         <!-- Verificación de correo -->
         <div class="mt-2 text-center">
           <p>
-            <strong>{{ "VERIF_PERFIL.VERIFICA_TU_CORREO" | translate }}</strong>
+            <strong>{{'VERIF_PERFIL.VERIFICA_TU_CORREO' | translate}}</strong>
           </p>
           <ion-col>
             <button type="btn" class="btn btn_bg" mat-raised-button>
@@ -28,7 +29,7 @@
           </ion-col>
           <ion-row>
             <ion-col>
-              <p>{{ "VERIF_PERFIL.INFO_VERIF_CORREO" | translate }}</p>
+              <p>{{'VERIF_PERFIL.INFO_VERIF_CORREO' | translate}}</p>
             </ion-col>
           </ion-row>
         </div>
@@ -42,7 +43,7 @@
         <!-- Verificación de teléfono -->
         <div class="mt-2 text-center">
           <p>
-            <strong>{{ "VERIF_PERFIL.VERIFICA_TU_TFNO" | translate }}</strong>
+            <strong>{{'VERIF_PERFIL.VERIFICA_TU_TFNO' | translate}}</strong>
           </p>
           <ion-col>
             <button
@@ -56,7 +57,7 @@
           </ion-col>
           <ion-row>
             <ion-col class="mt-3">
-              <p>{{ "VERIF_PERFIL.INFO_VERIF_TFNO" | translate }}</p>
+              <p>{{'VERIF_PERFIL.INFO_VERIF_TFNO' | translate}}</p>
             </ion-col>
           </ion-row>
           <div class="input-container d-flex justify-content-center">
@@ -66,7 +67,7 @@
             <input type="text" maxlength="1" class="digit-input mx-1" />
           </div>
           <button type="button" class="btn mt-2 btn_bg" mat-raised-button>
-            {{ "BOTON.CONFIRMAR_CODIGO_TFNO" | translate }}
+            {{'BOTON.CONFIRMAR_CODIGO_TFNO' | translate}}
           </button>
         </div>
       </ion-col>
@@ -77,7 +78,7 @@
         <!-- Verificación DNI -->
         <div class="mt-2 text-center">
           <p>
-            <strong>{{ "VERIF_PERFIL.VERIF_TU_IDENTIDAD" | translate }}</strong>
+            <strong>{{'BOTON.VERIF_TU_IDENTIDAD' | translate}}</strong>
           </p>
           <ion-col class="d-flex justify-content-center align-items-center">
             <div class="d-flex justify-content-center position-relative">
@@ -97,7 +98,7 @@
           </ion-col>
           <ion-row class="d-flex justify-content-center align-items-center">
             <ion-col class="texto">
-              <p>{{ "VERIF_PERFIL.INFO_VERIFIDENTIDAD" | translate }}</p>
+              <p>{{'VERIF_PERFIL.INFO_VERIFIDENTIDAD2' | translate}}</p>
             </ion-col>
           </ion-row>
         </div>
@@ -108,8 +109,8 @@
       <!-- Verificación adicional -->
       <ion-col size="3" class="d-flex align-items-start">
         <div class="text-center">
-          <p class="text-center">
-            <strong>Verificación adicional: Carnet de conducir</strong>
+          <p class="text-center fs-8" style="font-size: 14px">
+            <strong>{{'VERIF_PERFIL.VERIF_ADIC_CONDUCIR' | translate}}</strong>
           </p>
           <div class="d-flex justify-content-center position-relative">
             <div class="file-upload">
@@ -126,7 +127,7 @@
             </div>
           </div>
           <p class="texto text-align-justify">
-            {{ "VERIF_PERFIL.INFO_VERIFCONDUCIR" | translate }}
+            {{'VERIF_PERFIL.INFO_VERIFCONDUCIR' | translate}}
           </p>
         </div>
       </ion-col>
@@ -140,12 +141,12 @@
       <ion-col size="3" class="d-flex align-items-center justify-content-start">
         <div class="text-center">
           <p class="text-center">
-            <strong>Cambio de contraseña</strong>
+            <strong>{{'VERIF_PERFIL.CAMBIO_CONTRAS' | translate}}</strong>
           </p>
           <ion-row class="mb-1">
             <ion-col size="12">
               <label for="cActual" class="form-label">
-                {{ "VERIF_PERFIL.CONTRAS_ACTUAL" | translate }}
+                {{'VERIF_PERFIL.CONTRAS_ACTUAL' | translate}}
               </label>
               <input type="password" class="form-control" id="cActual" />
             </ion-col>
@@ -153,13 +154,13 @@
           <ion-row>
             <ion-col>
               <label for="pNueva" class="form-label">
-                {{ "VERIF_PERFIL.NUEVA_CONTRAS" | translate }}
+                {{'VERIF_PERFIL.NUEVA_CONTRAS' | translate}}
               </label>
               <input type="password" class="form-control" id="pNueva" />
             </ion-col>
             <ion-col>
               <label for="pNuevaConfirm" class="form-label">
-                {{ "VERIF_PERFIL.NUEVA_CONTRAS" | translate }}
+                {{'VERIF_PERFIL.CONF_NUEVA_CONTRAS' | translate}}
               </label>
               <input type="password" class="form-control" id="pNuevaConfirm" />
             </ion-col>

@@ -127,4 +127,5 @@ export const routes: Routes = [
         './pages/paginas-panel-usuario/verificaciones-perfil/verificaciones-perfil.page'
       ).then((m) => m.VerificacionesPerfilPage),
   },
+
 ];

@@ -39,6 +39,8 @@
   "__VerificacionesPerfil": "Modal y pagina verificar-perfil",
   "VERIF_PERFIL": {
     "TITULO": "Verificar perfil / Cambiar la contraseña",
+    "TITULO_VERIF_BASICA": "Verificación básica",
+    "SUBTIT_VERIF_BASICA": "Para ser un usuario verificado debes confirmar tu correo y teléfono y subir una foto de tu documento de identidad por ambas caras",
     "DESCRIPCION_SECCION": "Desde aquí podrás hacer la verificación de tu perfil. Debes confirmar:",
     "LI_CORREO": "Correo electrónico",
     "LI_TELÉFONO": "Teléfono",
@@ -51,8 +53,9 @@
     "INFO_VERIF_TFNO": "Introduce aquí los 4 dígitos que has recibido:",
     "VERIF_TU_IDENTIDAD": "Verifica tu identidad:",
     "INFO_VERIFIDENTIDAD": "Mediante el botón de la izquierda puedes subir una foto de tu documento de identidad, por ambas caras.",
+    "INFO_VERIFIDENTIDAD2": "Mediante el botón de arriba puedes subir una foto de tu documento de identidad, por ambas caras.",
     "NINGUN_ARCHIVO": "Ningún archivo seleccionado",
-    "VERIF_ADIC_CONDUCIR": "VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR",
+    "VERIF_ADIC_CONDUCIR": "Verificación adicional: Carnet de conducir",
     "INFO_VERIFCONDUCIR": "Si tienes previsto publicar un viaje en algún momento, debemos tener verificado tu carnet de conducir.",
     "CAMBIO_CONTRAS": "Cambio de contraseña:",
     "CONTRAS_ACTUAL": "Contraseña actual:",
@@ -329,12 +332,5 @@
     "HORA_SALIDA": "Hora de salida",
     "PRECIO": "Precio",
     "RESULTADOS": "Resultados encontrados"
-  },
-
-  "SALDO": {
-    "TITLE": "Saldo y transferencias",
-    "SUBTITLE1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
-    "SUBTITLE2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
-    "TU_SALDO": "TU SALDO"
   }
 }

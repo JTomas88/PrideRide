@@ -23,6 +23,114 @@
     "SILENCIO": "Silence"
   },
 
+  "__DatosContacto": "Modal and Contact Page",
+  "DATOS_CONTACTO": {
+    "TITULO": "Contact Information",
+    "DESCRIPCION_SECCION": "From this section, you can update your email and contact phone number (Remember, these are important details when planning a trip).",
+    "DESCRIPCION_SECCION_2": "Remember that if you want to be a verified profile, you must do so in the Verifications section.",
+    "MODIF_CORREO_TFNO": "Email / Phone Modification",
+    "MI_CORREO": "My Email",
+    "MI_TFNO": "My Phone",
+    "COM_COMERCIALES": "Commercial Communications",
+    "CHECK_POR_EMAIL": "I agree to receive commercial communications via email.",
+    "CHECK_TERCEROS": "I agree that my data may be used for commercial purposes by third parties."
+  },
+
+  "__VerificacionesPerfil": "Modal and Verify Profile Page",
+  "VERIF_PERFIL": {
+    "TITULO": "Verify Profile / Change Password",
+    "TITULO_VERIF_BASICA": "Basic Verification",
+    "SUBTIT_VERIF_BASICA": "To become a verified user, you must confirm your email and phone number and upload a photo of your identity document (both sides).",
+    "DESCRIPCION_SECCION": "From here, you can verify your profile. You must confirm:",
+    "LI_CORREO": "Email",
+    "LI_TELÉFONO": "Phone Number",
+    "LI_DNI": "Upload a photo of your ID (both sides)",
+    "DESCRIPCION_SECCION_2": "If you are a driver (or plan to take a trip as a driver), you must upload a photo of your driver's license (both sides).",
+    "DESCRIPCION_SECCION_3": "Additionally, in this section, you can change your password to access the web app.",
+    "VERIFICA_TU_CORREO": "Verify Your Email:",
+    "INFO_VERIF_CORREO": "An email will be sent to your address. You just need to confirm by clicking the link provided.",
+    "VERIFICA_TU_TFNO": "Verify Your Phone:",
+    "INFO_VERIF_TFNO": "Enter the 4-digit code you received:",
+    "VERIF_TU_IDENTIDAD": "Verify Your Identity:",
+    "INFO_VERIFIDENTIDAD": "Use the button on the left to upload a photo of your identity document (both sides).",
+    "INFO_VERIFIDENTIDAD2": "Use the button above to upload a photo of your identity document (both sides).",
+    "NINGUN_ARCHIVO": "No file selected",
+    "VERIF_ADIC_CONDUCIR": "Additional Verification: Driver’s License",
+    "INFO_VERIFCONDUCIR": "If you plan to publish a trip at any time, we must verify your driver's license.",
+    "CAMBIO_CONTRAS": "Password Change:",
+    "CONTRAS_ACTUAL": "Current Password:",
+    "NUEVA_CONTRAS": "New Password:",
+    "CONF_NUEVA_CONTRAS": "Confirm New Password:",
+    "ELIMINAR_CTA": "Delete Account",
+    "INFO_ELIMINAR_CTA": "This action will permanently delete your account. If you have any balance, remember to transfer it to your bank account first to avoid losing the money."
+  },
+
+  "__Pronombres": "Pronoun Selectors",
+  "SELEC_PRONOMBRE": {
+    "SELECCIONA": "Select your pronoun",
+    "NINGUNO": "I don't use any specific one",
+    "OTROS": "Others",
+    "NO_RESPONDE": "I prefer not to answer"
+  },
+
+  "__Género": "Gender Selectors",
+  "SELEC_GENERO": {
+    "SELECCIONA": "Select your gender",
+    "HOMBRE_CIS": "Cisgender Man",
+    "MUJER_CIS": "Cisgender Woman",
+    "TRANSEXUAL": "Transgender",
+    "NO_BINARIO": "Non-binary",
+    "INTERGENERO": "Intergender",
+    "NO_FLUIDO": "Genderfluid",
+    "OTRO": "Other",
+    "NO_RESPONDE": "I prefer not to answer"
+  },
+
+  "__Orientación": "Orientation Selectors",
+  "ORIENTACION": {
+    "SELECCIONA": "Select your orientation",
+    "GAY": "Gay",
+    "LESBIANA": "Lesbian",
+    "BISEXUAL": "Bisexual",
+    "PANSEXUAL": "Pansexual",
+    "ASEXUAL": "Asexual",
+    "DEMISEXUAL": "Demisexual",
+    "QUEER": "Queer",
+    "OTRO": "Other",
+    "NO_RESPONDE": "I prefer not to answer"
+  },
+
+  "__Vehículos": "Brand, Model, and Colors",
+  "VEHICULOS": {
+    "MARCA": "Brand",
+    "MODELO": "Model",
+    "COLOR": "Color",
+    "blanco": "White",
+    "negro": "Black",
+    "rojo": "Red",
+    "amarillo": "Yellow",
+    "verde": "Green",
+    "gris": "Gray",
+    "dorado": "Gold",
+    "marron": "Brown",
+    "morado": "Purple",
+    "beige": "Beige",
+    "perla": "Pearl",
+    "otro": "Other"
+  },
+
+  "__Botones": "My Profile Modal and My Profile Component",
+  "BOTON": {
+    "ANADIR_VEHICULO": "Add Vehicle",
+    "GUARDAR": "Save",
+    "CONFIRMAR_CODIGO_TFNO": "Confirm Code",
+    "ELEGIR_ARCHIVOS": "Choose Files",
+    "CAMBIAR": "Change!",
+    "ELIMINAR_CTA": "Delete My Account"
+  },
+
+  "antiguo": "debajo",
+
   "DATOS_USUARIO": {
     "NOMBRE": "Name",
     "APELLIDOS": "Surname",
@@ -236,29 +344,5 @@
     "HORA_SALIDA": "Departure time",
     "PRECIO": "Price",
     "RESULTADOS": "Results found"
-  },
-
-  "SALDO": {
-    "TITLE": "Balance and Transfers",
-    "SUBTITLE1": "In this section, you can check your available balance, view recent transactions, set up your top-up methods, and make top-ups.",
-    "SUBTITLE2": "If you have balance, you can transfer it to your bank account.",
-    "TU_SALDO": "YOUR BALANCE"
-  },
-  "VEHICULOS": {
-    "MARCA": "Brand",
-    "MODELO": "Model",
-    "COLOR": "Color",
-    "blanco": "White",
-    "negro": "Black",
-    "rojo": "Red",
-    "amarillo": "Yellow",
-    "verde": "Green",
-    "gris": "Gray",
-    "dorado": "Gold",
-    "marron": "Brown",
-    "morado": "Purple",
-    "beige": "Beige",
-    "perla": "Pearl",
-    "otro": "Other"
   }
 }

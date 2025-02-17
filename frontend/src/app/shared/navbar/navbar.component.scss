@@ -57,6 +57,13 @@ ion-button {
   border-radius: 15px;
 }
 
+.navbar .dropdown-menu .perfil a:hover {
+  padding: auto; 
+  border: none; 
+  background-color: #F0D7B4;
+  border-radius: 15px;
+}
+
 .navbar .dropdown-menu .logout a:hover {
   border: none; 
   background-color: #FF5733;
