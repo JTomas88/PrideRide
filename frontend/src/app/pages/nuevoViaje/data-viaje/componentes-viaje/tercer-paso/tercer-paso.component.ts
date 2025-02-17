@@ -56,7 +56,20 @@ export class TercerPasoComponent implements OnInit {
   rutaConParadasSeleccionada: boolean = false;
   marcaPeajes: boolean = false;
 
-  constructor(private travelService: TravelService, private http: HttpClient) { }
+  
+
+  constructor(private travelService: TravelService, private http: HttpClient) {
+
+    /**
+     * Definición para los marcadores del mapa
+     */
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: '../../../../../../assets/mapaIcons/marker.png',
+      iconUrl: '../../../../../../assets/mapaIcons/marker.png',
+      shadowUrl: '../../../../../../assets/mapaIcons/marker.png'
+    });
+
+   }
 
   ngOnInit() {
     this.initializeMap();
@@ -71,7 +84,7 @@ export class TercerPasoComponent implements OnInit {
 
   initializeMap() {
     this.map = L.map('map', {
-      center: [40.4168, -3.7038], // Madrid as default
+      center: [40.4168, -3.7038],
       zoom: 12,
     });
 
@@ -89,47 +102,90 @@ export class TercerPasoComponent implements OnInit {
       origen: this.http.get<any[]>(urlOrigen),
       destino: this.http.get<any[]>(urlDestino)
     }).subscribe(({ origen, destino }) => {
-      if (origen.length > 0 && destino.length > 0) {
-        const origenCoords = L.latLng(origen[0].lat, origen[0].lon);
-        const destinoCoords = L.latLng(destino[0].lat, destino[0].lon);
-        this.buscarRutas(origenCoords, destinoCoords);
+      if (origen.length === 0 || destino.length === 0) {
+        console.error('No se encontraron coordenadas válidas.');
+        alert('Direcciones no encontradas.');
+        this.isLoadingRoutes = false;
+        return;
       }
+    
+      const origenCoords = L.latLng(origen[0].lat, origen[0].lon);
+      const destinoCoords = L.latLng(destino[0].lat, destino[0].lon);
+    
+      console.log('Coordenadas obtenidas:', origenCoords, destinoCoords);
+      this.buscarRutas(origenCoords, destinoCoords);
     });
+    
   }
 
   buscarRutas(origenCoords: L.LatLng, destinoCoords: L.LatLng) {
     console.log('Coordenadas origen:', origenCoords);
     console.log('Coordenadas destino:', destinoCoords);
+  
+    // Eliminar ruta anterior si existe
     if (this.routeControl) {
       this.map.removeControl(this.routeControl);
     }
-
+  
+    // Agregar marcadores de origen y destino
+    L.marker(origenCoords).addTo(this.map).bindPopup("Origen").openPopup();
+    L.marker(destinoCoords).addTo(this.map).bindPopup("Destino").openPopup();
+  
+    // Configurar enrutador OSRM con o sin peajes
+    const osrmOptions: any = {
+      serviceUrl: 'https://router.project-osrm.org/route/v1',
+      profile: 'car',
+      steps: true,
+      annotations: true,
+    };
+  
+    if (!this.marcaPeajes) {
+      osrmOptions.exclude = 'toll'; // Excluir carreteras con peajes
+    }
+  
+    // Configurar plan de ruta sin marcadores intermedios
+    const plan = new L.Routing.Plan([origenCoords, destinoCoords], {
+      createMarker: () => false, // No mostrar marcadores intermedios
+    });
+  
+    // Definir el control de rutas con el plan personalizado
     this.routeControl = L.Routing.control({
-      waypoints: [origenCoords, destinoCoords],
+      plan: plan, // Usar el plan modificado
       routeWhileDragging: true,
-      show: false,
-      router: new L.Routing.OSRMv1({
-        serviceUrl: `https://router.project-osrm.org/route/v1/driving/${origenCoords.lng},${origenCoords.lat};${destinoCoords.lng},${destinoCoords.lat}?overview=false&alternatives=true&steps=true&hints=;`
-      })
+      router: L.Routing.osrmv1(osrmOptions),
     })
-      .on('routesfound', (e: any) => {
-        if (e.routes.length > 0) {
-          this.routes = e.routes;
-          this.isLoadingRoutes = false;
-        } else {
-          console.error('No se encontraron rutas');
-          this.isLoadingRoutes = false;
-          alert('No se encontraron rutas entre los puntos seleccionados.');
+      .on('routesfound', (event: any) => {
+        this.routes = event.routes.map((route: any) => ({
+          distance: (route.summary.totalDistance / 1000).toFixed(2) + ' km',
+          duration: Math.round(route.summary.totalTime / 60) + ' min',
+          legs: route.legs,
+          coordinates: route.waypoints,
+          tolls: this.marcaPeajes ? 'Con peajes' : 'Sin peajes',
+        }));
+  
+        // 📌 Ajustar mapa a las coordenadas de la ruta
+        const routeCoordinates = event.routes[0].coordinates.map((coord: any) =>
+          L.latLng(coord.lat, coord.lng)
+        );
+  
+        if (routeCoordinates.length > 0) {
+          // Ajustar el mapa a las coordenadas de la ruta
+          const bounds = L.latLngBounds(routeCoordinates);
+          this.map.fitBounds(bounds); // Asegurarse de que el mapa se centra correctamente
         }
+  
+        this.isLoadingRoutes = false;
       })
       .on('routingerror', (error: any) => {
-        console.error('Error al calcular rutas:', error);
+        console.error("Error al obtener rutas:", error);
+        alert("No se pudieron obtener rutas. Intenta con otra dirección.");
         this.isLoadingRoutes = false;
-        alert('Hubo un problema al calcular las rutas.');
       })
       .addTo(this.map);
   }
-
+  
+  
+  
   onPeajeOptionChange(event: any) {
     this.marcaPeajes = event.target.id === 'peajes';
     // Aquí puedes actualizar la lógica de rutas según la opción seleccionada

@@ -50,11 +50,23 @@ export class SegundoPasoComponent implements OnInit {
  */
   obtenerSugerenciasOrigen(evento: Event) {
     const contenidoInput = (evento.target as HTMLInputElement).value;
-    this.googleService
-      .obtenerLocalidad(contenidoInput)
-      .subscribe((respuesta: any) => {
-        this.sugerenciasOrigen = respuesta;
-      });
+  
+    if (contenidoInput.length > 2) {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${contenidoInput}&addressdetails=1&limit=5&countrycodes=ES`;
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.sugerenciasOrigen = data.filter((item: any) => 
+            item.address && (item.address.city || item.address.town || item.address.village)
+          );
+        })
+        .catch(error => {
+          console.error('Error al obtener sugerencias de origen:', error);
+        });
+    } else {
+      this.sugerenciasOrigen = [];
+    }
   }
 
   /**
@@ -65,11 +77,23 @@ export class SegundoPasoComponent implements OnInit {
   */
   obtenerSugerenciasDestino(evento: Event) {
     const contenidoInput = (evento.target as HTMLInputElement).value;
-    this.googleService
-      .obtenerLocalidad(contenidoInput)
-      .subscribe((respuesta: any) => {
-        this.sugerenciasDestino = respuesta;
-      });
+  
+    if (contenidoInput.length > 2) {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${contenidoInput}&addressdetails=1&limit=5&countrycodes=ES`;
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.sugerenciasDestino = data.filter((item: any) => 
+            item.address && (item.address.city || item.address.town || item.address.village)
+          );
+        })
+        .catch(error => {
+          console.error('Error al obtener sugerencias de destino:', error);
+        });
+    } else {
+      this.sugerenciasDestino = [];
+    }
   }
 
   /**
@@ -78,7 +102,7 @@ export class SegundoPasoComponent implements OnInit {
    * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
    */
   seleccionarLocalidadOrigen(localidad: any) {
-    this.origen = localidad.descripcion.split(',')[0].trim();
+    this.origen = localidad.display_name.split(',')[0].trim();  // Ajuste para OpenStreetMap
     const viajeData = {
       ...this.travelService.getViajeData(),
       origen: this.origen,
@@ -94,7 +118,7 @@ export class SegundoPasoComponent implements OnInit {
    * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
    */
   seleccionarLocalidadDestino(localidad: any) {
-    this.destino = localidad.descripcion.split(',')[0].trim();
+    this.destino = localidad.display_name.split(',')[0].trim();  // Ajuste para OpenStreetMap
     const viajeData = {
       ...this.travelService.getViajeData(),
       destino: this.destino,

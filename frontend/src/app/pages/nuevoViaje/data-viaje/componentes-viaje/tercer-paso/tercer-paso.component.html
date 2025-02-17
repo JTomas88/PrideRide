@@ -54,20 +54,20 @@
             </div>
 
             <div class="route-list-container">
-              <div *ngFor="let route of routes; let i = index" (click)="selectRoute(i)" class="route-option"
-              [class.selected]="isRouteSelected(i)">
-              <div class="d-flex justify-content-between align-items-center">
-                <h3>
-                  {{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{ destino }}
-                </h3>
-                <label class="toll-label" *ngIf="marcaPeajes">Incluye peajes</label>
-                <label class="toll-label" *ngIf="!marcaPeajes">Sin peajes</label>
+              <div *ngFor="let route of routes; let i = index" 
+                   (click)="selectRoute(i)" class="route-option"
+                   [class.selected]="isRouteSelected(i)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3>
+                    {{ origen }} <mat-icon>arrow_right_alt</mat-icon> {{ destino }}
+                  </h3>
+                  <label class="toll-label">{{ route.tolls }}</label>
+                </div>
+                <p>Distancia: {{ route.distance  }}</p>
+                <p>Duración: {{ route.duration  }}</p>
               </div>
-              <p>Distancia: {{ route.legs[0].distance?.text }}</p>
-              <p>Duración: {{ route.legs[0].duration?.text }}</p>
             </div>
-            
-            </div>
+
           </div>
           <div *ngIf="routes.length === 0">
             <!-- Spinner "Cargando rutas" -->
@@ -103,7 +103,7 @@
         <!-- MAPA -->
         <ion-col>
           <div class="contenedor_mapa">
-            <div id="map" style="height: 500px; width: 100%;"></div> <!-- Contenedor para Leaflet -->
+            <div id="map" style="height: 500px; width: 100%;"></div> 
           </div>
         </ion-col>
       </ion-row>
