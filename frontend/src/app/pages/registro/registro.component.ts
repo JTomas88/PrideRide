@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterModule } from '@angular/router';
 import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
@@ -15,7 +16,7 @@ import { UserServicesService } from 'src/app/core/user-services/user-services.se
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MatButtonModule],
   providers: [UserServicesService],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss'],
@@ -27,9 +28,7 @@ export class RegistroComponent implements OnInit {
   formulario3: FormGroup;
   paso1: boolean = false;
 
-  dialog = inject(MatDialog);
-
-  constructor(private fb: FormBuilder, private userService: UserServicesService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserServicesService, private router: Router, private dialog: MatDialog) {
     this.formulario1 = this.fb.group({
       email: ['', Validators.required],
       fnacimiento: ['', Validators.required],
@@ -46,7 +45,6 @@ export class RegistroComponent implements OnInit {
     this.formulario3 = this.fb.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
   }
 
   ngOnInit() {
@@ -55,9 +53,7 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  /**
-   * Función para avanzar al siguiente formulario. Valida el formulario actual en el que estemos
-   */
+  // Función para avanzar al siguiente formulario
   siguientePaso() {
     if (this.pasoActual === 1 && this.formulario1.valid) {
       this.pasoActual++;
@@ -65,20 +61,50 @@ export class RegistroComponent implements OnInit {
     } else if (this.pasoActual === 2 && this.formulario2.valid) {
       this.pasoActual++;
       this.paso1 = false;
-    } else {
-
+    } else if (this.pasoActual === 3 && this.formulario3.valid) {
+      this.mostrarContrato();
     }
   }
 
-  /**
-   * Función para retroceder al formulario anterior.
-   */
+  // Función para retroceder al formulario anterior
   pasoAnterior() {
     if (this.pasoActual > 1) {
       this.pasoActual--;
     }
   }
 
+  // Función para mostrar el contrato de respeto
+  mostrarContrato() {
+    const contratoDialog = this.dialog.open(HelpModalComponent, {
+      data: { 
+        title: 'Contrato de Respeto',
+        message: `
+          <p>Al registrarte en nuestra aplicación, te comprometes a respetar a todos los usuarios, independientemente de su identidad de género, orientación sexual o cualquier otra característica personal.</p>
+          
+          <ul>
+            <li>Tratar a todos los usuarios con amabilidad y empatía.</li>
+            <li>No se tolerará ningún tipo de discriminación, acoso o conducta inapropiada.</li>
+            <li>El incumplimiento de estas normas puede conllevar la suspensión de tu cuenta.</li>
+          </ul>
+  
+          <p>Para conocer más detalles sobre nuestro código de conducta, haz clic en el siguiente botón:</p>
+        `,
+        showAcceptButton: true,
+      },
+      panelClass: 'dialog-animate'
+    });
+  
+    contratoDialog.afterClosed().subscribe((accepted: boolean) => {
+      if (accepted) {
+        this.registrar();
+      } else {
+        this.volverAlHome();
+      }
+    });
+  }
+  
+
+  // Función para registrar al usuario
   registrar() {
     if (this.formulario1.valid && this.formulario2.valid && this.formulario3.valid) {
       const datosRegistro = {
@@ -89,30 +115,24 @@ export class RegistroComponent implements OnInit {
 
       this.userService.registrarUsuario(datosRegistro).subscribe({
         next: (response) => {
-          const title: string = '¡Bienvenido!'
-          const message: string = 'Tu usuario ha sido creado.';
+          console.log('Respuesta registro: ', response);
+          
+          const title: string = `¡Bienvenido! ${response.usuario.nombre}`;
+          const message: string = 'Tu usuario ha sido creado correctamente.';
+          this.openHelp(title, message);
 
-          console.log('Usuario registrado:', response);
-
-          this.openHelp(title, message)
           this.router.navigate(['/home']);
         },
         error: (err) => {
-          console.error('Error al registrar:', err.error.error);
           const title = 'Error!';
-          const message = err.error.error
-          this.openError(title, message)
+          const message = err.error.error;
+          this.openError(title, message);
         },
       });
     }
   }
 
-  /**
-   * Función para mostrar una ventana modal con un mensaje de error.
-   * 
-   * @param title Título que recibe la ventana modal
-   * @param message Mensaje de error que recibe la ventana modal.
-   */
+  // Función para mostrar ventana modal de error
   openError(title: string, message: string) {
     this.dialog.open(ModalErrorComponent, {
       data: { title, message },
@@ -120,12 +140,7 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-  /**
-   * Función para mostrar una ventana modal con un mensaje de confirmación.
-   * 
-   * @param title Título que recibe la ventana modal
-   * @param message Mensaje de error que recibe la ventana modal.
-   */
+  // Función para mostrar ventana modal con confirmación
   openHelp(title: string, message: string) {
     this.dialog.open(HelpModalComponent, {
       data: { title, message },
@@ -133,7 +148,8 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  // Función para volver al home
   volverAlHome() {
-    this.router.navigate(['/home'], {});
+    this.router.navigate(['/home']);
   }
 }

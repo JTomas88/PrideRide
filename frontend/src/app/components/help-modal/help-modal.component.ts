@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDivider } from '@angular/material/divider';
@@ -6,11 +6,12 @@ import { MatIcon } from '@angular/material/icon';
 
 import { trigger, style, transition, animate } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-help-modal',
   standalone: true,
-  imports: [MatButtonModule, MatIcon, MatDivider],
+  imports: [MatButtonModule, MatIcon, MatDivider, CommonModule],
   templateUrl: './help-modal.component.html',
   styleUrls: ['./help-modal.component.scss'],
   animations: [
@@ -25,8 +26,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     ])
   ]
 })
-export class HelpModalComponent implements OnInit {
-
+export class HelpModalComponent implements OnInit  {
   /**
    * En la variable "message" utilizamos el tipado de objetos SafeHtml
    * para incrustar de forma segura código HTML en dicha variable
@@ -35,7 +35,7 @@ export class HelpModalComponent implements OnInit {
   message: SafeHtml;
   title: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string; message: string },
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string; message: string; showAcceptButton: boolean },
   private sanitizer: DomSanitizer,
   private dialogRef: MatDialogRef<HelpModalComponent>) { 
     this.title = data.title;
@@ -44,8 +44,13 @@ export class HelpModalComponent implements OnInit {
 
   ngOnInit() { }
 
+
   close() {
     this.dialogRef.close();
   }
 
+  aceptarCondiciones(accepted: boolean) {
+    this.dialogRef.close(accepted);
+  }
+  abrirMasDetalles(){}
 }

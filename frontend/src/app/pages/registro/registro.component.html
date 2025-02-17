@@ -55,7 +55,7 @@
             <option value="4">Prefiero no decirlo</option>
           </select>
         </div>
-        
+
         <div class="mb-3">
           <label for="orientacion" class="form-label">¿Cuál es tu orientación sexual?
             <span class="ms-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Más detalles">
@@ -95,11 +95,9 @@
   </div>
 
   <!-- Mensaje de advertencia -->
-  <div *ngIf="
-  (pasoActual === 1 && !formulario1.valid) ||
-  (pasoActual === 2 && !formulario2.valid) ||
-  (pasoActual === 3 && !formulario3.valid)
-  " class="alert alert-warning mt-3 text-center container" role="alert">
+  <div
+    *ngIf="(pasoActual === 1 && !formulario1.valid) || (pasoActual === 2 && !formulario2.valid) || (pasoActual === 3 && !formulario3.valid)"
+    class="alert alert-warning mt-3 text-center container" role="alert">
     Por favor, completa todos los campos obligatorios para continuar.
   </div>
 
@@ -114,9 +112,10 @@
         </button>
       </li>
       <li class="page-item">
-        <button type="button" class="page-link" (click)="siguientePaso()" [disabled]="(pasoActual === 1 && !formulario1.valid) ||
-        (pasoActual === 2 && !formulario2.valid) ||
-        (pasoActual === 3 && !formulario3.valid)">
+        <button type="button" class="page-link disabled"  *ngIf="pasoActual === 3">
+          Siguiente
+        </button>
+        <button type="button" class="page-link" (click)="siguientePaso()" *ngIf="pasoActual != 3">
           Siguiente
         </button>
       </li>
@@ -125,7 +124,7 @@
 
   <div *ngIf="pasoActual === 3 && formulario1.valid && formulario2.valid && formulario3.valid"
     class="d-flex justify-content-center">
-    <button type="button" class="btn btn-primary mt-3" (click)="registrar()">
+    <button type="button" mat-raised-button class="btn_bg mt-3 mb-3" (click)="mostrarContrato()">
       Registrar
     </button>
   </div>
