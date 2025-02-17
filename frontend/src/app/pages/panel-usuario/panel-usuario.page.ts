@@ -11,6 +11,8 @@ import { VerificarPerfilComponent } from 'src/app/components/botones-panel-usuar
 import { SaldoTransferenciasComponent } from 'src/app/components/botones-panel-usuario/saldo-transferencias/saldo-transferencias.component';
 import { IonicModule } from '@ionic/angular';
 import { MiPerfilComponent } from 'src/app/components/botones-panel-usuario/mi-perfil/mi-perfil.component';
+import { MatIcon } from '@angular/material/icon';
+import { HelpModalComponent } from 'src/app/components/help-modal/help-modal.component';
 
 @Component({
   selector: 'app-panel-usuario',
@@ -23,6 +25,7 @@ import { MiPerfilComponent } from 'src/app/components/botones-panel-usuario/mi-p
     NavbarComponent,
     TranslateModule,
     IonicModule,
+    MatIcon,
   ],
 })
 export class PanelUsuarioPage implements OnInit {
@@ -61,5 +64,45 @@ export class PanelUsuarioPage implements OnInit {
       .subscribe((result) => {
         console.log('Viajes del usuario: ', result);
       });
+  }
+
+  openHelpMiPerfil() {
+    const titulo: string = 'Contenido Mi Perfil';
+    const mensaje: string =
+      'En esta sección podrás consultar y modificar tu información personal, así como añadir tus vehículos y preferencias en el viaje';
+    this.dialog.open(HelpModalComponent, {
+      data: { title: titulo, message: mensaje },
+      disableClose: true,
+    });
+  }
+  openHelpDatosContacto() {
+    const titulo: string = 'Contenido Datos de contacto';
+    const mensaje: string =
+      'Podrás modificar tu teléfono y correo electrónico, así como las preferencias para comunicarnos contigo.';
+    this.dialog.open(HelpModalComponent, {
+      data: { title: titulo, message: mensaje },
+      disableClose: true,
+    });
+  }
+
+  OpenHelpVerificaciones() {
+    const titulo: string =
+      'Contenido sobre la verificación de perfil y cambio de contraseña';
+    const mensaje: string =
+      'Puedes convertirte en un usuario verificado, subir foto de tu carnet de conducir para publicar viajes y cambiar tu contraseña de acceso.';
+    this.dialog.open(HelpModalComponent, {
+      data: { title: titulo, message: mensaje },
+      disableClose: true,
+    });
+  }
+
+  OpenHelpSaldo() {
+    const titulo: string = 'Contenido sobre el Saldo y las transferencias';
+    const mensaje: string =
+      'Puedes consultar tu saldo disponible, métodos de recarga, últimos movimientos y transferir saldo disponible a tu cuenta bancaria';
+    this.dialog.open(HelpModalComponent, {
+      data: { title: titulo, message: mensaje },
+      disableClose: true,
+    });
   }
 }

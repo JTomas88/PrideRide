@@ -1,4 +1,23 @@
 {
+  "Panel de usuario": "Pagina de Panel de usuario",
+  "PANELUSUARIO": {
+    "PANELUSUARIO": "Panel de usuario",
+    "INFOPERSONAL": "INFORMACIÓN PERSONAL",
+    "ANADIR_EDITAR_FOTO": "Añadir/Editar foto",
+    "MIPERFIL": "Mi perfil",
+    "MIPERFIL_TOOL_TITULO": "Contenido Mi Perfil",
+    "MIPERFIL_TOOL_MODAL": "En esta sección podrás consultar y modificar tu información personal, así como añadir tus vehículos y preferencias en el viaje",
+    "DATOSCONTACTO": "Datos de contacto",
+    "DATOSCONT_TOOL_TITULO": "Contenido Datos Contacto",
+    "DATOSCONT_TOOL_MODAL": "Podrás modificar tu teléfono y correo electrónico, así como las preferencias para comunicarnos contigo.",
+    "VERIFPERFIL": "Verificar Perfil / Password",
+    "VERIFPERFIL_TOOL_TITULO": "Contenido sobre la verificación de perfil y cambio de contraseña",
+    "VERIFPERFIL_TOOL_MODAL": "Puedes convertirte en un usuario verificado, subir foto de tu carnet de conducir para publicar viajes y cambiar tu contraseña de acceso.",
+    "SALDO_TRANSF": "Saldo y transferencias",
+    "SALDO_TOOL_TITULO": "Contenido sobre el Saldo y las transferencias",
+    "SALDO_TOOL_MODAL": "Puedes consultar tu saldo disponible, métodos de recarga, últimos movimientos y transferir saldo disponible a tu cuenta bancaria"
+  },
+
   "__MiPerfil": "Modal de Mi perfil y componente mi perfil",
   "MI_PERFIL": {
     "TITULO": "Mi perfil",
@@ -65,6 +84,36 @@
     "INFO_ELIMINAR_CTA": "Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo, recuerda realizar primero la transferencia a tu cuenta bancaria para no perder ese dinero."
   },
 
+  "SaldoYTransferencias": "Modal y pagina de Saldo y transferencias",
+  "SALDO": {
+    "SALDOTRANSF": "Saldo y transferencias",
+    "TITULO": "Saldo y transferencias",
+    "SUBTITULO1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
+    "SUBTITULO2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
+    "TU_SALDO": "Tu saldo",
+    "SALDO_TITULO": "Saldo actual:",
+    "MOV_TITULO": "Últimos movimientos:",
+    "MOV_FECHA": "Fecha",
+    "MOV_CONCEPTO": "Concepto",
+    "MOV_ABONO_GASTO": "Abono/Gasto",
+    "MOV_SALDO_FINAL": "Saldo final",
+    "CONCEPTO_VIAJE": "Viaje",
+    "CONCEPTO_RECARGA": "Recarga",
+    "CONCEPTO_PASAJERO": "Pasajero",
+    "METODOS_TITULO": "Tus métodos de recarga:",
+    "MIS_TARJETAS": "Mis tarjetas vinculadas",
+    "TARJETA": "Tarjeta",
+    "ANADIRTARJETA_BOTON": "Añadir tarjeta de crédito",
+    "ALIAS_TARJETA": "Alias de la tarjeta",
+    "NUM_TARJETA": "Número de la tarjeta",
+    "PAGO_PAYPAL": "Pago por Paypal",
+    "PAYPAL_BOTON": "Vamos a Paypal!",
+    "TRANSF_TITULO": "Transferencias a tu cuenta bancaria:",
+    "TRANSF_IMPORTE": "Importe transferido",
+    "TRANS_CONCEPTO": "Transferencia a cuenta",
+    "SALDO": "Saldo"
+  },
+
   "__Pronombres": "Selectores de pronombre",
   "SELEC_PRONOMBRE": {
     "SELECCIONA": "Selecciona tu pronombre",
@@ -129,6 +178,28 @@
     "ELIMINAR_CTA": "Eliminar mi cuenta"
   },
 
+  "NavBar Home": "Opciones del navbar que aparece en el Home",
+  "NAVBAR": {
+    "QUIENES": "Quienes somos",
+    "DECALOGO": "Decálogo",
+    "BUSCAR_VIAJE": "Buscar viaje",
+    "PUBLICAR_VIAJE": "Publicar viaje",
+    "PANEL": "PANEL DE USUARIO",
+    "MIPERFIL": "Mi perfil",
+    "DATOSCONTACTO": "Datos de contacto",
+    "VERIFICACION": "Verificación / Password",
+    "SALDO": "Saldo y transferencias",
+    "LOGIN": "Login",
+    "REGISTRO": "Registrarse",
+    "SALIR": "Salir"
+  },
+
+  "_Footer": "Links del footer",
+  "FOOTER": {
+    "TERMS": "Términos y condiciones",
+    "COOKIES": "Cookies"
+  },
+
   "ANTIGUO DEBAJO": "",
 
   "HOME": {
@@ -138,22 +209,7 @@
     "QUESTIONS_TITLE": "¿TIENES DUDAS?",
     "CHECK_HERE": "Consulta aquí"
   },
-  "TITLE": "PrideRide",
-  "TITLE_YEAR": "PrideRide, 2025",
-  "FOOTER": {
-    "TERMS": "Términos y condiciones",
-    "COOKIES": "Cookies"
-  },
-  "HEADER": {
-    "ABOUT": "Quienes somos",
-    "FAQS": "FAQs",
-    "DECALOGUE": "Decálogo",
-    "SEARCH_TRAVEL": "Buscar viaje",
-    "NEW_TRAVEL": "Publicar viaje",
-    "LOGIN": "Iniciar sesión",
-    "REGISTER": "Regístrate",
-    "CHANGE_LANGUAGE": "Cambiar idioma"
-  },
+
   "JUMBOTRON": {
     "TITLE": "Seas como seas, viajamos contigo",
     "HELP": "Imagen de la cabecera"
@@ -170,146 +226,6 @@
     "WHEN": "Cuando",
     "TRAVELERS": "Nº pasajeros",
     "SEARCH": "Buscar"
-  },
-  "MI_PERFIL2": {
-    "TITLE": "Mis datos",
-    "SUBTITLE": "En esta sección podrás modificar los datos personales que se muestan a los demás, así como tus preferencias de viaje. También contarás con la opción de verificar tus datos",
-    "PRONOMBRE": "Pronombre",
-    "OTROS": "Otros",
-    "NO_USO": "No uso ninguno concreto",
-    "NO_RESPUESTA": "Prefiero no responder",
-    "SELECTOR_GENERO": {
-      "TITLE": "¿Con qué genero te identificas?",
-      "SELECTOR_OPCION": "Selecciona una opción",
-      "HOMBRE_CIS": "Hombre Cis",
-      "MUJER_CIS": "Mujer Cis",
-      "TRANSGENERO": "Transgénero",
-      "NO_BINARIO": "No binario",
-      "INTERGENERO": "Intergénero",
-      "NO_FLUIDO": "No fluido",
-      "OTRO": "Otro"
-    },
-    "SELECTOR_ORIENTACION": {
-      "TITLE": "¿Cuál es tu orientación sexual?",
-      "SELECTOR_OPCION": "Selecciona una opción",
-      "GAY": "Gay",
-      "LESBIANA": "Lesbiana",
-      "BISEXUAL": "Bisexual",
-      "PANSEXUAL": "Pansexual",
-      "ASEXUAL": "Asexual",
-      "DEMISEXUAL": "Demisexual",
-      "QUEER": "Queer",
-      "OTRO": "Otro"
-    },
-    "SOBRE_TI": "Sobre ti",
-    "PLACE_SOBRETI": "Siéntete libre de contar a los demás lo que quieras que sepan de ti",
-    "PREF_VIAJE": {
-      "TITLE": "Vehículos y preferencias de viaje",
-      "MIS_VEHICULOS": "Mis vehículos",
-      "ANADIR_VEHICULO": "Añadir vehículo",
-      "CUANDO_VIAJO": "Cuando viajo prefiero...",
-      "HABLAR": "Hablar",
-      "MUSICA": "Escuchar música",
-      "DORMIR": "Dormir",
-      "SILENCIO": "Silencio"
-    },
-    "VERIFICAR": {
-      "TITLE": "Verifica tus datos de contacto y documentos",
-      "SUBTITLE": "Un usuario verificado aporta mayor fiabilidad al resto de usuarios. Recuerda que para ser usuario verificado tienes que confirmar tu correo electrónico, teléfono y documento. Además, si en algún momento quieres publicar un viaje deberás subir una foto de tu carnet de conducir",
-      "USUARIO_VERIFICADO": "Usuario verificado",
-      "CORREO_TITLE": "Confirma tu correo electrónico",
-      "CORREO_SUBTITLE": "Se enviará un correo a tu dirección, solo tienes que confirmar en el enlace que aparecerá",
-      "TELEFONO_TITLE": "Confirma tu teléfono",
-      "TELEFONO_SUBTITLE": "Introduce aquí los 4 dígitos que has recibido:",
-      "TELEFONO_BOTON": "Confirmar código",
-      "DOC_TITLE": "Confirma tu documento",
-      "DOC_FRONTAL": "Documento frontal",
-      "DOC_TRASERO": "Documentro trasero"
-    },
-    "VERIF_ADICIONAL": {
-      "TITLE": "Verificación adicional",
-      "SUBTITLE": "Realiza esta verificación si planear publicar un viaje en el que tu vayas como conductor. Debes subir una foto de tu carnet de conducir en vigor (por ambas caras). Sólo tienes que subirlo una sola vez",
-      "FRONTAL": "Carnet de conducir frontal",
-      "TRASERO": "Carnet de conducir trasero"
-    }
-  },
-
-  "PERFIL_USUARIO": {
-    "INFO_PERSONAL": "INFORMACIÓN PERSONAL",
-    "FOTO": "Añadir/Editar foto",
-    "BT_INFOVISIBLE": "Tu información visible",
-    "BT_VERIFICACIONES": "Verificaciones / Datos de contacto",
-    "BT_AJCUENTA": "Ajustes cuenta",
-    "BT_SALDO": "Saldo y transferencias"
-  },
-  "MODAL_INFOVISIBLE": {
-    "TITULO": "Tu información visible",
-    "SUBTITULO": "Esta es la información que aparecerá visible a los demás",
-    "SEL_PRONOMBRE": {
-      "PRONOMBRE": "Pronombre",
-      "SELECCIONA": "Selecciona una opción",
-      "OTROS": "Otros",
-      "NINGUNO": "No uso ninguno en concreto",
-      "NO_RESPONDE": "Prefiero no responder"
-    }
-  },
-  "MODAL_VERIFICACIONES": {
-    "TITULO": "Datos de contacto y verificaciones",
-    "SUBTITULO1": "Un usuario verificado proporciona a los demás usuarios una mayor confianza.",
-    "SUBTITULO2": "Por eso, en este apartado, puedes verificar tus datos personales (email, teléfono y documento de identidad)",
-    "SUBTITULO3": "Además si en algún momento quieres hacer un viaje como conductor, debes subir una foto válida del carnet de conducir. Puedes dejarlo ya registrado en este apartado",
-    "CORREO_TITULO": "Verifica tu correo electrónico:",
-    "CORREO_SUBTITULO": "Se enviará un correo a tu dirección, solo tienes que confirmar en el enlace que aparecerá.",
-    "TFNO_TITULO": "Verifica tu teléfono:",
-    "TFNO_SUBTITULO": "Introduce aquí los 4 dígitos que has recibido:",
-    "TFNO_BOTON": "Confirmar código",
-    "IDENTIDAD_TITULO": "Verifica tu identidad:",
-    "IDENTIDAD_SUBTITULO": "Mediante el botón de la izquierda puedes subir una foto de tu documento de identidad, por ambas caras.",
-    "CCONDUCIR_TITULO": "VERIFICACIÓN ADICIONAL: CARNET DE CONDUCIR",
-    "CCONDUCIR_SUBTITULO": "Si tienes previsto publicar un viaje en algún momento, debemos tener verificado tu carnet de conducir."
-  },
-
-  "MODAL_AJCUENTA": {
-    "TITULO": "Ajustes de la cuenta",
-    "SUBTITULO": "Desde aquí podrás cambiar tu contraseña, elegir tus preferencias de comunicación y borrar de manera permanente tu cuenta.",
-    "CCONTRASENA_TITULO": "Cambio de contraseña:",
-    "CONTRASENA_ACTUAL": "Contraseña actual:",
-    "CONTRASENA_NUEVA": "Nueva contraseña:",
-    "CONTRASENA_CONF": "Confirmar la nueva contraseña:",
-    "CONTRASENA_BOTON": "Cambiar!",
-    "PREFCOM_TITULO": "Preferencias de comunicación",
-    "PREFCOM_COMERCIALES": "Acepto recibir comunicaciones comerciales por email",
-    "PREFCOM_TERCEROS": "Acepto que mis datos puedan ser usados con fines comerciales a terceros",
-    "BORRARCUENTA_TITULO": "Eliminar la cuenta",
-    "BORRARCUENTA_SUBTITULO": "Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo, recuerda realizar primero la transferencia a tu cuenta bancaria para no perder ese dinero.",
-    "BORRARCUENTA_BOTON": "Eliminar mi cuenta",
-    "CAMBIO_IDIOMA": "Cambio de idioma: "
-  },
-
-  "MODAL_SALDO": {
-    "TITULO": "Saldo y transferencias a tu cuenta",
-    "SUBTITULO1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
-    "SUBTITULO2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
-    "SALDO_TITULO": "Saldo actual:",
-    "MOV_TITULO": "Últimos movimientos:",
-    "MOV_FECHA": "Fecha",
-    "MOV_CONCEPTO": "Concepto",
-    "MOV_ABONO_GASTO": "Abono/Gasto",
-    "MOV_SALDO_FINAL": "Saldo final",
-    "CONCEPTO_VIAJE": "Viaje",
-    "CONCEPTO_RECARGA": "Recarga",
-    "CONCEPTO_PASAJERO": "Pasajero",
-    "METODOS_TITULO": "Tus métodos de recarga:",
-    "MIS_TARJETAS": "Mis tarjetas vinculadas",
-    "TARJETA": "Tarjeta",
-    "ANADIRTARJETA_BOTON": "Añadir tarjeta de crédito",
-    "ALIAS_TARJETA": "Alias de la tarjeta",
-    "NUM_TARJETA": "Número de la tarjeta",
-    "PAGO_PAYPAL": "Pago por Paypal",
-    "PAYPAL_BOTON": "Vamos a Paypal!",
-    "TRANSF_TITULO": "Transferencias a tu cuenta bancaria:",
-    "TRANSF_IMPORTE": "Importe transferido",
-    "TRANS_CONCEPTO": "Transferencia a cuenta"
   },
 
   "NUEVO_VIAJE": {
