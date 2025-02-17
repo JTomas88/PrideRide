@@ -1,4 +1,23 @@
 {
+  "Panel de usuario": "Pagina de Panel de usuario",
+  "PANELUSUARIO": {
+    "PANELUSUARIO": "Panel de usuario",
+    "INFOPERSONAL": "INFORMACIÓN PERSONAL",
+    "ANADIR_EDITAR_FOTO": "Añadir/Editar foto",
+    "MIPERFIL": "Mi perfil",
+    "MIPERFIL_TOOL_TITULO": "Contenido Mi Perfil",
+    "MIPERFIL_TOOL_MODAL": "En esta sección podrás consultar y modificar tu información personal, así como añadir tus vehículos y preferencias en el viaje",
+    "DATOSCONTACTO": "Datos de contacto",
+    "DATOSCONT_TOOL_TITULO": "Contenido Datos Contacto",
+    "DATOSCONT_TOOL_MODAL": "Podrás modificar tu teléfono y correo electrónico, así como las preferencias para comunicarnos contigo.",
+    "VERIFPERFIL": "Verificar Perfil / Password",
+    "VERIFPERFIL_TOOL_TITULO": "Contenido sobre la verificación de perfil y cambio de contraseña",
+    "VERIFPERFIL_TOOL_MODAL": "Puedes convertirte en un usuario verificado, subir foto de tu carnet de conducir para publicar viajes y cambiar tu contraseña de acceso.",
+    "SALDO_TRANSF": "Saldo y transferencias",
+    "SALDO_TOOL_TITULO": "Contenido sobre el Saldo y las transferencias",
+    "SALDO_TOOL_MODAL": "Puedes consultar tu saldo disponible, métodos de recarga, últimos movimientos y transferir saldo disponible a tu cuenta bancaria"
+  },
+
   "__MiPerfil": "Modal de Mi perfil y componente mi perfil",
   "MI_PERFIL": {
     "TITULO": "Mi perfil",
@@ -63,6 +82,36 @@
     "CONF_NUEVA_CONTRAS": "Confirmar la nueva contraseña:",
     "ELIMINAR_CTA": "Eliminar la cuenta",
     "INFO_ELIMINAR_CTA": "Esta acción eliminará tu cuenta de manera permanente. Si tienes saldo, recuerda realizar primero la transferencia a tu cuenta bancaria para no perder ese dinero."
+  },
+
+  "SaldoYTransferencias": "Modal y pagina de Saldo y transferencias",
+  "SALDO": {
+    "SALDOTRANSF": "Saldo y transferencias",
+    "TITULO": "Saldo y transferencias",
+    "SUBTITULO1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
+    "SUBTITULO2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
+    "TU_SALDO": "Tu saldo",
+    "SALDO_TITULO": "Saldo actual:",
+    "MOV_TITULO": "Últimos movimientos:",
+    "MOV_FECHA": "Fecha",
+    "MOV_CONCEPTO": "Concepto",
+    "MOV_ABONO_GASTO": "Abono/Gasto",
+    "MOV_SALDO_FINAL": "Saldo final",
+    "CONCEPTO_VIAJE": "Viaje",
+    "CONCEPTO_RECARGA": "Recarga",
+    "CONCEPTO_PASAJERO": "Pasajero",
+    "METODOS_TITULO": "Tus métodos de recarga:",
+    "MIS_TARJETAS": "Mis tarjetas vinculadas",
+    "TARJETA": "Tarjeta",
+    "ANADIRTARJETA_BOTON": "Añadir tarjeta de crédito",
+    "ALIAS_TARJETA": "Alias de la tarjeta",
+    "NUM_TARJETA": "Número de la tarjeta",
+    "PAGO_PAYPAL": "Pago por Paypal",
+    "PAYPAL_BOTON": "Vamos a Paypal!",
+    "TRANSF_TITULO": "Transferencias a tu cuenta bancaria:",
+    "TRANSF_IMPORTE": "Importe transferido",
+    "TRANS_CONCEPTO": "Transferencia a cuenta",
+    "SALDO": "Saldo"
   },
 
   "__Pronombres": "Selectores de pronombre",
@@ -286,31 +335,7 @@
     "CAMBIO_IDIOMA": "Cambio de idioma: "
   },
 
-  "MODAL_SALDO": {
-    "TITULO": "Saldo y transferencias a tu cuenta",
-    "SUBTITULO1": "En este apartado puedes consutar tu saldo disponible, ver los últimos movimientos, establecer tus métodos de recarga y efectuar recargas",
-    "SUBTITULO2": "Si tienes saldo puedes transferirlo a tu cuenta bancaria.",
-    "SALDO_TITULO": "Saldo actual:",
-    "MOV_TITULO": "Últimos movimientos:",
-    "MOV_FECHA": "Fecha",
-    "MOV_CONCEPTO": "Concepto",
-    "MOV_ABONO_GASTO": "Abono/Gasto",
-    "MOV_SALDO_FINAL": "Saldo final",
-    "CONCEPTO_VIAJE": "Viaje",
-    "CONCEPTO_RECARGA": "Recarga",
-    "CONCEPTO_PASAJERO": "Pasajero",
-    "METODOS_TITULO": "Tus métodos de recarga:",
-    "MIS_TARJETAS": "Mis tarjetas vinculadas",
-    "TARJETA": "Tarjeta",
-    "ANADIRTARJETA_BOTON": "Añadir tarjeta de crédito",
-    "ALIAS_TARJETA": "Alias de la tarjeta",
-    "NUM_TARJETA": "Número de la tarjeta",
-    "PAGO_PAYPAL": "Pago por Paypal",
-    "PAYPAL_BOTON": "Vamos a Paypal!",
-    "TRANSF_TITULO": "Transferencias a tu cuenta bancaria:",
-    "TRANSF_IMPORTE": "Importe transferido",
-    "TRANS_CONCEPTO": "Transferencia a cuenta"
-  },
+  "MODAL_SALDO": {},
 
   "NUEVO_VIAJE": {
     "TITLE_BTN_BACK": "PrideRide",

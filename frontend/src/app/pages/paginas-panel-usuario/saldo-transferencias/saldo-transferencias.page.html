@@ -7,13 +7,13 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <div class="d-flex justify-content-center">
-      <h1>{{'SALDO.TITLE' | translate}}</h1>
+      <h1>{{'SALDO.TITULO' | translate}}</h1>
     </div>
     <p class="d-flex justify-content-center">
-      {{'SALDO.SUBTITLE1' | translate}}
+      {{'SALDO.SUBTITULO1' | translate}}
     </p>
     <p class="d-flex justify-content-center">
-      {{'SALDO.SUBTITLE2' | translate}}
+      {{'SALDO.SUBTITULO2' | translate}}
     </p>
     <ion-grid>
       <ion-row>
@@ -21,7 +21,7 @@
           <ion-row class="d-flex justify-content-center">
             <div>
               <h3>TU SALDO</h3>
-              <p>{{'MODAL_SALDO.SALDO_TITULO' | translate}}</p>
+              <p>{{'SALDO.TU_SALDO' | translate}}</p>
               <span
                 class="d-flex justify-content-center"
                 style="font-size: 30px; font-weight: bold"
@@ -33,34 +33,28 @@
             <table class="table table-striped tabla-saldos">
               <thead>
                 <tr>
-                  <th scope="col">{{'MODAL_SALDO.MOV_FECHA' | translate}}</th>
-                  <th scope="col">
-                    {{'MODAL_SALDO.MOV_CONCEPTO' | translate}}
-                  </th>
-                  <th scope="col">
-                    {{'MODAL_SALDO.MOV_ABONO_GASTO' | translate}}
-                  </th>
-                  <th scope="col">
-                    {{'MODAL_SALDO.MOV_SALDO_FINAL' | translate}}
-                  </th>
+                  <th scope="col">{{'SALDO.MOV_FECHA' | translate}}</th>
+                  <th scope="col">{{'SALDO.MOV_CONCEPTO' | translate}}</th>
+                  <th scope="col">{{'SALDO.MOV_ABONO_GASTO' | translate}}</th>
+                  <th scope="col">{{'SALDO.MOV_SALDO_FINAL' | translate}}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">20/02/2024</th>
-                  <td>{{'MODAL_SALDO.CONCEPTO_VIAJE' | translate}}</td>
+                  <td>{{'SALDO.CONCEPTO_VIAJE' | translate}}</td>
                   <td>-25 €</td>
                   <td>80 €</td>
                 </tr>
                 <tr>
                   <th scope="row">15/01/2024</th>
-                  <td>{{'MODAL_SALDO.CONCEPTO_RECARGA' | translate}}</td>
+                  <td>{{'SALDO.CONCEPTO_RECARGA' | translate}}</td>
                   <td>+25 €</td>
                   <td>70 €</td>
                 </tr>
                 <tr>
                   <th scope="row">15/01/2024</th>
-                  <td>{{'MODAL_SALDO.CONCEPTO_PASAJERO' | translate}}</td>
+                  <td>{{'SALDO.CONCEPTO_PASAJERO' | translate}}</td>
                   <td>+25 €</td>
                   <td>70 €</td>
                 </tr>
@@ -92,52 +86,52 @@
           <ion-row class="d-flex justify-content-center">
             <div>
               <h3 class="d-flex justify-content-center">
-                {{'MODAL_SALDO.METODOS_TITULO' | translate}}
+                {{'SALDO.METODOS_TITULO' | translate}}
               </h3>
               <p class="d-flex justify-content-center">
                 Mis tarjetas vinculadas:
               </p>
               <ul>
                 <li class="d-flex justify-content-center">
-                  {{'MODAL_SALDO.TARJETA' | translate}}
+                  {{'SALDO.TARJETA' | translate}}
                   <div class="card tarjeta1"></div>
                 </li>
 
                 <li class="d-flex justify-content-center">
-                  {{'MODAL_SALDO.TARJETA' | translate}}
+                  {{'SALDO.TARJETA' | translate}}
                   <div class="card tarjeta1"></div>
                 </li>
               </ul>
               <div class="d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn_bg">
-                  {{ "MODAL_SALDO.ANADIRTARJETA_BOTON" | translate }}
+                  {{ "SALDO.ANADIRTARJETA_BOTON" | translate }}
                 </button>
               </div>
               <form class="mt-2">
                 <input
                   style="width: 200px"
                   class="form-input"
-                  id="disabledFieldsetCheck"
-                  placeholder="{{ 'MODAL_SALDO.ALIAS_TARJETA' | translate }}"
+                  id="aliastarjeta"
+                  placeholder="{{ 'SALDO.ALIAS_TARJETA' | translate }}"
                 />
                 <input
                   style="width: 200px"
                   class="form-input"
-                  id="disabledFieldsetCheck"
-                  placeholder="{{ 'MODAL_SALDO.NUM_TARJETA' | translate }}"
+                  id="numerotarjeta"
+                  placeholder="{{ 'SALDO.NUM_TARJETA' | translate }}"
                 />
 
                 <ion-row>
                   <input
                     style="width: 50px"
                     class="form-input"
-                    id="disabledFieldsetCheck"
+                    id="mestarjeta"
                     placeholder="MM"
                   />
                   <input
                     style="width: 50px"
                     class="form-input"
-                    id="disabledFieldsetCheck"
+                    id="aniotarjeta"
                     placeholder="AA"
                   />
                 </ion-row>
@@ -145,13 +139,13 @@
                   <input
                     style="width: 80px"
                     class="form-input"
-                    id="disabledFieldsetCheck"
+                    id="cvvtarjeta"
                     placeholder="CVV"
                   />
                 </ion-row>
                 <ion-row>
                   <button type="submit" class="btn btn_bg">
-                    {{ "GUARDAR" | translate }}
+                    {{ "BOTON.GUARDAR" | translate }}
                   </button>
                 </ion-row>
               </form>
@@ -160,7 +154,7 @@
           <ion-row class="mt-2">
             <ion-col class="d-flex justify-content-center">
               <div>
-                <p>{{ "MODAL_SALDO.PAGO_PAYPAL" | translate }}</p>
+                <p>{{ "SALDO.PAGO_PAYPAL" | translate }}</p>
               </div>
             </ion-col>
           </ion-row>
@@ -170,7 +164,7 @@
                 type="button"
                 class="btn btn_bg d-flex justify-content-center"
               >
-                {{ "MODAL_SALDO.PAYPAL_BOTON" | translate }}
+                {{ "SALDO.PAYPAL_BOTON" | translate }}
               </button>
             </div>
           </ion-row>
@@ -180,36 +174,32 @@
         <ion-col>
           <ion-row class="d-flex justify-content-center mt-4">
             <div>
-              <h3>{{ "MODAL_SALDO.TRANSF_TITULO" | translate }}</h3>
+              <h3>{{ "SALDO.TRANSF_TITULO" | translate }}</h3>
             </div>
           </ion-row>
           <ion-row class="mb-4 d-flex justify-content-center">
             <table class="table table-striped tabla-saldos">
               <thead>
                 <tr>
-                  <th scope="col">{{ "MODAL_SALDO.MOV_FECHA" | translate }}</th>
-                  <th scope="col">
-                    {{ "MODAL_SALDO.MOV_CONCEPTO" | translate }}
-                  </th>
-                  <th scope="col">
-                    {{ "MODAL_SALDO.TRANSF_IMPORTE" | translate }}
-                  </th>
+                  <th scope="col">{{ "SALDO.MOV_FECHA" | translate }}</th>
+                  <th scope="col">{{ "SALDO.MOV_CONCEPTO" | translate }}</th>
+                  <th scope="col">{{ "SALDO.SALDO" | translate }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">12/12/2024</th>
-                  <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+                  <td>{{ "SALDO.TRANS_CONCEPTO" | translate }}</td>
                   <td>-25 €</td>
                 </tr>
                 <tr>
                   <th scope="row">10/12/2024</th>
-                  <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+                  <td>{{ "SALDO.TRANS_CONCEPTO" | translate }}</td>
                   <td>-25 €</td>
                 </tr>
                 <tr>
                   <th scope="row">01/12/2024</th>
-                  <td>{{ "MODAL_SALDO.TRANS_CONCEPTO" | translate }}</td>
+                  <td>{{ "SALDO.TRANS_CONCEPTO" | translate }}</td>
                   <td>-25 €</td>
                 </tr>
               </tbody>

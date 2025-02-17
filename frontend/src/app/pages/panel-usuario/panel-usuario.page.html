@@ -6,13 +6,13 @@
 <ion-content [fullscreen]="true">
   <div class="container d-flex flex-column align-items-center">
     <div class="d-flex justify-content-center">
-      <h2>{{ "PERFIL_USUARIO.INFO_PERSONAL" | translate }}</h2>
+      <h2>{{ "PANELUSUARIO.INFOPERSONAL" | translate }}</h2>
     </div>
 
     <ion-row class="d-flex justify-content-center mb-4 position-relative">
       <div class="boton-foto">
         <button type="button" class="btn btn_bg boton">
-          {{ "PERFIL_USUARIO.FOTO" | translate }}
+          {{ "PANELUSUARIO.ANADIR_EDITAR_FOTO" | translate }}
         </button>
       </div>
       <div class="boton-x">
@@ -50,7 +50,7 @@
           class="btn btn_bg btn_opciones"
           (click)="openMiPerfil()"
         >
-          Mi perfil
+          {{ "PANELUSUARIO.MIPERFIL" | translate }}
         </button>
         <div class="alert" *ngIf="userLoggedIn">
           <div class="d-flex justify-content-center">
@@ -71,9 +71,9 @@
           type="button"
           mat-raised-button
           class="btn btn_bg btn_opciones"
-          (click)="openHelpDatosContacto()"
+          (click)="openDatosContacto()"
         >
-          Datos de contacto
+          {{ "PANELUSUARIO.DATOSCONTACTO" | translate }}
         </button>
         <div class="alert" *ngIf="userLoggedIn">
           <div class="d-flex justify-content-center">
@@ -81,7 +81,7 @@
               type="button"
               class="help_btn d-flex justify-content-center"
               title="Contenido de la sección Mi perfil"
-              (click)="OpenHelpVerificaciones()"
+              (click)="openHelpDatosContacto()"
             >
               <mat-icon>help</mat-icon>
             </button>
@@ -96,7 +96,7 @@
           class="btn btn_bg btn_opciones"
           (click)="openVerificarPerfil()"
         >
-          Verificar Perfil / Password
+          {{ "PANELUSUARIO.VERIFPERFIL" | translate }}
         </button>
         <div class="alert" *ngIf="userLoggedIn">
           <div class="d-flex justify-content-center">
@@ -119,7 +119,7 @@
           class="btn btn_bg btn_opciones"
           (click)="openSaldoTransferencias()"
         >
-          {{ "PERFIL_USUARIO.BT_SALDO" | translate }}
+          {{ "PANELUSUARIO.SALDO_TRANSF" | translate }}
         </button>
         <div class="alert" *ngIf="userLoggedIn">
           <div class="d-flex justify-content-center">
