@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { FuncionesComunes } from 'src/app/core/funciones-comunes/funciones-comunes.service';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -33,11 +34,11 @@ export class SobreNosotrosPage implements OnInit {
   userLoggedIn: boolean = false;
   userData: Usuario = {} as Usuario;
 
-  constructor() { }
+  constructor(private funcionesComunes: FuncionesComunes) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userLoggedIn = !!(this.userData && this.userData.usuario.email);
+    this.userLoggedIn = this.funcionesComunes.isUserLoggedIn();
   }
 
   /**

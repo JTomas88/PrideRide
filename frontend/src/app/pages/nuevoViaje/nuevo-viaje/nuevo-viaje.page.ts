@@ -62,7 +62,7 @@ export class NuevoViajePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userLoggedIn = this.funcionesComunes.isUserLoggedIn()
+    this.userLoggedIn = this.funcionesComunes.isUserLoggedIn();
   }
 
   /**
