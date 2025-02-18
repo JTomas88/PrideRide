@@ -51,23 +51,24 @@ ion-button {
 }
 
 .navbar .dropdown-menu li a:hover {
-  padding: auto; 
-  border: none; 
+  padding: auto;
+  border: none;
   background-color: #F0D7B4;
   border-radius: 15px;
 }
 
 .navbar .dropdown-menu .perfil a:hover {
-  padding: auto; 
-  border: none; 
+  padding: auto;
+  border: none;
   background-color: #F0D7B4;
   border-radius: 15px;
+  width: 200px;
 }
 
 .navbar .dropdown-menu .logout a:hover {
-  border: none; 
+  border: none;
   background-color: #FF5733;
-  color: white; 
+  color: white;
 }
 
 
@@ -82,7 +83,7 @@ ion-button {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
-  display: block; 
+  display: block;
 }
 
 .navbar .dropdown-menu.show {
@@ -96,6 +97,26 @@ ion-button {
 
 .navbar .dropdown-menu li:hover {
   transform: translateX(5px);
+}
+
+.menuusuario{
+  width: 260px
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  color: black;
+}
+
+.nav-link {
+  color: black; /* Cambia el color a negro */
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: gray; /* Cambia el color cuando el usuario pasa el mouse */
 }
 
 
