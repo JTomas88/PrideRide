@@ -23,13 +23,19 @@ export class PerfilPublicoPage implements OnInit {
   usuario: any;
   editar_perfil: boolean = false;
   userData: Usuario = {} as Usuario;
+  preferenciasViaje: string = '';
 
-  constructor(private route: ActivatedRoute, private funcionesComunes: FuncionesComunes, private userService: UserServicesService) { }
+  constructor(private route: ActivatedRoute,
+    private funcionesComunes: FuncionesComunes,
+    private userService: UserServicesService) {
+
+  }
 
   ngOnInit() {
     this.userLoggedIn = this.funcionesComunes.isUserLoggedIn();
     this.route.queryParams.subscribe((params) => {
-      this.usuarioParams = params;  
+      this.usuarioParams = params;
+      
       const userId = parseInt(this.usuarioParams.id, 10);
       this.obtenerUsuarioPorID(userId);
       this.validacionPerilLogeado(userId);
@@ -37,9 +43,9 @@ export class PerfilPublicoPage implements OnInit {
   }
 
 
-  validacionPerilLogeado(id_usuario: number){
+  validacionPerilLogeado(id_usuario: number) {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if(id_usuario === this.userData.usuario.id) {
+    if (id_usuario === this.userData.usuario.id) {
       this.editar_perfil = true;
     } else {
       this.editar_perfil = false;
@@ -54,6 +60,7 @@ export class PerfilPublicoPage implements OnInit {
   obtenerUsuarioPorID(id_usuario: number) {
     this.userService.obtenerUsuarioPorID(id_usuario).subscribe((resultadoUsuario) => {
       this.usuario = resultadoUsuario;
+      this.preferenciasViaje = this.funcionesComunes.validacionPreferencias(this.usuario);
       console.log('Parámetros recibidos:', this.usuario);
     });
   }

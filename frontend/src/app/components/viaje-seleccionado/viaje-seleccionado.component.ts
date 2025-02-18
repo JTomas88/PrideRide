@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
+import { FuncionesComunes } from 'src/app/core/funciones-comunes/funciones-comunes.service';
 import { Viaje } from 'src/app/models/travel/viaje.model';
 
 @Component({
@@ -13,15 +14,20 @@ import { Viaje } from 'src/app/models/travel/viaje.model';
   templateUrl: './viaje-seleccionado.component.html',
   styleUrls: ['./viaje-seleccionado.component.scss'],
 })
-export class ViajeSeleccionadoComponent  implements OnInit {
+export class ViajeSeleccionadoComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<ViajeSeleccionadoComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: { viaje: Viaje }) { }
+  preferencias: string = '';
+  constructor(private dialogRef: MatDialogRef<ViajeSeleccionadoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { viaje: Viaje }, private funcionesComunes: FuncionesComunes) {
+      this.preferencias = this.funcionesComunes.validacionPreferencias(this.data);
+  }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
   closeDialog() {
     this.dialogRef.close();
   }
+
 }
+
