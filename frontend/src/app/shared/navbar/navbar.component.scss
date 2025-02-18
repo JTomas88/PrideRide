@@ -55,6 +55,7 @@ ion-button {
   border: none;
   background-color: #F0D7B4;
   border-radius: 15px;
+  width: 250px;
 }
 
 .navbar .dropdown-menu .perfil a:hover {
@@ -62,9 +63,10 @@ ion-button {
   border: none;
   background-color: #F0D7B4;
   border-radius: 15px;
-  width: 200px;
+  width: 250px;
 }
 
+// Botón Salir
 .navbar .dropdown-menu .logout a:hover {
   border: none;
   background-color: #FF5733;
@@ -100,7 +102,7 @@ ion-button {
 }
 
 .menuusuario{
-  width: 260px
+  width: 280px
 }
 
 ul {
@@ -113,6 +115,7 @@ ul {
 .nav-link {
   color: black; /* Cambia el color a negro */
   text-decoration: none;
+  transition: none !important;
 }
 
 .nav-link:hover {
