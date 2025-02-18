@@ -199,16 +199,28 @@ export class SegundoPasoComponent implements OnInit {
           const lng = position.coords.longitude;
           this.mapCenter = { lat, lng };
   
-          // Usamos Leaflet para crear un mapa centrado en la ubicación
-          const map = L.map('map').setView([lat, lng], 13);
+          // Llamada a Nominatim para obtener la dirección inversa
+          const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
   
-          // Usamos un proveedor de tiles (OpenStreetMap, por ejemplo)
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-  
-          // Agregar un marcador en la ubicación del usuario
-          L.marker([lat, lng]).addTo(map)
-            .bindPopup("Estás aquí")
-            .openPopup();
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              if (data && data.address) {
+                let city = data.address.city || data.address.town || data.address.village || '';
+                if (city) {
+                  this.origen = city;
+                  const viajeData = {
+                    ...this.travelService.getViajeData(),
+                    origen: this.origen,
+                  };
+                  this.travelService.setViajeData(viajeData);
+                  this.cdr.detectChanges();
+                } else {
+                  console.log('No se pudo obtener la ciudad.');
+                }
+              }
+            })
+            .catch(error => console.error('Error al obtener la ubicación con Leaflet:', error));
         },
         (error) => {
           console.error('Error de geolocalización:', error.message);
@@ -218,5 +230,6 @@ export class SegundoPasoComponent implements OnInit {
       console.error("La geolocalización no está soportada por este navegador.");
     }
   }
+  
 
 }

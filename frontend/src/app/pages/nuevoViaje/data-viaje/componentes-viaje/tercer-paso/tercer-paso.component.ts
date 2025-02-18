@@ -56,7 +56,7 @@ export class TercerPasoComponent implements OnInit {
   rutaConParadasSeleccionada: boolean = false;
   marcaPeajes: boolean = false;
 
-  
+
 
   constructor(private travelService: TravelService, private http: HttpClient) {
 
@@ -69,7 +69,7 @@ export class TercerPasoComponent implements OnInit {
       // shadowUrl: '../../../../../../assets/mapaIcons/marker.png'
     });
 
-   }
+  }
 
   ngOnInit() {
     this.initializeMap();
@@ -108,36 +108,36 @@ export class TercerPasoComponent implements OnInit {
         this.isLoadingRoutes = false;
         return;
       }
-    
+
       const origenCoords = L.latLng(origen[0].lat, origen[0].lon);
       const destinoCoords = L.latLng(destino[0].lat, destino[0].lon);
-    
+
       console.log('Coordenadas obtenidas:', origenCoords, destinoCoords);
       this.buscarRutas(origenCoords, destinoCoords);
     });
-    
+
   }
 
   buscarRutas(origenCoords: L.LatLng, destinoCoords: L.LatLng) {
     console.log('Coordenadas origen:', origenCoords);
     console.log('Coordenadas destino:', destinoCoords);
-  
+
     // Eliminar ruta anterior si existe
     if (this.routeControl) {
       this.map.removeControl(this.routeControl);
     }
-  
+
     // Eliminar los marcadores anteriores si existen
     this.map.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         this.map.removeLayer(layer);
       }
     });
-  
+
     // Agregar marcadores de origen y destino
     L.marker(origenCoords).addTo(this.map).bindPopup("Origen").openPopup();
     L.marker(destinoCoords).addTo(this.map).bindPopup("Destino").openPopup();
-  
+
     // Configurar enrutador OSRM con o sin peajes
     const osrmOptions: any = {
       serviceUrl: 'https://router.project-osrm.org/route/v1',
@@ -145,57 +145,46 @@ export class TercerPasoComponent implements OnInit {
       steps: true,
       annotations: true,
     };
-  
+
     if (!this.marcaPeajes) {
       osrmOptions.exclude = 'toll';
     }
-  
-    // Configurar plan de ruta sin marcadores intermedios
-    const plan = new L.Routing.Plan([origenCoords, destinoCoords], {
-      createMarker: () => false,
-    });
-  
+
     // Definir el control de rutas con el plan personalizado
     this.routeControl = L.Routing.control({
-      plan: plan,
-      routeWhileDragging: true, // Esto permite actualizar la ruta mientras la arrastras
-      router: L.Routing.osrmv1(osrmOptions),
+      plan: new L.Routing.Plan([origenCoords, destinoCoords], {
+        createMarker: () => false, // 🔥 No mostrar marcadores intermedios
+      }),
+      routeWhileDragging: false, // Desactiva la actualización en tiempo real
+      router: L.Routing.osrmv1({
+        serviceUrl: 'https://router.project-osrm.org/route/v1',
+        profile: 'car',
+      }),
       lineOptions: {
-        styles: [
-          {
-            color: 'blue', // Color de la línea
-            weight: 5, // Grosor de la línea
-            opacity: 0.7, // Opacidad de la línea
-          }
-        ],
-        extendToWaypoints: true,  // Esto hace que la línea se extienda hasta los puntos intermedios (si existen)
-        missingRouteTolerance: 0.001  // Tolerancia para las rutas faltantes
-      }
+        styles: [{ color: 'blue', weight: 5, opacity: 0.7 }], // Estilos de la ruta
+        extendToWaypoints: false, // 🔥 No extender la línea a puntos intermedios
+        missingRouteTolerance: 0.001, // Evita errores si faltan partes de la ruta
+      },
+      show: false, // 🔥 Evita que aparezcan los pasos en el mapa
+      showAlternatives: false, // 🔥 No mostrar rutas alternativas
+      fitSelectedRoutes: true, // Ajusta el mapa a la ruta
     })
-      .on('routesfound', (event: any) => {
-        this.routes = event.routes.map((route: any) => ({
-          distance: (route.summary.totalDistance / 1000).toFixed(2) + ' km',
-          duration: Math.round(route.summary.totalTime / 60) + ' min',
-          legs: route.legs,
-          coordinates: route.waypoints,
-          tolls: this.marcaPeajes ? 'Con peajes' : 'Sin peajes',
-        }));
-  
-        // 📌 Ajustar mapa a las coordenadas de la ruta
-        const routeCoordinates = event.routes[0].coordinates.map((coord: any) =>
-          L.latLng(coord.lat, coord.lng)
-        );
-  
-        if (routeCoordinates.length > 0) {
-          // Ajustar el mapa a las coordenadas de la ruta
-          const bounds = L.latLngBounds(routeCoordinates);
-          setTimeout(() => {
-            this.map.fitBounds(bounds); // Asegurarse de que el mapa se centra correctamente
-          }, 200); // Retraso de 200ms para asegurar que el mapa se ajuste después de dibujar la ruta
-        }
-  
-        this.isLoadingRoutes = false;
-      })
+    .on('routesfound', (event: any) => {
+      console.log("Rutas encontradas:", event.routes);
+      this.routes = event.routes.map((route: any) => ({
+        distance: (route.summary.totalDistance / 1000).toFixed(2) + ' km',
+        duration: Math.round(route.summary.totalTime / 60) + ' min',
+        coordinates: route.coordinates,
+      }));
+    
+      // Seleccionar la primera ruta por defecto
+      if (this.routes.length > 0) {
+        this.selectedRouteIndex = 0; 
+        this.mostrarRutaEnMapa(this.routes[0].coordinates);
+      }
+    
+      this.isLoadingRoutes = false;
+    })
       .on('routingerror', (error: any) => {
         console.error("Error al obtener rutas:", error);
         alert("No se pudieron obtener rutas. Intenta con otra dirección.");
@@ -203,7 +192,29 @@ export class TercerPasoComponent implements OnInit {
       })
       .addTo(this.map);
   }
+
+  mostrarRutaEnMapa(coordinates: any[]) {
+    if (this.routeControl) {
+      this.map.removeControl(this.routeControl);
+    }
   
+    this.routeControl = L.Routing.control({
+      waypoints: coordinates.map(coord => L.latLng(coord.lat, coord.lng)),
+      routeWhileDragging: false,
+      router: L.Routing.osrmv1({
+        serviceUrl: 'https://router.project-osrm.org/route/v1',
+        profile: 'car',
+      }),
+      lineOptions: {
+        styles: [{ color: 'blue', weight: 5, opacity: 0.7 }],
+        extendToWaypoints: true, // Asegura que la ruta conecte los waypoints
+        missingRouteTolerance: 0.001, // Maneja rutas incompletas sin errores
+      },
+      fitSelectedRoutes: true,
+      show: false,
+    }).addTo(this.map);
+  }
+
   
   onPeajeOptionChange(event: any) {
     this.marcaPeajes = event.target.id === 'peajes';
@@ -242,10 +253,10 @@ export class TercerPasoComponent implements OnInit {
     this.selectedRouteIndex = index;
     const route = this.routes[index];
     if (route) {
-      const waypoints = route.coordinates.map((coord: any) => L.latLng(coord[1], coord[0]));
-      this.routeControl.setWaypoints(waypoints);
+      this.mostrarRutaEnMapa(route.coordinates);
     }
   }
+  
 
   // Método para verificar si la ruta está seleccionada
   isRouteSelected(index: number): boolean {
