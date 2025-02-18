@@ -7,6 +7,7 @@ import { TravelService } from 'src/app/core/travel-services/travel.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-segundo-paso',
@@ -102,7 +103,7 @@ export class SegundoPasoComponent implements OnInit {
    * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
    */
   seleccionarLocalidadOrigen(localidad: any) {
-    this.origen = localidad.display_name.split(',')[0].trim();  // Ajuste para OpenStreetMap
+    this.origen = localidad.display_name.split(',')[0].trim();
     const viajeData = {
       ...this.travelService.getViajeData(),
       origen: this.origen,
@@ -118,7 +119,7 @@ export class SegundoPasoComponent implements OnInit {
    * @param localidad -> Recibe la localidad seleccionada en la lista de sugerencias.
    */
   seleccionarLocalidadDestino(localidad: any) {
-    this.destino = localidad.display_name.split(',')[0].trim();  // Ajuste para OpenStreetMap
+    this.destino = localidad.display_name.split(',')[0].trim();
     const viajeData = {
       ...this.travelService.getViajeData(),
       destino: this.destino,
@@ -190,6 +191,32 @@ export class SegundoPasoComponent implements OnInit {
     }
   }
 
-
+  getUserLocationWithLeaflet() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          this.mapCenter = { lat, lng };
+  
+          // Usamos Leaflet para crear un mapa centrado en la ubicación
+          const map = L.map('map').setView([lat, lng], 13);
+  
+          // Usamos un proveedor de tiles (OpenStreetMap, por ejemplo)
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  
+          // Agregar un marcador en la ubicación del usuario
+          L.marker([lat, lng]).addTo(map)
+            .bindPopup("Estás aquí")
+            .openPopup();
+        },
+        (error) => {
+          console.error('Error de geolocalización:', error.message);
+        }
+      );
+    } else {
+      console.error("La geolocalización no está soportada por este navegador.");
+    }
+  }
 
 }

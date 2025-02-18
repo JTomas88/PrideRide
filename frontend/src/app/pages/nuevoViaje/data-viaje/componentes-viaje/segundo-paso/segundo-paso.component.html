@@ -3,7 +3,7 @@
   <input type="text" placeholder="{{ 'NUEVO_VIAJE.FROM' | translate }}" class="input-viaje form-control"
     [(ngModel)]="origen" name="origen" [ngModelOptions]="{ standalone: true }"
     (input)="obtenerSugerenciasOrigen($event)" />
-  <button type="button" mat-raised-button class="btn_bg" (click)="getUserLocation()"><mat-icon>location_on</mat-icon>Usar mi ubicación</button>
+  <button type="button" mat-raised-button class="btn_bg" (click)="getUserLocationWithLeaflet()"><mat-icon>location_on</mat-icon>Usar mi ubicación</button>
   <ul *ngIf="sugerenciasOrigen.length > 0" class="list-group lista_sugerencias">
     <li *ngFor="let localidad of sugerenciasOrigen; let i = index" [ngClass]="{'list-group-item': true}"
       (click)="seleccionarLocalidadOrigen(localidad)">

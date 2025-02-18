@@ -64,9 +64,9 @@ export class TercerPasoComponent implements OnInit {
      * Definición para los marcadores del mapa
      */
     L.Icon.Default.mergeOptions({
-      iconRetinaUrl: '../../../../../../assets/mapaIcons/marker.png',
-      iconUrl: '../../../../../../assets/mapaIcons/marker.png',
-      shadowUrl: '../../../../../../assets/mapaIcons/marker.png'
+      // iconRetinaUrl: '../../../../../../assets/mapaIcons/marker.png',
+      // iconUrl: '../../../../../../assets/mapaIcons/marker.png',
+      // shadowUrl: '../../../../../../assets/mapaIcons/marker.png'
     });
 
    }
@@ -89,7 +89,7 @@ export class TercerPasoComponent implements OnInit {
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap'
     }).addTo(this.map);
   }
 
@@ -127,6 +127,13 @@ export class TercerPasoComponent implements OnInit {
       this.map.removeControl(this.routeControl);
     }
   
+    // Eliminar los marcadores anteriores si existen
+    this.map.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        this.map.removeLayer(layer);
+      }
+    });
+  
     // Agregar marcadores de origen y destino
     L.marker(origenCoords).addTo(this.map).bindPopup("Origen").openPopup();
     L.marker(destinoCoords).addTo(this.map).bindPopup("Destino").openPopup();
@@ -140,19 +147,30 @@ export class TercerPasoComponent implements OnInit {
     };
   
     if (!this.marcaPeajes) {
-      osrmOptions.exclude = 'toll'; // Excluir carreteras con peajes
+      osrmOptions.exclude = 'toll';
     }
   
     // Configurar plan de ruta sin marcadores intermedios
     const plan = new L.Routing.Plan([origenCoords, destinoCoords], {
-      createMarker: () => false, // No mostrar marcadores intermedios
+      createMarker: () => false,
     });
   
     // Definir el control de rutas con el plan personalizado
     this.routeControl = L.Routing.control({
-      plan: plan, // Usar el plan modificado
-      routeWhileDragging: true,
+      plan: plan,
+      routeWhileDragging: true, // Esto permite actualizar la ruta mientras la arrastras
       router: L.Routing.osrmv1(osrmOptions),
+      lineOptions: {
+        styles: [
+          {
+            color: 'blue', // Color de la línea
+            weight: 5, // Grosor de la línea
+            opacity: 0.7, // Opacidad de la línea
+          }
+        ],
+        extendToWaypoints: true,  // Esto hace que la línea se extienda hasta los puntos intermedios (si existen)
+        missingRouteTolerance: 0.001  // Tolerancia para las rutas faltantes
+      }
     })
       .on('routesfound', (event: any) => {
         this.routes = event.routes.map((route: any) => ({
@@ -171,7 +189,9 @@ export class TercerPasoComponent implements OnInit {
         if (routeCoordinates.length > 0) {
           // Ajustar el mapa a las coordenadas de la ruta
           const bounds = L.latLngBounds(routeCoordinates);
-          this.map.fitBounds(bounds); // Asegurarse de que el mapa se centra correctamente
+          setTimeout(() => {
+            this.map.fitBounds(bounds); // Asegurarse de que el mapa se centra correctamente
+          }, 200); // Retraso de 200ms para asegurar que el mapa se ajuste después de dibujar la ruta
         }
   
         this.isLoadingRoutes = false;
@@ -183,7 +203,6 @@ export class TercerPasoComponent implements OnInit {
       })
       .addTo(this.map);
   }
-  
   
   
   onPeajeOptionChange(event: any) {
